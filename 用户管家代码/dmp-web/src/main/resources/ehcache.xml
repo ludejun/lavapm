@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="ehcache.xsd"
+         updateCheck="false" monitoring="autodetect"
+         dynamicConfig="true">
+    <diskStore path="java.io.tmpdir"/>
+     <!-- cache 配置  
+   		name 缓存名称 唯一
+   		maxEntriesLocalHeap 最大缓存对象数
+   		eternal 缓存对象是否永久生效   =true永久生效 timeToLiveSeconds 属性禁用
+   		timeToLiveSeconds 缓存对象过期时间  单位秒
+   		timeToIdleSeconds 缓存对象过期前的空闲时间 单位秒
+   		overflowToDisk 缓存对象超出最大值时是否写入磁盘 写入位置参照 java虚拟机 java.io.tmpdir   
+   		statistics 是否统计
+   		cacheEventListenerFactory 分布式ehcache配置 缓存监控  非分布式禁用
+    -->
+    <defaultCache
+            maxEntriesLocalHeap="10000"
+            eternal="false"
+            timeToLiveSeconds="86400"
+            overflowToDisk="false"
+            statistics="false">
+    	<!--<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" 
+	    	properties="replicateAsynchronously=true, replicatePuts=true, replicateUpdates=true,replicateUpdatesViaCopy= false, replicateRemovals= true " />-->
+    </defaultCache>
+            
+    <!-- 数据字段配置 -->
+    <cache  name="dicItemCache" 
+    		maxEntriesLocalHeap="1000"
+            eternal="false"
+            timeToLiveSeconds="86400"
+            overflowToDisk="false"
+            statistics="false">
+		<!--<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=true, replicatePuts=true, replicateUpdates=true,replicateUpdatesViaCopy= false, replicateRemovals= true " />-->
+	</cache>
+	<!-- 系统参数 -->
+    <cache  name="systemParamCache" 
+    		maxEntriesLocalHeap="1000"
+            eternal="false"
+            timeToLiveSeconds="86400"
+            overflowToDisk="false"
+            statistics="false">
+		<!--<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=true, replicatePuts=true, replicateUpdates=true,replicateUpdatesViaCopy= false, replicateRemovals= true " />-->
+	</cache>
+	<!-- 元数据 -->
+    <cache  name="metadata" 
+    		maxEntriesLocalHeap="1000"
+            eternal="false"
+            timeToLiveSeconds="86400"
+            overflowToDisk="false"
+            statistics="false">
+		<!--<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=true, replicatePuts=true, replicateUpdates=true,replicateUpdatesViaCopy= false, replicateRemovals= true " />-->
+	</cache>
+	 <cache  name="metadataUI" 
+    		maxEntriesLocalHeap="1000"
+            eternal="false"
+            timeToLiveSeconds="86400"
+            overflowToDisk="false"
+            statistics="false">
+		<!--<cacheEventListenerFactory class="net.sf.ehcache.distribution.RMICacheReplicatorFactory" properties="replicateAsynchronously=true, replicatePuts=true, replicateUpdates=true,replicateUpdatesViaCopy= false, replicateRemovals= true " />-->
+	</cache>
+	<!-- 属性枚举值 -->
+	<cache  name="attributeEnumValue" 
+    		maxEntriesLocalHeap="1000"
+            eternal="false"
+            timeToLiveSeconds="86400"
+            overflowToDisk="false"
+            statistics="false">
+	</cache>
+	<cache  name="metaDataAccountIdTypeCache" 
+    		maxEntriesLocalHeap="1000"
+            eternal="false"
+            timeToLiveSeconds="86400"
+            overflowToDisk="false"
+            statistics="false">
+	</cache>
+</ehcache>

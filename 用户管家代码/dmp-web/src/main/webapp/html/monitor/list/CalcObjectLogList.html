@@ -1,0 +1,139 @@
+<div class="ng-table-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">计算对象日志列表</div>
+		<div class="search" data-search role="search"></div>
+	</div>
+	<div ng-if="isShowMoreSearch" class="more-search-box">
+		<ul class="clrfix">
+			<li>
+				<div class="label">计算日志ID</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.id" ng-maxlength="20">
+				</div>
+			</li>
+			<li>
+				<div class="label">计算对象类型</div>
+				<div class="control">
+					<!-- <input type="text" class="form-control" ng-model="moreSearchCondition.objectType"> -->
+					<select class="form-control" ng-model="moreSearchCondition.objectType" ng-change="queryDistinctName(moreSearchCondition.objectType);">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in calcObjectLogObjectTypeList" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.objectType">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="label">计算对象名称</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.objectName" maxLength="256">
+					<!-- <select class="form-control" ng-model="moreSearchCondition.objectName">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in calcObjectLogDistinctName" value="{{sts.objectName}}" ng-selected="sts.objectName == moreSearchCondition.objectType">{{sts.objectName}}</option>
+					</select> -->
+				</div>
+			</li>
+			
+			<!-- <li>
+				<div class="label">计算对象编码</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.objectCode" ng-maxlength="256">
+				</div>
+			</li> -->
+		
+			<li>
+				<div class="label">调度任务名称</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.schedulerTaskCode">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in schedulerTaskList" value="{{sts.code}}" ng-selected="sts.code == moreSearchCondition.schedulerTaskCode">{{sts.name}}</option>
+					</select>
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">状态</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.status">
+						<option value="" >请选择</option>
+						<option ng-if="sts.dicItemKey != '-4'" ng-repeat="sts in calcObjectLogStatusList" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.status">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="label">发起人</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.creator">
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">启动时间</div>
+				<div class="control">
+					<div start-date="moreSearchCondition.startTimeStart" end-date="moreSearchCondition.startTimeEnd" td-change="changeStartTime" td-date-condition date-range="dateRange" class="form-control date-condition" type="text"></div>
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">结束时间</div>
+				<div class="control">
+					<div start-date="moreSearchCondition.endTimeStart" end-date="moreSearchCondition.endTimeEnd" td-change="changeEndTime" td-date-condition date-range="dateRange" class="form-control date-condition date-condition-right" type="text"></div>
+				</div>
+			</li>
+			
+			<!-- <li>
+				<div class="label">创建时间</div>
+				<div class="control">
+					<input data-max-date="today" readonly class="form-control fl form-date" type="text" ng-model="moreSearchCondition.createTimeStart" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker>
+		            <span class="fl ml-10 lh30">至</span>
+		            <input data-max-date="today" readonly class="form-control fl form-date ml-10" type="text" ng-model="moreSearchCondition.createTimeEnd" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker>
+				</div>
+			</li> -->
+		</ul>
+		
+		<div class="btns-box">
+			<div class="btns">
+				<button type="button" class="btn btn-primary btn-sm ml-10" ng-click="search();">搜索</button>
+	        	<button type="button" class="btn btn-default btn-sm" ng-click="resetMoreSearchCondition('resetMoreSearch');">重置</button>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="ng-table-body ng-table-body-empty">
+		<table ng-table="tableParams" class="table ng-table-responsive table-hover" freeze="true" id="tableParams">    
+		    <tr ng-repeat="calcObjectLog in $data">
+		       <td data-title="'计算日志ID'"><div class="wd80 t-o-e" title="{{calcObjectLog.id}}">{{calcObjectLog.id}}</div></td>
+		       <!-- <td data-title="'计算对象ID'"><div>{{calcObjectLog.objectId}}</div></td> -->
+		       <!-- <td data-title="'计算对象编码'"><div class="wd80 t-o-e" title="{{calcObjectLog.objectCode}}">{{calcObjectLog.objectCode}}</div></td> -->
+		       <td data-title="'计算对象类型'"><div class="wd80 t-o-e" title="{{calcObjectLog.objectType | DictFormatter : 'DMP_CALC_OBJECT_LOG_OBJECT_TYPE'}}">{{calcObjectLog.objectType | DictFormatter : 'DMP_CALC_OBJECT_LOG_OBJECT_TYPE'}}</div></td>
+		       <td data-title="'计算对象名称'"><div class="wd80 t-o-e" title="{{calcObjectLog.objectName}}">{{calcObjectLog.objectName}}</div></td>
+		       <td data-title="'调度任务名称'"><div class="wd80 t-o-e" title="{{calcObjectLog.schedulerTaskName}}">{{calcObjectLog.schedulerTaskName}}</div></td>
+		       <!-- <td data-title="'调度任务信息'"><div class="wd80 t-o-e" title="{{calcObjectLog.summary}}">{{calcObjectLog.summary}}</div></td> -->
+		       
+		       <!-- <td data-title="'计算对象类型'"><div class="min-wd100">{{calcObjectLog.objectType}}</div></td> -->
+		       <td data-title="'状态'"><div>{{calcObjectLog.status | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}</div></td>
+		       <td data-title="'发起人'">{{calcObjectLog.creator}}</td>
+		       <td data-title="'启动时间'"><div class="wd120 t-o-e" title="{{calcObjectLog.startTime | DateFormatDefault}}">{{calcObjectLog.startTime | DateFormatDefault}}</div></td>
+		       <td data-title="'结束时间'"><div class="wd120 t-o-e" title="{{calcObjectLog.endTime | DateFormatDefault}}">{{calcObjectLog.endTime | DateFormatDefault}}</div></td>
+		       <!-- <td data-title="'调度任务id'">{{calcObjectLog.schedulerTaskId}}</td> -->
+		       <!-- <td data-title="'azkaban执行id'">{{calcObjectLog.azkabanExecutorId}}</td> -->
+		       <!-- <td data-title="'异常信息'"><div>{{calcObjectLog.execptionInfo}}</div></td> -->
+		       <!-- <td data-title="'创建人账号'">{{calcObjectLog.createBy}}</td>
+		       
+		       <td data-title="'修改人账号'">{{calcObjectLog.updateBy}}</td>
+		       <td data-title="'创建时间'">{{calcObjectLog.createTime}}</td> -->
+		       <!-- <td data-title="'修改时间'">{{calcObjectLog.updateTime}}</td> -->
+		       <td data-title="'操作'">
+		       		<!-- <div class="min-wd100">
+			       	   <a ui-sref="calcObjectLogs_edit({calcObjectLogId:calcObjectLog.id})" class="btn btn-primary">编辑</a>
+			           <a href="javascript:;" data-template="html/monitor/dialog/CalcObjectLogDialog.html" bs-modal="modal" class="btn btn-primary">编辑</a>
+			           <a href="javascript:;" ng-click="removeCalcObjectLog(calcObjectLog);" class="btn btn-default">删除</a>
+		       		</div> -->
+		       		<div class="ng-table-operator" style="min-width: 35px !important;">
+			       	   	<a ui-sref="calcObjectLogs_view({calcObjectLogId:calcObjectLog.id,sourcePage:'计算对象日志列表'})">详情</a>
+		       		</div>
+		       </td>
+		    </tr>
+		    
+		</table>
+	</div>
+</div>

@@ -1,0 +1,280 @@
+<button data-backdrop="false" class="btn btn-primary fl hide" data-template="html/tag/dialog/TagCategoryRemoveTagsDialog.html" bs-modal="modal" id="btnShowRemoveTags">{{nlsRoot.removeTag}}</button>
+<div class="tag-category-panel clrfix" ng-click="onHideDropdownMenu($event);">
+	<div class="tag-cate-left">
+		<div class="title">
+			<a ng-if="tenantAdmin" href="javascript:;" ng-click="showTagCategoryDialog();" data-backdrop="static" data-template="html/tag/dialog/TagCategoryDialog.html" bs-modal="modal">
+				<i></i>{{nlsRoot.classification}}
+			</a>
+			<a ng-if="!tenantAdmin" href="javascript:;" style="cursor:default;">
+				{{nlsRoot.tagClassification}}
+			</a>
+		</div>
+		<div class="box">
+			<div class="search">
+				<i class="i-search"></i>
+				<input type="text" ng-keyup="findNodes();" ng-model="tagCategortSearch.name" placeholder="{{nlsRoot.inputKeyword}}"/>
+				<i class="icon-clear ng-hide" ng-click="clearTagCategortSearch();" ng-show="tagCategortSearch.name"></i>
+			</div>
+			<div>
+				<ul id="tagCategoryTree" class="ztree"></ul>
+			</div>
+			
+		</div>
+	</div>
+	<div class="tag-cate-right" ng-show="!isShowAddTag">
+		<div class="tag-cate-details">
+			<dl>
+				<dt><i></i>{{nlsRoot.basicInfo}}</dt>
+				<dd ng-show="tagCategoryDetails.name">
+					<span class="lb">{{nlsRoot.categoryName}}</span>
+					<span class="txt" style="width:50%;" ng-show="!isEditTagCategory">{{tagCategoryDetails.name}}</span>
+					<input id="rename-input" maxlength="12" class="rename-input" ng-show="isEditTagCategory" ng-model="currentTagCategoryName" name="currentTagCategoryName" ng-blur="editTagCategory(tagCategoryDetails);" required/>
+					<div class="operator ng-hide" ng-show="!isEditTagCategory && isShowOperator && tenantAdmin">
+						<a href="javascript:;" class="edit" ng-click="showHideEditTagCategory();">{{nlsRoot.edit}}</a>
+						<a href="javascript:;" class="delete" ng-click="removeTagCategory(tagCategoryDetails);">{{nlsRoot.toDelete}}</a>
+					</div>
+				</dd>
+				<dd >
+					<span class="lb">{{nlsRoot.numberOfSubCategories}}</span>
+					<span class="txt">{{tagCategoryDetails.childrenTagCategoryCount}}</span>
+				</dd>
+				<dd>
+					<span class="lb">{{nlsRoot.tagNumber}}</span>
+					<span class="txt">{{tagCategoryDetails.tagCount}}</span>
+				</dd>
+				<dd ng-show="tagCategoryDetails.creator">
+					<span class="lb">{{nlsRoot.creator}}</span>
+					<span class="txt">{{tagCategoryDetails.creator}}</span>
+				</dd>
+				<dd ng-show="tagCategoryDetails.createTime">
+					<span class="lb">{{nlsRoot.createTime}}</span>
+					<span class="txt">{{tagCategoryDetails.createTime | DateFormatDefault}}</span>
+				</dd>
+			</dl>
+			<div class="tag-cate-percent">
+				<div class="title" ng-if="tagCategoryDetails.childrenTagCategoryCount == 0"><i></i>{{nlsRoot.classTagPercentage}}</div>
+				<div class="title" ng-if="tagCategoryDetails.childrenTagCategoryCount > 0"><i></i>{{nlsRoot.percentageOfSubTag}}</div>
+				<div class="box">
+					<div class="empty-pie ng-hide" ng-show="!tagCategoryPieData || tagCategoryPieData.valueList.length == 0 || isEmptyPie">{{nlsRoot.noData}}</div>
+					<div ng-if="tagCategoryPieData && tagCategoryPieData.valueList.length > 0 && !isEmptyPie" data-td-echarts struct="echartTagCategoryPie" id="echartTagCategoryPie" class="hg200" ></div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="ng-table-container">
+			<div class="ng-table-head clrfix">
+				<div class="text" ng-if="isShowOperator">
+					<!-- <button type="button" class="btn btn-primary btn-sm btn-add-tags" ng-click="addTag();">添加标签</button> -->
+					<a href="javascript:;" ng-click="addTag();" class="btn-add-tags">
+						<i></i>{{nlsRoot.tag}}
+					</a>
+				</div>
+				<div class="search" data-search role="search"></div>
+			</div>
+			
+			<div ng-show="isShowMoreSearch" class="more-search-box clrfix">
+				<ul class="clrfix">
+					<li>
+						<div class="label">{{nlsRoot.tagName}}</div>
+						<div class="control">
+							<input type="text" class="form-control" ng-model="moreSearchCondition.name" maxlength="256">
+						</div>
+					</li>
+					<li>
+						<div class="label">{{nlsRoot.touchPointTypes}}</div>
+						<div class="control">
+							<select class="form-control" ng-model="moreSearchCondition.touchPointType">
+								<option value="" >{{nlsRoot.pleaseSelect}}</option>
+								<option ng-repeat="sts in touchPointTypes" value="{{sts.dicItemKey}}"  ng-selected="sts.dicItemKey == moreSearchCondition.touchPointType">{{sts.dicItemValue}}</option>
+							</select>
+						</div>
+					</li>
+					<li>
+						<div class="label">标签类型</div>
+						<div class="control">
+							<select class="form-control" ng-model="moreSearchCondition.type">
+								<option value="" >请选择</option>
+								<option ng-repeat="sts in tagTypes" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.type" >{{sts.dicItemValue}}</option>
+							</select>
+						</div>
+					</li>
+				
+					<li>
+						<div class="label">{{nlsRoot.status}}</div>
+						<div class="control">
+							<select class="form-control" ng-model="moreSearchCondition.status">
+								<option value="" >{{nlsRoot.pleaseSelect}}</option>
+								<option ng-repeat="sts in tagStatus" value="{{sts.dicItemKey}}" ng-if="sts.dicItemKey != -1"  ng-selected="sts.dicItemKey == moreSearchCondition.status">{{sts.dicItemValue}}</option>
+							</select>
+						</div>
+					</li>
+					
+					<!-- <li>
+						<div class="label">计算状态</div>
+						<div class="control">
+							<select class="form-control" ng-model="moreSearchCondition.calcStatus">
+								<option value="" >请选择</option>
+								<option ng-repeat="sts in tagCalcStatus" value="{{sts.dicItemKey}}"  ng-selected="sts.dicItemKey == moreSearchCondition.calcStatus">{{sts.dicItemValue}}</option>
+							</select>
+						</div>
+					</li> -->
+					
+					<li>
+						<div class="label">{{nlsRoot.creator}}</div>
+						<div class="control">
+							<input type="text" class="form-control" ng-model="moreSearchCondition.creator" maxlength="64">
+						</div>
+					</li>
+					
+					<!-- <li>
+						<div class="label">创建时间</div>
+						<div class="control">
+				            <div start-date="moreSearchCondition.createTimeStart" end-date="moreSearchCondition.createTimeEnd" td-change="changeCreateTime" td-date-condition date-range="dateRange" class="form-control date-condition" type="text"></div>
+				           </div>
+					</li>
+					
+					<li>
+						<div class="label">人群更新时间</div>
+						<div class="control">
+							<div start-date="moreSearchCondition.tagDataTimeStart" end-date="moreSearchCondition.tagDataTimeEnd" td-change="changeTagDataTime" td-date-condition date-range="dateRange" class="form-control date-condition date-condition-right" type="text"></div>
+						</div>
+					</li> -->
+				</ul>
+				
+				<div class="btns-box">
+					<div class="btns">
+						<button type="button" class="btn btn-primary btn-sm ml-10" ng-click="search();">{{nlsRoot.search}}</button>
+			        	<button type="button" class="btn btn-default btn-sm" ng-click="resetMoreSearchCondition();">{{nlsRoot.reset}}</button>
+					</div>
+				</div>
+			</div>
+			
+			<!-- <table ng-table="tableParams" class="table ng-table-responsive table-hover">
+				
+			    <tr ng-repeat="tag in $data">
+			       <td data-title="'标签名称'"><div title="{{tag.name}}">{{tag.name}}</div></td>
+			       <td data-title="'人群类型'">
+			       		<div class="min-wd50">
+					       	<i ng-if="tag.touchPointType == 'app_tdid'" class="icons icon-touchpointtype1" title="{{tag.touchPointType | DictFormatter : 'TOUCH_POINT_TYPE'}}"></i>
+					       	<i ng-if="tag.touchPointType == 'web_tdid'" class="icons icon-touchpointtype2" title="{{tag.touchPointType | DictFormatter : 'TOUCH_POINT_TYPE'}}"></i>
+					       	<i ng-if="tag.touchPointType == 'h5_tdid'" class="icons icon-touchpointtype3" title="{{tag.touchPointType | DictFormatter : 'TOUCH_POINT_TYPE'}}"></i>
+					       	<i ng-if="tag.touchPointType == 'account_id'" class="icons icon-touchpointtype99" title="{{tag.touchPointType | DictFormatter : 'TOUCH_POINT_TYPE'}}"></i>
+			       		</div>
+			       </td>
+			       <td data-title="'标签来源'"><div class="max-wd100 t-o-e" title="{{tag.source | DictFormatter : 'TAG_SOURCE'}}">{{tag.source | DictFormatter : 'TAG_SOURCE'}}</div></td>
+			       <td data-title="'状态'"><div class="max-wd100 t-o-e" title="{{tag.status | DictFormatter : 'DMP_OBJECT_STATUS'}}">{{tag.status | DictFormatter : 'DMP_OBJECT_STATUS'}}</div></td>
+
+			       <td data-title="'创建人'"><div title="{{tag.creator}}" class="max-wd100 t-o-e">{{tag.creator}}</div></td>
+
+			       <td data-title="'操作'">
+			       		<div class="ng-table-operator" style="min-width:115px !important;" ng-if="isShowOperator">
+				       	   	<a ng-click="removeTagWithTagCategory(tag);" href="javascript:;">移除</a>
+				       	</div>
+			       </td>
+			    </tr>
+			</table> -->
+			
+			
+			<table ng-table="tableParams" class="table ng-table-responsive table-hover" ng-show="tagCategoryTable.thead.length > 0">
+				<thead>
+					<tr>
+						<th ng-repeat="thead in tagCategoryTable.thead">{{thead.label}}</th>
+						<th ng-if="isShowTableOperator">{{nlsRoot.operation}}</th>
+					</tr>
+				</thead>
+			    <tbody>
+				    <tr ng-repeat="tag in $data">
+				       <td ng-repeat="(k,v) in tag" ng-if="(k == tagCategoryTable.thead[$index].id) || (k == 'isViewRule' && isShowTableOperator )">
+					       	<div class="ng-table-operator" style="min-width:115px !important;" ng-if="k=='isViewRule' && !v">
+					       	   	<a ng-click="removeTagWithTagCategory(tag);" href="javascript:;">{{nlsRoot.remove}}</a>
+					       	</div>
+				       		<div ng-if="k=='name'">{{v}}</div>
+				       		<div ng-if="k=='crowdIcon'">
+								<div class="min-wd50">
+									<i ng-if="v != null" class="{{v}}"  title="{{tag['touchPointTypeName']}}"></i>
+									<i ng-if="v == ''" class="icons-id icon-id-touchpointtype-other"  title="{{tag['touchPointTypeName']}}"></i>
+									<!--  
+							       	<i ng-if="v == 'app_tdid'" class="icons" ng-class="{'icon-touchpointtype1':v == 'app_tdid'}" title="{{tag['touchPointTypeName']}}"></i>
+							       	<i ng-if="v == 'web_tdid'" class="icons" ng-class="{'icon-touchpointtype2':v == 'web_tdid'}" title="{{tag['touchPointTypeName']}}"></i>
+							       	<i ng-if="v == 'h5_tdid'" class="icons" ng-class="{'icon-touchpointtype3':v == 'h5_tdid'}" title="{{tag['touchPointTypeName']}}"></i>
+							       	<i ng-if="v == 'account_id'" class="icons" ng-class="{'icon-touchpointtype99':v == 'account_id'}" title="{{tag['touchPointTypeName']}}"></i>
+							       	<i ng-if="v == 'mac_tdid'" class="icons" ng-class="{'icon-touchpointtype-mac':v == 'mac_tdid'}" title="{{tag['touchPointTypeName']}}"></i>
+					       			<i ng-if="v != 'app_tdid' && 
+							       		v != 'web_tdid' && 
+							       		v != 'h5_tdid' && 
+							       		v != 'account_id' && 
+							       		v != 'mac_tdid'" class="icons icon-touchpointtype-other" title="{{tag['touchPointTypeName']}}"></i>-->
+					       		</div>
+							</div>
+							
+							<div ng-if="k=='type'">{{v | DictFormatter : 'TAG_TYPE'}}</div>
+							<div ng-if="k=='status'">{{v | DictFormatter : 'DMP_OBJECT_STATUS'}}</div>
+							
+				       		<div ng-if="k=='creator'">{{v}}</div>
+				       </td>
+				    </tr>
+			    </tbody>
+			    
+			</table>
+			
+			
+		</div>
+		
+		
+		
+	</div>
+	
+	<!-- 添加标签 -->
+	<div style="margin-left: 265px;"  ng-show="isShowAddTag">
+		<div class="form-horizontal-panel">
+			<div class="form-horizontal-title">{{nlsRoot.addTag}}</div>
+			<form class="form-horizontal clrfix">
+	  			<div class="control-group">
+			        <label class="control-label">{{nlsRoot.currentClassification}}：</label>
+			        <div class="controls">
+			            <span class="c2">{{tagCategoryDetails.name}}</span>
+			        </div>
+			    </div>
+			    <div class="control-group" ng-if="selectedTagList.length > 0">
+			    	<label class="control-label">{{nlsRoot.selectedTags}}：</label>
+			    	<div class="controls" style="width:70%;">
+				    	<div class="tag-list clrfix">
+							<div class="tag" title="{{tag.name}}" ng-repeat="tag in selectedTagList">
+								<span class="tag-name">{{tag.name}}</span>
+								<i title="移除{{tag.name}}" class="remove-tag" ng-click="removeHasSelectedTag(tag);">x</i>
+							</div>
+						</div>
+					</div>
+			    </div>
+	  				<div class="control-group">
+			        <label class="control-label">{{nlsRoot.selectTag}}：</label>
+			        <div class="controls">
+			            <div class="search-dropdown">
+							<input class="form-control" 
+								ng-focus="filterFirstTagList(firstTagObj.keyword);" 
+								ng-keyup="filterFirstTagList(firstTagObj.keyword);" 
+								ng-blur="closeFirstTagDropdownMenu();" 
+								ng-model="firstTagObj.keyword" placeholder = "{{nlsRoot.tagNamePrompt}}">
+							<ul class="dropdown-menu" ng-show="isShowFirstTagDropdownMenu">
+								<li ng-repeat="firstTag in firstTagFilterList"
+									ng-click="selectTagItem(firstTag);" ng-show="!firstTag.hasSelected && firstTag.status != -1">
+									<a href="javascript:;">{{firstTag.name}}</a>
+								</li>
+							</ul>
+						</div>
+			        </div>
+			    </div>
+			</form>
+		</div>
+		
+		<div class="form-horizontal-btns clrfix">
+			<div class="form-btn btn-blue-hg35 " ng-click="saveTagsToTagCategory()" ng-if="!isSaving">{{nlsRoot.save}}</div>
+		    <a href="javascript:;" class="form-btn btn-white-hg35" ng-click="goBackHistory();">{{nlsRoot.cancel}}</a>
+		</div>
+	</div>
+</div>
+
+
+<div id="menuContent" class="menuContent" style="display:none; position: absolute;">
+	<ul id="tagCategoryMenuTree" class="ztree"></ul>
+</div>

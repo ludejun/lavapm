@@ -1,0 +1,1 @@
+define(function(require,module,exports){return "{{each data as value}}<li value=\"{{value.id}}\">{{value.contacts}}</li>{{/each}}"})

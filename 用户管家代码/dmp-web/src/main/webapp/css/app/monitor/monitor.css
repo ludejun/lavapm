@@ -1,0 +1,50 @@
+/*property-list*/
+.property-list > .item{float:left;margin:0 0 10px 0;width:100%;}
+.property-list.two-cols > .item{width:50%;}
+.property-list > .item > .property-label{float:left;}
+.property-list > .item > .property-value{float:left;word-wrap: break-word;word-break: break-all;}
+.property-list-calc-object > .item > .property-label{}
+
+/* table分组显示 */
+.table.table-group-table{border: 1px solid #e7ebef;border-top:1px solid #dedfe3;}
+.table.table-group-table>tbody>tr>td, 
+.table.table-group-table>tbody>tr>th, 
+.table.table-group-table>tfoot>tr>td, 
+.table.table-group-table>tfoot>tr>th, 
+.table.table-group-table>thead>tr>td, 
+.table.table-group-table>thead>tr>th{border:none;}
+.table.table-group-table>tbody>tr td{border-top:1px solid #e7ebee;padding:8px 21px;}
+
+.table.table-group-table>thead>tr>th{background:#f7f8fa;font-weight: normal;padding:8px 21px;}
+
+.table-group-table > tbody > tr{background:#fff;}
+.table-group-table .inner-table{margin:0;}
+.table-group-table .active-tr .inner-table{border-left:3px solid #5f92e1;}
+.table-group-table .active-tr .colspan-td{border-top:none;}
+
+.table.table-group-table>tbody{border-top: none;}
+.table-group-table .inner-table .first-tr td{border-top:none;}
+.table.table-group-table>tbody>tr>td.colspan-td{margin:0;padding:0;}
+
+.table-group-table .col-exp i{width:12px;height: 12px;display:inline-block;margin: 8px 15px 0 0;float:left;}
+.table-group-table .col-exp .i01{height:12px;background:url(../../../images/monitor/ng-table/i01.png) no-repeat;cursor:pointer;  background-size: 12px 12px;float: left;margin: 2px 15px 0 0;}
+.table-group-table .col-exp .i02{height:9px;border-top: 2px solid #fff;float:left;margin-top:10px;cursor:pointer;margin: 8px 15px 0 0;}
+.table-group-table  > tbody >.active-tr,
+.table-group-table  > tbody >.active-tr:hover{background:#5f92e1;color:#fff;border: 2px solid #5f92e1;}
+.table-group-table .inner-table tr {background:#f7f8fa !important;color:#666;}
+.table-group-table .inner-table .name{margin-left:48px;}
+
+.table-group-table .active-tr >td >.ng-table-operator > a,
+.table-group-table .active-tr >td>.ng-table-operator > a:hover, 
+.table-group-table .active-tr >td>.ng-table-operator > a.active{color:#fff;}
+
+.table-group-table > tbody > tr.child-tr{background:#f7f8fa !important;color:#666;border-left:3px solid #5f92e1;}
+
+/* dialog */
+.modal-dialog-wd1100{margin-left:-540px;width:1100px;}
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+<!-- <span class="dialog-close">×</span> -->
+<div class="jump">
+	<div class="jump-head">
+		<h2>调用演示</h2>
+		<i class="close"></i>
+	</div>
+	<div class="jump-layout">
+		<ul class="jump-content" id="TestContent">
+			<li>参数名称 : <i><p class="jump-p">必填项</p></i><input type="text" placeholder="必填项" class="ArgumentInput arguments necessary"><span>APIKey</span></li>
+			<li>参数名称 : <i><p class="jump-p">必填项</p></i><input type="text" placeholder="必填项" class="ArgumentInput arguments necessary"><span>APIToken</span></li>
+			
+			{{if method == "get" ||  method == "Get" ||  method == "GET"}}
+			{{ each data as value i }}
+					{{if value.mandatory == "必须" || value.mandatory == "true" || value.mandatory == "TRUE"}}
+					<li>参数名称 : <i><p class="jump-p">{{value.description}}</p></i><input type="text"  placeholder="必填项" class="Input arguments necessary"><span class="Argument">{{value.name}}</span></li>
+			{{else}}
+				<li>参数名称 : <i><p class="jump-p">{{value.description}}</p></i><input type="text"  class="Input arguments"><span class="Argument">{{value.name}}</span></li>
+			{{/if}}
+				<!-- <li>参数名称 : <i></i><input type="text"  placeholder="输入参数值" class="Input"><span>{{value.type}}</span></li> --> 
+			{{/each}}
+			{{/if}}
+
+			{{if method == "post" ||  method == "Post" ||  method == "POST"}}
+				<li class="Postli">参数名称 : <i><p class="jump-p">请输入参数</p></i><textarea name="" class="PostArgument necessary" ></textarea><span class=" necessaryArgument">body</span></li>
+			{{/if}}
+
+			
+			
+
+		</ul>
+	</div>  
+	<div class="test">
+		<div class="clearfix">
+			<button class="disabled" id="CheckTest" disabled="disabled">测试</button>
+			<button class="check-return">返回</button>
+		</div>
+		<div class="test-title">
+			<h2>测试结果</h2>
+		</div>
+		<div class="test-loading">
+			<div class="loadEffect">  
+        		<div class="spinner">
+		 			<div class="spinner-container container1">
+				    	<div class="circle1"></div>
+		   				<div class="circle2"></div>
+		   				<div class="circle3"></div>
+		    			<div class="circle4"></div>
+		  			</div>
+					<div class="spinner-container container2">
+					    <div class="circle1"></div>
+					    <div class="circle2"></div>
+					    <div class="circle3"></div>
+					    <div class="circle4"></div>
+					</div>
+		  			<div class="spinner-container container3">
+					    <div class="circle1"></div>
+					    <div class="circle2"></div>
+					    <div class="circle3"></div>
+					    <div class="circle4"></div>
+		 			</div>
+				</div> 
+			</div> 	
+		</div>
+		<div class="test-code" id="TestResult">
+			暂无结果
+		</div>
+		
+	</div>
+</div>

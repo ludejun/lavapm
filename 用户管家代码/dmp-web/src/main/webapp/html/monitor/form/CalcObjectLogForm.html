@@ -1,0 +1,78 @@
+<form class="form-horizontal clrfix">
+    <div class="control-group">
+        <label class="control-label">id：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLog.objectId">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">名称：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLog.objectName">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">类型：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLog.objectType">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">调度任务id：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLog.schedulerTaskId">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">azkaban执行id：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLog.azkabanExecutorId">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">异常信息：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLog.execptionInfo">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">创建人账号：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLog.createBy">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">创建人：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLog.creator">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">修改人账号：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLog.updateBy">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">创建时间：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLog.createTime">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">修改时间：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLog.updateTime">
+        </div>
+	</div>
+     <div class="control-group">
+    	<label class="control-label">&nbsp;</label>
+    	<div class="controls">
+	        <button type="button" class="btn btn-success" ng-click="saveCalcObjectLog(calcObjectLog)">保存</button>
+	        <a data-ui-sref="calcObjectLogs" class="btn btn-default">返回列表</a>
+        </div>
+    </div>
+</form>
+
+
+

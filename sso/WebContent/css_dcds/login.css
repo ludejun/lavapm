@@ -1,0 +1,35 @@
+﻿@charset "utf-8";
+
+header .inner .right .headlist{display:none;}
+
+
+section.login#content{width:565px;margin-top:90px;}
+section.login#content .left{display:table;width:164px;height:285px;background:#f60;}
+section.login#content .left .icon{width:125px;height:117px;background:url(imgs/login_bg.png) no-repeat;overflow:hidden;margin:84px auto 0;}
+section.login#content form{width:397px;height:285px;background:#eee;float:right;}
+section.login#content form ul{margin:12px;background:white;border-radius:6px;padding-left:13px;}
+section.login#content form ul li{margin-bottom:5px;}
+section.login#content form ul li input[type=text],
+section.login#content form ul li input[type=password]{width:312px;font-size:16px;text-indent:10px;color:#888;background-color:#eee}
+section.login#content form ul li input[type=text]{background-image:url(imgs/input_username_bg.gif)\9;}
+section.login#content form ul li input[type=text].focus{background-image:none;}
+section.login#content form ul li input[type=password]{background-image:url(imgs/input_password_bg.gif)\9;}
+section.login#content form ul li input[type=password].focus{background-image:none;}
+
+section.login#content form ul li:first-child h2{font-size:28px;color:#f60;height:75px;line-height:75px}
+section.login#content form ul li:first-child h2 span{margin-left:10px;font-size:16px;color:#2C344B}
+section.login#content form ul li.username,
+section.login#content form ul li.password,
+section.login#content form ul li.code{}
+section.login#content form ul li label{background:url(imgs/login_bg.png) no-repeat;}
+section.login#content form ul li.username label{width:24px;height:24px;background-position:0 -127px;margin-right:12px;}
+section.login#content form ul li.password label{width:20px;height:24px;background-position:0 -165px;margin-right:16px;}
+section.login#content form ul li.code label{width:24px;height:12px;background-position:0 -211px;margin-right:12px;}
+section.login#content form ul li.code input{width:194px;background-color:#eee;background-image:url(imgs/input_code_bg.gif)\9;}
+section.login#content form ul li.code input.focus{background-image:none;}
+section.login#content form ul li.code img{cursor:pointer;width:114px;height:35px}
+section.login#content form ul li.button{height:60px;position:relative}
+section.login#content form ul li.button #msg{position:absolute;left:40px;top:10px;font-size:16px;color:red;font-weight:bold;}
+section.login#content form ul li.button input[type=button],
+section.login#content form ul li.button input[type=submit]{width:44px;height:44px;float:right;margin:8px 8px 0 0;background:url(imgs/login_bg.png) no-repeat 0 -239px;}
+

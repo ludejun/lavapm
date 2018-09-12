@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info"  monitorInterval="0">
+
+    <Properties>
+        <Property name="logRootPath">./website_logs/</Property>
+    </Properties>
+
+
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %m%n"/>
+        </Console>
+
+        <!-- 错误日志，及时输出 -->
+        <RollingRandomAccessFile
+                name="error_appender"
+                fileName="${logRootPath}/error.log"
+                filePattern="${logRootPath}/error-%d{yyyyMMddHH}.log"
+                immediateFlush="true"
+                ignoreExceptions="true">
+            <PatternLayout pattern="%m%n"/>
+            <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        </RollingRandomAccessFile>
+
+        <!-- 系统日志，需要及时输出 -->
+        <RollingRandomAccessFile
+                name="admin_appender"
+                fileName="${logRootPath}/sys.log"
+                filePattern="${logRootPath}/sys-%d{yyyyMMddHH}.log"
+                immediateFlush="true"
+                ignoreExceptions="true">
+            <PatternLayout pattern="%m%n"/>
+            <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+        </RollingRandomAccessFile>
+
+    </Appenders>
+
+    <Loggers>
+        <Logger name="error" level="info" additivity="false">
+            <AppenderRef ref="error_appender"/>
+        </Logger>
+
+        <!-- remove visit tag-->
+        <Logger name="admin" level="info" additivity="false">
+            <AppenderRef ref="admin_appender"/>
+        </Logger>
+
+        <Root level="info">
+            <AppenderRef ref="Console"/>
+        </Root>
+
+    </Loggers>
+</Configuration>

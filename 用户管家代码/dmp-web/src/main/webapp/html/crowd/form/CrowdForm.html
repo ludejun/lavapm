@@ -1,0 +1,64 @@
+<div class="go-back-list"><a href="javascript:;" ng-click="goBackHistory();"><i class="icons icons-arrow-left"></i>返回人群列表</a></div>
+
+<div class="form-horizontal-panel">
+	<div class="form-horizontal-title">构建人群</div>
+	<form class="form-horizontal clrfix p-rel" ng-click="onHideDropdownMenu($event);" name="formHorizontal">
+		<div class="control-group">
+	        <label class="control-label"><span class="required">*</span>人群名称：</label>
+	        <div class="controls">
+	            <input ng-class="{'input-error':!formHorizontal.crowdName.$valid && formHorizontal.crowdName.$dirty}" class="form-control" type="text" ng-model="crowd.name" required name="crowdName">
+	        	<div class="form-error-msg" ng-show="!formHorizontal.crowdName.$valid && formHorizontal.crowdName.$dirty">请输入人群名称</div>
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label"><span class="required">*</span>标签类型：</label>
+	        <div class="controls">
+	            <select ng-class="{'input-error':!formHorizontal.tagType.$valid && formHorizontal.tagType.$dirty}" class="form-control" ng-model="crowd.tagType" ng-change="changeTagWithDmpTagType();" name="tagType" required>
+					<option ng-repeat="iu in tagTypeList" value="{{iu.dicItemKey}}" ng-selected="iu.dicItemKey == dmpTagType">{{iu.dicItemValue}}</option>
+				</select>
+				<div class="form-error-msg" ng-show="!formHorizontal.tagType.$valid && formHorizontal.tagType.$dirty">请选择标签类型</div>
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label"><span class="required">*</span>添加人群条件：</label>
+	        <div class="controls">
+	        	<div class="search-dropdown">
+					<input class="form-control" ng-class="{'input-error': !formHorizontal.tagName.$valid && formHorizontal.tagName.$dirty}" 
+						ng-focus="filterTagList(tagObj.keyword);" 
+						ng-keyup="filterTagList(tagObj.keyword);" 
+						ng-model="tagObj.keyword" required name="tagName">
+					<ul class="dropdown-menu ng-hide" ng-show="isShowTagDropdownMenu">
+						<li ng-repeat="tag in tagfilterList"
+							ng-click="selectTagItem(tag);" ng-if="tag.status == 2">
+							<a href="javascript:;">{{tag.name}}</a>
+						</li>
+					</ul>
+				</div>
+	        	<div class="form-error-msg" ng-show="!formHorizontal.tagName.$valid && formHorizontal.tagName.$dirty && !tagNameError">请输入添加人群条件</div>
+	        	<div class="form-error-msg" ng-show="tagNameError == 'valid'">添加人群条件未生效，不能创建人群</div>
+	        	<div class="form-error-msg" ng-show="tagNameError == 'not'">添加人群条件不存在，请重新选择添加</div>
+				<div class="notice-panel">使用一个有效标签结果集创建人群。对于使用多个条件定义人群的情景，建议使用标签定义器来创建复杂标签。<a href="#/tag/tags/new?backUrl=default">标签定义</a></div>
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label">人群规模：</label>
+	        <div class="controls">
+	            {{crowdCount}}
+	        </div>
+	    </div>
+		<div class="control-group">
+	        <label class="control-label">描述：</label>
+	        <div class="controls">
+	            <textarea class="form-control" ng-model="crowd.description" rows="3"></textarea>
+	        </div>
+	    </div>
+					
+	    <div class="tag-view" ng-if="isViewRule"></div>
+	</form>
+</div>
+<div ng-if="!isViewRule"  class="form-horizontal-btns clrfix">
+	<div class="form-btn btn-blue-hg35" ng-click="saveCrowd(crowd,formHorizontal)" >保存</div>
+    <!-- <a data-ui-sref="crowds" class="btn btn-default">取消</a> -->
+    <a href="javascript:;" class="form-btn btn-white-hg35" ng-click="goBackHistory();">取消</a>
+</div>
+

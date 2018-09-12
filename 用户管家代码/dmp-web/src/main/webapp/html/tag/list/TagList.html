@@ -1,0 +1,211 @@
+<div class="clrfix operator-panel">
+	<a data-ui-sref="tags_new" class="btn-add" ng-click="goTagFormPage();"><i class="icons icons-add"></i>{{nlsRoot.addBasicTag}}</a>
+</div>
+<div class="ng-table-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">
+			<div td-tree-select menu-elem="tagCategoryObject.menuElem" select-node-text="tagCategoryObject.selectLabel" tree-keywords="tagCategoryObject.keywords" tree-select-callback="selectTagCategoryCallback" tree-source-list="selectTree"></div>
+		</div>
+		<div class="search" data-search role="search"></div>
+	</div>
+	
+	<div ng-if="isShowMoreSearch" class="more-search-box clrfix">
+		<!-- <button type="button" ng-click="change()">测试</button> -->
+		<ul class="clrfix">
+			<li>
+				<div class="label">{{nlsRoot.tagName}}</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.name" maxlength="256">
+				</div>
+			</li>
+			
+			<!-- <li>
+				<div class="label">标签编码</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.code" maxlength="14">
+				</div>
+			</li> -->
+			
+			<li>
+				<div class="label">{{nlsRoot.touchPointTypes}}</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.touchPointType">
+						<option value="" >{{nlsRoot.pleaseSelect}}</option>
+						<option ng-repeat="sts in touchPointTypes" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.touchPointType">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			
+			<!-- <li>
+				<div class="label">描述</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.description" maxlength="512">
+				</div>
+			</li> -->
+			
+			<li>
+				<div class="label">{{nlsRoot.tagSources}}</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.source">
+						<option value="" >{{nlsRoot.pleaseSelect}}</option>
+						<option ng-repeat="sts in tagSources" ng-if="sts.dicItemKey != '2' && sts.dicItemKey != '4'" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.source">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+		
+			<li>
+				<div class="label">{{nlsRoot.status}}</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.status">
+						<option value="" >{{nlsRoot.pleaseSelect}}</option>
+						<option ng-repeat="sts in tagStatus" value="{{sts.dicItemKey}}" ng-if="sts.dicItemKey != -1" ng-selected="sts.dicItemKey == moreSearchCondition.status">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">{{nlsRoot.calcStatus}}</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.calcStatus">
+						<option value="" >{{nlsRoot.pleaseSelect}}</option>
+						<option ng-repeat="sts in tagCalcStatus" ng-if="sts.dicItemKey != '5' && sts.dicItemKey != '-4'" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.calcStatus">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">{{nlsRoot.creator}}</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.creator" maxlength="64">
+				</div>
+			</li>
+			<!-- <li>
+				<div class="label">测试时间</div>
+				<div class="control">
+		            <div fast-day-end="-1" fast-select-days="fastSelectDays" start-date="moreSearchCondition.testTimeStart" end-date="moreSearchCondition.testTimeEnd" td-change="changeTestTime" td-week-month-picke  class="form-control date-condition"></div>
+		       	</div>
+			</li> -->
+			
+			<li>
+				<div class="label">{{nlsRoot.createTime}}</div>
+				<div class="control">
+		            <div start-date="moreSearchCondition.createTimeStart" end-date="moreSearchCondition.createTimeEnd" td-change="changeCreateTime" td-date-condition date-range="dateRange" class="form-control date-condition" type="text"></div>
+		            <!-- <input data-max-date="today" readonly class="form-control fl form-date" type="text" ng-model="moreSearchCondition.createTimeStart" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker> -->
+		            <!-- <span class="fl ml-10">至</span>
+		            <input data-max-date="today" readonly class="form-control fl form-date ml-10" type="text" ng-model="moreSearchCondition.createTimeEnd" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker> -->
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">{{nlsRoot.changeTagDataTime}}</div>
+				<div class="control">
+					<div start-date="moreSearchCondition.tagDataTimeStart" end-date="moreSearchCondition.tagDataTimeEnd" td-change="changeTagDataTime" td-date-condition date-range="dateRange" class="form-control date-condition" type="text"></div>
+					<!-- <input data-max-date="today" readonly class="form-control fl form-date" type="text" ng-model="moreSearchCondition.tagDataTimeStart" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker>
+		            <span class="fl ml-10">至</span>
+		            <input data-max-date="today" readonly class="form-control fl form-date ml-10" type="text" ng-model="moreSearchCondition.tagDataTimeEnd" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker> -->
+				</div>
+			</li>
+			
+			
+		</ul>
+		
+		<div class="btns-box">
+			<div class="btns">
+				<button type="button" class="btn btn-primary btn-sm ml-10" ng-click="search();">{{nlsRoot.search}}</button>
+	        	<button type="button" class="btn btn-default btn-sm" ng-click="resetMoreSearchCondition();">{{nlsRoot.reset}}</button>
+			</div>
+		</div>
+		
+		
+	</div>
+	<div class="ng-table-body ng-table-body-empty">
+		<table ng-table="tableParams" class="table ng-table-responsive table-hover" freeze="true" id="tableParams">
+		    <tr ng-repeat="tag in $data">
+		       <!-- <td data-title="'序号'">{{$index + 1}}</td> -->
+		       <!-- <td data-title="'编号'"><div class="wd100 t-o-e" title="{{tag.name}}">{{tag.id}}</div></td> -->
+		       <!-- <td data-title="'编码'"><div class="max-wd110 t-o-e" title="{{tag.code}}">{{tag.code}}</div></td> -->
+		       <td data-title="nlsRoot.tagName" ><div title="{{tag.name}}">{{tag.name}}</div></td>
+		       <td data-title="nlsRoot.touchPointTypes">
+		       		<div class="min-wd50">
+		       			<i ng-if="tag.crowdIcon != null"  class="{{tag.crowdIcon}}" title="{{tag.touchPointTypeName}}"></i>
+		       			<i ng-if="tag.crowdIcon == null" class="icons-id icon-id-touchpointtype-other" title="{{tag.touchPointTypeName}}"></i>
+		       			<!--  
+				       	<i ng-if="tag.touchPointType == 'app_tdid'" class="icons icon-touchpointtype1" title="{{tag.touchPointTypeName}}"></i>
+				       	<i ng-if="tag.touchPointType == 'web_tdid'" class="icons icon-touchpointtype2" title="{{tag.touchPointTypeName}}"></i>
+				       	<i ng-if="tag.touchPointType == 'h5_tdid'" class="icons icon-touchpointtype3" title="{{tag.touchPointTypeName}}"></i>
+				       	<i ng-if="tag.touchPointType == 'account_id'" class="icons icon-touchpointtype99" title="{{tag.touchPointTypeName}}"></i>
+				       	<i ng-if="tag.touchPointType == 'mac_tdid'" class="icons icon-touchpointtype-mac" title="{{tag.touchPointTypeName}}"></i>
+				       	<i ng-if="tag.touchPointType != 'app_tdid' && 
+				       		tag.touchPointType != 'web_tdid' && 
+				       		tag.touchPointType != 'h5_tdid' && 
+				       		tag.touchPointType != 'account_id' && 
+				       		tag.touchPointType != 'mac_tdid'" class="icons icon-touchpointtype-other" title="{{tag.touchPointTypeName}}"></i>-->
+		       		</div>
+		       </td>
+		       
+		       <!-- <td data-title="'标签表达式'">{{tag.expression}}</td>
+		       
+		       <td data-title="'节点名称'">{{tag.expressionNodeName}}</td> -->
+		       
+		       <!-- <td data-title="'人数'"><div class="wd50 t-o-e" title="{{tag.crowdCount}}">{{tag.crowdCount}}</div></td> -->
+		       <!-- <td data-title="'描述'"><div title="{{tag.description}}">{{tag.description}}</div></td> -->
+		       
+		       <!-- <td data-title="'标签信息'"><div title="{{tag.displayExpressionInfo}}">{{tag.displayExpressionInfo}}</div></td> -->
+		       <td data-title="nlsRoot.tagSources"><div class="max-wd100 t-o-e" title="{{tag.source | DictFormatter : 'TAG_SOURCE'}}">{{tag.source | DictFormatter : 'TAG_SOURCE'}}</div></td>
+		       <td data-title="nlsRoot.status">
+		       		<div class="t-o-e" title="{{tag.status | DictFormatter : 'DMP_OBJECT_STATUS'}}">
+		       			 {{tag.status | DictFormatter : 'DMP_OBJECT_STATUS'}}
+		       		</div>
+		       </td>
+		       <td data-title="nlsRoot.calcStatus">
+		       		<div class="t-o-e" title="{{tag.calcStatus | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}">
+		       			 {{tag.calcStatus | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}
+		       		</div>
+		       </td>
+		       
+		       <td data-title="nlsRoot.creator"><div title="{{tag.creator}}" class="max-wd80 t-o-e">{{tag.creator}}</div></td>
+		       <td data-title="nlsRoot.createTime"><div class="max-wd120 t-o-e" title="{{tag.createTime | DateFormatDefault}}">{{tag.createTime | DateFormatDefault}}</div></td>
+		       <td data-title="nlsRoot.changeTagDataTime"><div class="max-wd120 t-o-e" title="{{tag.tagDataTime | DateFormatDefault}}">{{tag.tagDataTime | DateFormatDefault}}</div></td> 
+		       
+		       
+		       <!--  <td data-title="'类型'"><div class="wd100 t-o-e" title="{{tag.type}}">{{tag.type}}</div></td> -->
+		       <!-- <td data-title="'创建人账号'">{{tag.createBy}}</td> -->
+		       <!-- <td data-title="'修改人账号'">{{tag.updateBy}}</td> -->
+		       <!-- <td data-title="'修改时间'">{{tag.updateTime}}</td> -->
+		       <td data-title="nlsRoot.operation">
+		       		<div class="ng-table-operator" style="min-width:115px !important;" ng-if="loginUser.loginName == tag.createBy">
+			       	   	<a ng-click="goTagFormPage();" ui-sref="tags_edit({tagId:tag.id})" ng-if="tag.calcStatus != 1">{{nlsRoot.edit}}</a>
+			       	   	<a ng-click="removeTag(tag);" href="javascript:;" ng-if="tag.calcStatus == 2 || tag.calcStatus == -1">{{nlsRoot.toDelete}}</a>
+			       	   	<a ng-click="goCalcObjectLog(tag.id);" ng-if="(tag.status == 1 && tag.calcStatus != 0) || (tag.status == 2)">{{nlsRoot.log}}</a>
+			       	   	<!-- <a class="more" ng-class="{'active':tag.isShowMoreOperator}" style="text-indent:20px;cursor: pointer;" ng-click="showMoreOperator(tag);">更多<i class="icons icons-more"></i></a> -->
+			       	   	
+			       	   	<!-- <ul class="more-ul" ng-if="tag.isShowMoreOperator">
+			       	   		
+			       	   		<li>
+			       	   			<a ui-sref="tagCalcRecords({tagId:tag.id})">
+			       	   				<i class="icons icons-more-records"></i>任务日志
+			       	   			</a>
+			       	   		</li>
+			       	   	</ul> -->
+			       	</div>
+			       	<div class="ng-table-operator" style="min-width:75px !important;" ng-if="loginUser.loginName != tag.createBy">
+			       	   	<a ng-click="goTagFormPage();" ui-sref="tags_edit({tagId:tag.id})" ng-if="tag.calcStatus != 1">{{nlsRoot.lookUp}}</a>
+			       	</div>
+		       </td>
+		    </tr>
+		</table>
+	</div>
+	
+</div>
+
+<div id="menuTagCategoryContent" class="menuContent" style="display:none; position: absolute;">
+	<div class="search-box">
+		<div class="search">
+			<i class="i-search"></i>
+			<input type="text" ng-model="tagCategoryObject.keywords" placeholder="输入关键字">
+			<i class="icon-clear ng-hide" ng-click="tagCategoryObject.keywords=''" ng-show="tagCategoryObject.keywords"></i>
+		</div>
+	</div>
+	
+	<ul id="selectTagCategoryTree" class="ztree"></ul>
+</div>

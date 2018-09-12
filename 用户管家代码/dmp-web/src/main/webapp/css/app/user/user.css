@@ -1,0 +1,100 @@
+/*用户列表高级搜索*/
+.user-profile-container .form-horizontal-tag .form-item{height:34px;}
+.user-profile-container .relation-item{margin:0;border:1px solid #e7ebef;border-bottom: none;}
+.user-profile-container .form-horizontal-tag{border:none;margin:0;z-index: 2;position: relative;}
+.user-profile-container .form-horizontal-tag .group-combo .group-box{padding-top:10px;}
+.user-profile-container .form-horizontal-tag .group-box .groups{margin-bottom:10px;}
+.user-profile-container .form-horizontal-tag .form-horizontal-tag .group-combo .group-box{padding-top:10px;}
+.user-profile-container .form-horizontal-tag .group-combo .group-label{margin-top:10px;}
+.user-profile-container .form-horizontal-tag .group-logic{margin-top:10px;}
+.user-profile-container .form-horizontal-tag .search-btn-box {border-right: 1px solid #e7ebef;border-left: 1px solid #e7ebef;position:relative;}
+.user-profile-container .form-horizontal-tag .search-btn-box .search-btns{float:right;margin:-20px 20px 20px 20px;}
+.user-profile-container .form-horizontal-tag .search-btn-box .search-btns .form-btn{margin-right:10px;}
+.user-profile-container .form-horizontal-tag .relation-item .ralation-box .hide.add-group-combo:last-child{height:20px;display: block !important;visibility: hidden;}
+.user-profile-container .ng-table > tbody > tr > td > div{min-width:0;max-width:150px;}
+
+.user-profile-container .form-horizontal-tag .relation-item .ralation-box .group-combo:first-child .group-close{display:none;}
+
+/*custom-panel-box*/
+.custom-panel-box{margin-bottom:20px;background: #f7f8f9;border:1px solid #e7ebef;border-top:none;border-bottom: 1px solid #dce1e7;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
+.custom-panel-head{background:#fff;height:40px;line-height:40px;border-bottom: 1px solid #dce1e7;color:#464c5b;padding:0 20px;font-size:14px;-moz-border-top-right-radius:5px;-webkit-border-top-right-radius:5px;border-top-right-radius:5px;-moz-border-top-left-radius:5px;-webkit-border-top-left-radius:5px;border-top-left-radius:5px;}
+.custom-panel-head .title{float:left;}
+.custom-panel-head .tip{float:left;margin: 10px 10px 0 20px;}
+.custom-panel-head .tip i{display:inline-block;height:20px;float:left;}
+.custom-panel-head .tip i.i-lf{background:url(../../../images/user/img06.png) no-repeat;background-size:2px 20px;width:2px;}
+.custom-panel-head .tip i.i-rg{background:url(../../../images/user/img07.png) no-repeat;background-size:10px 20px;width:10px;}
+.custom-panel-head .tip span{font-size: 12px;background:#eaecee;color:#525c6b;height: 20px;display: inline-block;float: left;line-height: 20px; padding: 0 5px;}
+
+.custom-panel-head .help-box{position:relative;float: left;z-index:1;}
+.custom-panel-head .help-box i.i-help{display: inline-block;cursor:pointer;background:url(../../../images/user/img08.png) no-repeat;background-size:12px 12px;width:12px;height:12px;}
+.custom-panel-head .help-box:hover i.i-help{background:url(../../../images/user/img09.png) no-repeat;background-size:12px 12px;}
+.custom-panel-head .help-box dl{position:absolute;left: 30px;top: 0;display:none;background:#545862;color:#fff;font-size:12px;margin:0;width:200px;padding:10px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
+.custom-panel-head .help-box .i-arrow{display:none;position:absolute;left: 20px;top: 11px;width: 0px;height: 0px;border-bottom: 10px solid transparent;border-top: 10px solid transparent;border-right: 10px solid #545862;font-size: 0px;line-height: 0px;}
+.custom-panel-head .help-box dl dt{font-size:12px;font-weight:normal;}
+.custom-panel-head .help-box:hover dl,.custom-panel-head .help-box:hover .i-arrow{display:block;}
+
+.custom-panel-body{padding:20px;}
+.custom-panel-body .chart{height:300px;}
+
+
+
+/*用户详情*/
+.custom-panel-box-info{background: #fff;}
+.user-profile-info li{border-bottom:1px dashed #c9d1d8;padding:10px 0;}
+.user-profile-info .li01 .fl{}
+.user-profile-info .li01 .fl .img{margin-right:10px;float:left;width:36px;height:36px;background:url(../../../images/user/img01.png) no-repeat;background-size:36px 36px;}
+.user-profile-info .li01 .fl .text{float:left;margin-right:50px;line-height: 20px;}
+.user-profile-info .li01 .fl .text h5{margin:0;padding:0;font-weight:normal;font-size:15px;}
+.user-profile-info .li01 .fl .text .tip{font-size:12px;padding: 0 5px;margin-left:5px;background:#5f93e1;color:#fff;display:inline-block;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
+.user-profile-info .li01 .fr{text-align: center;border-left:1px dashed #c9d1d8;}
+.user-profile-info .li01 .fr .icon-crowd-toufang{margin-right:5px;background:url(../../../images/user/img02.png) no-repeat;width:16px;height:16px;display:inline-block;background-size:16px 16px;}
+
+.user-profile-info .li02 .title{line-height:20px;}
+.user-profile-info .li02 .title i{vertical-align:top;margin-right:5px;background:url(../../../images/user/img03.png) no-repeat;width:20px;height:20px;display:inline-block;background-size:20px 20px;}
+.user-profile-info .li02 .con{padding-left:25px;}
+.user-profile-info .li02 .con .attribute-list .item{float:left;margin: 10px 35px 0px 0;}
+.user-profile-info .li02 .con .attribute-list .item .lb{color:#868e9a;}
+
+.user-profile-info .li03{border-bottom:none;}
+.user-profile-info .li03 .title{line-height:20px;}
+.user-profile-info .li03 .title i{vertical-align:top;margin-right:5px;background:url(../../../images/user/img04.png) no-repeat;width:20px;height:20px;display:inline-block;background-size:20px 20px;}
+.user-profile-info .li03 .title span{color:#868e9a;}
+.user-profile-info .li03 .title label{float:right;cursor:pointer;color:#868e9a;}
+.user-profile-info .li03 .title label input{margin:0 5px 0 0;}
+.user-profile-info .li03 .con{padding-left:25px;}
+.user-profile-info .li03 .con .list{float:left;}
+.user-profile-info .li03 .con .list span{padding:0 5px;margin:0 10px 10px 0;display:inline-block;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;}
+.user-profile-info .li03 .con .list1 span{background:#8f9bad;color:#fff;}
+.user-profile-info .li03 .con .list2 span{background:#eaecee;color:#868e9a;}
+
+/*信用信息*/
+.custom-panel-box-credit .chart{float:left;width:70%;}
+.custom-panel-box-credit ul{padding-left:20px;float:right;width:30%;}
+.custom-panel-box-credit ul li{line-height:22px;margin-top:10px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.custom-panel-box-credit ul li .lb{color: #868e9a;}
+.custom-panel-box-credit ul li .val{color:#333f51;}
+
+/*消费数据*/
+.icons-user-consume{width:14px;height:14px;background: url(../../../images/user/icon-charts.png) no-repeat;background-size: 50px 50px;display: inline-block;vertical-align: top;}
+.icons-user-consume-trend{background-position:0 0;}
+.icons-user-consume-table{background-position:-36px 0;}
+.custom-panel-box-consume .icons-user-consume{margin-top: 3px;}
+.custom-panel-box-consume .filters{margin-bottom:20px;}
+.custom-panel-box-consume .filters ul{float:left;}
+.custom-panel-box-consume .filters ul li{float:left;border-right: 1px solid #d2d9e1;color: #666f7b;cursor: pointer; padding: 0 10px;}
+.custom-panel-box-consume .filters ul li.active{color: #5f93e1;}
+.custom-panel-box-consume .filters ul.maps-ul li{border: none;padding: 0 5px;}
+.custom-panel-box-consume .filters ul li.active .icons-user-consume-trend{background-position:0 -37px;}
+.custom-panel-box-consume .filters ul li.active .icons-user-consume-table{background-position:-36px -36px;}
+.custom-panel-box-consume .ng-table-container{overflow:auto;}
+
+/*用户行为*/
+.user-behavior-container{margin-top:20px;}
+.user-behavior-container .ng-table-head .operators{float:right;}
+.user-behavior-container .ng-table-head .date-label{float:left;margin: 14px 0 0 0;}
+.user-behavior-container .ng-table-head .date-condition{float:left;width:auto;height:25px;margin: 10px 0 0 8px;}
+.user-behavior-container .ng-table-head .date-condition .time{padding:0;}
+.user-behavior-container .ng-table-head .search{margin-left:10px;}
+.icon-sign-blue{background: url(../../../images/user/img10.png) no-repeat;background-size: 12px 12px;display: inline-block;width:12px;height:12px;}
+.icon-sign-green{background: url(../../../images/user/img11.png) no-repeat;background-size: 12px 12px;display: inline-block;width:12px;height:12px;}
+

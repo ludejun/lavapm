@@ -1,0 +1,234 @@
+/*搜索自动完成css*/
+/* 设置滚动条的样式*/
+#authHead h2 {
+    width: auto
+}
+
+.jump-head {
+    height: 50px;
+    line-height: 50px;
+    border-bottom: 1px #d3d9e1 solid;
+    background: #f5f6f8;
+}
+
+.jump h2 {
+    margin-left: 20px;
+    font-weight: 300;
+    float: left;
+    font-size: 18px;
+}
+
+.jump-head i {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    background: no-repeat url(../img/close.png);
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+/* 滚动条滑块*/
+
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background: #a9a9a9;
+}
+
+.authSearchBox {
+    position: relative;
+    width: 300px;
+    margin: 20px auto 0;
+    background: #fff;
+}
+
+.authSearchBox input {
+    width: 300px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #eee;
+    text-indent: 1em;
+    color: #333;
+}
+
+.authSearchBox .authClose {
+    position: absolute;
+    top: 12px;
+    right: 10px;
+    z-index: 10;
+    font-weight: bold;
+    font-size: 12px;
+    font-style: normal;
+    font-family: inherit;
+    color: #ddd;
+    cursor: pointer;
+    display: none;
+}
+
+.authSearchBox:hover .authClose {
+    display: block
+}
+
+.authSearchBox input:focus {
+    outline: none;
+}
+
+.authSearchBox ul {
+    width: 300px;
+    height: 210px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    top: 40px;
+    left: 0;
+    position: absolute;
+    z-index: 100;
+    border: 1px solid #eee;
+    background: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .1);
+    display: none;
+}
+
+.authSearchBox ul.active {
+    display: block
+}
+
+.authSearchBox ul li {
+    width: auto;
+    height: 35px;
+    line-height: 35px;
+    text-indent: 1em;
+    border-bottom: 1px #e8e8e8 dashed;
+}
+
+.authSearchBox ul li.nodata {
+    border-bottom: none;
+    color: #ddd;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.authSearchBox ul li.active {
+    background: #eee;
+}
+
+/*end*/
+
+/*弹出重置*/
+#authContainer {
+    width: 100%;
+    min-height: 160px
+}
+
+#authContainer #authSearch {
+}
+
+.authService {
+    padding: 10px
+}
+
+.authService .authHead {
+    line-height: 30px;
+    padding: 0 0 0 15px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid #eee
+}
+.authService .authHead span{
+    font-weight: normal;
+    font-size: 12px;
+    padding-left:14px;
+}
+.authService .authInput {
+    position: relative;
+    margin: 15px 0;
+    text-align: center
+}
+.authService .authInput1 {
+    text-align: left;
+    padding-left:15px;
+}
+
+.authService .authInput .atips {
+    position: absolute;
+    right: 30px;
+    top: 10px;
+    color: #fd1800;
+    display: none;
+}
+
+.authService .authInput > label {
+    width: 20%
+}
+
+.authService .authInput > input {
+    display: inline-block;
+    margin-left: 2%;
+    width: 40%;
+    height: 35px;
+    line-height: 35px;
+    border: 1px solid #eee;
+    text-indent: 1em;
+    color: #666
+}
+
+.authService .authInput > input:focus ~ .atips {
+    display: none;
+}
+
+.authService .authSub {
+    text-align: center;
+}
+
+.authService .authSub input {
+    display: inline-block;
+}
+
+.authService .authSub input:first-child {
+    margin-right: 15px
+}
+
+#authList #datepickShow {
+    cursor: pointer
+}
+
+#authList .empty-data, #authList .success-data {
+    padding: 20px 0;
+    text-align: center
+}
+
+#authList .empty-data {
+    color: #fd1800
+}
+
+#authList .success-data {
+    color: #1fce6d
+}
+
+/*userSearch*/
+.userHeader {
+    margin-top: 0;
+    height: auto;
+    padding: 30px 30px 20px;
+    overflow: hidden;
+    box-sizing: border-box;
+    /*display:none;*/
+}
+
+.userHeader .left {
+    line-height: normal
+}
+
+.userHeader h2 {
+    font-size: 18px;
+    font-weight: 300;
+    color: #464c5b;
+}
+
+#userListView .empty-data {
+    padding: 100px;
+    text-align: center
+}
+
+/*end*/

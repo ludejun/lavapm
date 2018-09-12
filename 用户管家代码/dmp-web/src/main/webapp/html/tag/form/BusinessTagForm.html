@@ -1,0 +1,70 @@
+<div class="go-back-list">
+	<a href="javascript:;" ng-click="goBackHistory();" ng-if="isBackHistory"><i class="icons icons-arrow-left"></i>{{nlsRoot.backBusinessTagList}}</a>
+	<a data-ui-sref="businessTags" ng-if="!isBackHistory"><i class="icons icons-arrow-left"></i>{{nlsRoot.backBusinessTagList}}</a>
+</div>
+<form class="form-horizontal clrfix p-rel form-horizontal-tag" ng-class="{'form-tag-view':isViewRule}" name="formHorizontal">
+	<div class="tag-title clrfix" ng-if="!tagId"><h3>{{nlsRoot.addBusinessTag}}</h3></div>
+	<div class="tag-title clrfix" ng-if="tagId"><h3>{{nlsRoot.editBusinessTag}}</h3></div>
+	<div class="control-group">
+		<label class="control-label"><span class="required">*</span>{{nlsRoot.tagName}}：</label>
+		<div class="controls">
+			<input ng-keyup="validInputValue('input',tag.name,formHorizontal.tagName,nlsRoot.tagName,false);" ng-class="{'input-error':(!formHorizontal.tagName.$valid && formHorizontal.tagName.$dirty) || formHorizontal.tagName.$error.maxlength}" class="form-control wd-p-100" type="text" ng-model="tag.name" name="tagName" required>
+			<div class="form-error-msg" ng-show="!formHorizontal.tagName.$valid && formHorizontal.tagName.$dirty && !formHorizontal.tagName.$error.maxlength">{{formHorizontal.tagName.errorText}}</div>
+			<div class="form-error-msg" ng-show="formHorizontal.tagName.$error.maxlength">{{nlsRoot.tagNameMaxLength}}</div>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label">{{nlsRoot.tagType}}：</label>
+		<div class="controls">
+			<ul class="form-control tag-cate-ul clrfix" ng-click="showTagCategoryMenu();" id="tagCategoryNames">
+				<li ng-repeat="cate in tagCategoryList">{{cate.name}}<i class="icon-clear" ng-click="removeTagCategory(cate);"></i></li>
+			</ul>
+			<!-- <input class="form-control wd-p-100" type="text" readonly ng-click="showTagCategoryMenu();" id="tagCategoryNames"> -->
+			<!-- <div class="notice-panel">将标签加入分类，用于按照类别导航查询。</div> -->
+		</div>
+	</div>	
+	
+	<div class="control-group" >
+		<label class="control-label"><span class="required">*</span>{{nlsRoot.touchPointTypes}}：</label>
+		<div class="controls ">
+			<select ng-disabled="isEditTag" class="form-control" ng-model="tag.touchPointType" ng-change="changeTouchPointType(tag);">
+				<option ng-repeat="iu in individualUserList" value="{{iu.id}}" ng-selected="iu.id == tag.touchPointType">{{iu.label}}</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="control-group" style="width:100%;">
+		<div class="tag-define-box">
+		
+			<div class="panel-body">
+				<div class="tag-relations-panel clrfix" id="tag-relations-panel"></div>
+			</div>
+		</div>
+			
+	</div>
+	
+	<div class="tag-view" ng-if="isViewRule"></div>
+</form>
+
+<div class="mb-20" ng-if="tagJson">
+	<div><strong>{{nlsRoot.uiData}}：</strong></div>
+	<div style="word-wrap: break-word;">{{tagJson}}</div>
+</div>
+<div class="mb-20" ng-if="tagRule">
+	<div><strong>{{nlsRoot.serverData}}：</strong></div>
+	<div style="word-wrap: break-word;">{{tagRule}}</div>
+</div>
+
+<div ng-if="!isViewRule" class="form-horizontal-btns clrfix">
+	<div class="form-btn btn-blue-hg35" ng-click="saveTag(tag,formHorizontal)" >{{nlsRoot.save}}</div>
+	<a ng-if="!isBackHistory" data-ui-sref="businessTags" class="form-btn btn-white-hg35">{{nlsRoot.cancel}}</a>
+	<a ng-if="isBackHistory" href="javascript:;" class="form-btn btn-white-hg35" ng-click="goBackHistory();">{{nlsRoot.cancel}}</a>
+	<div ng-if="isTesterUser" class="form-btn btn-blue-hg35" ng-click="builderTagJson();">{{nlsRoot.buildJson}}</div>
+	<!-- <div class="form-btn btn-blue-hg35" ng-click="builderTagJson();">生成json</div> -->
+	<div ng-if="isEditTag && !isCalculating" class="form-btn btn-blue-hg35" ng-click="recalculateTag(tag,formHorizontal);">{{nlsRoot.recalculate}}</div>
+	<div ng-if="isEditTag && isCalculating" class="form-btn btn-blue-hg35">{{nlsRoot.recalculate}}</div>
+</div>
+
+<div id="menuContent" class="menuContent" style="display:none; position: absolute;">
+	<ul id="tagCategoryMenuTree" class="ztree"></ul>
+</div>

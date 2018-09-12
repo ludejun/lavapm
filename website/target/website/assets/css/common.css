@@ -1,0 +1,1110 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+i {
+    font: 12px "Microsoft Yahei", Verdana, Geneva, sans-serif, "黑体";
+}
+
+img {
+    border: 0;
+}
+
+td {
+    color: #868e9a;
+}
+textarea{
+    outline: medium;
+    font: 12px "Microsoft Yahei",Verdana,Geneva,sans-serif,"黑体";
+    color : #868e9a;
+    line-height: 20px;
+}
+a{
+    text-decoration: none;
+    cursor: pointer;
+    color: #333;
+}
+button {
+    cursor: pointer;
+}
+
+.btn {
+    background-color: #F5F5F5;
+    border-color: #eaeaea;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    color: #697179;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 0;
+    outline: 0 none;
+    padding: 5px 20px;
+    text-align: center;
+}
+
+.btn_primary {
+    background-color: #74A5ED;
+    border: 1px solid #74A5ED;
+    color: #fafafa;
+}
+
+.txtsis {
+    width: 100%;
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tips-box {
+    position: relative;
+    overflow: visible !important;
+}
+
+.tips-corner {
+    width: 0;
+    height: 0;
+    border-width: 5px 6px;
+    border-style: solid;
+    border-color: transparent #999 transparent transparent;
+    display: none;
+    position: absolute;
+    left: 96px;
+    top: 24px;
+}
+
+.tips-content {
+    min-width: 160px;
+    line-height: normal;
+    display: none;
+    background: #999;
+    color: #fff;
+    padding: 6px 10px;
+    left: 108px;
+    top: 15px;
+    position: absolute;
+    border-radius: 2px;
+    z-index: 10
+}
+
+.tips-box:hover .tips-corner, .tips-box:hover .tips-content {
+    display: block
+}
+
+a:hover {
+    color: #333;
+}
+
+body {
+    background: #eef0f3;
+    font: 12px "Microsoft Yahei", Verdana, Geneva, sans-serif, "黑体";
+}
+
+input {
+    color: #bdc1d5;
+    border: 0;
+    outline: none;
+    font-family: "Microsoft Yahei", Verdana, Geneva, sans-serif, "黑体";
+}
+
+button {
+    border: 0;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #616a97;
+    border-radius: 50px;
+    height: 6px;
+}
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    visibility: hidden;
+}
+
+.content {
+    width: 1100px;
+    margin: 0 auto;
+}
+
+.header {
+    width: 100%;
+    min-width: 1100px;
+    height: 60px;
+    line-height: 60px;
+    background: #5697f1;
+}
+
+.header-logo {
+    width: 273px;
+    height: 32px;
+    float: left;
+    margin: 14px 0px 0px 30px;
+    background: url(../img/../img/logo.png);
+}
+
+.header-logo a {
+    float: left;
+    width: 100%;
+    height: 100%;
+}
+
+.header-option,.adminNav-header-option {
+    width: 340px;
+    height: 100%;
+    margin: 0 auto;
+}
+/*.adminNav-header-option{*/
+/*padding-left:150px;*/
+/*}*/
+.header-option a,.adminNav-header-option a {
+    float: left;
+    width: 100%;
+    font-size: 14px;
+    height: 100%;
+    text-align: center;
+    color: #fff;
+}
+/*.adminNav-header-option a{*/
+/*color: #7F8591;*/
+/*width: 100%;*/
+
+/*}*/
+.adminNav-headerOptionManger{
+    margin-left:28px;
+}
+.header-option li{
+    float: left;
+    position: relative;
+    height: 100%;
+    width: 50%;
+}
+.adminNav-header-option li{
+    width: 33%;
+}
+.green{
+    width: 100%;
+    height: 4px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: none;
+    background: #00cc99;
+}
+.adminNav-green{
+    width: 100%;
+    height: 4px;
+    /*position: absolute;*/
+    /*left: 0;*/
+    /*bottom: 0;*/
+    display: block;
+    /*margin-left:40px;*/
+    background: #00cc99;
+}
+.adminNav-headerOptionManger .adminNav-green{
+    left: 30px;
+}
+
+.header-selected {
+    background: #4784df;
+}
+
+.header-selected .green {
+    display: block;
+}
+
+.header-me {
+    height: 100%;
+    margin-top: -60px;
+    float: right;
+    color: #fff;
+    padding-right: 60px;
+}
+
+.header-head, .header-out {
+    width: 17px;
+    height: 27px;
+    display: inline-block;
+    margin-top: 13px;
+    float: left;
+}
+
+.header-name {
+    cursor: pointer;
+    padding: 0px 10px;
+    float: left;
+}
+
+.header-head {
+    cursor: pointer;
+    background: url(../img/icon-dmp.png) 0px 5px;
+}
+
+.header-out {
+    cursor: pointer;
+    background: url(../img/icon-dmp.png) 0px -21px;
+    cursor: pointer;
+}
+
+.header-nav {
+    background: #ffffff;
+    color: #4b4c61;
+    border-bottom: 1px #d5dade solid;
+}
+
+.header-nav .header-nav-h2, .header-nav h2 {
+    font-size: 20px;
+    float: left;
+    position: relative;
+    padding-left: 30px;
+}
+
+.header-nav-h2 .header-down {
+    display: none;
+    position: absolute;
+    z-index: 10;
+
+}
+
+.header-list {
+    width: 260px;
+    height: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.header-list-li {
+    width: 25%;
+    height: 100%;
+    float: left;
+    color: #657282;
+    text-align: center;
+    cursor: pointer;
+}
+
+.header-list-li i {
+    width: 9px;
+    height: 4px;
+    display: inline-block;
+    padding: 0px 0px 3px 6px;
+    background: no-repeat url(../img/triangle.png);
+}
+
+.header-list-li a {
+    width: calc(100% - 2px);
+    height: 100%;
+    display: block;
+    color: #657282;
+}
+
+.header-list-selected {
+    border-bottom: 2px #5695f2 solid;
+    color: #494c55;
+    font-weight: 700;
+}
+
+.header-down {
+    width: 200px;
+    position: relative;
+    background: #fff;
+    display: none;
+    margin: -14px 0px 0px -14px;
+    z-index: 100;
+
+    -webkit-box-shadow: 1px 1px 5px #aaaaaa;
+    -moz-box-shadow: 1px 1px 5px #aaaaaa;
+    -ms-box-shadow: 1px 1px 5px #aaaaaa;
+    -o-box-shadow: 1px 1px 5px #aaaaaa;
+    box-shadow: 1px 1px 5px #aaaaaa;
+
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    border-radius: 8px;
+}
+
+.header-down-li {
+    width: 170px;
+    line-height: 32px;
+    color: #7e828c;
+    white-space: nowrap;
+    cursor: pointer;
+    text-align: left;
+    padding: 0px 15px;
+}
+
+.header-nav-h2 .header-down-li a {
+    width: 100%;
+    display: block;
+
+}
+
+.header-down-li:hover {
+    background: #eef0f3;
+}
+
+.header-list-li:hover .header-down {
+    display: block;
+}
+
+.header-search {
+    float: right;
+    width: 240px;
+    height: 32px;
+    margin: -47px 70px 0px 0px;
+    background: #f5f6f8;
+    padding-left: 35px;
+    color: #9ea7b4;
+    outline: medium;
+    border-radius: 8px;
+}
+
+.header-search-pic {
+    width: 15px;
+    height: 15px;
+    z-index: 100;
+    margin: -38px 320px 0px 0px;
+    float: right;
+    background: url(../img/search.png);
+}
+
+/*账户分类*/
+/*.adminAccountNav{*/
+/*display: block;*/
+/*height:40px;*/
+/*background-color: #fff;*/
+/*margin-bottom: 5px;*/
+/*line-height:40px;*/
+/*text-align: center;*/
+/*}*/
+
+/*配置管理分类*/
+.adminAccountNav,.adminConfigNav{
+    display: none;
+    height:40px;
+    background-color: #fff;
+    margin-bottom: 5px;
+    line-height:40px;
+    text-align: center;
+}
+.adminAccountNav a,.adminConfigNav a{
+    display: inline-block;
+    font-size: 14px;
+    color: #7F8591;
+    margin: 0 20px;
+
+}
+/*分页样式*/
+/*page ui*/
+.td-ui-page {
+    text-align: center;
+    height: 32px;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
+    padding: 30px 0;
+}
+
+.td-ui-page span, .td-ui-page a {
+    display: inline-block;
+    height: 30px;
+    border: #dfe7f2 solid 1px;
+    margin: 0 5px;
+    padding: 0 10px;
+    vertical-align: middle;
+    line-height: 30px;
+    border-radius: 3px;
+    -webkit-transition: all linear .5s;
+    transition: all linear .5s;
+    color: #657180;
+}
+
+.td-ui-page a {
+    cursor: pointer !important
+}
+
+.td-ui-page a.current, .td-ui-page a:hover {
+    color: #fff;
+    background: #43a3fb;
+    cursor: default;
+    border: #43a3fb solid 1px;
+}
+
+/*loading*/
+#loading {
+    position: fixed;
+    left: calc(50% - 75px);
+    bottom: 10px;
+    z-index: 100;
+    width: 150px;
+    height: 30px;
+}
+
+.spinnerx {
+    width: 150px;
+    text-align: center;
+}
+
+.spinnerx > div {
+    width: 25px;
+    height: 25px;
+    background-color: #5697f1;
+
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+    animation: bouncedelay 1.4s infinite ease-in-out;
+    /* Prevent first frame from flickering when animation starts */
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.spinnerx .bounce1 {
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+}
+
+.spinnerx .bounce2 {
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+}
+
+@-webkit-keyframes bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0.0)
+    }
+    40% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes bouncedelay {
+    0%, 80%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    40% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
+
+/*loading 2*/
+.test-loading {
+    position: absolute;
+    top: 47%;
+    left: 47%;
+    display: none;
+}
+
+.app-loading {
+    position: fixed;
+    left: 50%;
+    top: 25%;
+    z-index: 10000;
+    margin: -15px 0px 0px -15px;
+    display: none;
+}
+
+.spinner {
+    margin: 100px auto;
+    width: 30px;
+    height: 30px;
+    position: relative;
+}
+
+.container1 > div, .container2 > div, .container3 > div {
+    width: 8px;
+    height: 8px;
+    background-color: #5697f1;
+    border-radius: 100%;
+    position: absolute;
+    -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
+    animation: bouncedelay 1.2s infinite ease-in-out;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.spinner .spinner-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.container2 {
+    -webkit-transform: rotateZ(45deg);
+    transform: rotateZ(45deg);
+}
+
+.container3 {
+    -webkit-transform: rotateZ(90deg);
+    transform: rotateZ(90deg);
+}
+
+.circle1 {
+    top: 0;
+    left: 0;
+}
+
+.circle2 {
+    top: 0;
+    right: 0;
+}
+
+.circle3 {
+    right: 0;
+    bottom: 0;
+}
+
+.circle4 {
+    left: 0;
+    bottom: 0;
+}
+
+.container2 .circle1 {
+    -webkit-animation-delay: -1.1s;
+    animation-delay: -1.1s;
+}
+
+.container3 .circle1 {
+    -webkit-animation-delay: -1.0s;
+    animation-delay: -1.0s;
+}
+
+.container1 .circle2 {
+    -webkit-animation-delay: -0.9s;
+    animation-delay: -0.9s;
+}
+
+.container2 .circle2 {
+    -webkit-animation-delay: -0.8s;
+    animation-delay: -0.8s;
+}
+
+.container3 .circle2 {
+    -webkit-animation-delay: -0.7s;
+    animation-delay: -0.7s;
+}
+
+.container1 .circle3 {
+    -webkit-animation-delay: -0.6s;
+    animation-delay: -0.6s;
+}
+
+.container2 .circle3 {
+    -webkit-animation-delay: -0.5s;
+    animation-delay: -0.5s;
+}
+
+.container3 .circle3 {
+    -webkit-animation-delay: -0.4s;
+    animation-delay: -0.4s;
+}
+
+.container1 .circle4 {
+    -webkit-animation-delay: -0.3s;
+    animation-delay: -0.3s;
+}
+
+.container2 .circle4 {
+    -webkit-animation-delay: -0.2s;
+    animation-delay: -0.2s;
+}
+
+.container3 .circle4 {
+    -webkit-animation-delay: -0.1s;
+    animation-delay: -0.1s;
+}
+
+@-webkit-keyframes bouncedelay {
+    0%, 80%, 100% {
+        -webkit-transform: scale(0.0)
+    }
+    40% {
+        -webkit-transform: scale(1.0)
+    }
+}
+
+@keyframes bouncedelay {
+    0%, 80%, 100% {
+        transform: scale(0.0);
+        -webkit-transform: scale(0.0);
+    }
+    40% {
+        transform: scale(1.0);
+        -webkit-transform: scale(1.0);
+    }
+}
+
+/*end*/
+
+/*弹出层样式*/
+.dialog-wrapper {
+    position: absolute;;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 9999;
+}
+
+.dialog-content,.dialog-content1 {
+    background: #fff;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+}
+.dialog-content1{
+    width: 420px;
+    margin-left: -210px;
+}
+
+.dialog-close {
+    position: absolute;
+    right: 18px;
+    top: 18px;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.dialog-background {
+    background: #000;
+    position: fixed;
+    width: 100%;
+    z-index: 0;
+    left: 0;
+    top: 0;
+    height: 100%;
+    filter: alpha(opacity=50); /* IE */
+    -moz-opacity: 0.5; /* 老版Mozilla */
+    -khtml-opacity: 0.5; /* 老版Safari */
+    opacity: 0.5; /* 支持opacity的浏览器*/
+}
+
+.header-down-a {
+    font-size: 8px;
+}
+
+#HeaderDetailDropDown {
+    position: absolute;
+    top: 60px;
+    left: 100px;
+}
+
+.use-button {
+    border: 1px solid #d0d0d0;
+    color: #464c5b;
+}
+
+#AdminIndex,
+#AdminAdd,
+#AdminManage,
+#OneAccountDetail,
+#OneServiceDetail {
+    display: none;
+}
+
+/*datepicker css*/
+.datepicker {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    color: #697179;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    transition: all .6s ease;
+    opacity: 0;
+    display: none;
+}
+
+.cal_enter {
+    opacity: .96;
+    transform: translate3d(0, 10px, 0)
+}
+
+.cal_leave {
+    opacity: 0;
+    transform: translate3d(0, -10px, 0);
+}
+
+.datepicker .btn {
+    background-color: #F5F5F5;
+    border-color: #eaeaea;
+    border-radius: 2px 2px 2px 2px;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05);
+    color: #697179;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 20px;
+    margin-bottom: 0;
+    outline: 0 none;
+    padding: 4px 14px;
+    text-align: center;
+}
+
+.datepicker .btn_primary {
+    background-color: #74A5ED;
+    border: 1px solid #74A5ED;
+    color: #fafafa;
+}
+
+.datepickerContainer {
+    background: #fefefe;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.datepickerTable {
+    padding: 10px;
+}
+
+.datepickerHidden {
+    display: none;
+}
+
+div.datepicker table {
+    border-collapse: collapse;
+}
+
+div.datepicker table thead tr:first-child th {
+    padding: 5px 0;
+    font-size: 14px;
+}
+
+div.datepicker table thead tr.datepickerDoW {
+    border: 1px solid #e1e1e1;
+    background: #f7f8fa;
+}
+
+div.datepicker a {
+    color: #697179;
+    text-decoration: none;
+    outline: none;
+}
+
+div.datepicker table td {
+    text-align: right;
+    padding: 0;
+    margin: 0;
+}
+
+div.datepicker th {
+    text-align: center;
+    color: #999;
+    font-weight: normal;
+}
+
+div.datepicker tbody th {
+    text-align: center;
+}
+
+.datepickerDoW th {
+    line-height: 20px;
+    padding: 5px 10px;
+    color: #444;
+    cursor: pointer;
+    text-align: left;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+}
+
+div.datepicker tbody a {
+    display: block;
+}
+
+.datepickerDays a {
+    line-height: 20px;
+    padding: 5px 10px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.datepickerYears a,
+.datepickerMonths a {
+    width: 35px;
+    margin: 0 5px;
+    line-height: 35px;
+    height: 35px;
+    text-align: center;
+}
+
+td.datepickerNotInMonth a {
+    color: #bbb;
+}
+
+tbody.datepickerDays td.datepickerSelected {
+    background: #9fc1f5;
+}
+
+tbody.datepickerDays td.start,
+tbody.datepickerDays td.end {
+    background: #5f92e1;
+}
+
+tbody.datepickerDays td.datepickerSelected a {
+    color: #fff;
+}
+
+tbody.datepickerDays td.datepickerNotInMonth.datepickerSelected {
+    background: #caddfa;
+}
+
+tbody.datepickerYears td.datepickerSelected,
+tbody.datepickerMonths td.datepickerSelected {
+    background: #caddfa;
+}
+
+div.datepicker a:hover,
+div.datepicker a:hover {
+    color: #5f92e1;
+}
+
+div.datepicker td.datepickerNotInMonth a:hover {
+    color: #999;
+}
+
+div.datepicker tbody th {
+    text-align: center;
+}
+
+.datepickerSpace div {
+    width: 20px;
+}
+
+.datepickerGoNext a,
+.datepickerGoPrev a,
+.datepickerMonth a {
+    text-align: center;
+    height: 20px;
+    line-height: 20px;
+    color: #c8cbd0;
+}
+
+.datepickerGoNext a {
+    float: right;
+    transform: rotate(-90deg);
+}
+
+.datepickerGoPrev a {
+    float: left;
+    transform: rotate(90deg);
+}
+
+.datepickerGoNext a,
+.datepickerGoPrev a {
+    font-size: 40px;
+}
+
+table.datepickerViewDays tbody.datepickerMonths,
+table.datepickerViewDays tbody.datepickerYears {
+    display: none;
+}
+
+table.datepickerViewMonths tbody.datepickerDays,
+table.datepickerViewMonths tbody.datepickerYears,
+table.datepickerViewMonths tr.datepickerDoW {
+    display: none;
+}
+
+table.datepickerViewMonths td a:hover,
+table.datepickerViewYears td a:hover {
+    background: #5f92e1;
+    border-radius: 2px;
+    color: #fff;
+}
+
+table.datepickerViewYears tbody.datepickerDays,
+table.datepickerViewYears tbody.datepickerMonths,
+table.datepickerViewYears tr.datepickerDoW {
+    display: none;
+}
+
+td.datepickerDisabled a,
+td.datepickerDisabled.datepickerNotInMonth a {
+    color: #bbb;
+}
+
+td.datepickerDisabled a:hover {
+    color: #bbb;
+}
+
+td.datepickerSpecial a {
+    background: #700;
+}
+
+td.datepickerSpecial.datepickerSelected a {
+    background: #a00;
+}
+
+.datefoot {
+    border-top: 1px solid #e5e5e5;
+    background: #fafafa;
+    display: inline-block;
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    vertical-align: middle;
+}
+
+.datefoot .dateinput {
+    float: left
+}
+
+.dateinput input {
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555555;
+    font-size: 12px;
+    text-align: center;
+    height: 16px;
+    line-height: 16px;
+    padding: 6px 4px;
+    position: relative;
+    vertical-align: middle;
+    width: 90px;
+    z-index: 2;
+}
+
+.dateinput span {
+    margin: 0 5px;
+}
+
+.datefoot .datesub {
+    float: right
+}
+
+.datesub input:not(:last-child) {
+    margin-right: 10px;
+}
+
+/*end*/
+.detail-table {
+    border-collapse: collapse;
+}
+
+.detail-table td, .detail-table th {
+    border: #ddd solid 1px;
+    padding: 20px;
+}
+
+.detail-table .description-break {
+    word-break: break-all;
+}
+
+.detail-table th {
+    background: #eef0f3;
+}
+
+.code-expmale {
+    height: 100%;
+    min-height: 350px;
+    width: calc(100% - 40px);
+    padding: 20px;
+    border: #ddd solid 1px;
+}
+.download{
+    width: 32px;
+    height: 32px;
+    background: url(../img/download.png);
+    cursor: pointer;
+}
+
+#appAlert{
+    position: fixed;
+    left: 50%;
+    top: 30px;
+    z-index: 10000;
+    vertical-align: middle;
+    margin: -15px 0px 0px -125px;
+    padding: 0 20px;
+    width: 250px;
+    height: auto;
+    min-height: 35px;
+    /* border: 1px solid; */
+    border-radius: 4px;
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    background: #fff;
+    text-align: center;
+    line-height: 35px;
+    /*color: #fd1800;*/
+    display: none;
+}
+#appAlert i{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    background: url(../img/alert.png) no-repeat -1px -3px;
+    padding-right: 20px;
+
+}
+#appAlert #appAlertContent{
+    word-wrap:break-word;
+    word-break:break-all;
+}
+.animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+@-webkit-keyframes fadeInDownBig {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -2000px, 0);
+        transform: translate3d(0, -2000px, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+@keyframes fadeInDownBig {
+    from {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -2000px, 0);
+        transform: translate3d(0, -2000px, 0);
+    }
+
+    to {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+}
+
+.fadeInDownBig {
+    -webkit-animation-name: fadeInDownBig;
+    animation-name: fadeInDownBig;
+}

@@ -1,0 +1,22 @@
+<h1 class="left-title">{{ headerMap.name }}</h1>
+<span class="left-label">{{ headerMap.ownerName }}</span>
+<ul class="left-tab" id="LeftTabs">
+	{{if hash == "index"}}
+	<li class="left-tab-selected" data-id="introduce"><a>详情介绍</a></li>
+	{{else if hash == "detail"}}
+	<li class="left-tab-selected" data-id="introduce"><a>详情介绍</a></li>
+	{{else}}
+	<li  data-id="introduce"><a>详情介绍</a></li>
+	{{/if}}
+	
+	{{if buy == 1}}
+		<li data-id="api"><a>API</a></li>
+		<li data-id="status"><a>状态码说明</a></li>
+		{{if hash == "index"}}
+		<li data-id="dosage"><a>用量统计</a></li>
+		{{/if}}
+		{{if hash == "mydata"}}
+		<li class="left-tab-selected" data-id="dosage"><a>用量统计</a></li>
+		{{/if}}	
+	{{/if}}	
+</ul>

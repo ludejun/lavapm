@@ -1,0 +1,25 @@
+header{background:#2c354b;height:86px;width:100%;}
+header .inner{width:1180px;margin:0 auto;color:#FFF;}
+header .inner .left{}
+header .inner .left .logo{background:url(imgs/logo.png);display:block;float:left;height:86px;width:356px;}
+
+header .inner .right{}
+header .inner .right .headlist{background:#2c354b;margin-top:17px}
+header .inner .right .headlist .list-name{float:left;height:33px;line-height:33px;padding:10px;}
+header .inner .right .headlist ul{float:left;}
+header .inner .right .headlist ul li.seperator{border-left:1px solid #E56A17;display:inline;float:left;height:33px;margin:10px 0;text-align:center;width:0;}
+header .inner .right .headlist ul li.item{padding-right:20px;background:url(imgs/headlist.png) #f60 no-repeat;border-bottom:1px solid #E56A17;border-top:1px solid #E56A17;color:#FFE8D9;cursor:pointer;display:inline;float:left;height:31px;line-height:31px;margin:10px 0;position:relative;text-align:right;width:58px;}
+header .inner .right .headlist ul li.item a,header .inner .right .headlist ul li.item a:hover{color:white;}
+header .inner .right .headlist ul li.profile{background-position:10px -419px;}
+header .inner .right .headlist ul li.help{background-position: 10px -51px;}
+
+
+section#content{margin:0 auto;min-height:500px;}
+
+
+footer{background:url(imgs/footer_bg.png) repeat-x;width:100%;height:60px;color:white;}
+footer a:link,
+footer a:visited,
+footer a:hover,
+footer a:active{color:white;text-decoration:none;}
+footer .inner{width:1180px;margin:0 auto;padding-top:15px;}

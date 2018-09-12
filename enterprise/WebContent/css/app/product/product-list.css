@@ -1,0 +1,75 @@
+/* CSS Document */
+body { box-sizing:border-box}
+.clearfix:before,.clearfix:after{ 
+    content:""; 
+    display:table; 
+} 
+.clearfix:after{clear:both;} 
+.clearfix{ 
+    *zoom:1;
+}
+
+
+.bg-list { background:#eef0f3 url(/enterprise/images/app/product/bg-list.jpg) no-repeat top center; background-size:cover; }
+.product-page .top { width:88%; margin:0 auto; padding-top:88px;padding-bottom:10px; /* font-family: 'icomoon'; */ color:#fff;}
+.product-page .top .logo{margin-top:7px;background:url(/enterprise/images/app/product/logo.png) no-repeat left center;background-size: auto 100%;height: 36px;display: inline-block; width: 640px;}
+.product-page .top .logo span { font-size:36px; }
+.product-page .top .logo b { height:32px; width:1px; background:#fff; margin:0 15px;}
+
+.product-page .account-manage > ul > li {position:relative;display:inline-block; margin-left:20px;float:left;}
+.product-page .account-manage > ul > li > a{-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;color:#fff;text-decoration: none;display:block;padding:0;background:rgba(55,49,41,.6);font-size:14px;width: 140px;height: 50px;line-height: 50px;text-align: center;}
+.product-page .account-manage > ul > li > a:hover { background:rgba(55,49,41,.8)}
+.product-page .account-manage > ul > li >a > span { font-size:22px;vertical-align:top;margin: 12px 8px 0 0;}
+.product-page .account-manage > ul > li >a > span.icon-permissions{background: url(/enterprise/images/app/common/nav/img07.png) no-repeat;background-size: 20px 21px;width:20px;height:21px;display:inline-block;}
+.product-page .account-manage > ul > li >a > span.icon-account{background: url(/enterprise/images/app/product/img01.png) no-repeat;background-size: 22px 22px;width:22px;height:22px;display:inline-block;}
+
+.product-page .account-manage > ul > li .dropdown-ul{position:absolute;background:rgba(55,49,41,.6);right:0;top:57px;width:274px;padding:12px 13px;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;z-index:2;}
+.product-page .account-manage > ul > li .dropdown-ul:before{border: solid transparent;content: ' ';height: 0;right: 95px;position: absolute;width: 0;}
+.product-page .account-manage > ul > li .dropdown-ul:before {border-width:6px;border-bottom-color: rgba(55,49,41,.6);top: -12px;}
+.product-page .account-manage > ul > li .dropdown-ul li a{color:#e4e8ff;}
+.product-page .account-manage > ul > li .dropdown-ul .li01 a{color:#fff;float:left;}
+.product-page .account-manage > ul > li .dropdown-ul .li01 a.account-name{text-decoration: none;cursor: default;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;max-width:180px;display: inline-block;margin-right:10px;}
+.product-page .account-manage > ul > li .dropdown-ul .li01 .icon_out{background: url(/enterprise/images/app/common/nav/img06.png) no-repeat;background-size: 13px 14px;width:13px;height:14px;display:inline-block;float: right;margin:2px 0 0 0; cursor: pointer;}
+.product-page .account-manage > ul > li .dropdown-ul .li01 .icon_account{background: url(/enterprise/images/app/common/nav/img05.png) no-repeat;background-size: 14px 14px;width:14px;height:14px;display:inline-block;float: right;margin:2px 0 0 0; cursor: pointer;}
+.product-page .account-manage > ul > li .dropdown-ul .li01 .icon_line{width:1px;overflow:hidden;float:right;border-left:1px solid #808080;height: 16px;margin: 0 10px;}
+
+.product-page .account-manage > ul > li .dropdown-ul .li02 .account{float:left;}
+.product-page .account-manage > ul > li .dropdown-ul .li02 .rule{float:right;}
+.product-page .account-manage > ul > li .dropdown-ul .li02 .account i{float: left;margin: 8px 5px 0 0;background: url(/enterprise/images/app/common/nav/img03.png) no-repeat;background-size: 14px 14px;width:14px;height:14px;display:inline-block;}
+.product-page .account-manage > ul > li .dropdown-ul .li02 .rule i{float: left;margin: 8px 5px 0 0;background: url(/enterprise/images/app/common/nav/img04.png) no-repeat;background-size: 14px 14px;width:14px;height:14px;display:inline-block;}
+
+/*icons-product*/
+.icons-product{background:url(/enterprise/images/app/product/icons-product.png?v=20161117) no-repeat;background-size: 400px 400px;width:48px;height:48px;display:inline-block;}
+
+.list-content { width:90%; margin:35px auto;}
+.list-content dl {color: #454545;position:relative; overflow:hidden; display:inline-block; float:left; width:23%; margin:10px 1%; padding:25px 0 20px; background:rgba(255,255,255,.8); text-align:center; 
+cursor:pointer;}
+.list-content dl dt { background:#13b4ff; color:#fff; width:100px; height:100px; -moz-border-radius:50%;-webkit-border-radius:50%;border-radius:50%; margin:0 auto 20px;vertical-align:middle; line-height:100px;
+position: relative;}
+.list-content dl dt .icons-product{position: absolute;left: 50%;top: 50%;margin-left: -24px;margin-top: -24px;}
+.list-content dl dt.icon-product-datacloud .icons-product{background-position:0 0;}
+.list-content dl dt.icon-product-DMP .icons-product{background-position:-2px -54px;}
+.list-content dl dt.icon-product-BWS .icons-product{background-position:-0px -212px;}
+.list-content dl dt.icon-product-report .icons-product{background-position:0px -106px;}
+.list-content dl dt.icon-product-wreport .icons-product{background-position:0 -158px;}
+.list-content dl dt.icon-product-push .icons-product{background-position:0px -212px;}
+.list-content dl dt.icon-product-radar .icons-product{background-position:-50px -212px;}
+.list-content dl dt.icon-product-screen .icons-product{background-position:-50px 0;}
+.list-content dl dt.icon-product-visualization .icons-product{background-position:-52px -54px;}
+.list-content dl dt.icon-product-securities .icons-product{background-position:-50px -106px;}
+.list-content dl dt.icon-product-bank .icons-product{background-position:-50px -156px;}
+.list-content dl dt.icon-product-pushweb .icons-product{background-position:0px -212px;}
+.list-content dl dd { font-size:16px;}
+ 
+.list-content dl .product-link{position:absolute;left:0;top:0;width:100%;height:100%;z-index:1;}
+.product-explain {;font-size:14px;display:block; position:absolute; left:0; top:186px; width:100%; height:100%; background:rgba(255,255,255,.95); text-align:left; transition:top ease-in 500ms;-moz-transition:top ease-in 500ms;-o-transition:top ease-in 500ms; -webkit-transition:top ease-in 500ms}
+.list-content dl:hover .product-explain { top:0}
+.product-explain p { line-height:24px; padding:20px 20px; display:block;}
+
+.service-period { position:absolute; left:0; bottom:20px; display:block;width:100%;}
+.service-label{margin-left:20px;}
+.service-period span { display:inline-block;}
+.service-period span.icon-period { color:#13b4ff}
+.service-period a { color:#13b4ff; text-decoration:none; text-align:center;margin-right:20px;}
+.service-period a i { display: inline-block; margin-left:5px; width:0; height:0; border-left:5px solid #13b4ff; border-top:5px solid transparent; border-bottom:5px solid transparent}
+.service-period a:hover { color:#0a92d2;}

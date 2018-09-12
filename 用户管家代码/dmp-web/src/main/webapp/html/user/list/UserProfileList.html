@@ -1,0 +1,74 @@
+<!-- <div class="page-title">用户档案</div> -->
+<div class="go-back-list" ng-if="crowdId">
+	<a href="javascript:;" ng-click="goBackCrowdPortrait();"><i class="icons icons-arrow-left"></i>返回人群画像</a>
+</div>
+<div class="ng-table-container user-profile-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">
+			<div td-tree-select menu-elem="userProfileObject.menuElem" select-node-text="userProfileObject.selectLabel" tree-keywords="userProfileObject.keywords" tree-select-callback="selectCrowdCallback" tree-source-list="selectUserProfileSourceList"></div>
+		</div>
+		<div class="search" data-search role="search"></div>
+		
+	</div>
+	
+	<div ng-show="isShowMoreSearch && tagRelationsPanelHtml" class="form-horizontal-tag clrfix">
+		<div class="tag-relations-panel clrfix" id="tag-relations-panel" td-string-html struct="tagRelationsPanelHtml" html-callback="tagRelationsCallback">
+		</div>
+		<div class="search-btn-box clrfix">
+			<div class="search-btns">
+				<div class="form-btn btn-blue-hg35" ng-click="searchUserProfiles();">搜索</div>
+				<div class="form-btn btn-gray-hg35" ng-click="resetSearchConditions();">重置</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="ng-table-body ng-table-body-empty">
+		<table ng-table="tableParams" customPaging="true" class="table ng-table-responsive table-hover" ng-show="userProfileTable.thead.length > 0" freeze="true" id="tableParams">
+			<thead>
+				<tr>
+					<th ng-repeat="thead in userProfileTable.thead"><div>{{thead.label}}</div></th>
+					<th><div>操作</div></th>
+				</tr>
+			</thead>
+			<!-- <tbody>
+			    <tr ng-repeat="userProfile in $data">
+			       <td ng-repeat="fieldValue in userProfile">
+			       		<div class="ng-table-operator" ng-if="$index == userProfileTable.thead.length">
+				       	   <a ui-sref="userProfiles_view({userProfileId:fieldValue})">查看</a>
+				           <i ng-click="removeUserProfile(userProfile);">删除</i>
+			           	</div>
+			       		<div class="t-o-e" ng-if="$index < userProfileTable.thead.length">{{fieldValue}}</div>
+			       </td>
+			    </tr>
+		    </tbody> -->
+		    <tbody>
+			    <tr ng-repeat="userProfile in $data">
+			       <td ng-repeat="(k,v) in userProfile">
+			       		<div class="ng-table-operator" ng-if="$index == userProfileTable.thead.length">
+				       	   <a ng-click="viewUserprofiles();" ui-sref="userProfiles_view({userProfileId:v,crowdId:userProfileObject.crowdId})">查看</a>
+			           	</div>
+			       		<div ng-if="$index < userProfileTable.thead.length && k == 'product_id'">{{v | DictFormatter : 'product_id'}}</div>
+			       		<div ng-if="$index < userProfileTable.thead.length && k == 'platform_id'">{{v | DictFormatter : 'platform_id'}}</div>
+			       		<div ng-if="$index < userProfileTable.thead.length && k == 'partner_id'">{{v | DictFormatter : 'partner_id'}}</div>
+			       		
+			       		<div ng-if="$index < userProfileTable.thead.length && k != 'product_id' && k != 'platform_id' && k != 'partner_id'">{{v}}</div>
+			       </td>
+			    </tr>
+		    </tbody>
+		    
+		</table>
+	</div>
+	<!-- <div class="ng-table-empty" ng-show="!userProfileTable || !userProfileTable.thead || userProfileTable.thead.length == 0">暂无数据</div> -->
+</div>
+
+<div id="menuUserProfileContent" class="menuContent" style="display:none; position: absolute;">
+	<div class="search-box">
+		<div class="search">
+			<i class="i-search"></i>
+			<input type="text" ng-model="userProfileObject.keywords" placeholder="输入关键字">
+			<i class="icon-clear ng-hide" ng-click="userProfileObject.keywords=''" ng-show="userProfileObject.keywords"></i>
+		</div>
+	</div>
+	
+	<ul id="selectUserProfileTree" class="ztree"></ul>
+</div>

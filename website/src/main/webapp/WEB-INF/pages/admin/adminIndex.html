@@ -1,0 +1,75 @@
+<div id="AdminIndex">
+
+	<div class="data-serve">
+		<div class="data-serve-tile">
+			<!--<h2>数据服务列表</h2>-->
+			<a href="#/add/new" class="add-server">+添加服务</a>
+
+
+			<div class='server-search'>
+				<span class='adminIndexDownLoad' title='下载全部数据'></span>
+				<input class='server-search-ipt' type="text" placeholder='请输入要搜索的数据服务名称'>
+				<span class='server-search-btn'>搜索</span>
+			</div>
+
+			<span class="issue">发布日期 :</span>
+			<div class="data-time">
+				<i class='data-time-now'>全部</i>
+				<i class="data-arrow"></i>
+				<ul class="data-time-list">
+					<li value="1">最近7天</li>
+					<li value="2">最近30天</li>
+					<li value="3">最近90天</li>
+					<li>全部</li>
+				</ul>
+			</div>
+
+
+
+
+
+			<span class="issue">状态 :</span>
+			<div class="data-time2">
+				<i class='data-time-now2'>全部</i>
+				<i class="data-arrow2"></i>
+				<ul class="data-time-list2">
+					<li value="1">已发布</li>
+					<!--<li value="2">调试中</li>-->
+					<li value="3">下线</li>
+					<li value="4">未发布</li>
+					<li value="5">全部</li>
+				</ul>
+			</div>
+
+		</div>
+
+
+		<div class="data-server-table">
+			<div class="data-server-table">
+				<ul class="data-server-header">
+					<li>序号</li>
+					<li>数据服务名称</li>
+					<li>类型</li>
+					<li>提供商</li>
+					<li>状态</li>
+					<li>上架时间</li>
+					<li>调用账号数/次数</li>
+					<li>有效访问/超限访问</li>
+					<li>操作</li>
+				</ul>
+				<div id="AdminListView">
+
+				</div>
+
+			</div>
+
+			<div class="data-server-page">
+				<div class="td-ui-page" id="AdminListViewPage">
+					
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

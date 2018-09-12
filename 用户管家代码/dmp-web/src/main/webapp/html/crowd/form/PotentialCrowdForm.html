@@ -1,0 +1,173 @@
+<div class="go-back-list"><a href="javascript:;" ng-click="goBackHistory();"><i class="icons icons-arrow-left"></i>返回潜在人群列表</a></div>
+<div class="form-horizontal-panel">
+	<div class="form-horizontal-title">添加潜在人群</div>
+	<form class="form-horizontal clrfix" ng-click="onHideDropdownMenu($event);">
+	    <!-- <div class="control-group">
+	        <label class="control-label">潜客人群编码：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.code">
+	        </div>
+	    </div> -->
+		<div class="control-group">
+	        <label class="control-label"><span class="required">*</span>人群名称：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.name" required>
+	        </div>
+	    </div>
+	    <div class="control-group">
+	        <label class="control-label"><span class="required">*</span>潜客数量：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.acquisitionNumber" required>
+	            <div class="notice-panel">设置从云端获取的预测人群的数量。</div>
+	        </div>
+	    </div>
+		<div class="control-group">
+	        <label class="control-label"><span class="required">*</span>获客渠道 ：</label>
+	        <div class="controls">
+	            <!-- <input class="form-control" type="text" ng-model="potentialCrowd.acquisitionChannel"> -->
+	            <select ng-model="potentialCrowd.acquisitionChannel" class="form-control">
+					<option ng-repeat="channel in acquisitionChannelList" value="{{channel.dicItemKey}}" ng-selected="channel.dicItemKey == potentialCrowd.acquisitionChannel">{{channel.dicItemValue}}</option>
+				</select>
+				<div class="notice-panel">设置云端获客的服务商，默认为TalkingData。</div>
+	        </div>
+	    </div>
+	    <!-- <div class="control-group">
+	        <label class="control-label">种子客群：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.seedCrowdId">
+	        </div>
+	    </div> -->
+		<div class="control-group">
+	        <label class="control-label"><span class="required">*</span>种子人群：</label>
+	        <div class="controls">
+	            <!-- <input class="form-control" type="text" ng-model="potentialCrowd.seedCrowdName"> -->
+	            
+	            <div class="search-dropdown">
+					<input class="form-control" 
+						ng-focus="filterSeedCrowdsList(seedCrowdObj.keyword);" 
+						ng-keyup="filterSeedCrowdsList(seedCrowdObj.keyword);" 
+						ng-blur="checkSeedCrowdsIsValid(seedCrowdObj.keyword);" 
+						ng-model="seedCrowdObj.keyword">
+					<ul class="dropdown-menu ng-hide" ng-show="isShowSeedCrowdDropdownMenu">
+						<li ng-repeat="seed in seedCrowdFilterList"
+							ng-click="selectSeedCrowdItem(seed);">
+							<a href="javascript:;">{{seed.name}}</a>
+						</li>
+					</ul>
+				</div>
+				<div class="notice-panel">设定带有期望特征的人群。</div>
+	            
+	            
+	            
+	            
+	        </div>
+	    </div>
+	    
+	    <div class="control-group" style="margin-top:5px;">
+	        <label class="control-label">人群规模：</label>
+	        <div class="controls">
+	            <div style="line-height:20px;margin-top:8px;">{{crowdScale}}</div>
+	        </div>
+	    </div>
+	    
+	    <!-- <div class="control-group" style="margin-top:5px;">
+	        <label class="control-label">&nbsp;</label>
+	        <div class="controls">
+	            <div class="clrfix">
+	            	<label class="checkbox-label">
+		            	<input type="checkbox" ng-model="potentialCrowd.isOptimization" class="fl">&nbsp;是否使用最优人群
+		          	</label>
+	            </div>
+	            <div class="notice-panel">
+					<p>勾选“是否使用最优人群”后，则在预测计算时，会使用所选种子人群对应的最新一次的营销活动的转化人群作为种子，参与训练计算并预测人群，体现迭代优化特性。</p>
+					
+				</div>
+	        </div>
+	    </div> -->
+	    
+		<!-- <div class="control-group">
+	        <label class="control-label">是否使用优化人群：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.isOptimization">
+	        </div>
+	    </div> -->
+					
+					
+		<!-- <div class="control-group">
+	        <label class="control-label">描述：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.description">
+	        </div>
+	    </div> -->
+		<!-- <div class="control-group">
+	        <label class="control-label">投放渠道 ：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.dspChannel">
+	            <select ng-model="potentialCrowd.dspChannel" class="form-control">
+					<option ng-repeat="dspChannel in dspChannelTypeList" value="{{dspChannel.dicItemKey}}" ng-selected="dspChannel.dicItemKey == potentialCrowd.dspChannel">{{dspChannel.dicItemValue}}</option>
+				</select>
+	        </div>
+	    </div>
+		<div class="control-group">
+	        <label class="control-label">开始时间：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.dspStartDate" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" name="dspStartDate" bs-datepicker>
+	        </div>
+	    </div>
+		<div class="control-group">
+	        <label class="control-label">结束时间：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.dspEndDate" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" name="dspEndDate" bs-datepicker>
+	        </div>
+	    </div> -->
+		<!-- <div class="control-group">
+	        <label class="control-label">状态：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.status">
+	        </div>
+	    </div>
+		<div class="control-group">
+	        <label class="control-label">创建人账号：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.createBy">
+	        </div>
+	    </div>
+		<div class="control-group">
+	        <label class="control-label">创建人：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.creator">
+	        </div>
+	    </div>
+		<div class="control-group">
+	        <label class="control-label">修改人账号：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.updateBy">
+	        </div>
+	    </div>
+		<div class="control-group">
+	        <label class="control-label">创建时间：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.createTime">
+	        </div>
+	    </div>
+		<div class="control-group">
+	        <label class="control-label">修改时间：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="potentialCrowd.updateTime">
+	        </div>
+	    </div> -->
+	     <!-- <div class="control-group">
+	    	<label class="control-label">&nbsp;</label>
+	    	<div class="controls">
+		        <button type="button" class="btn btn-primary" ng-click="savePotentialCrowd(potentialCrowd)">保存</button>
+		        <a href="javascript:;" class="btn btn-default" ng-click="goBackHistory();">取消</a>
+	        </div>
+	    </div> -->
+	</form>
+</div>
+
+<div class="form-horizontal-btns clrfix">
+	<div class="form-btn btn-blue-hg35" ng-click="savePotentialCrowd(potentialCrowd)" ng-if="!isSaving">保存</div>
+	<div class="form-btn btn-blue-hg35" ng-if="isSaving">保存</div>
+	<a href="javascript:;" class="form-btn btn-white-hg35" ng-click="goBackHistory();">取消</a>
+</div>

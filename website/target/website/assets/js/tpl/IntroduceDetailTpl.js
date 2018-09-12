@@ -1,0 +1,1 @@
+define(function(require,module,exports){return "<div class=\"statis statis-common\"><h2>功能介绍</h2></div><div class=\"statis-content statis-common\"><textarea readonly=readonly>{{ desc.description }}</textarea></div>"})

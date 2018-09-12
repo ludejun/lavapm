@@ -1,0 +1,1 @@
+define(function(require,module,exports){return "<li class=\"header-down-li\" data-id=\"all\"><a>全部</a></li>{{ each types as value i }}<li class=\"header-down-li\" data-id=\"{{ value.type }}\"><a>{{ value.type }}</a></li>{{/each}}"})

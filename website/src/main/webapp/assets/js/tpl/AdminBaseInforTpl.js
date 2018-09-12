@@ -1,0 +1,1 @@
+define(function(require,module,exports){return "<li class='inforEmail' title=\"{{ email }}\">{{ email || '--' }}</li><li title='{{tel}}'>{{ tel || '--' }}</li><li title='{{ compName }}'>{{ compName || '--' }}</li><li title='{{contacts}}'>{{ contacts || '--' }}</li>"})

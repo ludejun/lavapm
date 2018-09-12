@@ -1,0 +1,48 @@
+﻿@charset "utf-8";
+*{margin:0;padding:0;outline:0 none;zoom:1;-webkit-nbsp-mode:space;}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}
+*html{filter:expression(document.execCommand("BackgroundImageCache", false, true))}
+html,img,iframe,frameset,fieldset,abbr,acronym,hr{border:0 none;}
+html{overflow-y:scroll;background:#fff url(about:blank) fixed;-webkit-text-size-adjust:none;direction:ltr;}
+body{behavior:url(#default#homepage);color:#000;background:#fff;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;vertical-align:middle;}
+del,ins{text-decoration:none;}
+img,input[type=image]
+{
+	user-select:none;
+	-o-user-select:none;
+	-ms-user-select:none;
+	-webkit-user-select:none;
+	-khtml-user-select:none;
+	-moz-user-select:none;
+	-ms-interpolation-mode:bicubic;
+	image-rendering:optimizeQuality;
+	-moz-force-broken-image-icon:1
+}
+object,embed{}
+input[type=button],input[type=submit],input[type=reset],input[type=image]{cursor:pointer;overflow:hidden;text-align:center;}
+button,label{cursor:pointer;overflow:hidden;text-align:center;}
+label{display:inline-block;}
+input[type=search]{-webkit-appearance:textfield;}
+input[type=number],input[type=color],input[type=date],input[type=datetime],input[type=datetime-local],
+input[type=month],input[type=week],input[type=time],input[type=tel],input[type=url],input[type=email]{ime-mode:disabled;}
+table{border-collapse:collapse;border-spacing:0;empty-cells:show;table-layout: fixed}
+ul,ol,li{list-style:none}
+textarea{resize:none;-moz-resize:none;-webkit-resize:none;overflow-x:hidden;overflow-y:auto;}
+input[type=text],input[type=password],input[type=button],input[type=submit],input[type=reset],input[type=image]{-webkit-appearance:none;-webkit-border-radius:0;}
+input[type=button][disabled],input[type=submit][disabled],input[type=reset][disabled],input[type=image][disabled],button[disabled]{cursor:default;}
+button,textarea{-webkit-appearance:none;-webkit-border-radius:0;}
+p,div,td,li,dd,textarea,pre{word-wrap:break-word;}
+select,input,button,img,textarea,label,td,th,legend,li{vertical-align:middle;}
+address,caption,cite,code,dfn,em,strong,th,var,optgroup,b,i{font-style:normal;font-variant:normal;font-weight:normal;}
+sup{vertical-align:text-top;}
+sub{vertical-align:text-bottom;}
+blockquote,q{quotes:"" "";}
+blockquote:before,blockquote:after,q:before,q:after{content:'';}
+wbr:after{content:"\00200B"}
+th{text-align:inherit;}
+code,kbd,pre,samp{font-family:courier new,courier,monospace;} /* 统一等宽字体 */
+ins,del{text-decoration:none;}
+hr{height:1px;}
+a:link,a:visited{text-decoration:none;}
+a:hover,a:active{text-decoration:underline;}

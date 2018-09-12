@@ -1,0 +1,6 @@
+@charset "utf-8";
+
+body{font-family:"microsoft yahei",Arial;font-size:12px;color:#666;}
+
+input[type=text],input[type=url],input[type=password]{border:0 none;background:#eee;height:35px;line-height:35px;font-family:"microsoft yahei",Arial;}
+input[type=button],input[type=submit],input[type=reset],button{border:0 none;}

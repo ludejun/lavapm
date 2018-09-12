@@ -1,0 +1,268 @@
+<div class="go-back-list"><a href="javascript:;" ng-click="goBackHistory();"><i class="icons icons-arrow-left"></i>返回人群放大列表</a></div>
+
+<div class="form-horizontal-panel">
+	<div class="form-horizontal-title" ng-if="isViewRule">查看人群放大</div>
+	<div class="form-horizontal-title" ng-if="!isViewRule">人群放大定义</div>
+	<form class="form-horizontal clrfix p-rel" ng-click="onHideDropdownMenu($event);" name="formHorizontal">
+	 	<div class="control-group">
+	        <label class="control-label"><span class="required">*</span>人群名称：</label>
+	        <div class="controls">
+	            <input ng-keyup="inputLookalikeCrowdName(lookalikeCrowd);" ng-class="{'input-error':!formHorizontal.lookalikeCrowdName.$valid && formHorizontal.lookalikeCrowdName.$dirty}" class="form-control" type="text" ng-model="lookalikeCrowd.name" required name="lookalikeCrowdName" ng-maxlength="256">
+	            <div class="form-error-msg" ng-show="!formHorizontal.lookalikeCrowdName.$valid && formHorizontal.lookalikeCrowdName.$dirty && !formHorizontal.lookalikeCrowdName.$error.maxlength && !isRepeadLookalikeName">请输入人群名称</div>
+	            <div class="form-error-msg" ng-show="formHorizontal.lookalikeCrowdName.$error.maxlength && !isRepeadLookalikeName">人群名称最多支持256个字符</div>
+	            <div class="form-error-msg" ng-show="isRepeadLookalikeName">{{errorMessage}}</div>
+	        </div>
+	    </div>
+	  	<!-- <div class="control-group">
+	        <label class="control-label">人群编码：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="lookalikeCrowd.code">
+	        </div>
+	    </div> -->
+	  	<div class="control-group">
+	        <label class="control-label"><span class="required">*</span>预测规模：</label>
+	        <div class="controls">
+	            <input class="form-control" ng-class="{'input-error':!formHorizontal.predictNum.$valid && formHorizontal.predictNum.$dirty || predictNumIsError =='int' ||  predictNumIsError =='max'}" type="text" ng-model="lookalikeCrowd.predictNum" ng-blur="checkPredictNum(lookalikeCrowd.predictNum);" name="predictNum" required>
+	            <div class="form-error-msg" ng-show="!formHorizontal.predictNum.$valid && formHorizontal.predictNum.$dirty && !predictNumIsError">请输入正确的预测规模</div>
+	            <div class="form-error-msg" ng-show="predictNumIsError == 'int'">预测规模必须为正整数，请重新输入</div>
+	            <div class="form-error-msg" ng-show="predictNumIsError == 'zero'">预测规模不能为0，请重新输入</div>
+	            <div class="form-error-msg" ng-show="predictNumIsError == 'max'">人群规模超出最大值，目前支持最大值为：2147483647</div>
+	            <div class="notice-panel">设定预测输出人群的规模</div>
+	        </div>
+	    </div>
+	    
+	    
+	 	
+	   	<div class="control-group">
+	        <label class="control-label"><span class="required">*</span>种子人群：</label>
+	        <div class="controls">
+	            <!-- <input class="form-control" type="text" ng-model="lookalikeCrowd.seedCrowdId"> -->
+	            <div class="search-dropdown">
+					<input class="form-control" ng-class="{'input-error':!formHorizontal.seedCrowdId.$valid && formHorizontal.seedCrowdId.$dirty || seedCrowdIdIsError}" 
+						ng-focus="filterSeedCrowdsList(seedCrowdObj.keyword);" 
+						ng-keyup="filterSeedCrowdsList(seedCrowdObj.keyword);" 
+						ng-change="changeSeedCrowdsList(lookalikeCrowd);" 
+						ng-blur="blurSeedCrowdList(seedCrowdObj.keyword);" 
+						ng-model="seedCrowdObj.keyword" required name="seedCrowdId">
+					<ul class="dropdown-menu ng-hide" ng-show="isShowSeedCrowdDropdownMenu">
+						<li ng-repeat="seed in seedCrowdFilterList"
+							ng-click="selectSeedCrowdItem(seed,lookalikeCrowd);">
+							<a href="javascript:;">{{seed.name}}</a>
+						</li>
+					</ul>
+				</div>
+				<div class="form-error-msg" ng-show="!formHorizontal.seedCrowdId.$valid && formHorizontal.seedCrowdId.$dirty || seedCrowdIdIsError">请输入有效的种子人群</div>
+				<div class="clrfix">
+					<label class="checkbox-label">
+						<input type="checkbox"  ng-model="lookalikeCrowd.isOptimization" class="fl"/>&nbsp;是否使用最优人群
+					</label>
+					<!-- <label class="checkbox-label">
+						<input type="checkbox"  ng-model="lookalikeCrowd.isUseModel" class="fl"/>&nbsp;是否使用模型
+					</label> -->
+					
+				</div>
+				
+				<div class="notice-panel">勾选“是否使用最优人群”后，则在预测计算时，会使用所选种子人群的历史上所有营销活动的转化人群作为种子，参与训练计算并预测人群，体现迭代优化特性。</div>
+	        
+	        	<div class="advanced-settings clrfix">
+	        		<i class="i1"></i>
+	        		<a href="javascript:;" ng-if="!isUseAdvancedSettings" ng-click="changeIsUseAdvancedSettings(true);"><span>使用高级设置</span><i class="i3"></i></a>
+					<a href="javascript:;" ng-if="isUseAdvancedSettings" ng-click="changeIsUseAdvancedSettings(false);"><span>使用高级设置</span><i class="i2"></i></a>	
+	        	</div>
+	        </div>
+	    </div>
+	    
+	    <!-- <div class="control-group">
+	        <label class="control-label">人群描述：</label>
+	        <div class="controls">
+	            <textarea class="form-control" rows="5" ng-model="lookalikeCrowd.description"></textarea>
+	            
+	        </div>
+	    </div> -->
+	    
+	    <div class="control-group" ng-if="isUseAdvancedSettings">
+	        <label class="control-label">范围人群：</label>
+	        <div class="controls">
+	            <!-- <input class="form-control" type="text" ng-model="lookalikeCrowd.rangeCrowdId"> -->
+	            <div class="search-dropdown">
+					<input class="form-control" id="rangCrowdInputId"
+						ng-focus="filterRangeCrowdList(rangeCrowdObj.keyword);" 
+						ng-keyup="filterRangeCrowdList(rangeCrowdObj.keyword);" 
+						ng-model="rangeCrowdObj.keyword" name="rangCrowd">
+					<ul class="dropdown-menu ng-hide" ng-show="isShowRangeCrowdDropdownMenu">
+						<li ng-repeat="range in rangeCrowdFilterList" 
+							ng-show="seedTouchPointType == range.touchPointType" 
+							ng-click="selectRangeCrowdItem(range);">
+							<a href="javascript:;">{{range.name}}</a>
+						</li>
+					</ul>
+				</div>
+				<div class="form-error-msg" ng-show="!formHorizontal.rangCrowd.$valid && formHorizontal.rangCrowd.$dirty">{{formHorizontal.rangCrowd.errorText}}</div>
+				<div class="notice-panel">设置在什么用户范围内进行预测，默认为全部用户，也可以是指定人群用户。</div>
+	            <div class="clrfix"><label class="checkbox-label"><input type="checkbox"  ng-model="lookalikeCrowd.isExcludeSeedCrowd" class="fl"/>&nbsp;是否排除种子人群</label></div>
+	            <div class="notice-panel">设置是否从预测结果中排除种子人群的用户。</div>
+	            
+	        </div>
+	    </div>
+	    
+	    
+	    <div class="control-group" ng-if="isUseAdvancedSettings">
+	        <label class="control-label">算法设置：</label>
+	        <div class="controls">
+	            <!-- <input class="form-control" type="text" ng-model="lookalikeCrowd.algorithmId"> -->
+	            <select ng-model="lookalikeCrowd.algorithmId" class="form-control">
+	            	<!-- <option value="">-请选择-</option> -->
+					<option ng-repeat="algorithm in algorithmList" value="{{algorithm.id}}" ng-selected="algorithm.id == lookalikeCrowd.algorithmId">{{algorithm.name}}</option>
+				</select>
+				<div class="notice-panel">设置人群放大算法，默认为TD的Look-alike算法，也可以选择企业自有的算法。</div>
+	        </div>
+	    </div>
+	    
+	    
+	    <!-- <div class="control-group" ng-if="isUseAdvancedSettings">
+	        <label class="control-label">训练算法：</label>
+	        <div class="controls">
+	            <select ng-model="lookalikeCrowd.crowdModel.algorithmId" class="form-control">
+	            	<option value="">-请选择-</option>
+					<option ng-repeat="algorithm in algorithmList"  value="{{algorithm.id}}" ng-selected="algorithm.id == lookalikeCrowd.crowdModel.algorithmId">{{algorithm.name}}</option>
+				</select>
+				<div class="notice-panel">设置训练功能的实现方法。默认使用系统的算法，也可以选择第一方开发的算法。</div>
+	        </div>
+	    </div> -->
+	    
+	    
+	    <!-- <div class="control-group" ng-if="isUseAdvancedSettings">
+	        <label class="control-label">训练参数：</label>
+	        <div class="controls">
+	        	<div class="tag-list clrfix mb-10" ng-if="selectedTagList.length > 0">
+					<div class="tag" title="{{tag.name}}" ng-repeat="tag in selectedTagList">
+						<span class="tag-name">{{tag.name}}</span>
+						<i title="移除{{tag.name}}" class="remove-tag" ng-click="removeHasSelectedTag(tag);">x</i>
+					</div>
+				</div>
+	            <ul class="nav nav-tabs">
+				  	<li ng-class="{'active':tagType == 1}" ng-click="tagSwitch(1);"><a href="javascript:;">自定义标签</a></li>
+				  	<li ng-class="{'active':tagType == 3}" ng-click="tagSwitch(3);" ng-if="isAppTDID"><a href="javascript:;">第三方标签</a></li>
+				</ul>
+				<div class="nav-tab-cons">
+					
+					<div class="search-dropdown" ng-if="tagType == 1">
+						<input class="form-control" 
+							ng-focus="filterFirstTagList(firstTagObj.keyword);" 
+							ng-keyup="filterFirstTagList(firstTagObj.keyword);" 
+							ng-model="firstTagObj.keyword" placeholder = "请输入自定义标签，输入结束后可回车确认">
+						<ul class="dropdown-menu ng-hide" ng-show="isShowFirstTagDropdownMenu">
+							<li ng-repeat="firstTag in firstTagFilterList" 
+							    ng-show="seedTouchPointType == firstTag.touchPointType && !firstTag.hasSelected" 
+								ng-click="selectTagItem(firstTag);">
+								<a href="javascript:;">{{firstTag.name}}</a>
+							</li>
+						</ul>
+					</div>
+				
+					
+					<div class="search-dropdown" ng-if="tagType == 3 && isAppTDID">
+						<input class="form-control" 
+							ng-focus="filterThirdTagList(thirdTagObj.keyword);" 
+							ng-keyup="filterThirdTagList(thirdTagObj.keyword);" 
+							ng-model="thirdTagObj.keyword" placeholder = "请输入第三方标签，输入结束后可回车确认">
+						<ul class="dropdown-menu ng-hide" ng-show="isShowThirdTagDropdownMenu">
+							<li ng-repeat="thirdTag in thirdTagFilterList" 
+								ng-show="!thirdTag.hasSelected" 
+								ng-click="selectTagItem(thirdTag);">
+								<a href="javascript:;">{{thirdTag.name}}</a>
+							</li>
+						</ul>
+					</div>
+					
+				</div>
+				
+				<div class="notice-panel">选中的标签在相似性算法中拥有更高的权重。</div>
+				
+	        </div>
+	    </div> -->
+	    
+
+	    
+	  	<!-- <div class="control-group">
+	        <label class="control-label">种子人群名称：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="lookalikeCrowd.seedCrowdName">
+	        </div>
+	    </div> -->
+	  	
+	  	<!-- <div class="control-group">
+	        <label class="control-label">人群范围名称：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="lookalikeCrowd.rangeCrowdName">
+	        </div>
+	    </div> -->
+	  	<!-- <div class="control-group">
+	        <label class="control-label">是否排除种子客群数：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="lookalikeCrowd.isExcludeSeedCrowd">
+	        </div>
+	    </div> -->
+	  	<!-- <div class="control-group">
+	        <label class="control-label">状态：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="lookalikeCrowd.status">
+	        </div>
+	    </div> -->
+	    <!-- <div class="control-group">
+	        <label class="control-label">算法名称：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="lookalikeCrowd.algorithmName">
+	        </div>
+	    </div> -->
+	  	
+	    
+	  	
+	  	<!-- <div class="control-group">
+	        <label class="control-label">创建人账号：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="lookalikeCrowd.createBy">
+	        </div>
+	    </div>
+	  	<div class="control-group">
+	        <label class="control-label">创建人：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="lookalikeCrowd.creator">
+	        </div>
+	    </div>
+	        <div class="control-group">
+	        <label class="control-label">修改人账号：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="lookalikeCrowd.updateBy">
+	        </div>
+	    </div>
+	        <div class="control-group">
+	        <label class="control-label">创建时间：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="lookalikeCrowd.createTime">
+	        </div>
+	    </div>
+	        <div class="control-group">
+	        <label class="control-label">修改时间：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="lookalikeCrowd.updateTime">
+	        </div>
+	    </div> -->
+	    
+	  	<!-- <div class="control-group">
+	    	<label class="control-label"></label>
+	    	<div class="controls">
+		        <button type="button" class="btn btn-primary" ng-click="saveLookalikeCrowd(lookalikeCrowd,true)">保存</button>
+		        <a href="javascript:;" class="btn btn-default" ng-click="goBackHistory();">取消</a>
+		        <button ng-if="isEdit" type="button" class="btn btn-info ml-5" ng-click="saveLookalikeCrowd(lookalikeCrowd,false)">重新计算</button>
+	        </div>
+	    </div> -->
+	    <div class="view-rules" ng-if="isViewRule"></div>
+	</form>
+</div>
+<div class="form-horizontal-btns clrfix ng-hide" ng-show="!isViewRule">
+	<div class="form-btn btn-blue-hg35" ng-click="saveLookalikeCrowd(lookalikeCrowd,formHorizontal)">保存</div>
+    <a href="javascript:;" class="form-btn btn-white-hg35" ng-click="goBackHistory();">取消</a>
+    <div ng-if="isEdit" class="form-btn btn-blue-hg35" ng-click="restartLookalikeCrowd(lookalikeCrowd)">重新计算</div>
+</div>
+

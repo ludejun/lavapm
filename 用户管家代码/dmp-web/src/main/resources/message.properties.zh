@@ -1,0 +1,9 @@
+code1=输入参数错误，{0}
+code2=没有磁盘空间
+null.point.exception=空指针异常
+dsp.launch.exception.unselected.crowd=未选择排除已投放客户！
+dsp.launch.exception.unselected.channel=未选择需求方平台！
+potential.crowd.compute.unfinished.export.exceptioin=潜在人群信息下载失败，还未计算完成！
+
+attribute.create.columnCode.duplicate.exception=属性编号重复，请修改！
+attribute.create.columnName.duplicate.exception=属性名称重复，请修改！

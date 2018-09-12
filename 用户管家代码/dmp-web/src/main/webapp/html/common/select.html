@@ -1,0 +1,24 @@
+<div class="select-box">
+	<div class="select-text" ng-click="toggleShowSelectList();"><span>{{selectSearchObject.selectLabel}}</span><i class="i-arrow"></i></div>
+	<div class="select-list" ng-if="isShowSelectList" ng-click="clickSelectList();">
+		<div class="select-search">
+			<i class="i-search"></i>
+			<input ng-model="selectSearchObject.keyword" type="text" placeholder="{{selectSearchObject.placeholder}}" ng-keyup="filterSelectVals();"/>
+			<i class="i-clear ng-hide" ng-click="clearSelectSearchObjectKey();" ng-show="selectSearchObject.keyword"></i>
+		</div>
+		<div class="list">
+			<dl ng-repeat="tc in selectTree">
+				<dt ng-if="tc.isShow">
+					<a href="javascript:;" ng-click="selectItemName(tc);">
+						<i class="i-arrow" ng-class="{'i-arrow-rg':!tc.isShowChildren}" ng-if="tc.children && tc.children.length > 0" ng-click="toggelShowChildren(tc);"></i>
+						{{tc.name}}
+					</a>
+				</dt>
+				<dd ng-if="tc.children && tc.children.length > 0 && tc.isShowChildren" ng-repeat="tcc in tc.children" ng-show="tcc.isShow">
+					<a href="javascript:;" ng-click="selectItemName(tcc);">{{tcc.name}}</a>
+				</dd>
+			</dl>
+			<div ng-if="hasNoSelectDatas" class="no-data">暂无数据</div>
+		</div>
+	</div>
+</div>

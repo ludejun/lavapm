@@ -1,0 +1,97 @@
+<div class="clrfix operator-panel">
+	<a data-ui-sref="potentialCrowds_new" class="btn-add"><i class="icons icons-add"></i>添加潜在人群</a>
+	<!-- <button data-backdrop="false" ng-click="showAddEidtPotentialLayer(potentialCrowd);" type="button" data-template="html/crowd/dialog/PotentialCrowdDialog.html" bs-modal="modal" class="btn btn-primary fl">添加潜在人群</button> -->
+	<!-- <div class="fr">	
+		<div data-search role="search"></div>
+	</div> -->
+</div>
+<div class="ng-table-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">潜在人群列表</div>
+		<div class="search" data-search role="search"></div>
+	</div>
+	<table ng-table="tableParams" class="table ng-table-responsive table-hover">
+	    <tr ng-repeat="potentialCrowd in $data">
+	       <!-- <td data-title="'序号'">{{$index + 1}}</td>
+	       <td data-title="'唯一标识'">{{potentialCrowd.id}}</td> -->
+	       <!-- <td data-title="'人群编号'">{{potentialCrowd.code}}</td> -->
+	       <td data-title="'名称'"><div>{{potentialCrowd.name}}</div></td>
+	       <!-- <td data-title="'种子客群'">{{potentialCrowd.seedCrowdId}}</td> -->
+	       <td data-title="'种子人群'"><div>{{potentialCrowd.seedCrowdName}}</div></td>
+	       <!-- <td data-title="'是否使用优化人群'">
+	       		<div class="max-wd50 t-o-e" title="{{potentialCrowd.isOptimization | DictFormatter : 'COMMON_YES_NO'}}">
+	       			{{potentialCrowd.isOptimization | DictFormatter : 'COMMON_YES_NO'}}
+	       		</div>
+	       </td> -->
+	       <td data-title="'获客数量'"><div>{{potentialCrowd.acquisitionNumber}}</div></td>
+	       <td data-title="'获客渠道 '"><div>{{potentialCrowd.acquisitionChannel | DictFormatter : 'ACQUISITION_CHANNEL'}}</div></td>
+	       <!-- <td data-title="'描述'">{{potentialCrowd.description}}</td> -->
+	       <td data-title="'投放渠道 '"><div>{{potentialCrowd.dspChannel | DictFormatter : 'DSP_CHANNEL'}}</div></td>
+	       <td data-title="'开始时间'">
+	       		<div class="max-wd120 t-o-e" title="{{potentialCrowd.dspStartDate | DateFormatDefault}}">
+	       			{{potentialCrowd.dspStartDate | DateFormatDefault}}
+	       		</div>
+	       </td>
+	       <td data-title="'结束时间'">
+	       	   <div class="max-wd120 t-o-e" title="{{potentialCrowd.dspEndDate | DateFormatDefault}}">
+	       		{{potentialCrowd.dspEndDate | DateFormatDefault}}
+	     	   </div>
+	     </td>
+	      <!--  <td data-title="'创建人账号'">{{potentialCrowd.createBy}}</td>
+	       <td data-title="'创建人'">{{potentialCrowd.creator}}</td>
+	       <td data-title="'修改人账号'">{{potentialCrowd.updateBy}}</td>
+	       <td data-title="'创建时间'">{{potentialCrowd.createTime}}</td>
+	       <td data-title="'修改时间'">{{potentialCrowd.updateTime}}</td> -->
+	       <td data-title="'操作'">
+	       		<div class="min-wd140 ng-table-operator">
+	       			<!-- <a ui-sref="crowd_portrait({potentialCrowdId:potentialCrowd.id})">画像</a> -->
+		       	   	<a ui-sref="potentialCrowds_edit({potentialCrowdId:potentialCrowd.id})">编辑</a>
+		       	   	<a class="more" ng-class="{'active':potentialCrowd.isShowMoreOperator}" style="text-indent:20px;cursor: pointer;" ng-click="showMoreOperator(potentialCrowd);">更多<i class="icons icons-more"></i></a>
+		       	   	
+		       	   	<ul class="more-ul" ng-if="potentialCrowd.isShowMoreOperator">
+		       	   		<li>
+		       	   			<a href="javascript:;" ng-click="exportPotentialCrowd(potentialCrowd);">
+		       	   				<i class="icons icons-more-export"></i>导出
+		       	   			</a>
+		       	   		</li>
+		       	   		<!-- <li>
+		       	   			<a ui-sref="dspLaunchs_new({crowdType:'PC',crowdName:potentialCrowd.name})">
+		       	   				<i class="icons icons-more-launch"></i>投放
+		       	   			</a>
+		       	   		</li> -->
+		       	   		<li>
+		       	   			<a href="javascript:;" ng-click="removePotentialCrowd(potentialCrowd);">
+		       	   				<i class="icons icons-more-delete"></i>删除
+		       	   			</a>
+		       	   		</li>
+		       	   		<!-- <li>
+		       	   			<a href="javascript:;">
+		       	   				<i class="icons icons-more-refresh"></i>重新匹配
+		       	   			</a>
+		       	   		</li> -->
+		       	   		<li>
+		       	   			<a  ui-sref="potentialCrowdCalcRecords({potentialCrowdId:potentialCrowd.id,potentialCrowdName:potentialCrowd.name})">
+		       	   				<i class="icons icons-more-records"></i>任务日志
+		       	   			</a>
+		       	   		</li>
+		       	   	</ul>
+	       			
+		           <!-- <i data-backdrop="false" class="icons icon-toufang" title="投放" ng-click="openDeliveryDialog(potentialCrowd);" data-template="html/crowd/dialog/PotentialCrowdDeliveryDialog.html" bs-modal="modal"></i> -->
+		           <!-- <i data-backdrop="false" class="icons icon-activity" title="创建投放活动" ng-click="openDeliveryDialog(potentialCrowd);" data-template="html/crowd/dialog/CrowdDeliveryDialog.html" bs-modal="modal"></i> -->
+
+	       			<!-- <i data-backdrop="false" title="编辑" ng-click="showAddEidtPotentialLayer(potentialCrowd);" data-template="html/crowd/dialog/PotentialCrowdDialog.html" bs-modal="modal" class="icons icon-edit"></i> -->
+		           
+		           
+		          
+	       		</div>
+	       </td>
+	       <!-- <td data-title="'状态'">
+	       		<div class="t-o-e" 
+	           		ng-class="{'status-primary':potentialCrowd.status == 1,'status-success':potentialCrowd.status == 2 || potentialCrowd.status == 3,'status-error':potentialCrowd.status == -1,'status-ready':potentialCrowd.status == 0}"
+	                title="{{potentialCrowd.status | DictFormatter : 'TAG_CAL_RECORDS_STATUS'}}">
+	                {{potentialCrowd.status | DictFormatter : 'TAG_CAL_RECORDS_STATUS'}}
+	           </div>
+	       </td> -->
+	    </tr>
+	</table>
+</div>

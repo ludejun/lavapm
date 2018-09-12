@@ -1,0 +1,142 @@
+<div class="ng-table-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">调度任务列表</div>
+		<div class="search" data-search role="search"></div>
+		
+	</div>
+	
+	<div ng-if="isShowMoreSearch" class="more-search-box">
+		<ul class="clrfix">
+			<li>
+				<div class="label">调度任务名称</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.name">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in schedulerTaskList" value="{{sts.name}}" ng-selected="sts.name == moreSearchCondition.name">{{sts.name}}</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="label">工程名称</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.azkabanProjectName" ng-maxlength="256">
+				</div>
+			</li>
+			<!-- <li>
+				<div class="label">调度任务编码</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.code" ng-maxlength="256">
+				</div>
+			</li>
+			<li>
+				<div class="label">所属系统</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.systemCode">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in systemApps" value="{{sts.appCode}}" >{{sts.appCode}}</option>
+					</select>
+				</div>
+			</li> -->
+			<li>
+				<div class="label">应用系统</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.dataAppId">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in systemApps" value="{{sts.appCode}}" ng-selected="sts.appCode == moreSearchCondition.dataAppId">{{sts.appCode}}</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="label">状态</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.status">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in schedulerTaskStatusList" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.status">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="label">描述</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.description" ng-maxlength="64">
+				</div>
+			</li>
+			<li>
+				<div class="label">创建人</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.creator" ng-maxlength="64">
+				</div>
+			</li>
+			<li>
+				<div class="label">创建时间</div>
+				<div class="control">
+					<div start-date="moreSearchCondition.createTimeStart" end-date="moreSearchCondition.createTimeEnd" td-change="changeCreateTime" td-date-condition date-range="dateRange" class="form-control date-condition" type="text"></div>
+					<!-- <input data-max-date="today" readonly class="form-control fl form-date" type="text" ng-model="moreSearchCondition.createTimeStart" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker>
+		            <span class="fl ml-10">至</span>
+		            <input data-max-date="today" readonly class="form-control fl ml-10 form-date" type="text" ng-model="moreSearchCondition.createTimeEnd" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker> -->
+				</div>
+			</li>
+		</ul>
+		
+		<div class="btns-box">
+			<div class="btns">
+				<button type="button" class="btn btn-primary btn-sm ml-10" ng-click="search();">搜索</button>
+	        	<button type="button" class="btn btn-default btn-sm" ng-click="resetMoreSearchCondition();">重置</button>
+			</div>
+		</div>
+		
+	</div>
+	
+	<table ng-table="tableParams" class="table ng-table-responsive table-hover">
+	    <tr ng-repeat="schedulerTask in $data">
+	       <!-- <td data-title="'序号'"><div>{{$index + 1}}</div></td> -->
+	       <td data-title="'调度任务名称'"><div class="min-wd100">{{schedulerTask.name}}</div></td>
+	       <td data-title="'Azkaban工程名称'">
+	       		<div class="min-wd100">
+		      			{{schedulerTask.azkabanProjectName}}
+	      		</div>
+	      	</td>
+	       <td data-title="'调度任务编码'">
+	       		<div class="min-wd100">
+	       			<a href="javascript:;" data-backdrop="false" ng-click="openIframe(schedulerTask);" data-template="html/monitor/dialog/SchedulerTaskDialog.html" bs-modal="modal">
+		       		{{schedulerTask.code}}
+		       		</a>
+	      		</div>
+	      	</td>
+
+	       <!-- <td data-title="'所属系统'"><div>{{schedulerTask.systemCode}}</div></td> -->
+	       <td data-title="'应用系统'"><div>{{schedulerTask.dataAppId}}</div></td>
+	       <td data-title="'状态'"><div>{{schedulerTask.status | DictFormatter : 'SCHEDULER_TASK_STATUS'}}</div></td>
+	       <td data-title="'描述'"><div>{{schedulerTask.description}}</div></td>
+	       <td data-title="'创建人'"><div>{{schedulerTask.creator}}</div></td>
+	       <td data-title="'创建时间'"><div class="max-wd120 t-o-e" title="{{schedulerTask.createTime | DateFormatDefault}}">{{schedulerTask.createTime | DateFormatDefault}}</div></td>
+	       <!-- <td data-title="'调度任务ID'"><div class="min-wd100">{{schedulerTask.id}}</div></td> -->
+	       <!-- <td data-title="'JobFlow'">
+	      		<div>
+	      			<a href="javascript:;" data-backdrop="false" ng-click="openIframe(schedulerTask);" title="{{schedulerTask.azkabanJobFlowId}}" data-template="html/monitor/dialog/SchedulerTaskDialog.html" bs-modal="modal">
+	      				{{schedulerTask.azkabanJobFlowId}}
+	      			</a>
+	      		</div>
+	      </td> -->
+	       
+	       <!--  -->
+	       <!-- <td data-title="'azkaban工程名称'"><div>{{schedulerTask.azkabanProjectName}}</div></td>
+	       <td data-title="'azkaban工程id'"><div>{{schedulerTask.azkabanProjectId}}</div></td>
+	       <td data-title="'azkaban工程版本'"><div>{{schedulerTask.azkabanProjectVersion}}</div></td>
+	       
+	       <td data-title="'job flow类型 0'"><div>{{schedulerTask.azkabanJobFlowType}}</div></td> -->
+	       
+	      <!--  <td data-title="'创建人账号'"><div>{{schedulerTask.createBy}}</div></td> -->
+	       
+	       <!-- <td data-title="'修改人账号'"><div>{{schedulerTask.updateBy}}</div></td> -->
+	       
+	      <!--  <td data-title="'修改时间'"><div>{{schedulerTask.updateTime}}</div></td> -->
+	      
+	      <td data-title="'操作'">
+	      		 <div class="ng-table-operator">
+		       	   	<a href="javascript:;" ng-click="dialogInit('edit',schedulerTask);" data-backdrop="false" data-template="html/monitor/dialog/SchedulerTaskEditDialog.html" bs-modal="modal" >编辑</a>
+	       		</div>
+	       </td>
+	    </tr>
+	</table>
+</div>

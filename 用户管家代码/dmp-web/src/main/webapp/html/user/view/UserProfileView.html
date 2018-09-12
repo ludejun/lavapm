@@ -1,0 +1,491 @@
+<!-- <div class="page-title">用户档案</div> -->
+
+<div class="go-back-list">
+	<!-- <a data-ui-sref="userProfiles"><i class="icons icons-arrow-left"></i>返回用户列表</a> -->
+	<a href="javascript:;" ng-click="goBackHistory();"><i class="icons icons-arrow-left"></i>返回用户列表</a>
+</div>
+
+<div class="custom-panel-box custom-panel-box-info">
+	<div class="custom-panel-body">
+		<ul class="user-profile-info">
+			<li class="clrfix li01">
+				<div class="fl wd-p-80">
+					<div class="img"></div>
+					<div class="text">
+						<div>用户ID</div>
+						<h5>{{userProfile.user_id}}</h5>
+					</div>
+					<div class="text">
+						<div>所属人群<span class="tip">{{userProfileCrowd}}</span></div>
+						<div>最后登录时间：<span>{{userProfile.first_party_profile.last_login_time}}</span></div>
+					</div>
+				</div>
+				<!-- <div class="fr wd-p-20">
+					<a href="javascript:;" class="btn-green-hg35">
+	    	   			<i class="icon-crowd-toufang"></i>立即推送
+	    	   		</a>
+				</div> -->
+			</li>
+			<li class="clrfix li02">
+				<div class="title"><i></i>人口属性</div>
+				<div class="con">
+					<div class="clrfix attribute-list">
+						<div class="item">
+							<span class="lb">姓名：</span>
+							<span class="val">{{userProfile.first_party_profile.chineseName}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">身份证号：</span>
+							<span class="val">{{userProfile.first_party_profile.idNo}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">性别：</span>
+							<span class="val">{{userProfile.first_party_profile.sex}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">年龄：</span>
+							<span class="val">{{userProfile.first_party_profile.age}}岁</span>
+						</div>
+						<div class="item">
+							<span class="lb">民族：</span>
+							<span class="val">{{userProfile.first_party_profile.nation}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">出生季节：</span>
+							<span class="val">{{userProfile.first_party_profile.birth_season}}</span>
+						</div>
+					</div>
+					<div class="clrfix attribute-list">
+						<div class="item">
+							<span class="lb">星座：</span>
+							<span class="val">{{userProfile.first_party_profile.constellation}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">国籍：</span>
+							<span class="val">{{userProfile.first_party_profile.nationality}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">出生地：</span>
+							<span class="val">{{userProfile.first_party_profile.birthplace}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">人生阶段：</span>
+							<span class="val">{{userProfile.first_party_profile.life_stage}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">当前居住省：</span>
+							<span class="val">{{userProfile.first_party_profile.province}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">当前居住市：</span>
+							<span class="val">{{userProfile.first_party_profile.city}}</span>
+						</div>
+					</div>
+					<div class="clrfix attribute-list">
+						<div class="item">
+							<span class="lb">当前距离最近万达广场名称：</span>
+							<span class="val">{{userProfile.first_party_profile.nearest_wanda_plaza}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">职业：</span>
+							<span class="val">{{userProfile.first_party_profile.profession}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">工作状态：</span>
+							<span class="val">{{userProfile.first_party_profile.working_state}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">单位所属行业：</span>
+							<span class="val">{{userProfile.first_party_profile.industry_type}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">最高学历：</span>
+							<span class="val">{{userProfile.first_party_profile.highest_education}}</span>
+						</div>
+						<div class="item">
+							<span class="lb">婚姻状况：</span>
+							<span class="val">{{userProfile.first_party_profile.marital_state}}</span>
+						</div>
+					</div>
+				</div>
+			</li>
+			<li class="clrfix li03">
+				<div class="title clrfix">
+					<i></i>所属人群<!-- <span>（最后一次访问的信息）</span> -->
+					<!-- <label><input type="checkbox" ng-click="showHideHistoryCrowds();"/>显示历史所属人群</label> -->
+				</div>
+				<div class="con clrfix">
+					<div class="list list1">
+						<span ng-repeat="(k,v) in userProfile.crowds">{{v.name}}</span>
+					</div>
+					
+					<!-- <div class="list list2" ng-if="showHistoryCrowds">
+						<span>活跃用户</span>
+						<span>深度使用用户</span>
+						<span>免费用户</span>
+						<span>潜力付费用户</span>
+					</div> -->
+					
+				</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="clrfix">
+	<div class="custom-panel-box fl wd-p-49 custom-panel-box-credit">
+		<div class="custom-panel-head clrfix">
+			<span class="title">信用信息</span>
+			<div class="tip">
+				<i class="i-lf"></i>
+				<span>B级</span>
+				<i class="i-rg"></i>
+			</div>
+			<div class="help-box">
+				<i class="i-help"></i>
+				<i class="i-arrow"></i>
+				<dl>
+					<dt>什么是B级信用信息？</dt>
+					<dd>得分在49分以下，客户的收入水平较低，偿债意愿不强，社会地位较低，家庭环境较差，一般只能获得3000元授信额度。</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="custom-panel-body clrfix" ng-if="userProfile && userProfile.creditInfo">
+			<div class="chart" data-td-highcharts struct="highchartCreditChart"></div>
+			<ul>
+				<li>
+					<span class="lb">职业：</span>
+					<span class="val">{{userProfile.first_party_profile.professional}}</span>
+				</li>
+				<li>
+					<span class="lb">学历：</span>
+					<span class="val">{{userProfile.first_party_profile.school_level}}</span>
+				</li>
+				<!-- <li>
+					<span class="lb">收入：</span>
+					<span class="val">12,000元</span>
+				</li> -->
+				<li>
+					<span class="lb">资产：</span>
+					<span class="val">{{userProfile.first_party_profile.assets}}元</span>
+				</li>
+				<li>
+					<span class="lb">负债：</span>
+					<span class="val">{{userProfile.first_party_profile.liabilities}}元</span>
+				</li>
+				<li>
+					<span class="lb">逾期次数：</span>
+					<span class="val">{{userProfile.first_party_profile.overdue_number}}次</span>
+				</li>
+				<li>
+					<span class="lb">信用评分：</span>
+					<span class="val">{{userProfile.first_party_profile.credit_score}}分</span>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="custom-panel-body clrfix" ng-if="!userProfile || !userProfile.creditInfo">
+			<div class="no-portrait"><div class="img"></div><div class="text">暂无数据</div></div>
+		</div>
+		
+	</div>
+	
+	<div class="custom-panel-box fr wd-p-49">
+		<div class="custom-panel-head clrfix">
+			<span class="title">资产数据</span>
+			<div class="tip">
+				<i class="i-lf"></i>
+				<span>高价值</span>
+				<i class="i-rg"></i>
+			</div>
+			<div class="help-box">
+				<i class="i-help"></i>
+				<i class="i-arrow"></i>
+				<dl>
+					<dt>什么是高价值客户？</dt>
+					<dd>高净值客户一般指个人金融资产和投资性房产等可投资资产总值较高的社会人群。</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="custom-panel-body">
+			<div class="chart" ng-if="assetDataPieData && assetDataPieData.valueList.length > 0" data-td-echarts struct="echartAssetDataPie" id="echartAssetDataPie"></div>
+			<div ng-if="!assetDataPieData || !assetDataPieData.valueList || assetDataPieData.valueList.length == 0" class="no-portrait"><div class="img"></div><div class="text">暂无数据</div></div>
+		</div>
+	</div>
+</div>
+
+
+<div class="custom-panel-box custom-panel-box-consume">
+	<div class="custom-panel-head clrfix">
+		<span class="title">消费数据</span>
+		<div class="tip">
+			<i class="i-lf"></i>
+			<span>高忠诚度</span>
+			<i class="i-rg"></i>
+		</div>
+		<div class="help-box">
+			<i class="i-help"></i>
+			<i class="i-arrow"></i>
+			<dl>
+				<dt>什么是忠诚度？</dt>
+				<dd>指的是用户出于对企业或品牌的偏好而经常性重复购买的程度。对于网站来说，用户忠诚度则是用户出于对网站的功能或偏好而经常访问该网站的行为。</dd>
+			</dl>
+		</div>
+	</div>
+	<div class="custom-panel-body">
+		<div class="filters clrfix">
+			<ul>
+				<li ng-repeat="il in userConsumeDataTimesList" ng-class="{'active':userConsumeFilter.time == il.id}" ng-click="changeUserConsumeFilter(il,'time');">{{il.label}}</li>
+			</ul>
+			<ul class="maps-ul">
+				<li ng-repeat="il in userConsumeDataMapsList" ng-class="{'active':userConsumeFilter.chart == il.id}" ng-click="changeUserConsumeFilter(il,'chart');">
+					<i class="icons-user-consume icons-user-consume-{{il.code}}"></i>
+				</li>
+			</ul>
+		</div>
+		<div class="chart" data-td-highcharts struct="highchartConsumeDataChart" ng-if="userConsumeFilter.chart !='table'"></div>
+		
+		<div class="ng-table-container" ng-show="userConsumeFilter.chart =='table' && consumeTableDatas && consumeTableDatas.tbody && consumeTableDatas.tbody.length > 0"">
+			<table class="table ng-table-responsive table-hover ng-table">
+				<thead>
+					<tr>
+						<th ng-repeat="thead in consumeTableDatas.thead">{{thead.label}}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="tr in consumeTableDatas.tbody">
+						<td ng-repeat="td in tr.list">
+							<div class="t-o-e" title="{{td.label}}">{{td.label}}</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		
+		<div class="no-portrait" ng-show="userConsumeFilter.chart =='table' && (!consumeTableDatas || !consumeTableDatas.tbody || consumeTableDatas.tbody.length == 0)">
+			<div class="img"></div>
+			<div class="text">暂无数据</div>
+		</div>
+		
+	</div>
+</div>
+
+<div class="ng-table-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">
+			{{productCategoryObject.selectLabel}}
+			<!-- <div td-tree-select menu-elem="productCategoryObject.menuElem" select-node-text="productCategoryObject.selectLabel" tree-select-callback="selectProductCallback" tree-source-list="selectProductCategoryTree"></div> -->
+		</div>
+		<!-- <div class="search" data-search role="search"></div> -->
+	</div>
+	
+	<div ng-if="isShowMoreSearch" class="more-search-box clrfix">
+		<ul class="clrfix">
+			<li>
+				<div class="label">产品名称</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.name" maxlength="256">
+				</div>
+			</li>
+			
+			<!-- <li>
+				<div class="label">标签编码</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.code" maxlength="14">
+				</div>
+			</li> -->
+			
+			<li>
+				<div class="label">人群类型</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.touchPointType">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in touchPointTypes" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.touchPointType">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			
+			<!-- <li>
+				<div class="label">描述</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.description" maxlength="512">
+				</div>
+			</li> -->
+			
+			<li>
+				<div class="label">标签来源</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.source">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in tagSources" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.source">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+		
+			<li>
+				<div class="label">状态</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.status">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in tagStatus" value="{{sts.dicItemKey}}" ng-if="sts.dicItemKey != -1" ng-selected="sts.dicItemKey == moreSearchCondition.status">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">计算状态</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.calcStatus">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in tagCalcStatus" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.calcStatus">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">创建人</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.creator" maxlength="64">
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">创建时间</div>
+				<div class="control">
+		            <div start-date="moreSearchCondition.createTimeStart" end-date="moreSearchCondition.createTimeEnd" td-change="changeCreateTime" td-date-condition date-range="dateRange" class="form-control date-condition" type="text"></div>
+		            <!-- <input data-max-date="today" readonly class="form-control fl form-date" type="text" ng-model="moreSearchCondition.createTimeStart" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker> -->
+		            <!-- <span class="fl ml-10">至</span>
+		            <input data-max-date="today" readonly class="form-control fl form-date ml-10" type="text" ng-model="moreSearchCondition.createTimeEnd" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker> -->
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">人群更新时间</div>
+				<div class="control">
+					<div start-date="moreSearchCondition.tagDataTimeStart" end-date="moreSearchCondition.tagDataTimeEnd" td-change="changeTagDataTime" td-date-condition date-range="dateRange" class="form-control date-condition" type="text"></div>
+					<!-- <input data-max-date="today" readonly class="form-control fl form-date" type="text" ng-model="moreSearchCondition.tagDataTimeStart" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker>
+		            <span class="fl ml-10">至</span>
+		            <input data-max-date="today" readonly class="form-control fl form-date ml-10" type="text" ng-model="moreSearchCondition.tagDataTimeEnd" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker> -->
+				</div>
+			</li>
+		</ul>
+		
+		<div class="btns-box">
+			<div class="btns">
+				<button type="button" class="btn btn-primary btn-sm ml-10" ng-click="search();">搜索</button>
+	        	<button type="button" class="btn btn-default btn-sm" ng-click="resetMoreSearchCondition();">重置</button>
+			</div>
+		</div>
+		
+		
+	</div>
+	
+	<table ng-table="productTableParams" class="table ng-table-responsive table-hover">
+	    <tr ng-repeat="product in $data.rows">
+	       <td data-title="'产品名称'"><div title="{{product.name}}">{{product.name}}</div></td>
+	       <td data-title="'购买金额'"><div title="{{product.price}}">{{product.price}}</div></td>
+	       <td data-title="'购买时间'"><div class="max-wd120 t-o-e" title="{{product.time}}">{{product.time}}</div></td>
+	       
+	       <td data-title="'有效期'">
+	       		<div class="t-o-e" title="{{product.period}}">
+	       			 {{product.period}}
+	       		</div>
+	       </td>
+	       <td data-title="'产品类别'">
+	       		<div class="t-o-e" title="{{product.productCategoryId}}">
+	       			 {{product.productCategoryId}}
+	       		</div>
+	       </td>
+	       
+	       <td data-title="'收益率'"><div title="{{product.rate}}" class="t-o-e">{{product.rate}}</div></td>
+	       
+	       <td data-title="'渠道'"><div class="t-o-e" title="{{product.channel}}">{{product.channel}}</div></td> 
+
+	       
+	    </tr>
+	</table>
+</div>
+
+
+
+<!--<div class="ng-table-container user-behavior-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">
+			<select class="form-control" ng-model="userBehaviorObject.behaviorType" ng-change="changeUserBehaviorFilter();" style="{{userBehaviorObject.style}}">
+				<option value="">全部行为</option>
+				<optgroup label="{{k}}" ng-repeat="(k,v) in userBehaviorGroupMap" ng-if="k">
+					<option ng-repeat="table in userBehaviorGroupMap[k]" value="{{table.id}}">{{table.label}}</option>
+				</optgroup>
+			</select>
+		</div>
+		
+		<div class="operators">
+			<div class="date-label">选择时段</div>
+			<div limit-first-date='userBehaviorObject.limitFirstDate' init-date-range-value="userBehaviorObject.initDateRangeValue" class="form-control date-condition date-condition-right" start-date="userBehaviorObject.timeStart" end-date="userBehaviorObject.timeEnd" td-change="changeUserBehaviorTime" fast-select-days="userBehaviorObject.fastSelectDays" td-date-condition date-range="dateRange" type="text"></div>
+		</div>
+		
+	</div>
+	
+	<div class="ng-table-body ng-table-body-empty">
+		<table ng-table="behaviorTableParams" class="table ng-table-responsive table-hover" freeze="true" id="tableParams">
+			<tbody ng-repeat="behavior in $data">
+				<tr ng-class="{'active-more-tr':behavior.isShowMore}">
+			       <td data-title="'时间'"><div title="{{behavior.log_time}}">{{behavior.log_time}}</div></td>
+			       <td data-title="'标记'">
+			       		<div>
+			       			<i class="icon-sign-blue" ng-if="behavior.behavior_type == 'fpd_market_trade' || behavior.behavior_type == 'fpd_moneybox_trade'"></i>
+			       			<i class="icon-sign-green" ng-if="behavior.behavior_type != 'fpd_market_trade' && behavior.behavior_type != 'fpd_moneybox_trade'"></i>
+			       		</div>
+			       	</td>
+			       <td data-title="'行为名称'"><div class="max-wd120 t-o-e" title="{{behavior.behavior_type | DictFormatter : 'BEHAVIOR_TYPE'}}">{{behavior.behavior_type | DictFormatter : 'BEHAVIOR_TYPE'}}</div></td>
+			       
+			       <td data-title="'平台'">
+			       		<div>
+			       			<i ng-if="behavior.account_id_type == 'app_tdid'" class="icons icon-touchpointtype1"  title="{{behavior.account_id_type | DictFormatter : 'TOUCH_POINT_TYPE'}}"></i>
+					       	<i ng-if="behavior.account_id_type == 'web_tdid'" class="icons icon-touchpointtype2" title="{{behavior.account_id_type | DictFormatter : 'TOUCH_POINT_TYPE'}}"></i>
+					       	<i ng-if="behavior.account_id_type == 'h5_tdid'" class="icons icon-touchpointtype3" title="{{behavior.account_id_type | DictFormatter : 'TOUCH_POINT_TYPE'}}"></i>
+					       	<i ng-if="behavior.account_id_type == 'account_id'" class="icons icon-touchpointtype99" title="{{behavior.account_id_type | DictFormatter : 'TOUCH_POINT_TYPE'}}"></i>
+					       	<i ng-if="behavior.account_id_type == 'mac_tdid'" class="icons icon-touchpointtype-mac" title="{{behavior.account_id_type | DictFormatter : 'TOUCH_POINT_TYPE'}}"></i>
+			       		</div>
+			       </td>
+			       <td data-title="'行为描述'">
+			       		<div class="t-o-e" title="{{behavior.behavior_summary}}">
+			       			 {{behavior.behavior_summary}}
+			       		</div>
+			       </td>
+			       
+			       <td data-title="'详情'">
+			       		<div class="ng-table-operator">
+				       	   	<a href="javascript:;" ng-click="showMoreUserBehavior(behavior,$data);">查看</a>
+				       	</div>
+			       </td>
+			    </tr>
+			    
+			    <tr ng-show="behavior.isShowMore" class="more-tr">
+			    	<td colspan="6">
+			    		<ul class="clrfix td-ul">
+			    			<li ng-repeat="b in behavior.userBehaviors">
+			    				<span>{{b.name}}：</span>
+			    				<strong title="{{b.value}}">{{b.value}}</strong>
+			    			</li>
+			    			<li style="width:100%;" class="ta-c" ng-if="!behavior.userBehaviors"><i class="icon-loading"></i></li>
+			    			<li style="width:100%;" class="ta-c" ng-if="behavior.userBehaviors.length == 0">暂无数据</li>
+			    		</ul>
+			    	</td>
+			    </tr>
+			    
+			</tbody>
+		    
+		    
+		</table>
+	</div>
+</div>
+-->
+
+<div id="menuProductContent" class="menuContent" style="display:none; position: absolute;">
+	<ul id="selectProductTree" class="ztree"></ul>
+</div>
+
+<div id="menuUserBehaviorContent" class="menuContent" style="display:none; position: absolute;">
+	<ul id="selectUserBehaviorTree" class="ztree"></ul>
+</div>

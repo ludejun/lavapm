@@ -1,0 +1,105 @@
+<div class="go-back-list"><a data-ui-sref="tagCategories"><i class="icons icons-arrow-left"></i>返回分类列表</a></div>
+
+<div class="form-horizontal-panel">
+	<div class="form-horizontal-title">构建人群</div>
+	<form class="form-horizontal clrfix">
+	    <div class="control-group">
+	        <label class="control-label"><span class="required">*</span>分类名称：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="tagCategory.name">
+	        </div>
+	    </div>
+	    
+	    <div class="control-group">
+	        <label class="control-label"><span class="required">*</span>分类层级：</label>
+	        <div class="controls">
+	        	<div class="clrfix radio-box">
+	        		<label ng-click="changeTagCateLevel('one');"><input type="radio" ng-checked ="tagCateLevel =='one'" name="tagCategory" ng-model="tagCateLevel"/>一级分类</label>
+	        		<label ng-click="changeTagCateLevel('two');"><input type="radio" ng-checked ="tagCateLevel =='two'"  name="tagCategory" ng-model="tagCateLevel"/>二级分类</label>
+	        	</div>
+	        	<div class="clrfix parent-tag-cate" ng-if="tagCateLevel =='two'">
+	        		<select class="form-control" ng-model="tagCategory.parentId">
+	        			<option value="">请选择父分类</option>
+						<option ng-if="tagCategory.id != tc.id" ng-repeat="tc in tagCategoryTree" value="{{tc.id}}" ng-selected="tc.id == tagCategory.parentId">{{tc.name}}</option>
+					</select>
+	        	</div>
+	            <!-- <input class="form-control" type="text" ng-model="tagCategory.parentId"> -->
+	        </div>
+	    </div>
+	    
+	    <div class="control-group">
+	        <label class="control-label">添加标签：</label>
+	        <div class="controls">
+	        	<div class="tag-list clrfix" style="margin-bottom:10px;" ng-if="selectedTagList.length > 0">
+					<div class="tag" title="{{tag.name}}" ng-repeat="tag in selectedTagList">
+						<span class="tag-name">{{tag.name}}</span>
+						<i title="移除{{tag.name}}" class="remove-tag" ng-click="removeHasSelectedTag(tag);">x</i>
+					</div>
+				</div>
+	            <div class="search-dropdown">
+					<input class="form-control" 
+						ng-focus="filterFirstTagList(firstTagObj.keyword);" 
+						ng-keyup="filterFirstTagList(firstTagObj.keyword);" 
+						ng-model="firstTagObj.keyword" placeholder = "请输入标签名称，输入结束后可回车确认">
+					<ul class="dropdown-menu ng-hide" ng-show="isShowFirstTagDropdownMenu">
+						<li ng-repeat="firstTag in firstTagFilterList"
+							ng-click="selectTagItem(firstTag);" ng-if="!firstTag.hasSelected && firstTag.status != -1">
+							<a href="javascript:;">{{firstTag.name}}</a>
+						</li>
+					</ul>
+				</div>
+	        </div>
+	    </div>
+	    
+	    <!-- <div class="control-group">
+	        <label class="control-label">描述：</label>
+	        <div class="controls">
+	            <textarea class="form-control" ng-model="tagCategory.description" rows="6"></textarea>
+	        </div>
+	    </div> -->
+	        <!-- <div class="control-group">
+	        <label class="control-label">创建人账号：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="tagCategory.createBy">
+	        </div>
+	    </div>
+	        <div class="control-group">
+	        <label class="control-label">创建人：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="tagCategory.creator">
+	        </div>
+	    </div>
+	        <div class="control-group">
+	        <label class="control-label">修改人账号：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="tagCategory.updateBy">
+	        </div>
+	    </div>
+	        <div class="control-group">
+	        <label class="control-label">创建时间：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="tagCategory.createTime">
+	        </div>
+	    </div>
+	        <div class="control-group">
+	        <label class="control-label">修改时间：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="tagCategory.updateTime">
+	        </div>
+	    </div> -->
+	      <!-- <div class="control-group">
+	    	<label class="control-label"></label>
+	    	<div class="controls">
+		        <button type="button" class="btn btn-success" ng-click="saveTagCategory(tagCategory)" ng-disabled="!tagCategory.name">保存</button>
+		        <a data-ui-sref="tagCategories" class="btn btn-default">返回列表</a>
+	        </div>
+	    </div> -->
+	</form>
+</div>
+
+<div class="form-horizontal-btns clrfix">
+	<button type="button" class="form-btn btn-blue-hg35" ng-click="saveTagCategory(tagCategory)">保存</button>
+    <a data-ui-sref="tagCategories" class="form-btn btn-white-hg35">返回列表</a>
+</div>
+
+

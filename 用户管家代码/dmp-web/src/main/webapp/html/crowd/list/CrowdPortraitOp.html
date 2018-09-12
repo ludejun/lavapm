@@ -1,0 +1,711 @@
+<div ng-click="otherAreaOnclick();">
+	<div class="crowd-portrait-op-head">
+		<div class="position clrfix">
+			<div class="go-back-list">
+				<a href="javascript:;" ng-click="goBackHistory();" ng-if="!parentHash">
+					<i class="icons icons-arrow-left"></i>返回人群列表
+				</a>
+				<a href="{{parentHash}}" ng-if="parentHash">
+					<i class="icons icons-arrow-left"></i>返回人群列表
+				</a>
+			</div>
+	
+		</div>
+		
+		<div class="clrfix" ng-class="{'overview-compare-box':isShowCrowdComparePanel}">
+			<div class="overview clrfix" ng-show="isLoadedCrowd">
+				<dl class="lf">
+					<dt ng-if="crowdDetails.crowdIcon != null" class="{{crowdDetails.crowdIcon}}"  title="{{crowdDetails.touchPointTypeName}}"></dt>
+					<dt ng-if="crowdDetails.crowdIcon == null" class="img img-other-crowd-type"  title="{{crowdDetails.touchPointTypeName}}"></dt>				
+					<!--  
+					<dt class="img img-app" ng-if="crowdDetails.touchPointType == 'app_tdid'" title="{{crowdDetails.touchPointTypeName}}"></dt>
+					<dt class="img img-h5" ng-if="crowdDetails.touchPointType == 'h5_tdid'" title="{{crowdDetails.touchPointTypeName}}"></dt>
+					<dt class="img img-cross-screen" ng-if="crowdDetails.touchPointType == 'account_id'" title="{{crowdDetails.touchPointTypeName}}"></dt>
+					<dt class="img img-web" ng-if="crowdDetails.touchPointType == 'web_tdid'" title="{{crowdDetails.touchPointTypeName}}"></dt>
+					<dt class="img img-mac" ng-if="crowdDetails.touchPointType == 'mac_tdid'" title="{{crowdDetails.touchPointTypeName}}"></dt>
+					<dt class="img img-other-crowd-type" ng-if="crowdDetails.touchPointType && crowdDetails.touchPointType != 'app_tdid' && 
+											crowdDetails.touchPointType != 'h5_tdid' && 
+											crowdDetails.touchPointType != 'account_id' && 
+											crowdDetails.touchPointType != 'web_tdid' && 
+											crowdDetails.touchPointType != 'mac_tdid'" title="{{crowdDetails.touchPointTypeName}}"></dt>-->
+					
+					<dd class="text">
+						<div class="name t-o-e" title="{{crowdDetails.name}}">{{crowdDetails.name}}</div>
+						<div class="clrfix">
+							<h2>{{crowdDetails.crowdCount}}</h2>
+							<span class="fl" style="margin:7px 0 0 8px;">人</span>
+							<span ng-click="showHideCrowdCompareControl();" class="btn-crowd-compare" ng-show="crowdDetails.crowdCount && crowdDetails.crowdCount > 0 && !isShowCrowdCompareControl && !isShowCrowdComparePanel">人群对比</span>
+						</div>
+					</dd>
+				</dl>
+				<ul ng-show="crowdDetails.crowdCount && crowdDetails.crowdCount > 0">
+					<li title="{{cf.name}}" ng-repeat="cf in crowdDetails.crowdFeatures">{{cf.name}}</li>
+				</ul>
+				<div class="ng-hide" ng-show="!isShowCrowdComparePanel && !isLoadingCrowd && crowdDetails.crowdCount == 0" style="float: left;width: 380px;height: 60px;line-height:60px;overflow: hidden;margin-left: 30px;">
+					人群规模为0，不能画像
+				</div>
+				<div class="rg" ng-show="!isShowCrowdComparePanel">
+					
+					<div class="operator">
+		    	   		<!--<a ui-sref="userProfiles_crowdId({crowdId:crowdDetails.id,parentHash:parentHash})" class="btn-green-hg40 ng-hide" ng-show="crowdInfo.isShowBtns">
+		    	   			<i class="icon-user-micro" style="margin: 12px 10px 0 0;"></i>用户微观
+		    	   		</a>
+		    	   		<div class="btn-user-mico ng-hide" ng-class="{'btn-user-mico2':crowdInfo.user_profile_status == '0' || crowdInfo.user_profile_status == '2','btn-user-mico1':crowdInfo.user_profile_status == '-1'}" ng-show="!crowdInfo.isShowBtns">
+		    	   			<div class="tooltip-box tooltip-box-right" ng-style="{'margin-top':(crowdInfo.user_profile_status == '2')?'-20px':'-30px'}">
+								<p>{{crowdInfo.msg}}</p>
+							</div>
+		    	   		</div>-->
+						<a ui-sref="crowds_export({crowdId:crowdDetails.id,sourcePage:'人群画像'})" class="btn-blue-hg40" ng-if="crowdDetails.crowdCount && crowdDetails.crowdCount > 0">
+		    	   			导出
+		    	   		</a>
+		    	   		<div class="tooltip-panel crowd-export-tooltip" ng-if="crowdDetails.crowdCount == 0">
+		    	   			<div class="btn-disabled-hg40">导出</div>
+			    	   		<div class="tooltip-box tooltip-box-right">
+								<p>人群规模为0，不支持导出</p>
+							</div>
+		    	   		</div>
+		    	   		
+					</div>
+					
+				</div>
+			</div>
+			
+			<div class="overview clrfix crowd-compare-overview" ng-if="isShowCrowdComparePanel">
+				<dl class="lf">
+					<dt ng-if="crowdCompareDetails.crowdIcon != null" class="{{crowdCompareDetails.crowdIcon}}"  title="{{crowdCompareDetails.touchPointTypeName}}"></dt>
+					<dt ng-if="crowdCompareDetails.crowdIcon == null" class="img img-other-crowd-type"  title="{{crowdCompareDetails.touchPointTypeName}}"></dt>
+					<!-- 
+					<dt class="img img-app" ng-if="crowdCompareDetails.touchPointType == 'app_tdid'" title="{{crowdCompareDetails.touchPointTypeName}}"></dt>
+					<dt class="img img-h5" ng-if="crowdCompareDetails.touchPointType == 'h5_tdid'" title="{{crowdCompareDetails.touchPointTypeName}}"></dt>
+					<dt class="img img-cross-screen" ng-if="crowdCompareDetails.touchPointType == 'account_id'" title="{{crowdCompareDetails.touchPointTypeName}}"></dt>
+					<dt class="img img-web" ng-if="crowdCompareDetails.touchPointType == 'web_tdid'" title="{{crowdCompareDetails.touchPointTypeName}}"></dt>
+					<dt class="img img-mac" ng-if="crowdCompareDetails.touchPointType == 'mac_tdid'" title="{{crowdCompareDetails.touchPointTypeName}}"></dt>
+					<dt class="img img-other-crowd-type" ng-if="crowdDetails.touchPointType && crowdCompareDetails.touchPointType != 'app_tdid' && 
+											crowdCompareDetails.touchPointType != 'h5_tdid' && 
+											crowdCompareDetails.touchPointType != 'account_id' && 
+											crowdCompareDetails.touchPointType != 'web_tdid' && 
+											crowdCompareDetails.touchPointType != 'mac_tdid'" title="{{crowdCompareDetails.touchPointTypeName}}"></dt> -->
+					
+					<dd class="text">
+						<div class="name t-o-e" title="{{crowdCompareDetails.name}}">{{crowdCompareDetails.name}}</div>
+						<div class="clrfix">
+							<h2>{{crowdCompareDetails.crowdCount}}</h2>
+							<span class="fl" style="margin:7px 0 0 8px;">人</span>
+						</div>
+					</dd>
+				</dl>
+				<ul ng-show="crowdCompareDetails.crowdCount && crowdCompareDetails.crowdCount > 0">
+					<li title="{{cf.name}}" ng-repeat="cf in crowdCompareDetails.crowdFeatures">{{cf.name}}</li>
+				</ul>
+				<div class="rg">
+					<div class="operator">
+						<span class="del-crowd-compare" ng-click="delCrowdCompare();" title="取消对比"></span>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="overview clrfix" ng-show="isShowCrowdCompareControl">
+			<div class="clrfix crowd-compare-control">
+				<div class="lb">选择人群：</div>
+				<div class="select" td-tree-select no-apply="crowdCompareSelect.noApply" menu-elem="crowdCompareSelect.menuElem" select-node-text="crowdCompareSelect.selectLabel" tree-keywords="crowdCompareSelect.keywords" tree-select-callback="selectCrowdCallback" tree-source-list="crowdCompareSelect.sourceList" ng-if="crowdCompareSelect.sourceList.length > 0"></div>
+				<!-- <div class="btns">
+					<span class="btn-blue-hg30" ng-click="startCrowdCompare();">开始对比</span>
+					<span class="btn-gray-hg30" ng-click="showHideCrowdCompareControl();">取消</span>
+				</div> -->
+				
+				<div class="rg">
+					<div class="operator" style="margin-top: -4px;">
+						<span class="del-crowd-compare" ng-click="showHideCrowdCompareControl();" title="取消对比"></span>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="crowd-portrait-op-con">
+		<div class="crowd-portrait-op-box">
+			<div class="clrfix">
+				<ul class="tabs-box-ul clrfix">
+					<!--<li ng-repeat="tab in tabGroups" ng-class="{'active':tab.isSelected}" ng-click="tabGroupsClick(tab);" ng-if="tab.isShowBtns" >
+						{{tab.name}}
+					</li>-->
+					<!--<li ng-repeat="tab in tabGroups" ng-class="{'active':tab.isSelected}" ng-if="!tab.isShowBtns" style="cursor: default;">
+						{{tab.name}}
+						<div class="tooltip-box tooltip-box-left" ng-style="{'margin-top':(crowdInfo.user_profile_status == '2')?'-20px':'-30px'}">
+							<p>{{crowdInfo.msgInsight}}</p>
+						</div>
+					</li>-->
+				</ul>
+			</div>
+			
+			<div class="title clrfix" ng-if="curTabGroup == 'crowdPortrait' && !noMetaDatas">
+				<ul class="tabs-groups">
+					<li ng-repeat="portrait in portraitAttributeGroups" ng-click="tabPortraitClick(portrait);" ng-class="{'active':portrait.isSelected}">{{portrait.attributeGroupName}}</li>
+				</ul>
+				<div class="operator" ng-click="stopEventPropagation();">
+					<div class="clrfix operator-dimensions" ng-show="portraitAttributes.length > 6">
+						<div class="dimen-label">画像维度</div>
+						<div class="dimen-select" ng-click="showHideDimensionsBox();">请选择</div>
+					</div>
+					<div class="dimensions-box" ng-if="isShowDimensionsBox">
+						<div class="dimensions-con clrfix">
+							<div class="dimensions-inner">
+								<div class="dimensions-inner-head">最多可选择<span>6</span>个维度</div>
+								<div class="dimensions-inner-con">
+									<div class="search">
+										<input type="text" placeholder="请输入关键字" ng-keyup="searchPortraitDimentions();" ng-model="portraitDimentionKeywords.keywords"/>
+										<i class="i-search"></i>
+										<i class="icon-clear" ng-if="portraitDimentionKeywords.keywords" ng-click="clearPortraitDimentionKeywords();"></i>
+										<div class="select-list ng-hide" ng-show="filterCrowdPortraitAttributes.length > 0">
+											<div class="item" ng-repeat="attribute in filterCrowdPortraitAttributes" ng-click="selectCrowdPortraitAttributeToList(attribute,portraitAttributes);">{{attribute.label}}</div>
+										</div>
+									</div>
+									<ul class="clrfix">
+										<li ng-repeat="attribute in portraitAttributes" ng-show="attribute.isShow">
+											<div class="dimension" title="{{attribute.label}}" ng-click="togglePortraitDimentionStatus(attribute);" ng-class="{'selected':attribute.isSelected}">
+												<i></i>
+												<span>{{attribute.label}}</span>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="dimensions-footer clrfix">
+							<div class="dimensions-btns">
+								<div class="button btn-ok" ng-click="confirmSelectedDimentions();">确定</div>
+								<div class="button btn-cancel" ng-click="showHideDimensionsBox();">取消</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<!--<div class="title clrfix crowd-insight-title" ng-if="curTabGroup == 'crowdInsight'">
+				<ul class="tabs-groups">
+					<li ng-repeat="ci in crowdInsights" ng-click="tabCrowdInsightClick(ci);" ng-class="{'active':ci.isSelected}">{{ci.attributeGroupName}}</li>
+				</ul>
+				
+				<div class="crowd-analysis-operator crowd-analysis-operator-left clrfix"  ng-show="curAttributeGroupCode == 'analysis'">
+					<div class="operator" ng-click="stopEventPropagation();">
+						<div class="clrfix operator-dimensions" ng-show="crowdAnalysisIndicatorsList.length > 0">
+							<div class="dimen-label">指标</div>
+							<div class="dimen-select" ng-click="showHideAnalysisIndicatorsBox();">请选择</div>
+						</div>
+						<div class="dimensions-box" ng-show="isShowAnalysisIndicatorsBox">
+							<div class="dimensions-con clrfix">
+								<div class="dimensions-inner">
+									<div class="dimensions-inner-head">最多可选择<span>3</span>个指标</div>
+									<div class="dimensions-inner-con">
+										<div class="search">
+											<input type="text" placeholder="请输入关键字" ng-keyup="searchAnalysisIndicatorsDimentions();" ng-model="analysisIndicatorsKeywords.keywords"/>
+											<i class="i-search"></i>
+											<i class="icon-clear" ng-if="analysisIndicatorsKeywords.keywords" ng-click="clearAnalysisIndicatorsKeywords();"></i>
+											<div class="select-list ng-hide" ng-show="filterCrowdAnalysisIndicatorsList.length > 0">
+												<div class="item" ng-repeat="attributeTable in filterCrowdAnalysisIndicatorsList" ng-click="selectItemToList(attributeTable,crowdAnalysisIndicatorsList);">{{attributeTable.name}}</div>
+											</div>
+										</div>
+										<ul class="clrfix">
+											<li ng-repeat="attributeTable in crowdAnalysisIndicatorsList" ng-show="attributeTable.isShow">
+												<div class="dimension" ng-click="toggleAnalysisIndicatorDimentionStatus(attributeTable);" ng-class="{'selected':attributeTable.isSelected}" title="{{attributeTable.name}}">
+													<i></i>
+													<span>{{attributeTable.name}}</span>
+												</div>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="dimensions-footer clrfix">
+								<div class="dimensions-btns">
+									<div class="button btn-ok" ng-click="confirmSelectedAnalysisIndicatorsDimentions();">确定</div>
+									<div class="button btn-cancel" ng-click="showHideAnalysisIndicatorsBox();">取消</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					
+					<div class="operator" ng-click="stopEventPropagation();">
+						<div class="clrfix operator-dimensions" ng-show="crowdAnalysisAttributesList.length > 0 && selectedAnalysisIndicatorsDimentions && selectedAnalysisIndicatorsDimentions.length > 0">
+							<div class="dimen-label">按属性细分</div>
+							<div class="dimen-select" ng-click="showHideAnalysisAttributesBox();">请选择</div>
+						</div>
+						<div class="dimensions-box" ng-show="isShowAnalysisAttributesBox">
+							<div class="dimensions-con clrfix">
+								<div class="dimensions-inner">
+									<div class="dimensions-inner-head">
+										<div class="fl">最多可选择<span>1</span>个属性的<span>3</span>个值</div>
+										<div class="analysis-attributes">
+											<select class="form-control" ng-model="crowdAnalysisFilter.attribute" ng-change="changeAnalysisAttribute();"  >
+												<option value="">请选择一个属性</option>
+												<option ng-repeat="il in crowdAnalysisAttributesList" value="{{il.name}}" ng-selected="il.name == crowdAnalysisFilter.attribute" >{{il.displayName}}</option>
+											</select>
+										</div>
+									</div>
+									<div class="dimensions-inner-con">
+										<div class="search">
+											<input type="text" placeholder="请输入关键字" ng-keyup="searchAnalysisAttributeValuesDimentions();" ng-model="analysisAttributeValuesKeywords.keywords"/>
+											<i class="i-search"></i>
+											<i class="icon-clear" ng-if="analysisAttributeValuesKeywords.keywords" ng-click="clearAnalysisAttributeValuesKeywords();"></i>
+											<div class="select-list ng-hide" ng-show="filterCrowdAnalysisAttributeValuesList.length > 0">
+												<div class="item" ng-repeat="attribute in filterCrowdAnalysisAttributeValuesList" ng-click="selectAnalysisAttributeValuesKeyToList(attribute,crowdAnalysisAttributeValuesList);">{{attribute.value}}</div>
+											</div>
+										</div>
+										<ul class="clrfix" ng-show="crowdAnalysisAttributeValuesList.length > 0">
+											<li ng-repeat="attribute in crowdAnalysisAttributeValuesList" ng-show="attribute.isShow">
+												<div class="dimension" ng-click="toggleAnalysisAttributeValueDimentionStatus(attribute);" ng-class="{'selected':attribute.isSelected}" title="{{attribute.value}}">
+													<i></i>
+													<span>{{attribute.value}}</span>
+												</div>
+											</li>
+										</ul>
+										<ul class="clrfix" ng-show="crowdAnalysisAttributeValuesList.length == 0 && !isLoadingAnalysisAttributeValues">
+											<li>暂无数据</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="dimensions-footer clrfix">
+								<div class="dimensions-btns">
+									<div class="button btn-ok" ng-click="confirmSelectedAnalysisAttributesValuesDimentions();">确定</div>
+									<div class="button btn-cancel" ng-click="showHideAnalysisAttributesBox();">取消</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				
+				<div class="crowd-analysis-operator clrfix"  ng-show="curAttributeGroupCode == 'analysis'">
+					<div class="operator-item">
+						<span class="lb">指标</span>
+						<select class="form-control" ng-model="crowdAnalysisFilter.indicator" ng-change="changeAnalysisIndicator();">
+							<option ng-repeat="il in crowdAnalysisIndicatorsList" value="{{il.id}}" ng-selected="il.id == crowdAnalysisFilter.indicator" >{{il.label}}</option>
+						</select>
+					</div>
+					<div class="operator-item">
+						<span class="lb">按属性细分</span>
+						<select class="form-control" ng-model="crowdAnalysisFilter.attribute" ng-change="changeAnalysisIndicator();">
+							<option ng-repeat="il in crowdAnalysisAttributesList" value="{{il.id}}" ng-selected="il.id == crowdAnalysisFilter.attribute" >{{il.label}}</option>
+						</select>
+					</div>
+					<div class="operator-item">
+						<span class="lb">时间</span>
+						<div limit-first-date="-89" fast-select-days="crowdAnalysisFilter.fastSelectDays" format-date-number="true" init-date-range-value="crowdAnalysisFilter.initDateRangeValue" start-date="crowdAnalysisFilter.startTime" end-date="crowdAnalysisFilter.endTime" td-change="changeCrowdAnalysisFilterTime" td-date-condition date-range="dateRange" class="form-control date-condition date-condition-right" type="text"></div>
+					</div>
+				</div>
+			</div>-->
+			
+			<div class="no-portrait" ng-if="curTabGroup == 'crowdPortrait' && noMetaDatas" >
+				<div class="img"></div>
+				<div class="text">暂无数据</div>
+			</div> 
+			
+			<div class="cons" ng-if="curTabGroup == 'crowdPortrait'  && !noMetaDatas">
+				<div class="portrait-item" ng-repeat="portrait in portraitAttributeGroups">
+					<div class="portrait-province" ng-if="hasLocationProvince && portrait.attributeGroupCode == curAttributeGroupCode && curAttributeGroupCode == 'location' && !isShowCrowdComparePanel">
+						<div class="portrait-title">{{curAttributeGroupName}}</div>
+						<div class="portrait-con">
+						
+							<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+				  				<div class="img"></div>
+				  				<div class="text">暂无数据</div>
+				  			</div>
+				  			<div class="clrfix province-box" ng-if="crowdDetails.crowdCount > 0">
+				  				<div class="province-map" data-td-echarts struct="echartChinaMapProvice" id="echartChinaMapProvice"></div>
+				  				<dl class="top-ten-box" td-string-html struct="proviceTopTenHtml"></dl>
+				  			</div>
+				  			
+						</div>
+					</div>
+					
+					
+					<div class="portrait-terminal" ng-if="hasLocationProvince && portrait.attributeGroupCode == curAttributeGroupCode  && curAttributeGroupCode == 'location' && isShowCrowdComparePanel">
+						<div class="portrait-title clrfix">{{curAttributeGroupName}}</div>
+						<div class="portrait-con clrfix portrait-con-compare">
+							<div class="terminal-box clrfix">
+								<div class="terminal-item">
+									<div class="portrait-box portrait-box-provice">
+										<div class="portrait-name clrfix">
+											<span class="fl">省份分布</span>
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+							  			<div ng-if="crowdDetails.crowdCount > 0" class="portrait">
+							  				<div class="province-portrait" data-td-echarts struct="echartChinaMapProvice" id="echartChinaMapProvice"></div>
+							  			</div>
+									</div>
+								</div>
+								
+								<div class="terminal-item">
+									<div class="portrait-box portrait-box-provice">
+										<div class="portrait-name clrfix">
+											<span class="fl">省份分布Top10</span>
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+							  			<div ng-if="crowdDetails.crowdCount > 0" class="portrait">
+							  				<dl class="top-ten-box" td-string-html struct="proviceTopTenHtml"></dl>
+							  			</div>
+									</div>
+								</div>
+								
+								
+							</div>
+						
+							<div class="terminal-box clrfix terminal-box-compare">
+							
+								<div class="terminal-item">
+									<div class="portrait-box portrait-box-provice">
+										<div class="portrait-name clrfix">
+											<span class="fl">省份分布</span>
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+							  			<div ng-if="crowdDetails.crowdCount > 0" class="portrait">
+							  				<div class="province-portrait" data-td-echarts struct="echartChinaMapProviceCompare" id="echartChinaMapProviceCompare"></div>
+							  			</div>
+									</div>
+								</div>
+								
+								<div class="terminal-item">
+									<div class="portrait-box portrait-box-provice">
+										<div class="portrait-name clrfix">
+											<span class="fl">省份分布Top10</span>
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+							  			<div ng-if="crowdDetails.crowdCount > 0" class="portrait">
+							  				<dl class="top-ten-box" td-string-html struct="proviceTopTenCompareHtml"></dl>
+							  			</div>
+									</div>
+								</div>
+								
+							</div>
+							
+							
+						</div>
+					</div>
+					
+					
+					<div class="portrait-city" ng-if="hasLocationCity && portrait.attributeGroupCode == curAttributeGroupCode && curAttributeGroupCode == 'location'">
+						<div class="portrait-title">城市级别</div>
+						<div class="portrait-con clrfix" ng-class="{'portrait-con-compare':isShowCrowdComparePanel}">
+							<div class="clrfix city-box">
+								<div class="city-item">
+									<div class="city-con">
+										<div class="city-title all-city-title">
+											<div class="name">全部城市</div>
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+										<div ng-if="crowdDetails.crowdCount > 0" class="portrait" data-td-highcharts struct="highchartCityAll"></div>
+									</div>
+								</div>
+								
+								<div class="city-item">
+									<div class="city-con">
+										<div class="city-title">
+											<div class="num">{{cityPercent.one}}</div>
+											<div class="name">一级城市</div>
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+										<div ng-if="crowdDetails.crowdCount > 0" class="portrait" data-td-highcharts struct="highchartCityLevelFirstTierCities">
+										</div>
+									</div>
+								</div>
+								
+								<div class="city-item">
+									<div class="city-con">
+										<div class="city-title">
+											<div class="num">{{cityPercent.two}}</div>
+											<div class="name">二级城市</div>
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+										<div ng-if="crowdDetails.crowdCount > 0" class="portrait" data-td-highcharts struct="highchartCityLevelTwoTierCities">
+										</div>
+									</div>
+								</div>
+								
+								<div class="city-item">
+									<div class="city-con">
+										<div class="city-title">
+											<div class="num">{{cityPercent.three}}</div>
+											<div class="name">三级城市</div>
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+										<div ng-if="crowdDetails.crowdCount > 0" class="portrait" data-td-highcharts struct="highchartCityLevelThirdTierCities">
+										</div>
+									</div>
+								</div>
+				  				
+				  			</div>
+				  			
+				  			
+				  			<div class="clrfix city-box city-box-compare" ng-if="isShowCrowdComparePanel">
+								
+								<div class="city-item">
+									<div class="city-con">
+										<div class="city-title all-city-title">
+											<div class="name">全部城市</div>
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+										<div ng-if="crowdDetails.crowdCount > 0" class="portrait" data-td-highcharts struct="highchartCityAllCompare"></div>
+									</div>
+								</div>
+								
+								<div class="city-item">
+									<div class="city-con">
+										<div class="city-title">
+											<div class="num">{{cityPercentCompare.one}}</div>
+											<div class="name">一级城市</div>
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+										<div ng-if="crowdDetails.crowdCount > 0" class="portrait" data-td-highcharts struct="highchartCityLevelFirstTierCitiesCompare">
+										</div>
+									</div>
+								</div>
+								
+								<div class="city-item ">
+									<div class="city-con">
+										<div class="city-title">
+											<div class="num">{{cityPercentCompare.two}}</div>
+											<div class="name">二级城市</div>
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+										<div ng-if="crowdDetails.crowdCount > 0" class="portrait" data-td-highcharts struct="highchartCityLevelTwoTierCitiesCompare">
+										</div>
+									</div>
+								</div>
+								
+								<div class="city-item">
+									<div class="city-con">
+										<div class="city-title">
+											<div class="num">{{cityPercentCompare.three}}</div>
+											<div class="name">三级城市</div>
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+										<div ng-if="crowdDetails.crowdCount > 0" class="portrait" data-td-highcharts struct="highchartCityLevelThirdTierCitiesCompare">
+										</div>
+									</div>
+								</div>
+				  				
+				  			</div>
+				  			
+				  			
+				  			
+				  			
+						</div>
+					</div> 
+					
+					<div class="portrait-terminal" ng-if="portrait.attributeGroupCode == curAttributeGroupCode  && curAttributeGroupCode != 'location'">
+						<div class="portrait-title clrfix">{{curAttributeGroupName}}</div>
+						<div class="portrait-con clrfix" ng-class="{'portrait-con-compare':isShowCrowdComparePanel}">
+							<div class="terminal-box clrfix">
+								<div class="terminal-item" ng-repeat="dimention in selectedPortraitDimentions" >
+									<div class="portrait-box">
+										<div class="portrait-name clrfix">
+											<span class="fl">{{dimention.label}}</span>
+											<select class="form-control" ng-model="dimention.metaAttributeViewType.defaultViewType" ng-change="changeDimentionViewType(dimention);">
+												<option ng-repeat="iu in dimention.metaAttributeViewType.viewTypes" value="{{iu.id}}" ng-selected="iu.id == dimention.metaAttributeViewType.defaultViewType">{{iu.name | DictFormatter : 'REPORT_VIEW_TYPE'}}</option>
+											</select>
+											<label title="过滤无效值可以排除掉那些数据中包含空值的记录。" class="filter-value fl">
+												<input ng-change="changeNullValueFilter(dimention);"  type="checkbox" ng-model="dimention.nullValueFilter">过滤无效值
+											</label>
+											
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+							  			<div ng-if="crowdDetails.crowdCount > 0" class="portrait">
+							  				<div data-td-highcharts struct="highchartPortrait[dimention.objectCode + '#' + dimention.id + '#' + crowdId]" class="hg250" ng-if="dimention.metaAttributeViewType.defaultViewType != '4'"></div>
+							  				<div data-td-echarts struct="highchartPortrait[dimention.objectCode + '#' + dimention.id + '#' + crowdId]" id="{{dimention.objectCode}}#{{dimention.id}}#{{crowdId}}" class="hg250" ng-if="dimention.metaAttributeViewType.defaultViewType == '4'"></div>
+							  			</div>
+									</div>
+								</div>
+							</div>
+							
+							<div class="terminal-box clrfix terminal-box-compare" ng-if="isShowCrowdComparePanel">
+								<div class="terminal-item" ng-repeat="dimention in selectedPortraitDimentions">
+									<div class="portrait-box">
+										<div class="portrait-name clrfix">
+											<span class="fl">{{dimention.label}}</span>
+											<select class="form-control" ng-model="dimention.metaAttributeViewType.defaultViewType" ng-change="changeDimentionViewType(dimention);">
+												<option ng-repeat="iu in dimention.metaAttributeViewType.viewTypes" value="{{iu.id}}" ng-selected="iu.id == dimention.metaAttributeViewType.defaultViewType">{{iu.name | DictFormatter : 'REPORT_VIEW_TYPE'}}</option>
+											</select>
+											<label title="过滤无效值可以排除掉那些数据中包含空值的记录。" class="filter-value fl">
+												<input ng-change="changeNullValueFilter(dimention);"  type="checkbox" ng-model="dimention.nullValueFilter">过滤无效值
+											</label>
+											
+										</div>
+										<div class="no-portrait" ng-if="crowdDetails.crowdCount == 0">
+							  				<div class="img"></div>
+							  				<div class="text">暂无数据</div>
+							  			</div>
+							  			<div ng-if="crowdDetails.crowdCount > 0" class="portrait">
+							  				<div data-td-highcharts struct="highchartPortrait[dimention.objectCode + '#' + dimention.id + '#' + crowdCompareDetails.id]" class="hg250" ng-if="dimention.metaAttributeViewType.defaultViewType != '4'"></div>
+							  				<div data-td-echarts struct="highchartPortrait[dimention.objectCode + '#' + dimention.id + '#' + crowdCompareDetails.id]" id="{{dimention.objectCode}}#{{dimention.id}}#{{crowdCompareDetails.id}}" class="hg250" ng-if="dimention.metaAttributeViewType.defaultViewType == '4'"></div>
+							  				
+							  			</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+				</div>
+				
+				
+				<!-- <div class="portrait-item hide" ng-if="curTab == 'people'">
+					<h5>性别比例</h5>
+					<div class="portrait-con">
+						<div class="portrait-sex">
+							<div class="img"></div>
+							<div class="vs"></div>
+							<div class="percent"></div>
+							<div class="square-box">
+								<div class="clrfix">
+									<div class="square square-blue"></div>
+									<div class="square square-blue"></div>
+									<div class="square square-blue"></div>
+									<div class="square square-blue"></div>
+									<div class="square square-blue"></div>
+									<div class="square square-blue"></div>
+									<div class="square square-blue"></div>
+									<div class="square square-blue"></div>
+									<div class="square square-blue"></div>
+									<div class="square square-blue"></div>
+									<div class="square square-blue"></div>
+									<div class="square square-violet"></div>
+									<div class="square square-violet"></div>
+									<div class="square square-violet"></div>
+									<div class="square square-violet"></div>
+									<div class="square square-violet"></div>
+									<div class="square square-violet"></div>
+									<div class="square square-violet"></div>
+									<div class="square square-violet"></div>
+									<div class="square square-violet"></div>
+								</div>
+								
+								
+							</div>
+						</div>
+					</div>
+				</div> -->
+	
+			</div>
+			
+			
+			<!--<div class="cons crowd-insight-box" ng-if="curTabGroup == 'crowdInsight'">
+				<div class="insight-item" ng-repeat="ci in crowdInsights"  ng-if="ci.attributeGroupCode == curAttributeGroupCode">
+					<div class="crowd-analysis" ng-if="curAttributeGroupCode == 'analysis'">
+						
+						<div class="crowd-analysis-box">
+							<div class="crowd-analysis-title clrfix" ng-show="crowdAnalysisTableDatas && crowdAnalysisTableDatas.tbody && crowdAnalysisTableDatas.tbody.length > 0">
+								<div class="operators">
+									<ul>
+										<li ng-repeat="il in crowdAnalysisTimesList" ng-class="{'active':crowdAnalysisFilter.time == il.id}" ng-click="changeCrowdAnalysisFilter(il,'time');">{{il.label}}</li>
+									</ul>
+									<ul class="maps-ul">
+										<li ng-repeat="il in crowdAnalysisMapsList" ng-class="{'active':crowdAnalysisFilter.chart == il.id}" ng-click="changeCrowdAnalysisFilter(il,'chart');">
+											<i class="icons-crowd-analysis icons-trend-chart-{{il.code}}"></i>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div ng-if="highchartCrowdAnalysis && crowdAnalysisTableDatas && crowdAnalysisTableDatas.tbody && crowdAnalysisTableDatas.tbody.length > 0" data-td-highcharts struct="highchartCrowdAnalysis" class="chart" ></div>
+							
+							<div class="no-portrait" ng-if="crowdAnalysisTableDatas.tbody.length == 0" >
+								<div class="img"></div>
+								<div class="text">暂无数据</div>
+							</div> 
+							
+	
+							
+							<div class="ng-table-container" ng-show="crowdAnalysisTableDatas && crowdAnalysisTableDatas.tbody && crowdAnalysisTableDatas.tbody.length > 0">
+								<table class="table ng-table-responsive table-hover ng-table">
+									<thead>
+										<tr>
+											<th ng-repeat="thead in crowdAnalysisTableDatas.thead">{{thead.label}}</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr ng-repeat="tr in crowdAnalysisTableDatas.tbody">
+											<td ng-repeat="td in tr">
+												<div class="t-o-e" title="{{td.label}}">{{td.label}}</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							
+						</div>
+						
+					</div>
+					
+					<div class="user-list-panel" ng-if="curAttributeGroupCode == 'users'">
+
+					</div>
+					
+				</div>
+				
+	
+			</div>-->
+			
+			
+		</div>
+	</div>
+
+</div>
+
+
+<div id="menuCrowdCompareContent" class="menuContent" style="display:none; position: absolute;">
+	<div class="search-box">
+		<div class="search">
+			<i class="i-search"></i>
+			<input type="text" ng-model="crowdCompareSelect.keywords" placeholder="输入关键字">
+			<i class="icon-clear ng-hide" ng-click="crowdCompareSelect.keywords=''" ng-show="crowdCompareSelect.keywords"></i>
+		</div>
+	</div>
+	
+	<ul id="selectCrowdCompareTree" class="ztree"></ul>
+</div>

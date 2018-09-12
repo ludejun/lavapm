@@ -1,0 +1,583 @@
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.account-list {
+    width: 100%;
+    height: 70px;
+    min-width: 1100px;
+    margin-top: 30px;
+}
+
+.account-list-search {
+    position: relative;
+    margin-left: 50px;
+}
+
+.account-list-search .searchClose {
+    position: absolute;
+    top: 12px;
+    right: 86px;
+    color: #ddd;
+    font-size: 12px;
+    font-family: inherit;
+    font-weight: 600;
+    cursor: pointer;
+    /*display: none;*/
+}
+
+.acc-search-ipt {
+    width: 300px;
+    float: left;
+    height: 36px;
+    border: 1px solid #ced3d9;
+    padding: 0 10px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+/*.acc-search-ipt:focus~input~.searchClose {display: block}*/
+.acc-sub-ipt {
+    float: left;
+    height: 38px;
+    background: #fff;
+    border: 1px solid #ced3d9;
+    padding: 0 20px;
+    display: inline-block;
+    border-radius: 3px;
+    color: #666;
+    cursor: pointer;
+}
+
+.account-add-id {
+    margin-right: 60px;
+    width: 100px;
+    height: 38px;
+    background: #5697f1;
+    line-height: 38px;
+    color: #fff;
+    text-align: center;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.account-list-ul {
+    width: 100%;
+}
+
+.account-list-ul ul {
+    width: 100%;
+    float: left;
+    /*height: 50px;*/
+    /*min-width: 1100px;*/
+    /*margin: 0 auto;*/
+}
+
+/*.account-list-ul ul li{*/
+/*float: left;*/
+/*line-height: 30px;*/
+/*width: 150px;*/
+/*text-align: center;*/
+/*!*border-bottom: 1px #dfe7f2 solid;*!*/
+/*}*/
+/*.account-list-ul ul li:nth-child(1){*/
+/*float: left;*/
+/*line-height: 30px;*/
+/*width: 100px;*/
+/*text-align: center;*/
+/*}*/
+/*.account-list-ul ul li:nth-child(2){*/
+/*float: left;*/
+/*line-height: 30px;*/
+/*width: 200px;*/
+/*text-align: center;*/
+
+/*}*/
+/*.account-list-ul ul:nth-child(2n) li{*/
+/*background: #ffffff;*/
+/*}*/
+/*.account-list-ul ul:nth-child(2n+1) li{*/
+/*background: #f4f7fb;*/
+/*}*/
+.account-list-ul ul li {
+    float: left;
+    height: 39px;
+    line-height: 50px;
+    border-bottom: 1px #dfe7f2 solid;
+    position: relative;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.account-list-ul ul:nth-child(2n+1) li {
+    background: #ffffff;
+}
+
+.account-list-ul ul:nth-child(2n) li {
+    background: #f4f7fb;
+}
+
+.account-list-ul ul li:nth-child(1), .account-list-ul ul li:nth-child(7) {
+    width: calc(100% / 26 * 3 - 25px);
+    padding: 5px 0px 5px 25px;
+}
+
+.account-list-ul ul li:nth-child(3), .account-list-ul ul li:nth-child(5) {
+    width: calc(100% / 25 * 3);
+    padding: 5px 0px;
+}
+
+.account-list-ul ul li:nth-child(2), .account-list-ul ul li:nth-child(4), .account-list-ul ul li:nth-child(6), .account-list-ul ul li:nth-child(7), .account-list-ul ul li:nth-child(6) {
+    width: calc(100% / 25 * 4 - 0px);
+    padding: 5px 0px 5px 15px;
+    box-sizing: border-box;
+    height: 50px;
+}
+
+
+.account-list-ul ul li:nth-child(7) {
+    width: calc(100% / 25 * 4);
+    padding: 5px 0px;
+    box-sizing: border-box;
+}
+
+.account-list-ul ul li:nth-child(7) > a {
+    float: right;
+    display: inline-block;
+    /*padding: 0 15px;*/
+    margin-right: 68%;
+}
+
+/*账户管理详情*/
+.account-apps {
+    margin-top: 20px;
+}
+
+.account-left {
+    width: 740px;
+    float: left;
+    background: #fff;
+    padding: 30px;
+}
+.account-left .empty-data{
+    height: 160px;
+    line-height: 160px;
+    text-align: center;
+
+}
+.account-right {
+    width: 280px;
+    background: #fff;
+    float: right;
+    padding-bottom: 20px;
+}
+
+.right-head {
+    height: 54px;
+    background: #fbfbfb;
+    position: relative;
+    line-height: 54px;
+}
+
+.right-head i {
+    width: 14px;
+    height: 14px;
+    float: left;
+    display: inline-block;
+    margin: 20px 10px 0px 20px;
+}
+
+.about {
+    background: no-repeat url(../img/about.png);
+}
+
+.right-head h2 {
+    padding: 0;
+    float: left;
+}
+
+.right-li {
+    float: left;
+}
+
+.right-li li {
+    color: #868e9a;
+    padding: 20px 10px 0px 20px;
+}
+.right-list{
+    width: 198px;
+    float: left;
+}
+.right-list li {
+    color: #464c5b;
+    padding-top: 20px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.statis-data {
+    width: 172px;
+    height: 68px;
+    float: left;
+    margin: 10px 10px 0 0;
+    border: 1px #dde2ea solid;
+
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.statis-data:nth-child(3n-1) {
+    /*margin-left: 10px;*/
+    margin-right: 10px;
+    color: #464c5b;
+}
+
+.statis-data h3 {
+    padding: 15px 0px 0px 20px;
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.statis-data p {
+    padding-left: 20px;
+    font-size: 12px;
+    color: #868e9a;
+}
+
+.statis h2, .statis-common h2 {
+    font-size: 18px;
+    font-weight: 300;
+    padding-top: 60px;
+    padding-bottom: 22px;
+    color: #464c5b;
+}
+
+.statis-table-head {
+    width: 100%;
+}
+
+.statis-table-head li {
+    background: #f7f8f9;
+    margin-top: -1px;
+    border-top: 1px #dde2ea solid;
+    border-bottom: 1px #dde2ea solid;
+    font-weight: bold;
+}
+
+.statis-table-list li {
+    background: #ffffff;
+    border-bottom: 1px #dde2ea solid;
+}
+
+.table-data li {
+    width: calc(100% / 6);
+    text-align: center;
+    float: left;
+    color: #464c5b;
+    height: 48px;
+    line-height: 48px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.statis-table-account {
+    overflow: hidden;
+    overflow-x: scroll;
+    float: left;
+    position: relative;
+    width: 640px;
+}
+
+.statis-table-account .table-data li {
+    width: 80px;
+}
+
+.statis-table-account .table-data {
+    width: 1040px;
+}
+
+.account-fixed-set {
+    float: right;
+    width: 100px;
+}
+.statis-table #AccountPageLook{
+    text-align: center;
+}
+
+.account-fixed .last-setting {
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    width: 100px;
+    background: #f7f8f9;
+    border-bottom: 1px #dde2ea solid;
+    font-weight: bold;
+}
+
+.account-fixed .last-setting-a {
+    height: 48px;
+    line-height: 48px;
+    display: inline-block;
+    /*text-align: center;*/
+    width: 56px;
+}
+.account-fixed .account-service-edit:hover{
+    cursor: pointer;
+}
+.echarts-tip-date {
+    width: 150px;
+}
+.statis span{
+    display: inline-block;
+    width: 40px;
+    height: 32px;
+    margin-top: -60px;
+    float: right;
+    background: url(../img/download.png) left bottom no-repeat;
+    background-size: 50%;
+    cursor: pointer;
+}
+.echarts-tip-date {
+    height: 20px;
+    line-height: 20px;
+    border-bottom: #eee solid 1px;
+}
+
+.echarts-tip-list-no {
+    border: 0;
+    width: 200px
+}
+
+.contain-l {
+    float: left;
+}
+
+.contain-r {
+    float: right;
+}
+
+.echarts-tip-list li {
+    margin-top: 10px;
+    line-height: 24px;
+    height: 24px;
+}
+
+.echarts-tip-list li i {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    float: left;
+    margin: 4px 6px 0 0;
+    border-radius: 100%;
+}
+
+/*detail*/
+.page-common {
+    background: #fff;
+    border: 1px #dde2ea solid;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+.page-left {
+    width: 800px;
+    float: left;
+    margin-bottom: 50px;
+}
+
+.page-right {
+    width: 280px;
+    height: 320px;
+    float: right;
+}
+
+.page-left .left-top {
+    width: 100%;
+    height: 182px;
+    background: #fbfbfb;
+    position: relative;
+    border: 1px solid #dde2ea;
+    margin-left: -1px;
+}
+
+.page-left .left-title {
+    float: left;
+    color: #464c5b;
+    font-weight: 300;
+    margin: 30px 0px 0px 30px;
+}
+
+.page-left .left-label {
+    font-size: 12px;
+    float: left;
+    margin: 38px 0px 0px 10px;
+    padding: 3px 8px;
+    border: 1px #c8c9ce solid;
+}
+
+.page-left .left-tab {
+    position: absolute;
+    bottom: -1px;
+}
+
+.page-left .left-tab li {
+    float: left;
+    padding: 14px 20px;
+}
+
+.page-left .left-tab li:nth-child(1) {
+    margin-left: 10px;
+}
+
+.page-left .left-tab li a {
+    color: #657180;
+    font-size: 14px;
+}
+
+.page-left .left-tab-selected {
+    background: #fff;
+    border-bottom: 1px #fff solid;
+    border-left: 1px #dde2ea solid;
+    border-right: 1px #dde2ea solid;
+    border-top: 2px #5697f1 solid;
+}
+
+.page-left .statis {
+    border-bottom: 1px #dde2ea solid;
+}
+
+.page-right .statis h2 {
+    padding: 0
+}
+
+.page-left .statis-common p {
+    color: #868e9a;
+    padding-bottom: 10px;
+}
+
+.page-left .statis-common p:first-child {
+    margin-top: 40px;
+}
+
+.page-left .statis-common p:last-child {
+    margin-bottom: 20px;
+}
+
+.page-left .statis-common span {
+    color: #000;
+}
+
+.page-left .statis-common {
+    width: calc(100% - 60px);
+    margin: 30px 0px 30px 30px;
+}
+
+.page-left .statis h2, .page-left .statis-common h2 {
+    font-size: 18px;
+    font-weight: 300;
+    padding-top: 60px;
+    padding-bottom: 22px;
+    color: #464c5b;
+}
+
+.page-left .statis-content {
+    padding: 15px;
+    overflow: hidden;
+}
+
+.page-left .statis-content h4 {
+    font-size: 14px;
+    color: #c1c4ca;
+    margin-bottom: 25px;
+    font-weight: 300;
+}
+
+.page-left .statis-content pre {
+    display: inline-block;
+    font-size: 14px;
+    width: 100%;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+}
+
+.page-left .statis-content
+.page-right .buy {
+    width: 240px;
+    height: 130px;
+    margin: 20px 0px 0px 20px;
+    float: left;
+    border-top: 1px #e8e8e8 dashed;
+}
+
+.page-right .buy i {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    padding: 0 5px;
+}
+
+.page-right .cart {
+    background: no-repeat url(../img/cart.png);
+}
+
+.page-right .play {
+    background: no-repeat url(../img/play.png);
+}
+
+.page-right .buy a {
+    display: block;
+    width: 100%;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.page-right .right-li-l {
+    width: 80px;
+}
+
+.page-right .right-li-r {
+    width: 198px;
+}
+
+.page-right .right-li li {
+    padding: 20px 0 0 20px;
+}
+
+.severice-layout {
+    position: relative;
+    top: -60px;
+    z-index: 1000;
+}
+
+.statis-content textarea {
+	width: 100%;
+	height: 100%;
+	min-height: 350px;
+	border:none;
+	font-size: 14px;
+	color: #868e9a;
+	outline: medium;
+}
+#PageDetail{
+    display: none;
+}
+

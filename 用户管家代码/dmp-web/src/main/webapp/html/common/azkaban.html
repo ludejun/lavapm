@@ -1,0 +1,49 @@
+<script type="text/ng-template" id="nodes_menuleft.html">
+	<div class="menu-left-node">
+    	<a title="{{node.resourceLabel}}" class="collapse-expansion" href="javascript:;" ng-if="node.childrens && node.childrens.length > 0" data-nodrag ng-click="toggleMenuLeft(node);">
+			<i class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed,'glyphicon-chevron-down': !collapsed}"></i>
+			{{node.resourceLabel}}
+		</a>
+		
+		<a title="{{node.resourceLabel}}" href="{{node.resourceUri}}" ng-if="!node.childrens || node.childrens.length == 0" ng-class="{cur: curMenuUri.indexOf(node.resourceUri) != -1}">
+			<i class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed,'glyphicon-chevron-down': !collapsed}"></i>
+			{{node.resourceLabel}}
+		</a>
+
+  	</div>
+  	<ol  ng-model="node.childrens" ng-class="{hidden: collapsed}" class="menu-left-ol" ng-if="node.show">
+  		<li ng-repeat="node in node.childrens">
+			<a title="{{node.resourceLabel}}" href="{{node.resourceUri}}" ng-class="{cur: curMenuUri.indexOf(node.resourceUri) != -1}">
+				<i class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed,'glyphicon-chevron-down': !collapsed}"></i>
+				{{node.resourceLabel}}
+			</a>
+
+			<!--<a target="_blank" title="{{node.resourceLabel}}" href="{{node.resourceUri | pageUrl}}" ng-class="{cur: curMenuUri.indexOf(node.resourceUri) != -1}"  ng-if="node.childrens && node.childrens.length <= 0 && node.extAttr3 =='_blank'">
+				<i class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed,'glyphicon-chevron-down': !collapsed}"></i>
+				{{node.resourceLabel}}
+			</a>
+    	
+			<a title="{{node.resourceLabel}}" href="{{node.resourceUri}}" ng-class="{cur: curMenuUri.indexOf(node.resourceUri) != -1}"  ng-if="node.childrens && node.childrens.length <= 0 && node.extAttr3 !='_blank'">
+				<i class="glyphicon" ng-class="{'glyphicon-chevron-right': collapsed,'glyphicon-chevron-down': !collapsed}"></i>
+				{{node.resourceLabel}}
+			</a>-->
+
+			<!--a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)">
+				<span class="glyphicon glyphicon-remove"></span>
+				</a>
+    			<a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;">
+					<span class="glyphicon glyphicon-plus"></span>
+			</a-->
+    	</li>
+  	</ol>
+</script>
+
+<div id="tree-root">
+	<ol ng-model="menuList">
+    	<li ng-repeat="node in menuList" ng-include="'nodes_menuleft.html'">
+    		
+    	</li>
+  	</ol>
+</div>
+
+

@@ -1,0 +1,4 @@
+1：将dmp-web导入eclipse中，import选择mavaen导入
+2：将dmp目录放到之前本地lavapm目录中，并在 \src\main\resources\sso-context.xml 中指定这个文件，两处需要修改
+3：将settings.xml替换maven安装目录中的conf目录下的这个文件
+4：maven更新，启动tomcat加项目，访问地址为localhost:8080/dmp-web

@@ -1,0 +1,11 @@
+<div class="clrfix">
+	<div class="fast-search-box" ng-show="!isShowMoreSearch">
+		<input ng-keydown="keydownSearchValue();" ng-focus="focusSearchValue();" ng-blur="blurSearchValue();" maxlength="256" type="text" class="form-control" placeholder="{{nlsRoot.inputKeyword}}" ng-model="searchValue">
+		<button type="submit" class="btn btn-primary ml-10" ng-click="search();" id="btn-search">{{nlsRoot.search}}</button>
+		<i class="icon-clear" title="清空" ng-if="searchValue" ng-click="clearSearchValue();"></i>
+	</div>
+	<div class="switch-more-search" ng-show="isNeedMoreSearch">
+		<a ng-click="switchMoreSearch();" ng-show="!isShowMoreSearch">{{nlsRoot.searchCritera}}<i class="icons-search icon-search-arrow-up"></i></a>
+		<a ng-click="switchMoreSearch();" ng-show="isShowMoreSearch">{{nlsRoot.searchCritera}}<i class="icons-search icon-search-arrow-down"></i></a>
+	</div>
+</div>

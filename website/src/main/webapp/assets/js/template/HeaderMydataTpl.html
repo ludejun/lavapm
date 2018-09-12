@@ -1,0 +1,20 @@
+<div class="maydata-state">
+	<div class="mydata-head-logo collect-pic"></div>
+	<h1 class="mydata-head-common">{{ header.sumAccessRequest | splitnumber }}</h1>
+	<p class="mydata-head-common"> 汇总调用次数</p>
+</div>
+<div class="maydata-state">
+	<div class="mydata-head-logo useable-pic"></div>
+	<h1 class="mydata-head-common">{{ header.sumValidRequest | splitnumber }}</h1>
+	<p class="mydata-head-common">有效次数</p>
+</div>
+<div class="maydata-state">
+	<div class="mydata-head-logo all-pic"></div>
+	<h1 class="mydata-head-common">{{ header.sumInputCount | splitnumber }}</h1>
+	<p class="mydata-head-common">输入记录</p>
+</div>
+<div class="maydata-state">
+	<div class="mydata-head-logo out-pic"></div>
+	<h1 class="mydata-head-common">{{ header.sumOutputCount | splitnumber }}</h1>
+	<p class="mydata-head-common">输出记录</p>
+</div>
