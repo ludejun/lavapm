@@ -553,11 +553,14 @@ iframe{vertical-align:top;}
 
 
 /*icons-nav*/
-.icons-nav{background:url(/enterprise/images/app/common/nav/icons-nav.png) no-repeat;background-size:330px 330px; display:inline-block;width:32px;height:32px;}
-.icon-nav-DataMarket{background:url(/enterprise/images/app/common/nav/market.png) no-repeat;background-size:32px 32px;}
-.icon-nav-DMP{background:url(/enterprise/images/app/common/nav/persona.png) no-repeat;background-size:32px 32px;}
-.icon-nav-BWS{background:url(/enterprise/images/app/common/nav/bws.png) no-repeat;background-size:32px 32px;}
-.icon-nav-DSP{background:url(/enterprise/images/app/common/nav/dsp.png) no-repeat;background-size:32px 32px;}
+.icons-nav{background:url(/enterprise/images/app/common/nav/icons-nav.png) no-repeat;background-size: 48px 48px !important; display:inline-block;width:48px;height:48px;opacity:0.2;}
+.icons-nav:hover {opacity:1;}
+.icon-nav-DataMarket{background:url(/enterprise/images/app/common/nav/market.png) no-repeat;}
+.icon-nav-DMP{background:url(/enterprise/images/app/common/nav/persona.png) no-repeat;}
+.icon-nav-BWS{background:url(/enterprise/images/app/common/nav/bws.png) no-repeat;}
+.icon-nav-DSP{background:url(/enterprise/images/app/common/nav/dsp.png) no-repeat;}
+.icon-nav-tableau {background:url(/enterprise/images/app/common/nav/tableau.png) no-repeat;}
+.icon-nav-social-listening {background:url(/enterprise/images/app/common/nav/social.png) no-repeat;}
 .icon-nav-dmp-admin{width:31px;height:31px;background-position:-37px -38px;}
 .icon-nav-report{background-position:-2px -227px;}
 .icon-nav-push{background-position:-39px -114px;}
@@ -627,17 +630,25 @@ iframe{vertical-align:top;}
 /*contents*/
 .contents{width:100%;height:100%;position: relative;}
 .contents .con-left{position:fixed;left:0;top:0;height:100%;background: #1086e8;width:74px;z-index:2;}
-.contents .con-left .logo{background: #1086e8 url(/enterprise/images/app/common/logo.png) no-repeat center !important;background-size: auto 50%;position: relative;z-index: 1;float: left;width: 264px;text-align: center;height:64px;text-decoration: none;bax-shadow:-2px 1px 6px #444;-webkit-box-shadow:-2px 1px 6px #444;-moz-box-shadow:-2px 1px 6px #444;}
+.contents .con-left .logo{    background-image: url(/enterprise/images/app/common/logo.png)!important;
+    background-repeat: no-repeat !important;background-position: center !important;
+    background-size: 175px 46px !important;background-color: #1086e8 !important;position: relative;z-index: 1;float: left;width: 264px;text-align: center;height:64px;text-decoration: none;bax-shadow:-2px 1px 6px #444;-webkit-box-shadow:-2px 1px 6px #444;-moz-box-shadow:-2px 1px 6px #444;}
 .contents .con-left.has-scroll .logo{-moz-box-shadow: 0px 3px 3px #1c213e;-webkit-box-shadow: 0px 3px 3px #1c213e;box-shadow: 0px 3px 3px #1c213e;}
 .has-not-scroll .content_mid{margin:0 !important;}
-.contents .con-left .logout{background: #242d56;position: relative;z-index: 2;position:absolute;width:80px;left:0;bottom:0;padding: 26px 0;}
+.contents .con-left .logout{background: #fff;z-index: 2;position:fixed;width:40px;height:40px;right:25px;top:12px;border-radius:50%;}
 .contents .con-left.has-scroll .logout{-moz-box-shadow: 0px -3px 3px #1c213e;-webkit-box-shadow: 0px -3px 3px #1c213e;box-shadow: 0px -3px 3px #1c213e;}
 .contents .con-left .logout .dropdown{text-align:center;}
-.contents .con-left .logout .dropdown .img{display:inline-block;width:28px;height:28px;vertical-align: top;background: url(/enterprise/images/app/common/nav/img01.png) no-repeat;background-size: 28px 28px;}
-.contents .con-left .logout.active .dropdown .img{background: url(/enterprise/images/app/product/img01.png) no-repeat;background-size: 28px 28px;}
-.contents .con-left .logout .dropdown-ul{position:absolute;background:#1d2238;background: rgba(29,34,56,0.95);filter:Alpha(opacity=95);left:95px;bottom:18px;width:210px;padding: 10px 15px;-moz-border-radius: 5px;-webkit-border-radius: 5px;border-radius: 5px;z-index:2;}
-.contents .con-left .logout .dropdown-ul:before{border: solid transparent;content: ' ';height: 0;left: -24px;position: absolute;width: 0;bottom: 10px;}
-.contents .con-left .logout .dropdown-ul:before {border-width: 12px;border-right-color: #1d2238;opacity: 0.95;filter:Alpha(opacity=95);}
+.contents .con-left .logout .dropdown .img{display:inline-block;width:40px;height:40px;vertical-align: top;background: url(/enterprise/images/app/common/nav/img01.png) no-repeat;background-size: 40px 40px;}
+.contents .con-left .logout.active .dropdown .img{background: url(/enterprise/images/app/product/img01.png) no-repeat;background-size: 40px 40px;}
+.contents .con-left .logout .dropdown-ul{position: absolute;background: #1d2238;background: rgba(29,34,56,0.95);filter: Alpha(opacity=95);right: -20px;top: 60px;
+    width: 200px;
+    padding: 10px 15px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    z-index: 2;}
+.contents .con-left .logout .dropdown-ul:before{border: solid transparent; content: ' ';height: 0;position: absolute;width: 0;right: 28px;top: -24px;}
+.contents .con-left .logout .dropdown-ul:before {border-width: 12px;border-bottom-color: #1d2238;opacity: 0.95;filter:Alpha(opacity=95);}
 .contents .con-left .logout .dropdown-ul li{line-height:30px;}
 .contents .con-left .logout .dropdown-ul li a{color:#d4d9f3;text-decoration: none;background:none;}
 .contents .con-left .logout .dropdown-ul .li01{border-bottom: 1px solid #40476e;padding-bottom: 6px;}
@@ -654,12 +665,12 @@ iframe{vertical-align:top;}
 
 .contents .con-left .app-tip{display:none;background:#1d2238;background: rgba(29,34,56,0.95);filter:Alpha(opacity=95);position:fixed;left:70px;z-index:1;padding: 5px 10px;color:#d4d9f3;-moz-border-radius: 3px;-webkit-border-radius: 3px;border-radius: 3px;}
 
-.contents .con-left .nav-left{width:80px;max-height:80%;float:left;text-align:center;overflow: hidden;height: 100%;}
-.contents .con-left .nav-left .li{padding:12px 0 32px 0;margin:0 10px;}
+.contents .con-left .nav-left{width:74px;max-height:80%;float:left;text-align:center;overflow: hidden;height: 100%;}
+.contents .con-left .nav-left .li{padding:50px 0 0;}
 .contents .con-left .nav-left .li a{display:block;width:100%;height:100%;color:#515c8a;position:relative;}
 .contents .con-left .nav-left .li a .nav-name{display:none;}
 .contents .con-left .nav-left .li a:hover,.contents .con-left .nav-left li a:active{color:#acb5e5;text-decoration:none;}
-.contents .con-left .nav-left .li a:hover .icon-nav-DMP{background-position:-2px -40px;}
+/* .contents .con-left .nav-left .li a:hover .icon-nav-DMP{background-position:-2px -40px;}
 .contents .con-left .nav-left .li a:hover .icon-nav-wreport{background-position:-40px -40px;}
 .contents .con-left .nav-left .li a:hover .icon-nav-dmp-admin{background-position:-37px 0;}
 .contents .con-left .nav-left .li a:hover .icon-nav-dmp-report{background-position:-37px 0;}
@@ -690,7 +701,9 @@ iframe{vertical-align:top;}
 .contents .con-left .nav-left .li.active a .icon-nav-visualization{background-position:-84px -80px;}
 .contents .con-left .nav-left .li.active a .icon-nav-securities{background-position:-84px -190px;}
 .contents .con-left .nav-left .li.active a .icon-nav-bank{background-position:-84px -299px;}
-.contents .con-left .nav-left .li.active a .icon-nav-pushweb{background-position:-38px  -190px;}
+.contents .con-left .nav-left .li.active a .icon-nav-pushweb{background-position:-38px  -190px;} */
+.contents .con-left .nav-left .li a:hover {opacity: 1;}
+.contents .con-left .nav-left .li.active .icons-nav {opacity: 1;}
 
 .contents .con-left .nav-left .li.active a,.contents .con-left .nav-left li.active a:hover{color:#fff;text-decoration:none;}
 .contents .con-left .nav-left .li a .nav-img{position:relative;}
@@ -723,7 +736,7 @@ iframe{vertical-align:top;}
     padding: 0 8px;}
 .menu-left .menu .only-dt dt.active >a{color:#FFF;}
 .menu-left .menu dt.active{padding-left: 0;}
-.contents .con-right{padding-left:80px;overflow:hidden;}
+.contents .con-right{margin: 64px 0 0 74px;;overflow:hidden;width: 100%;height:100%;}
 .contents .con-box{padding-left:180px;overflow-y:auto;overflow-x:hidden;}
 .contents .content{padding:10px;}
 
