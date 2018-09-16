@@ -19,7 +19,7 @@
 		<property name="locations">
             <list>               
         		<value>classpath*:sysConfig.properties</value>
-				<value>file:///Users/ludejun/ludejun/lavapm/sysConfig.properties</value>
+				<value>file:///Users/jinjilin/lavapm/sysConfig.properties</value>
         	</list>
 		</property>
     </bean>
@@ -30,7 +30,7 @@
 		<property name="locations">
 			<list>
 				<value>classpath*:sysConfig.properties</value>
-				<value>file:///Users/ludejun/ludejun/lavapm/sysConfig.properties</value>
+				<value>file:///Users/jinjilin/lavapm/sysConfig.properties</value>
 			</list>
 		</property>
 	</bean>

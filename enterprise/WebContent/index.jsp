@@ -13,7 +13,10 @@
   	<script src="js/libs/jquery/jquery-1.12.3.min.js?v=<%=appVersion%>" type="text/javascript"></script>
   	<script src="js/libs/jquery-scroll/jquery-scroll.js?v=<%=appVersion%>" type="text/javascript"></script>
   	<script type="text/javascript">
-  		var appConfig = ${appConfig};
+		  var appConfig = ${appConfig};
+		  console.log('6666666666666666')
+		  console.dir(appConfig);
+		  console.log('6666666666666666')
   		buildAppVersion();
   		window.load = function(){   
 			document.getElementById('密码域ID').value='';   

@@ -62,22 +62,26 @@ function initAppNavLogo(pageSetKey){
 function initProductLogo(pageSetKey){
 	var productLogo = "/enterprise/images/app/product/logo.png";
 	if(appConfig && appConfig[pageSetKey.productLogo]){
-		productLogo = appConfig[pageSetKey.productLogo];
+		//productLogo = appConfig[pageSetKey.productLogo];
+		productLogo = "/enterprise/images/app/product/logov2.png";
 	}
 	$("#product-page .logo").css({
-		'background': 'url("'+productLogo+'") no-repeat left center',
-		"background-size":"auto 100%"
+		'background-image': 'url("'+productLogo+'")',
+		"background-size":"cover",
+		"width":"15vmin",
+		"height":"10vmin"
 	});
 }
 
 function initLoginBackground(pageSetKey){
 	var loginBackground = "/enterprise/images/app/product/bg-list.jpg";
 	if(appConfig && appConfig[pageSetKey.loginBackground]){
-		loginBackground = appConfig[pageSetKey.loginBackground];
+		//loginBackground = appConfig[pageSetKey.loginBackground];
+		loginBackground = "/enterprise/images/app/product/login.jpg";
 	}
 	$("#body-fixed-width").css({
-		'background': '#eef0f3 url("'+loginBackground+'") no-repeat top center',
-		"background-size":"cover"
+		'background-image': 'url("'+loginBackground+'")',
+		"background-size":"100vw 100vh"
 	});
 }
 
@@ -757,6 +761,9 @@ $(window).resize(function(){
 				var html = "";
 				var authAppListLength = 0;
 				var appCode = "";
+				var imgMap = {
+					"DataMarket":""
+				}
 				if(authAppList && authAppList.length > 0){
 					authAppListLength = authAppList.length;
 					var contractEndDate = $.product.getContractEndDate();
@@ -764,10 +771,10 @@ $(window).resize(function(){
 					for (var i = 0; i < authAppListLength; i++) {
 						if("tenant"!=authAppList[i].appCode){
 							appConfig.authAppMap[authAppList[i].appCode] = authAppList[i];
-							html += '<dl appCode="'+authAppList[i].appCode+'">';
-							html += '<dt class="icon-product-'+authAppList[i].appCode+'"><i class="icons-product"></i></dt>';
-							html += '<dd>'+authAppList[i].extAttr1+'</dd>';	
-							html += '<div class="product-explain">';    
+							html += '<dl class="dl-product-v2" appCode="'+authAppList[i].appCode+'">';
+							html += '<dt class="dt-product-v2 icon-product-'+authAppList[i].appCode+'"><i/></dt>';
+							html += '<dd class="dd-product-v2">'+authAppList[i].extAttr1+'</dd>';	
+							html += '<div class="product-explain-v2 product-explain">';    
 							html += '<p>'+authAppList[i].appDesc+'</p>';   
 							html += '<div class="service-period">';
 							/*if(contractEndDate){
