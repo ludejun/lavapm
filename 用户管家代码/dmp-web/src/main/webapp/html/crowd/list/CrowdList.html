@@ -1,0 +1,163 @@
+<!-- <div class="clrfix operator-panel">
+	<a data-ui-sref="crowds_new" class="btn-add"><i class="icons icons-add"></i>构建人群</a>
+</div> -->
+
+<div class="ng-table-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">人群列表</div>
+		<div class="search" data-search role="search"></div>
+	</div>
+	
+	<div ng-if="isShowMoreSearch" class="more-search-box clrfix">
+		<ul class="clrfix">
+			<li>
+				<div class="label">人群名称</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.name" maxlength="256">
+				</div>
+			</li>
+			
+			<!-- <li>
+				<div class="label">人群编码</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.code" maxlength="14">
+				</div>
+			</li> -->
+			
+			<li>
+				<div class="label">人群类型</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.touchPointType">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in touchPointTypes" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.touchPointType">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			
+			<!-- <li>
+				<div class="label">描述</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.description" maxlength="512">
+				</div>
+			</li> -->
+			
+			<li>
+				<div class="label">人群来源</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.type">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in crowdTypeList" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.type">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+		
+			<!-- <li>
+				<div class="label">状态</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.status">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in crowdStatus" value="{{sts.dicItemKey}}" >{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li> -->
+			
+			<!-- <li>
+				<div class="label">计算状态</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.calcStatus">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in crowdCalcStatus" value="{{sts.dicItemKey}}" >{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li> -->
+			
+			
+			
+			<li>
+				<div class="label">创建人</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.creator" maxlength="64">
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">创建时间</div>
+				<div class="control">
+					<div fast-select-days="tdDateCondition.fastSelectDays"  day-operation-status="tdDateCondition.dayOperationStatus" start-date="moreSearchCondition.createTimeStart" end-date="moreSearchCondition.createTimeEnd" td-change="changeCreateTime" td-date-condition date-range="dateRange" class="form-control date-condition" type="text"></div>
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">人群更新时间</div>
+				<div class="control">
+					<div start-date="moreSearchCondition.updateDataTimeStart" end-date="moreSearchCondition.updateDataTimeEnd" td-change="changeTagDataTime" td-date-condition date-range="dateRange" class="form-control date-condition date-condition-right" type="text"></div>
+				</div>
+			</li>
+			
+		</ul>
+		
+		<div class="btns-box">
+			<div class="btns">
+				<button type="button" class="btn btn-primary btn-sm ml-10" ng-click="search();">搜索</button>
+	        	<button type="button" class="btn btn-default btn-sm" ng-click="resetMoreSearchCondition();">重置</button>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="ng-table-body ng-table-body-empty">
+		<table ng-table="tableParams" class="table ng-table-responsive table-hover" freeze="true" id="tableParams">
+		    <tr ng-repeat="crowd in $data">
+		       <!-- <td data-title="'序号'">{{$index + 1}}</td> -->
+		       <!-- <td data-title="'人群ID'"><div class="max-wd100 t-o-e" title="{{crowd.id}}">{{crowd.id}}</div></td> -->
+		       <!-- <td data-title="'人群编号'"><div class="max-wd110 t-o-e" title="{{crowd.code}}">{{crowd.code}}</div></td> -->
+		       <td data-title="'人群名称'"><div title="{{crowd.name}}">{{crowd.name}}</div></td>
+		       <!-- <td data-title="'标签名称'"><div title="{{crowd.tagName}}">{{crowd.tagName}}</div></td> -->
+		       <!-- <td data-title="'标签id'">{{crowd.tagId}}</td>
+		       <td data-title="'标签code'">{{crowd.tagCode}}</td>
+		       <td data-title="'定义人群 第三方导入人群'">{{crowd.source}}</td> -->
+		      	<td data-title="'人群类型'">
+		      		<div class="min-wd50">
+		      			<i ng-if="crowd.crowdIcon != null"  class="{{crowd.crowdIcon}}" title="{{crowd.touchPointTypeName}}"></i>
+		       			<i ng-if="crowd.crowdIcon == null" class="icons-id icon-id-touchpointtype-other" title="{{crowd.touchPointTypeName}}"></i>
+		      			<!--  
+		      			<i ng-if="crowd.touchPointType == 'app_tdid'" class="icons" ng-class="{'icon-touchpointtype1':crowd.touchPointType == 'app_tdid'}" title="{{crowd.touchPointTypeName}}"></i>
+				       	<i ng-if="crowd.touchPointType == 'web_tdid'" class="icons" ng-class="{'icon-touchpointtype2':crowd.touchPointType == 'web_tdid'}" title="{{crowd.touchPointTypeName}}"></i>
+				       	<i ng-if="crowd.touchPointType == 'h5_tdid'" class="icons" ng-class="{'icon-touchpointtype3':crowd.touchPointType == 'h5_tdid'}" title="{{crowd.touchPointTypeName}}"></i>
+				       	<i ng-if="crowd.touchPointType == 'account_id'" class="icons" ng-class="{'icon-touchpointtype99':crowd.touchPointType == 'account_id'}" title="{{crowd.touchPointTypeName}}"></i>
+				       	<i ng-if="crowd.touchPointType == 'mac_tdid'" class="icons" ng-class="{'icon-touchpointtype-mac':crowd.touchPointType == 'mac_tdid'}" title="{{crowd.touchPointTypeName}}"></i>
+		      			<i ng-if="crowd.touchPointType != 'app_tdid' && 
+				       		crowd.touchPointType != 'web_tdid' && 
+				       		crowd.touchPointType != 'h5_tdid' && 
+				       		crowd.touchPointType != 'account_id' && 
+				       		crowd.touchPointType != 'mac_tdid'" class="icons icon-touchpointtype-other" title="{{crowd.touchPointTypeName}}"></i>-->
+		      		</div>
+		      	</td>
+		      	<td data-title="'人群来源'">
+		      		<div style="min-width:75px;">
+		      			{{crowd.type | DictFormatter : 'CROWD_TYPE'}}
+		      		</div>
+		      	</td>
+		      	<td data-title="'人群规模'"><div class="min-wd50 t-o-e" title="{{crowd.crowdCount}}">{{crowd.crowdCount}}</div></td>
+		      	<td data-title="'状态'"><div>{{crowd.status | DictFormatter : 'DMP_OBJECT_STATUS'}}</div></td>
+		       <!-- <td data-title="'创建人账号'">{{crowd.createBy}}</td> -->
+		       <!-- <td data-title="'人群更新时间'"><div class="wd120 t-o-e" title="{{crowd.updateDataTime | DateFormatDefault}}">{{crowd.updateDataTime | DateFormatDefault}}</div></td> -->
+		       <!-- <td data-title="'描述'"><div title="{{crowd.description}}">{{crowd.description}}</div></td> -->
+		       <td data-title="'创建人'"><div class="min-wd50 t-o-e" title="{{crowd.creator}}">{{crowd.creator}}</div></td>
+		       <!-- <td data-title="'修改人账号'">{{crowd.updateBy}}</td> -->
+		       <td data-title="'创建时间'"><div class="max-wd120 t-o-e" title="{{crowd.createTime | DateFormatDefault}}">{{crowd.createTime | DateFormatDefault}}</div></td>
+		       <td data-title="'人群更新时间'"><div class="max-wd120 t-o-e" title="{{crowd.updateDataTime | DateFormatDefault}}">{{crowd.updateDataTime | DateFormatDefault}}</div></td>
+		       <!-- <td data-title="'修改时间'">{{crowd.updateTime}}</td> -->
+		       <td data-title="'操作'">
+		       		<div class="ng-table-operator" style="min-width: 75px !important;">
+		       			<!-- <a ui-sref="crowd_portrait({crowdId:crowd.id})">画像</a> -->
+		       			<a ng-click="goToCrowdPortrait(crowd);" href="javascript:;">画像</a>
+		       			<!-- <a ui-sref="crowds_export({crowdId:crowd.id})" ng-if="crowd.crowdCount && crowd.crowdCount > 0">导出</a> -->
+		       			<a ng-click="goToCrowdExport(crowd);" href="javascript:;">导出</a>  	
+		       		</div>
+		       </td>
+		    </tr>
+		</table>
+	</div>
+</div>
+

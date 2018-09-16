@@ -1,0 +1,76 @@
+<div class="statis statis-common">
+	<h2>数据统计</h2>
+</div>
+<div class="statis-content statis-common clearfix">
+	<div class="statis-data">
+		<h3>{{requests}}</h3>
+		<p>授权次数</p>
+	</div>
+	<div class="statis-data">
+		<h3>{{ accessRequest || 0 }}</h3>
+		<p>汇总调用次数</p>
+	</div>
+	<!--<div class="statis-data">-->
+		<!--<h3>{{inputCount || 0 }}</h3>-->
+		<!--<p>输入记录</p>-->
+	<!--</div>-->
+    <div class="statis-data">
+		<h3>{{ requests_rest || 0  }}</h3>
+		<p>剩余次数</p>
+	</div><div class="statis-data">
+		<h3>{{validRequest || 0}}</h3>
+		<p>有效次数</p>
+	</div>
+	<!--<div class="statis-data">-->
+		<!--<h3>{{oututCount || 0}}</h3>-->
+		<!--<p>输出记录</p>-->
+	<!--</div>-->
+</div>
+<div class="statis-pic statis statis-common">
+<h2 id="xx">数据调用趋势图</h2>
+	<div class="severice-layout">
+		<div class="mydata-table-time mydata-table-time-common">
+			<i class="data-pic"></i>
+			<em id="DosageDate">最近7天</em>
+			<div class="arrow-pic" id="SevericeArrow"> 
+				<ul class="mydata-table-down"  id="SevericeDown">
+					<li class="mydata-table-list mydata-table-time-common" value="7">最近7天</li>
+					<li class="mydata-table-list mydata-table-time-common" value="30">最近30天</li>
+					<li class="mydata-table-list mydata-table-time-common" value="90">最近90天</li>
+					<!--<li class="mydata-table-list mydata-table-time-common" value="-1">全部</li>-->
+				</ul>	
+			</div>
+		</div>
+	</div>
+</div>
+<div class="statis-pic-content statis-common" style="height: 300px;width: 740px;" id="DetailEcharts">
+		
+</div>
+<div class="statis statis-common">
+	<h2>数据调用详单</h2>
+	<span class='downLoadAdminServiceData' title='下载列表中数据'></span>
+</div>
+<div class="statis-table clearfix">
+	<ul class="statis-table-head table-data">
+		<li>序号</li>
+		<li>调用时间</li>
+		<li>调用次数</li>
+		<li>有效次数</li>
+		<li>输入记录数</li>
+		<li>输出记录数</li>
+	</ul>
+	<div id="PageRenderHtml">
+		{{each table.renderData as value i }}
+			<ul class="statis-table-list table-data">
+				<li>{{ value.topNum }}</li>
+				<li>{{ timeStamp(value.strDate) }}</li>
+				<li>{{ value.accessRequest }}</li>
+				<li>{{ value.validRequest }}</li>
+				<li>{{ value.inputCount }}</li>
+				<li>{{ value.oututCount }}</li>
+			</ul>
+		{{/each}}
+	</div>
+</div>
+<div class="td-ui-page" id="PagesCountDetail">	
+</div>

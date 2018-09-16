@@ -1,0 +1,1 @@
+define(function(require,module,exports){return " {{if data.buy == 1}} <a id=\"UserDialog\" class=\"use-button\"><i class=\"play\"></i>调用演示</a> {{/if}}"})

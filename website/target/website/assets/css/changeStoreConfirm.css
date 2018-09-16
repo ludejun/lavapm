@@ -1,0 +1,39 @@
+#dialog-content{
+    position: absolute;
+    width: 450px;
+    top: 101px;
+    z-index: 7;
+    left: 412px;
+    background-color: #fff;
+}
+.buy-words-tip{
+    line-height: 30px;
+    width: 450px;
+    text-align: center;
+    padding: 40px 0;
+}
+.buy-words-tip button{
+    padding: 10px 20px;
+    cursor: pointer;
+}
+.check-submit{
+    background: #0085ff;
+    color: #fff;
+    margin-right: 20px;
+}
+.check-back{
+    border:1px solid #d0d0d0;
+    background: #fff;
+    color: #464c5b;
+}
+
+.close-buy{
+    font-size:14px;
+    float: right;
+    margin: -40px 10px 0px 0px;
+    cursor: pointer;
+}
+
+.stronger{
+    font-weight: 700;
+}

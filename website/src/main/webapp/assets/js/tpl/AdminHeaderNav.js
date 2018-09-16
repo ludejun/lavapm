@@ -1,0 +1,1 @@
+define(function(require,module,exports){return "<!--后台公共面包屑--><div class=\"serve-add\"><div class=\"serve-add-header\">{{each data as value i}} <a href=\"{{value.href}}\">{{value.name}}</a> <span>{{(i+1)!==data.length?'>':''}}</span> {{/each}}</div></div>"})

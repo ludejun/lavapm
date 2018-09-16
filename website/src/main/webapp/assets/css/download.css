@@ -1,0 +1,17 @@
+.download{
+    width: 32px;
+    height: 32px;
+    background: url(../img/download.png);
+    cursor: pointer;
+}
+.mydata-table .download{
+	position: absolute;
+	right:215px;
+	top: 50px;
+}
+.apps .download{
+	margin: -20px 0px 15px 720px;
+}
+.dos-position{
+	margin-top: -340px;
+}

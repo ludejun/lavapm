@@ -1,0 +1,129 @@
+<div class="go-back-list">
+	<!-- <a data-ui-sref="calcObjectLogs" ><i class="icons icons-arrow-left"></i>返回计算日志列表</a> -->
+	<a href="javascript:;" ng-click="goBackHistory();"><i class="icons icons-arrow-left"></i>返回{{sourcePage}}</a>
+</div>
+
+<div class="panel panel-gray">
+	<div class="panel-heading clrfix">
+  		<h3 class="panel-title fl">计算日志详情</h3>
+	</div>
+	<div class="panel-body">
+		<ul class="property-list clrfix two-cols">
+			<li class="item">
+				<div class="property-label">计算日志ID：</div>
+				<div class="property-value">{{calcObjectLog.id}}</div>
+			</li>
+			<li class="item item-right">
+				<div class="property-label">计算对象名称：</div>
+				<div class="property-value">{{calcObjectLog.objectName}}</div>
+			</li>
+			<li class="item">
+				<div class="property-label">计算对象ID：</div>
+				<div class="property-value">{{calcObjectLog.objectId}}</div>
+			</li>
+			<li class="item">
+				<div class="property-label">计算对象类型：</div>
+				<div class="property-value">{{calcObjectLog.objectType}}</div>
+			</li>
+			
+			<li class="item item-right">
+				<div class="property-label">状态：</div>
+				<div class="property-value">{{calcObjectLog.status | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}</div>
+			</li>
+			
+			<li class="item">
+				<div class="property-label">启动时间：</div>
+				<div class="property-value">{{calcObjectLog.startTime | DateFormatDefault}}</div>
+			</li>
+			
+			<li class="item">
+				<div class="property-label">耗时：</div>
+				<div class="property-value">{{calcObjectLog.times}}</div>
+			</li>
+			
+			<li class="item item-right">
+				<div class="property-label">结束时间：</div>
+				<div class="property-value">{{calcObjectLog.endTime | DateFormatDefault}}</div>
+			</li>
+			
+			<li class="item item-right">
+				<div class="property-label">发起人：</div>
+				<div class="property-value">{{calcObjectLog.creator}}</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+
+<ul class="tab-ul clrfix mt-10">
+	<li ng-click="tabSwitchCondition('calculate');" ng-class="{'cur':calcObjectLogTab.condition == 'calculate'}">计算步骤</li>
+	<li ng-click="tabSwitchCondition('scheduler');" ng-class="{'cur':calcObjectLogTab.condition == 'scheduler'}">调度信息</li>
+	<li ng-if="calcObjectLog.status == -1" ng-click="tabSwitchCondition('exception');" ng-class="{'cur':calcObjectLogTab.condition == 'exception'}">异常信息</li>
+</ul>
+
+<ul class="tab-con">
+	<li ng-show="calcObjectLogTab.condition == 'calculate'">
+		<div class="ng-table-container">
+			<table ng-table="tableParams" class="table ng-table-responsive table-hover">
+			    <tr ng-repeat="subCalcObjectLog in $data">
+			       <!-- <td data-title="'序号'">{{$index + 1}}</td> -->
+			      <!--  <td data-title="'ID'"><div>{{subCalcObjectLog.id}}</div></td> -->
+			       <td data-title="'子计算对象名称'"><div class="min-wd100" title="{{subCalcObjectLog.objectName}}">{{subCalcObjectLog.objectName}}</div></td>
+			       <td data-title="'内容'"><div>{{subCalcObjectLog.content}}</div></td>
+			       <td data-title="'状态'"><div>{{subCalcObjectLog.status | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}</div></td>
+			       <!-- <td data-title="'异常信息'"><div>{{subCalcObjectLog.execptionInfo}}</div></td> -->
+			       <td data-title="'开始时间'"><div class="wd120 t-o-e" title="{{subCalcObjectLog.startTime  | DateFormatDefault}}">{{subCalcObjectLog.startTime  | DateFormatDefault}}</div></td>
+			       <td data-title="'结束时间'"><div class="wd120 t-o-e" title="{{subCalcObjectLog.endTime  | DateFormatDefault}}">{{subCalcObjectLog.endTime  | DateFormatDefault}}</div></td>
+			       
+			       <!-- <td data-title="'操作'">
+			       	   <a ui-sref="calcObjectLogDetails_edit({calcObjectLogDetailId:subCalcObjectLog.id})" class="btn btn-primary">编辑</a>
+			           <a href="javascript:;" data-template="html/monitor/dialog/CalcObjectLogDetailDialog.html" bs-modal="modal" class="btn btn-primary">编辑</a>
+			           <a href="javascript:;" ng-click="removeCalcObjectLogDetail(subCalcObjectLog);" class="btn btn-default">删除</a>
+			       </td> -->
+			    </tr>
+			</table>
+		</div>
+	</li>
+	<li ng-show="calcObjectLogTab.condition == 'scheduler'">
+		<table class="table ng-table-responsive table-hover ng-table">
+			<thead>
+				<tr>
+					<th>调度日志ID</th>
+					<th>调度任务名称</th>
+					<th>状态</th>
+					<th>启动时间</th>
+					<th>结束时间</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><div>{{schedulerTaskLog.id}}</div></td>
+					<td><div>{{schedulerTaskLog.taskName}}</div></td>
+					<td><div>{{schedulerTaskLog.status | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}</div></td>
+					<td>
+						<div class="wd120 t-o-e" title="{{schedulerTaskLog.startTime | DateFormatDefault}}">
+							{{schedulerTaskLog.startTime | DateFormatDefault}}
+						</div>
+					</td>
+					<td>
+						<div class="wd120 t-o-e" title="{{schedulerTaskLog.endTime | DateFormatDefault}}">
+							{{schedulerTaskLog.endTime | DateFormatDefault}}
+						</div>
+					</td>
+			    </tr>
+			</tbody>
+		</table>
+		
+	</li>
+	<li ng-show="calcObjectLogTab.condition == 'exception'">
+		<ul class="property-list clrfix">
+			<li class="item" style="margin:0;">
+				<div class="property-label">错误信息：</div>
+				<div class="property-value">{{calcObjectLog.execptionInfo}}</div>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+

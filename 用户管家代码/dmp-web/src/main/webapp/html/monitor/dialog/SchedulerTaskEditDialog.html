@@ -1,0 +1,67 @@
+<div class="modal in" tabindex="-1" role="dialog" style="display: block;">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" ng-drag-dialog="true">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" ng-click="$hide()">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title">{{modal_title}}</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal clrfix" name="schedulerTaskEditDialogForm">
+    				<div class="control-group">
+				        <label class="control-label"><span class="required">*</span>调度任务名称：</label>
+				        <div class="controls">
+				            <input class="form-control" ng-class="{'input-error':!schedulerTaskEditDialogForm.name.$valid && schedulerTaskEditDialogForm.name.$dirty}" type="text" ng-model="schedulerTaskCopy.name" name="name" autocomplete="off" ng-maxlength="60" required>
+				            <div class="form-error-msg" ng-show="schedulerTaskEditDialogForm.name.$dirty && !schedulerTaskEditDialogForm.name.$valid && !schedulerTaskEditDialogForm.name.$error.maxlength">请输入调度任务名称</div>
+				            <div class="form-error-msg" ng-show="schedulerTaskEditDialogForm.name.$error.maxlength">参数名调度任务名称最多支持60个字符</div>
+				        </div>
+				    </div>
+				   <!--  <div class="control-group">
+				        <label class="control-label"><span class="required">*</span>所属系统：</label>
+				        <div class="controls">
+							<select class="form-control" ng-class="{'input-error':!schedulerTaskEditDialogForm.systemCode.$valid && schedulerTaskEditDialogForm.systemCode.$dirty}" ng-model="schedulerTaskCopy.systemCode" name="systemCode" required>
+								<option value="" >请选择</option>
+								<option ng-repeat="sts in systemApps" value="{{sts.appCode}}" ng-selected="schedulerTaskCopy.systemCode == sts.appCode">{{sts.appCode}}</option>
+							</select>
+							<div class="form-error-msg" ng-show="schedulerTaskEditDialogForm.systemCode.$dirty && !schedulerTaskEditDialogForm.systemCode.$valid">请选择所属系统</div>
+				        </div>
+				    </div> -->
+				     <div class="control-group">
+				        <label class="control-label">数据应用：</label>
+				        <div class="controls">
+							<select class="form-control" ng-model="schedulerTaskCopy.dataAppId" name="dataAppId">
+								<option value="" >请选择</option>
+								<option ng-repeat="sts in systemApps" value="{{sts.appCode}}" ng-selected="schedulerTaskCopy.dataAppId == sts.appCode">{{sts.appCode}}</option>
+							</select>
+				        </div>
+				    </div>
+				    <div class="control-group">
+				        <label class="control-label">所属租户：</label>
+				        <div class="controls">
+							<select class="form-control" ng-model="schedulerTaskCopy.tenantId" name="tenantId">
+								<option value="">系统任务</option>
+								<option value="global" ng-selected="schedulerTaskCopy.tenantId == 'global'">跨租户任务</option>
+								<option ng-repeat="tenant in allTenants" value="{{tenant.caCode}}" ng-selected="schedulerTaskCopy.tenantId == tenant.caCode">{{tenant.caShortName}}</option>
+							</select>
+				        </div>
+				    </div>
+    				<div class="control-group">
+				        <label class="control-label">描述：</label>
+				        <div class="controls">
+				            <textarea class="form-control" type="text" ng-model="schedulerTaskCopy.description" rows="5" ng-maxlength="512"></textarea>
+				        </div>
+				    </div>    				
+  				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="button btn-primary" ng-click="saveSchedulerTask(schedulerTaskCopy,schedulerTaskEditDialogForm)">保存</button>
+				<button type="button" class="button btn-default" ng-click="$hide()">取消</button>
+			</div>
+
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

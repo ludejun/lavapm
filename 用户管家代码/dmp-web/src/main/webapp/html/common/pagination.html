@@ -1,0 +1,16 @@
+<ul class="pagination pagination-sm"> 
+	<li ng-class="{'disabled': !page.active && !page.current, 'active': page.current}" ng-repeat="page in PaginationController.pages" ng-switch="page.type"> 
+		<a ng-switch-when="prev" ng-click="getData(page)" href="javascript:;">&laquo;</a> 
+		<a ng-switch-when="first" ng-click="getData(page)" href="javascript:;">
+			<span ng-bind="page.number"></span>
+		</a> 
+		<a ng-switch-when="page" ng-click="getData(page)" href="javascript:;">
+			<span ng-bind="page.number"></span>
+		</a> 
+		<a ng-switch-when="more"  href="javascript:;">&#8230;</a> <!-- ng-click="getData(page.number)" -->
+		<a ng-switch-when="last" ng-click="getData(page)" href="javascript:;">
+			<span ng-bind="page.number"></span>
+		</a> 
+		<a ng-switch-when="next" ng-click="getData(page)" href="javascript:;">&raquo;</a> 
+	</li> 
+</ul> 

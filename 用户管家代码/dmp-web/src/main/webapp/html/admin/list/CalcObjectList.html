@@ -1,0 +1,42 @@
+<div class="clrfix operator-panel">
+	<div class="clrfix">
+		<a data-ui-sref="calcObjects_new" class="btn-add"><i class="icons icons-add"></i>添加</a>	
+	</div>
+</div>
+<div class="ng-table-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">列表</div>
+		<div class="search" data-search role="search"></div>
+	</div>
+	<table ng-table="tableParams" class="table ng-table-responsive table-hover">
+	    <tr ng-repeat="calcObject in $data">
+	       <td data-title="'序号'"><div>{{$index + 1}}</div></td>
+	       <td data-title="'唯一标识'"><div>{{calcObject.id}}</div></td>
+	       <td data-title="'名称'"><div>{{calcObject.name}}</div></td>
+	       <td data-title="'代码'"><div>{{calcObject.code}}</div></td>
+	       <td data-title="'类型'"><div>{{calcObject.type}}</div></td>
+	       <td data-title="'对象参数'"><div>{{calcObject.param}}</div></td>
+	       <td data-title="'扩展属性1'"><div>{{calcObject.attr1}}</div></td>
+	       <td data-title="'扩展属性2'"><div>{{calcObject.attr2}}</div></td>
+	       <td data-title="'扩展属性3'"><div>{{calcObject.attr3}}</div></td>
+	       <td data-title="'扩展属性4'"><div>{{calcObject.attr4}}</div></td>
+	       <td data-title="'扩展属性5'"><div>{{calcObject.attr5}}</div></td>
+	       <td data-title="'创建人账号'"><div>{{calcObject.createBy}}</div></td>
+	       <td data-title="'创建人'"><div>{{calcObject.creator}}</div></td>
+	       <td data-title="'修改人账号'"><div>{{calcObject.updateBy}}</div></td>
+	       <td data-title="'创建时间'"><div>{{calcObject.createTime}}</div></td>
+	       <td data-title="'修改时间'"><div>{{calcObject.updateTime}}</div></td>
+	       <td data-title="'状态: 0'"><div>{{calcObject.status}}</div></td>
+	       <td data-title="'状态: 0'"><div>{{calcObject.calcStatus}}</div></td>
+	       <td data-title="'数据应用id'"><div>{{calcObject.dataAppId}}</div></td>
+	       <td data-title="'租户id'"><div>{{calcObject.tenantId}}</div></td>
+	       <td data-title="'操作'">
+	       		<div>
+		       	   <a ui-sref="calcObjects_edit({calcObjectId:calcObject.id})" class="icons icon-edit" title="编辑"></a>
+		           <a href="javascript:;" data-template="html/admin/dialog/CalcObjectDialog.html" bs-modal="modal" class="icons icon-edit" title="编辑"></a>
+		           <a href="javascript:;" ng-click="removeCalcObject(calcObject);" class="icons icon-delete" title="删除"></i>
+	       		</div>
+	       </td>
+	    </tr>
+	</table>
+</div>

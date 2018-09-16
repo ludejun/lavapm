@@ -1,0 +1,33 @@
+<li>
+	{{if headerMap.types.length == 0 }}
+		{{"--"}}
+	{{/if}}
+	{{each headerMap.types as value i}}
+		{{ value.type }}
+	{{/each}}
+</li>
+<li>{{ headerMap.ownerName || "--" }}</li>
+
+<!--<li>{{ timeStamp(headerMap.onsellDate) || "&#45;&#45;" }}</li>-->
+
+{{if headerMap.status == "1"}}
+<li>{{ timeStamp(headerMap.onsellDate) }}</li>
+{{else}}
+<li> - - </li>
+{{/if}}
+
+<!--<li>{{ timeStamp(headerMap.onsellDate) || "&#45;&#45;" }}</li>-->
+{{ if headerMap.status ==1 }}
+	<li>已发布</li>
+{{/if}}
+{{ if headerMap.status ==2 }}
+	<li>调试中</li>
+{{/if}} 
+{{ if headerMap.status ==3 }}
+	<li>已下线</li>
+{{/if}}
+{{ if headerMap.status == 4 }}
+	<li>未发布</li>
+{{/if}}
+
+<li>{{ headerMap.pricing || '--' }}</li> 

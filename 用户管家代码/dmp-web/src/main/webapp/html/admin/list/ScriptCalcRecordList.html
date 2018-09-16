@@ -1,0 +1,47 @@
+<div class="ng-table-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">数据下载</div>
+		<!-- <div class="ng-table-head-operator">
+			<span class="operator-button" ng-click="refrashDatas();">刷新</span>
+			<button type="button" class="btn btn-default btn-sm operator-button" ng-click="refrashDatas();">刷新</button>
+		</div> -->
+	</div>
+	<div class="ng-table-body ng-table-body-empty">
+		<table ng-table="tableParams" class="table table-hover ng-table-responsive" freeze="true" id="tableParams">
+		    <tr ng-repeat="scriptCalcRecord in $data">
+		       <td data-title="'任务名'"><div title="{{scriptCalcRecord.name}}">{{scriptCalcRecord.name}}</div></td>
+		       <td data-title="'导出方式'"><div title="{{scriptCalcRecord.attr3 | DictFormatter : 'CROWD_EXPORT_WAY'}}">{{scriptCalcRecord.attr3 | DictFormatter : 'CROWD_EXPORT_WAY'}}</div></td>
+		       <td data-title="'描述'"><div class="max-wd200 t-o-e" title="{{scriptCalcRecord.attr1}}">{{scriptCalcRecord.attr1}}</div></td>
+		       <!-- <td data-title="'任务代码'"><div title="{{scriptCalcRecord.code}}">{{scriptCalcRecord.code}}</div></td>
+		       <td data-title="'任务类型'"><div title="{{scriptCalcRecord.type}}">{{scriptCalcRecord.type}}</div></td>
+		       <td data-title="'计算参数'"><div class="max-wd200 t-o-e" title="{{scriptCalcRecord.param}}">{{scriptCalcRecord.param}}</div></td> -->
+		       <td data-title="'任务状态 '">
+		           	<div title="{{scriptCalcRecord.status | DictFormatter : 'DMP_OBJECT_STATUS'}}">
+		           		{{scriptCalcRecord.status | DictFormatter : 'DMP_OBJECT_STATUS'}}
+		         	</div>
+		      	</td>
+		      	<td data-title="'计算状态 '">
+		           	<div title="{{scriptCalcRecord.calcStatus | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}">
+		           		{{scriptCalcRecord.calcStatus | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}
+		         	</div>
+		      	</td>
+		      <td data-title="'创建人 '">
+		           	<div title="{{scriptCalcRecord.creator}}" class="max-wd80 t-o-e">
+		           		{{scriptCalcRecord.creator}}
+		         	</div>
+		      	</td>
+		       <td data-title="'创建时间'">
+			       	<div class="t-o-e max-wd120" title="{{scriptCalcRecord.createTime | DateFormatDefault}}">
+			       		{{scriptCalcRecord.createTime | DateFormatDefault}}
+			       	</div>
+		       	</td>
+		       <td data-title="'操作'">
+		       		<div class="ng-table-operator" style="min-width:35px !important;">
+			       	   	<a href="javascript:;" ng-if="scriptCalcRecord.status == 2 && scriptCalcRecord.calcStatus == 2" ng-click="downloadScriptCalcRecord(scriptCalcRecord);">下载</a>
+			       	   	<a href="javascript:;" ng-if="scriptCalcRecord.calcStatus == '0' || scriptCalcRecord.calcStatus == '-1'" ng-click="restartCompute(scriptCalcRecord);">重试</a>
+		       		</div>
+		       </td>
+		    </tr>
+		</table>
+	</div>
+</div>

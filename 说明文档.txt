@@ -1,0 +1,3 @@
+1、sysConfig.properties文件放在本地D盘（windows系统）根目录下面，如需修改，在enterprise项目中resource/sso-context.xml中修改两处即可
+如：file:///Users/conf/sysConfig.properties
+2、enterprise 项目 tomcat 、jetty等都可运行，端口为8080

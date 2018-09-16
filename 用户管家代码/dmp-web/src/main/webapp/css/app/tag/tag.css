@@ -1,0 +1,247 @@
+@charset "utf-8";
+.expression-list li{float:left;width:200px;overflow:hidden;margin-bottom:10px;}
+.expression-list li .name{cursor: pointer;overflow: hidden;white-space: nowrap;padding:0 5px;text-overflow: ellipsis;display:inline-block;float:left;width:130px;height:34px;line-height:34px;border:1px solid #ccc;border-radius: 4px;}
+.expression-list li .logic{float:left;margin-left:10px;width:50px;text-align: center;padding:0;}
+.expression-box .first-logic{float:left;margin-right:10px;width:50px;text-align: center;padding:0;}
+
+
+/*标签日志*/
+.tag-journal-list .item{height:150px;font-size:30px;text-align:center;}
+.tag-journal-list .item a{color:#fff;display: block;text-decoration: none;height:100%;width:100%;}
+
+
+
+/*标签定义new start*/
+.form-horizontal-tag{background:#fff;border:1px solid #e8e9ed;border-radius:5px;padding:0;margin-bottom: 20px;}
+.tag-define-box{background:#f7f8fa;border-top:2px solid #dedfe4;border-bottom: 1px solid #dedfe4;border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;}
+.tag-define-box .panel-heading{padding:20px 15px 0 15px;}
+.tag-define-box .panel-title{color:#000;}
+
+
+.tag-definition-icons{background:url(../../../images/tag/tag-definition-icons.png) no-repeat;cursor:pointer;display:inline-block;}
+.tag-definition-icons-add{background-position:-8px -272px;width:10px;height:10px;}
+.tag-definition-icons-remove{background-position:-8px -56px;width:24px;height:24px;}
+.tag-definition-icons-remove:hover{background-position:-8px -104px;}
+
+
+.tag-definition-panel .btn-add-tag,.tag-definition-panel .btn-add-tag-group{font-size:14px;margin:0 50px 0 10px;color:#5f93e1;cursor:pointer;float:left;}
+.tag-definition-panel .tag-definition-icons-add{float:left;margin:5px 5px 0 0;}
+.tag-definition-panel .tag-group{margin-bottom:10px;}
+
+.tag-definition-panel .tag-group-bracket{border:1px solid #dee0e4;padding:10px 5px;border-radius:5px;position:relative;margin:60px 0 10px 0;background:#fff;}
+.tag-definition-panel .tag-group-bracket-white{background:#fff;}
+.tag-definition-panel .tag-group-bracket-blue{background:#f7f8f9;}
+.tag-definition-panel .tag-group-bracket .arrow-top{width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;border-bottom: 10px solid #dee0e4;font-size: 0px;line-height: 0px;  position: absolute;top: -10px;left: 35px;}
+.tag-definition-panel .tag-group-bracket > .arrow-top > s{width: 0;height: 0;border-left: 10px solid transparent;border-right: 10px solid transparent;border-bottom: 10px solid #f7f8f9;font-size: 0px;line-height: 0px;position: absolute;top: 2px;left: -10px;}
+.tag-definition-panel .tag-group-bracket-blue > .arrow-top > s{border-bottom: 10px solid #f7f8f9;}
+.tag-definition-panel .tag-group-bracket-white > .arrow-top > s{border-bottom: 10px solid #fff;}
+.tag-definition-panel .tag-group > .inner-btns{display:none;margin-top:10px;}
+.tag-definition-panel .tag-group-bracket > .inner-btns{display:block;}
+.tag-definition-panel .tag-group-bracket > .inner-btns .btn{float:left;margin-right:10px;}
+.tag-definition-panel .tag-group > .group-logic{display:none;position:absolute;top: -50px;left: 0px;background:url(../../../images/tag/tag-definition-icons.png) no-repeat;background-position:-56px -48px;font-size:14px;color:#fff;text-align:center;width:88px;cursor:pointer;height:31px;line-height:31px;padding-right: 15px;}
+.tag-definition-panel .tag-group-bracket > .group-logic{display:block;}
+.tag-definition-panel .tag-group > .group-logic:hover{background-position:-56px -96px;}
+
+.tag-definition-panel .tag-group .tag-item .left{float:left; width:9%;text-align:center;font-size:14px;}
+.tag-definition-panel .tag-group .tag-item .left .lb{background:#e5e8eb;line-height: 34px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;width:90px;}
+.tag-definition-panel .tag-group .tag-item .left .item-logic{background:url(../../../images/tag/tag-definition-icons.png) no-repeat;background-position:0 0;width:90px;height:34px;line-height:34px;cursor:pointer;padding-right:15px;}
+.tag-definition-panel .tag-group .tag-item .left .item-logic:hover{background-position:-112px 0;}
+.tag-definition-panel .tag-group .tag-item .tag-item-right{position:relative;float:right;width:91%;border-bottom:1px dashed #d2d7dc;padding-bottom: 10px;}
+.tag-definition-panel .tag-group .tag-item .center{float:left;width:100%;}
+.tag-definition-panel .tag-group .tag-item .right{float:right;line-height:34px;position: absolute;right: 0;}
+
+
+.tag-definition-panel .tag-group .control-type{float:left;}
+.tag-definition-panel .tag-group .control-type .form-control{float:left;width:auto;margin-right:5px;padding: 0 ;margin-bottom: 5px;max-width: 100px;}
+/* .tag-definition-panel .tag-group .control-type .defi-type{max-width:100px;}
+.tag-definition-panel .tag-group .control-type .condition{max-width:115px;} */
+.tag-definition-panel .tag-group .control-params{float:left;margin:0;}
+.tag-definition-panel .tag-group .control-params .tagator{  min-height: 34px;float:left;position: relative;border: 1px solid #ccc;border-radius: 3px;  -moz-border-radius: 3px;  -webkit-border-radius: 3px;min-width: 200px;margin-right:8px;max-width:260px;}
+.tag-definition-panel .tag-group .control-params .param-attribute .tagator{max-width:500px;}
+.tag-definition-panel .tag-group .control-params .search-dropdown{float:left;margin-right:5px;}
+.tag-definition-panel .tag-group .control-params .search-dropdown .dropdown-menu{width:300px;}
+.tag-definition-panel .tag-group .control-params .form-item{float:left;margin:0 5px 0 0;position: relative;}
+.tag-definition-panel .tag-group .control-params .form-item .ui-datepicker-css{top:35px;}
+.tag-definition-panel .tag-group .control-params .form-control{width:auto;padding:0 5px;max-width:150px;}
+.tag-definition-panel .tag-group .control-params .form-control.days{width:55px;padding: 0 5px;}
+.tag-definition-panel .tag-group .control-params .form-control.date-operator{width:75px;padding:0;}
+.tag-definition-panel .tag-group .control-params .form-control.operators{width:75px;padding:0;}
+.tag-definition-panel .tag-group .control-params .input-tag{width:360px;max-width:360px;}
+.tag-definition-panel .tag-group .control-params .form-date{width: 90px;padding: 0 5px;}
+.tag-definition-panel .tag-group .control-params .form-span{padding:0;background: #e5e8eb;padding: 0 8px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;height: 34px;line-height: 34px;}
+
+.tag-definition-panel .tag-group .control-params .times-box .times{width:55px;padding: 0 5px;}
+.tag-definition-panel .tag-group .control-params .dates-box .form-date{width:195px;max-width:195px;}
+
+
+
+.tag-definition-panel .tag-group .control-params .key-value-box{position:relative;float:left;  border: 1px solid #ccc;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;min-width: 335px;max-width: 500px;width: auto;min-height: 34px;}
+.tag-definition-panel .tag-group .control-params .key-value-box .input-key-value{ width: 300px;max-width: 300px;}
+.tag-definition-panel .tag-group .control-params .key-value-params{z-index: 1;position: absolute;  top: 33px;border: 1px solid #ccc;padding: 5px;
+  background: #f4f5f7;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;width:100%;}
+.tag-definition-panel .tag-group .control-params .key-value-params .form-control{width:100px;}
+.tag-definition-panel .tag-group .control-params .key-value-params .key-value-btn{margin-top:5px;}
+
+.tag-define-condition span{font-size:14px;cursor:pointer;border-bottom: 1px solid #ccc;}
+.tag-view{position:absolute;left:0;top:0;width:100%;height:100%;z-index: 2;}
+/*标签定义new end*/
+
+/*标签定义2016-04-19 start*/
+.form-horizontal-tag .control-group{width:33%;}
+.form-horizontal-tag .control-label{min-width:25px;margin-left: 20px;}
+.form-horizontal-tag .controls{width:65%;}
+
+.form-horizontal-tag .tag-title{border-bottom:1px solid #dce1e7;}
+.form-horizontal-tag .tag-title h3{float:left;color:#000;font-size:14px;font-weight:normal;padding:0 20px;height:35px;line-height:35px;}
+
+.tag-relations-panel{position:relative;}
+.tag-relations-panel .add-relation{text-align: center;margin-top: -58px;}
+.add-relation .btn-add-relation{position:relative;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;cursor:pointer;background: #5f93e1;color: #fff;display: inline-block;height: 30px;line-height: 30px;text-align: center;padding: 0 10px;}
+.add-relation .btn-add-relation i{background:url(../../../images/tag/i02.png) no-repeat;background-position:0 0;vertical-align:top;margin:10px 5px 0 0;}
+.add-relation .btn-add-relation:before{border-left:1px dashed #dedfe1;content: ' ';height: 28px;right: 0;position: absolute;width: 48px;top: -28px;}
+
+.form-horizontal-tag .ralation-logic{  position: absolute;left: 50%;top: -58px;font-size:14px;}
+.form-horizontal-tag .ralation-logic:before{border-left:1px dashed #dedfe1;content: ' ';height: 28px;right: 0;position: absolute;width: 48px;top: -28px;}
+.form-horizontal-tag .ralation-logic:after{border-left:1px dashed #dedfe1;content: ' ';height: 28px;right: 0;position: absolute;width: 48px;bottom: -28px;}
+.form-horizontal-tag .ralation-logic .logic{margin-left: -45px;background:#5f93e1 url(../../../images/tag/arrow-white.png) no-repeat;  background-position: 60px center;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;font-size: 14px;color: #fff;text-align: center;width: 88px;cursor: pointer;height: 30px;line-height: 30px;padding-right: 15px;}
+.form-horizontal-tag .relation-item:first-child .ralation-logic{display:none;}
+
+.form-horizontal-tag .relation-item .ralation-box{position: relative;}
+.form-horizontal-tag .relation-item .ralation-box .group-combo.behaviorTable{border-bottom: 1px dashed #dedfe1;}
+.form-horizontal-tag .relation-item .ralation-box .ralation-type{width:150px;padding:30px 20px;}
+.form-horizontal-tag .relation-item .ralation-box .welcome-box{text-align:center;padding:30px 20px;}
+.form-horizontal-tag .relation-item .ralation-box .welcome-text{margin-bottom:20px;}
+.form-horizontal-tag .relation-item .ralation-box .welcome-text p{font-size:14px;margin-bottom:10px;}
+.form-horizontal-tag .relation-item .ralation-box .welcome-btn span{display:inline-block;cursor:pointer;text-align:center;background: #5f93e1;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;font-size: 14px;
+  color: #fff;text-align: center;padding:0 20px;cursor: pointer;height: 35px;line-height: 35px;}
+
+.form-horizontal-tag .group-combo .group-box{border-bottom: 1px dashed #dedfe1;background: #fff;padding:20px 0 0 0;position:relative;margin:0 20px 0 130px;}
+.form-horizontal-tag .group-combo.behaviorTable .group-box{border-bottom:none;}
+
+.form-horizontal-tag .group-combo .group-box .group-close{cursor:pointer;position:absolute;right:10px;top:50%;margin-top: -6px;background: url(../../../images/tag/close.png) no-repeat;width:12px;height:12px;}
+.form-horizontal-tag .group-combo.behaviorTable .group-box .group-close{top:40px;}
+.form-horizontal-tag .group-logic{margin:20px 20px 0 20px;float: left;}
+.form-horizontal-tag .group-logic .logic{border:1px solid #dedfe1;background:#fff url(../../../images/tag/arrow-gray.png) no-repeat;background-position: 0 0;background-position: 60px center;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;width: 88px;height: 30px;line-height: 30px;cursor: pointer;padding-right: 15px;text-align: center;font-size: 14px;}
+
+.form-horizontal-tag .group-combo .group-label{display:none;margin: 20px 20px 0 20px;float: left;}
+.form-horizontal-tag .group-combo .group-label .label-name{border: 1px solid #e5e9ec;background:#e5e9ec;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;
+  width: 88px;height: 30px;line-height: 30px;text-align: center;font-size: 14px;}
+.form-horizontal-tag .group-combo:first-child .group-label{display:block;}
+
+.form-horizontal-tag .group-combo:first-child .group-logic{display:none;}
+.form-horizontal-tag .group-box .groups{margin-bottom:20px;}
+.form-horizontal-tag .group-box .groups .lately-date-box{margin-bottom:10px;}
+.form-horizontal-tag .group-box .groups .behavior-box{}
+.form-horizontal-tag .group-box .groups .behavior-attributes{margin-bottom: 20px;padding:20px 0 0 50px;position:relative;border-left: 1px dashed #d2d7dc;margin-left: 50px;}
+.form-horizontal-tag .group-box .groups .behavior-attributes > ul > li{padding: 10px;margin-bottom:10px;background:#f7f8f9;border:1px solid #dce1e7;position:relative;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .condition-label{position:absolute;top:22px;left: -42px;padding: 0 30px;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .add-behavior-attribute{position:absolute;bottom:-20px;left:-32px;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .btn-add-behavior-attribute{color:#5f92e1;cursor:pointer;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .btn-add-behavior-attribute i{float:left;margin:3px 5px 0 0;}
+.form-horizontal-tag .group-box .groups .behavior-attributes{float:left;width: 700px;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .attributes-form{width:100%;float:left;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .event-params{width:100%;float:left;margin-top:10px;position:relative;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .event-params .event-param-label{position:absolute;padding: 0 14px;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .event-params .event-params-box > ul{float:left;width: 560px;border-left: 1px dashed #d2d7dc;padding-left: 36px; margin-left: 35px; padding-right: 30px;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .event-params .event-params-box > ul > li{float:left;width: 100%;margin-bottom: 10px;position:relative;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .event-params .event-params-box > ul > li .group-close{top: 16px;right: 10px;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .event-params .event-params-box > ul > li:first-child .group-close{display:none;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .event-params .event-params-box > ul > li .event-key{width:120px;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .event-params .event-params-box > ul > li input{width:150px;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .event-params .event-params-box > ul > li .tagator{max-width: 220px;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .event-params .btn-add-behavior-event-param{;cursor:pointer;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .event-params .btn-add-behavior-event-param i{vertical-align: top;margin: 3px 5px 0 0;}
+.form-horizontal-tag .group-box .groups .behavior-attributes .del-attr{background:url(../../../images/tag/del.png) no-repeat;cursor:pointer;height: 24px;width:24px;position:absolute;right:10px;top:50%;margin-top:-12px;}
+
+
+.form-horizontal-tag .add-group-combo{padding:5px 0;position:relative;height: 50px;display:none;}
+.form-horizontal-tag .add-group-combo .btn-add-group-combo{float:left;cursor:pointer;color: #5f92e1;margin: 10px 0 10px 130px;}
+.form-horizontal-tag .add-group-combo .btn-add-group-combo i{float:left;margin:3px 5px 0 0;}
+.form-horizontal-tag .relation-item .ralation-box .add-group-combo:last-child{display:block;}
+
+.form-horizontal-tag .relation-item-behaviorTable .add-group-combo .btn-add-group-combo{position:absolute;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;cursor: pointer;background: #5f93e1;color: #fff;display: inline-block;height: 30px;line-height: 30px;text-align: center;padding: 0 10px;margin: -20px 0 0 22px;}
+.form-horizontal-tag .relation-item-behaviorTable .add-group-combo .btn-add-group-combo i{margin: 10px 5px 0 0;background: url(../../../images/tag/i02.png) no-repeat;background-position: 0 0;vertical-align: top;}
+
+.form-horizontal-tag .form-item{float:left;margin-right:10px;height:30px;width:auto;  padding: 0 10px;}
+.form-horizontal-tag select.form-item{padding-right:20px;}
+.form-horizontal-tag .form-span{background:#e5e8eb;padding:0 10px;line-height: 30px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
+.form-horizontal-tag .lately-date{width:auto;position: relative;padding:0;}
+.form-horizontal-tag .lately-date .date-box{  position: absolute;width: 100%;height: 100%;left: 0;top: 0;cursor:pointer;z-index:2;}
+.form-horizontal-tag .lately-date .calendar-tools{z-index:1;position: absolute;top: 30px;left: 0;width:400px;background: #686E7E;padding: 0 10px;height:38px;  line-height: 38px;border-top-left-radius: 5px;border-top-right-radius: 5px;border: 1px solid #ccc;
+  border: 1px solid rgba(0,0,0,.2);box-shadow: 0 5px 10px rgba(0,0,0,.2);text-align: right;}
+.form-horizontal-tag .lately-date .calendar-tools >ul{float: left;margin-top: 8px;}
+.form-horizontal-tag .lately-date .calendar-tools >ul > li{float:left;color:#fff;margin-right: 5px;padding: 0 5px;border-radius: 5px;cursor:pointer;height: 20px;line-height: 20px;}
+.form-horizontal-tag .lately-date .calendar-tools >ul > li:hover{background: #444A5D;}
+.form-horizontal-tag .lately-date .calendar-tools .lately-input{float:right;width:221px;}
+.form-horizontal-tag .lately-date .calendar-tools .lately-input i{float:left;margin-top:10px;}
+.form-horizontal-tag .lately-date .calendar-tools .lately-input span{float:left;color: #fff;}
+.form-horizontal-tag .lately-date .calendar-tools .lately-input input{float:left;height:18px;margin: 10px 5px 0 5px;
+  width:38px;border: none;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;padding: 0 5px;color: #000;line-height: 18px;}
+.form-horizontal-tag .lately-date .calendar-tools .lately-input .lately-button{cursor:pointer;padding:0 10px;height:20px;  background: #5f92e1;
+  color: #fff;line-height: 20px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;margin: 8px 0 0 5px;}
+
+.form-horizontal-tag .lately-date .TD_Calendar{border: 1px solid #ccc;position: absolute;top: 68px;width:200px;-webkit-border-radius: 0px;-moz-border-radius: 0px;border-radius: 0px;}
+.form-horizontal-tag .lately-date .TD_Calendar:nth-child(1){left:0;border-right:none;}
+.form-horizontal-tag .lately-date .TD_Calendar:nth-child(2){left:200px;border-left:none;}
+.form-horizontal-tag .lately-date .form-actions{position: absolute;top: 296px;width: 400px;border: 1px solid #ccc;border: 1px solid rgba(0,0,0,.2);box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  border-top: none;margin-bottom:20px;  border-bottom-right-radius: 5px;border-bottom-left-radius: 5px;overflow: hidden;z-index: 1;}
+.form-horizontal-tag .lately-date .form-actions span font{padding:10px;}
+.form-horizontal-tag .lately-date .form-actions span font .cancelFilter{margin-right:10px;}
+
+.form-horizontal-tag .select-box{line-height: 28px;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;border:1px solid #dce1e7;background:#fff;cursor:pointer;height:30px;float:left;}
+.form-horizontal-tag .select-box .select-label{float:left;height:100%;padding: 0 8px;max-width: 200px;overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.form-horizontal-tag .select-box .select-sign{float:right;width:28px;height:100%;background:#f7f8f9 url(../../../images/tag/arrow-select-bottom.png) no-repeat center;border-left:1px solid #dce1e7;}
+
+.relations-panel .relation-item .attributes{width:160px;}
+.relations-panel .relation-item .operators{max-width:180px;}
+.relations-panel .relation-item .attribute-tables{width:160px;}
+.relations-panel .relation-item .times-operator{width:80px;}
+.relations-panel .relation-item .input-times{width:60px;}
+.relations-panel .relation-item .date-operator{width:100px;}
+.relations-panel .relation-item .tagator{min-width:180px;max-width:300px;}
+.relations-panel .relation-item .attributeTable .tagator{max-width: 462px;}
+.relations-panel .relation-item .times-input{width:100px;}
+
+/*标签定义2016-04-19 end*/
+
+/*标签定义2016-04-28 start*/
+.tag-define-box .panel-body{padding:20px;}
+
+.tag-define-panel{border:1px solid #dedfe1;background:#fff;}
+.tag-define-panel-head{background:#f7f8fa;border-bottom:1px solid #dedfe1;}
+.tag-define-panel-head h2{height:45px;line-height:45px;float:left;padding:0 50px 0 20px;font-size:16px;font-weight:normal;}
+.tag-define-panel-head .lately-date-box{float:left;margin: 8px 0 0 0;}
+
+.relation-item{border: 1px solid #dedfe1;margin-bottom:85px;background: #fff;position: relative;}
+
+.input-daterange{position:relative;}
+.form-horizontal-tag .input-daterange .form-control{width:100px;cursor:pointer;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;}
+.input-daterange .calendar-box{position:absolute;top: 34px;left: 0;width:100%;  min-width: 220px;z-index:1;}
+.input-daterange .calendar-box.end-calendar{left:152px;}
+.input-daterange .calendar-box .TD_Calendar{width:100%;border: 1px solid #ccc;}
+
+.form-horizontal-tag .tag-cate-ul{cursor:pointer;}
+.form-horizontal-tag .tag-cate-ul li{float:left;width:auto;max-width:100%;background:#f7f8f9;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;position:relative;padding:0 16px 0 5px;border:1px solid #dce1e7;overflow:hidden;white-space: nowrap;text-overflow: ellipsis;margin-right:5px;}
+.form-horizontal-tag .tag-cate-ul li .icon-clear{position:absolute;right:3px;top:3px;background: url(/enterprise/images/app/common/icon-clear.png) no-repeat;width: 8px;height: 8px;cursor: pointer;background-size: 8px 8px;}
+
+.form-horizontal-tag .dropdown-panel{min-width:220px;max-width: 80%;}
+.no-select-tag{    padding: 50px;text-align: center;font-size: 16px;}
+
+/*标签定义2016-04-28 end*/
+
+/*标签计算记录*/
+.tag-cal-record-details li{float:left;margin:8px 0  8px 0;width:40%;}
+.tag-cal-record-details li .lb{}
+
+
+.form-tag-view i,
+.form-tag-view .del-attr,
+.form-tag-view .tagator_tag_remove,
+.form-tag-view.form-horizontal-tag .relation-item .ralation-box .add-group-combo,
+.form-tag-view .tag-relations-panel .add-relation,
+.form-tag-view.form-horizontal-tag .group-box .groups .behavior-attributes .add-behavior-attribute{display:none;}
+
+.form-tag-view.form-horizontal-tag .ralation-logic .logic{background: #5f93e1;padding-right: 0;}
+
+
+

@@ -1,0 +1,75 @@
+<div class="go-back-list">
+	<a href="javascript:;" ng-click="goBackHistory();"><i class="icons icons-arrow-left"></i>{{nlsRoot.backSystemTagList}}</a>
+</div>
+<div class="form-horizontal-panel">
+	<div class="form-horizontal-title" ng-if="isViewRule">{{nlsRoot.viewSystemTag}}</div>
+	<div class="form-horizontal-title" ng-if="!isViewRule && !systemTag.id">{{nlsRoot.addSystemTag}}</div>
+	<div class="form-horizontal-title" ng-if="!isViewRule && systemTag.id">{{nlsRoot.editSystemTag}}</div>
+	<form class="form-horizontal clrfix p-rel" name="systemTagForm">
+	    <div class="control-group">
+	        <label class="control-label"><span class="required">*</span>{{nlsRoot.systemTagName}}：</label>
+	        <div class="controls">
+	            <input ng-keyup="validInputValue('input',systemTag.name,systemTagForm.name,nlsRoot.systemTagName,false);" ng-class="{'input-error':!systemTagForm.name.$valid && systemTagForm.name.$dirty}" class="form-control" type="text" ng-model="systemTag.name" name="name" ng-maxlength="256" required>
+	            <div class="form-error-msg" ng-show="!systemTagForm.name.$valid && systemTagForm.name.$dirty && !systemTagForm.name.$error.maxlength">{{systemTagForm.name.errorText}}</div>
+	            <div class="form-error-msg" ng-show="systemTagForm.name.$error.maxlength">{{nlsRoot.systemTagNameRequire}}</div>
+	        </div>
+		</div>
+		<div class="control-group" >
+			<label class="control-label"><span class="required">*</span>{{nlsRoot.touchPointTypes}}：</label>
+			<div class="controls ">
+				<select class="form-control" ng-class="{'input-error':!systemTagForm.touchPointType.$valid && systemTagForm.touchPointType.$dirty}" ng-model="systemTag.touchPointType" name="touchPointType" required>
+					<option value="">{{nlsRoot.pleaseSelect}}</option>
+					<option ng-repeat="iu in individualUserList" value="{{iu.dicItemKey}}" ng-selected="iu.dicItemKey == systemTag.touchPointType">{{iu.dicItemValue}}</option>
+				</select>
+				<div class="form-error-msg" ng-show="systemTagForm.touchPointType.$dirty && !systemTagForm.touchPointType.$valid">{{nlsRoot.selectTouchPointTypes}}</div>
+			</div>
+		</div>
+	    <div class="control-group">
+	        <label class="control-label"><span class="required">*</span>{{nlsRoot.calculationScript}}：</label>
+	        <div class="controls">
+	            <select ng-class="{'input-error':!systemTagForm.scriptInfoId.$valid && systemTagForm.scriptInfoId.$dirty}" class="form-control" ng-model="systemTag.scriptInfoId" name="scriptInfoId" required>
+	            	<option value="">{{nlsRoot.pleaseSelect}}</option>
+					<option ng-repeat="si in scriptInfoList" ng-if="si.type == '1'" value="{{si.id}}" ng-selected="si.id == systemTag.scriptInfoId">{{si.scriptName}}</option>
+				</select>
+				<div class="form-error-msg" ng-show="systemTagForm.scriptInfoId.$dirty && !systemTagForm.scriptInfoId.$valid">{{nlsRoot.selectCalculationScript}}</div>
+	        </div>
+		</div>
+	    <div class="control-group" ng-if="isViewRule">
+	        <label class="control-label"><span class="required">*</span>{{nlsRoot.operatingParameters}}：</label>
+	        <div class="controls">
+	        	<div class="view-form-control">{{systemTag.scriptParam}}</div>
+	            <div class="notice-panel">{{nlsRoot.scriptParamRequire}}</div>
+	        </div>
+		</div>
+		<div class="control-group" ng-if="!isViewRule">
+	        <label class="control-label"><span class="required">*</span>{{nlsRoot.operatingParameters}}：</label>
+	        <div class="controls">
+	            <textarea class="form-control" ng-class="{'input-error':!systemTagForm.scriptParam.$valid && systemTagForm.scriptParam.$dirty}" ng-model="systemTag.scriptParam" name="scriptParam" rows="3" required></textarea>
+	            <div class="form-error-msg" ng-show="systemTagForm.scriptParam.$dirty && !systemTagForm.scriptParam.$valid">{{nlsRoot.inputOperatingParameters}}</div>
+	            <div class="notice-panel">{{nlsRoot.scriptParamRequire}}</div>
+	        </div>
+		</div>
+		<div class="control-group" ng-if="isViewRule && systemTag.description">
+	        <label class="control-label">{{nlsRoot.describe}}：</label>
+	        <div class="controls">
+	        	<div class="view-form-control">{{systemTag.description}}</div>
+	        </div>
+		</div>
+		<div class="control-group" ng-if="!isViewRule">
+	        <label class="control-label">{{nlsRoot.describe}}：</label>
+	        <div class="controls">
+	            <textarea class="form-control" ng-model="systemTag.description" name="description" ng-class="{'input-error':!systemTagForm.description.$valid && systemTagForm.description.$dirty}" rows="3"></textarea>
+	            <div class="form-error-msg" ng-show="systemTagForm.description.$error.maxlength">{{nlsRoot.describeRequire}}</div>
+	        </div>
+		</div>
+		<div class="view-rules" ng-if="isViewRule"></div>
+	</form>
+</div>
+
+<div class="form-horizontal-btns clrfix ng-hide" ng-show="!isViewRule">
+	<button type="button" class="form-btn btn-blue-hg35" ng-click="saveSystemTag(systemTag, systemTagForm)">{{nlsRoot.save}}</button>
+	<a href="javascript:;" class="form-btn btn-white-hg35" ng-click="goBackHistory();">{{nlsRoot.cancel}}</a>
+	<div ng-if="isEdit" class="form-btn btn-blue-hg35" ng-click="restartSystemTag(systemTag)">{{nlsRoot.recalculate}}</div>
+</div>
+
+

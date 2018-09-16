@@ -1,0 +1,27 @@
+<div class="clrfix operator-panel">
+	<!-- <a data-ui-sref="calcObjectLogDetails_new" class="btn btn-success fl">添加</a>	 -->
+	<!-- <div class="fr">	
+		<div data-search role="search"></div>
+	</div> -->
+</div>
+<div class="ng-table-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">计算对象日志详情列表</div>
+		<div class="search" data-search role="search"></div>
+	</div>
+	<table ng-table="tableParams" class="table ng-table-responsive table-hover">
+	    <tr ng-repeat="calcObjectLogDetail in $data">
+	       <!-- <td data-title="'序号'">{{$index + 1}}</td> -->
+	       <td data-title="'ID'"><div>{{calcObjectLogDetail.id}}</div></td>
+	       <!-- <td data-title="'计算对象日志ID'"><div>{{calcObjectLogDetail.calcObjectLogId}}</div></td> -->
+	       <td data-title="'时间'"><div class="max-wd120 t-o-e" title="{{calcObjectLogDetail.logTime | DateFormatDefault}}">{{calcObjectLogDetail.logTime  | DateFormatDefault}}</div></td>
+	       <td data-title="'内容'"><div>{{calcObjectLogDetail.content}}</div></td>
+	       
+	       <!-- <td data-title="'操作'">
+	       	   <a ui-sref="calcObjectLogDetails_edit({calcObjectLogDetailId:calcObjectLogDetail.id})" class="btn btn-primary">编辑</a>
+	           <a href="javascript:;" data-template="html/monitor/dialog/CalcObjectLogDetailDialog.html" bs-modal="modal" class="btn btn-primary">编辑</a>
+	           <a href="javascript:;" ng-click="removeCalcObjectLogDetail(calcObjectLogDetail);" class="btn btn-default">删除</a>
+	       </td> -->
+	    </tr>
+	</table>
+</div>

@@ -1,0 +1,90 @@
+<form class="form-horizontal clrfix">
+    <div class="control-group">
+        <label class="control-label">名称：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.name">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">编码：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.code">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">azkaban工程名称：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.azkabanProjectName">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">azkaban工程id：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.azkabanProjectId">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">azkaban工程版本：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.azkabanProjectVersion">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">azkaban job flow id：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.azkabanJobFlowId">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">job flow类型 0：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.azkabanJobFlowType">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">状态：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.status">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">创建人账号：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.createBy">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">创建人：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.creator">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">修改人账号：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.updateBy">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">创建时间：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.createTime">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">修改时间：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTask.updateTime">
+        </div>
+	</div>
+     <div class="control-group">
+    	<label class="control-label">&nbsp;</label>
+    	<div class="controls">
+	        <button type="button" class="btn btn-success" ng-click="saveSchedulerTask(schedulerTask)">保存</button>
+	        <a data-ui-sref="schedulerTasks" class="btn btn-default">返回列表</a>
+        </div>
+    </div>
+</form>
+
+
+

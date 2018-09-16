@@ -1,0 +1,44 @@
+<div class="logo" ng-if="!isMutilApp">
+	<a href="/enterprise">
+		<span class="img" ng-if="appMenuLogo" style="background: url('{{appMenuLogo}}') no-repeat;background-size: auto 100%;"></span>
+	</a>
+</div>
+<div class="search"><input type="text" placeholder="搜索" ng-model="searchMenuKeyword" ng-keyup="searchMenuList();"/></div>
+
+<div class="scroll-box" id="menu-scroll" ng-style="calCulateMenuHeight()">
+	<div class="menu-left" id="menu-left">
+		<div class="content_mid">
+			<div class="menu">
+				<dl ng-repeat="dl in menuList" ng-class="{'only-dt': dl.childrens.length == 0}">
+					<dt ng-if="dl.childrens.length == 0" ng-class="{'hide': dl.resourceLabel.indexOf(searchMenuKeyword) == -1,'active': dl.show}"><i class="icons-menu icon-menu-{{dl.extAttr2}}"></i><a href="{{dl.resourceUri}}">{{dl.resourceLabel}}</a></dt>
+					<dt ng-if="dl.childrens.length != 0" ng-class="{'active': dl.show}"><i class="icons-menu icon-menu-{{dl.extAttr2}}"></i><span>{{dl.resourceLabel}}</span></dt>
+					<dd ng-repeat="dd in dl.childrens" ng-class="{'active': curMenuUri.indexOf(dd.resourceUri) != -1,'hide':dd.resourceLabel.indexOf(searchMenuKeyword) == -1}"><a href="{{dd.resourceUri}}">{{dd.resourceLabel}}</a></dd>
+				</dl>
+			</div>
+		</div>
+	</div>
+</div>
+
+ 
+<div class="logout clrfix" id="logout" ng-if="!isMutilApp">
+	<a href="javascript:;" class="account" ng-click="toggleLogout();" ng-class="{'active':isShowLogout}">
+		<i></i>我的账户
+	</a>
+	<a ng-show="hasTenantFlag" class="rule ng-hide" href="#/admin/tenant/ep?url=/tenant" ng-click="goToRuleSystem();" ng-class="{'active':isShowRuleSystem}">
+		<i></i>权限管理
+	</a>
+	
+	<ul class="dropdown-ul" ng-show="isShowLogout">
+		<li class="li01 clrfix">
+			<a href="javascript:;" class="account-name" title="{{accountName}}">{{accountName}}</a>
+			<i class="icon-out" onclick="$.logout(this);" title="退出"></i>
+			<span class="icon_line"></span>
+			<div data-backdrop="false" data-template="html/common/changeUserPasswordDialog.html?v={{appVersion}}" bs-modal="modal" class="icon_account" ng-click="showUpdatePasswordLayer();" title="账户管理"></div>
+		</li>
+		<!-- <li class="li02 clrfix">
+			<a data-backdrop="false" data-template="html/common/changeUserPasswordDialog.html?v={{appVersion}}" bs-modal="modal" href="javascript:;" class="account" ng-click="showUpdatePasswordLayer();">
+				<i></i>账户管理
+			</a>
+		</li> -->
+	</ul>
+</div>

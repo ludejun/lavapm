@@ -1,0 +1,84 @@
+<form class="form-horizontal clrfix">
+    <div class="control-group">
+        <label class="control-label">任务id：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTaskLog.taskId">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">任务编码：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTaskLog.taskCode">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">azkaban执行id：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTaskLog.azkabanExecutorId">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">开始时间：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTaskLog.startTime">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">结束时间：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTaskLog.endTime">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">状态：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTaskLog.status">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">初始参数：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTaskLog.inputParam">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">创建人账号：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTaskLog.createBy">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">创建人：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTaskLog.creator">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">修改人账号：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTaskLog.updateBy">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">创建时间：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTaskLog.createTime">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">修改时间：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="schedulerTaskLog.updateTime">
+        </div>
+	</div>
+     <div class="control-group">
+    	<label class="control-label">&nbsp;</label>
+    	<div class="controls">
+	        <button type="button" class="btn btn-success" ng-click="saveSchedulerTaskLog(schedulerTaskLog)">保存</button>
+	        <a data-ui-sref="schedulerTaskLogs" class="btn btn-default">返回列表</a>
+        </div>
+    </div>
+</form>
+
+
+

@@ -1,0 +1,12 @@
+{{if data.length}}
+<div class="empty-data">服务已授权!</div>
+{{else}}
+<div class="authService">
+    <!--<div class="authHead">服务名称</div>-->
+    <div class="authInput"><label for="total">数量限额：</label><input type="text" name="authToal" value=""><span class="atips">请填写限额!</span></div>
+    <div class="authInput" id="datePicker"><label for="date">时间期限：</label><input id="datepickShow" title="请选择期限" readonly type="text" name="authDate" value=""><span class="atips">请选择期限!</span></div>
+    <div class="authSub">
+        <input type="button" id="saveService" class="btn btn_primary" value="确定"><input value="取消" id="cancleEditService" type="button" class="btn">
+    </div>
+</div>
+{{/if}}

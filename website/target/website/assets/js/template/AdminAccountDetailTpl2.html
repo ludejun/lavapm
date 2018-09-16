@@ -1,0 +1,65 @@
+{{each table.renderData as value i }}
+<ul class="statis-table-list table-data">
+    <li>{{ value.orderNum }}</li>
+    <li class="txtsis" title="{{ value.name }}">{{ value.name }}</li>
+    {{ if value.access_allow == true }}
+    <li>否</li>
+    {{else}}
+    <li>是</li>
+    {{/if}}
+    <li>{{ timeStamp(value.createtime) }}</li>
+
+    {{ if value.timeallow == -1 }}
+    <li>不限制</li>
+    {{/if}}
+    {{ if value.timeallow == -2 }}
+    <li>不指定</li>
+    {{/if}}
+    {{ if value.timeallow != -1 && value.timeallow != -2 }}
+    <li>{{timeStamp(value.timeallow)}}</li>
+    {{/if}}
+
+    {{if value.requests>=0}}
+    <li><a href="javaScript:void(0)" title='{{value.requests}}'>{{ value.requests }}</a></li>
+    {{else}}
+    <li>不限制</li>
+    {{/if}}
+
+
+    {{if value.records>= 0}}
+    <li><a href="javaScript:void(0)" title='{{ value.records }}'>{{ value.records }}</a></li>
+    {{else}}
+    <li>不限制</li>
+    {{/if}}
+
+
+    {{if value.requests_rest>= 0}}
+    <li><a href="javaScript:void(0)" title='{{ value.requests_rest }}'>{{ value.requests_rest }}</a></li>
+    {{else}}
+    <li>不限制</li>
+    {{/if}}
+
+
+    {{if value.records_rest>= 0}}
+    <li>{{ value.records_rest }}</li>
+    {{else}}
+    <li>不限制</li>
+    {{/if}}
+
+
+    <!--<li>{{ value.requests }}</li>-->
+    <!--<li>{{ value.records }}</li>-->
+    <!--<li>{{ value.requests_rest }}</li>-->
+    <!--<li>{{ value.records_rest }}</li>-->
+
+    <li title='{{value.accessRequest}}'>{{ value.accessRequest }}</li>
+    {{if value.validRequest}}
+    <li title='{{value.validRequest}}'>{{ value.validRequest }}</li>
+    {{else}}
+    <li title='{{value.validRequest}}'>--</li>
+    {{/if}}
+
+    <li title='{{value.inputCount}}'>{{ value.inputCount }}</li>
+    <li title='{{value.oututCount}}'>{{ value.oututCount }}</li>
+</ul>
+{{/each}}

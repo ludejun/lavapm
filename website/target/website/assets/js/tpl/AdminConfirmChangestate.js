@@ -1,0 +1,1 @@
+define(function(require,module,exports){return "<div id='dialog-content'><div class=\"buy-words-tip\"><span class=\"close-buy\">x</span> 您将要 \"<span class=\"stronger\"></span>\"此服务<br>确定<span class=\"stronger\"></span>请点击确定按钮<br><br><button class=\"check-submit\">确定</button> <button class=\"check-back\">返回</button></div></div><div id=\"mask\"></div>"})

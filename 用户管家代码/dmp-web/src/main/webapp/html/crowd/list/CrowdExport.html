@@ -1,0 +1,92 @@
+<div class="go-back-list">
+	<a href="javascript:;" ng-click="goBackHistory();">
+		<i class="icons icons-arrow-left"></i>返回{{sourcePage}}
+	</a>
+	<!-- <a data-ui-sref="crowds" ng-if="channel == 'crowd'"><i class="icons icons-arrow-left"></i>返回人群列表</a> -->
+</div>
+
+<div class="panel panel-gray crowd-export-panel">
+	<div class="panel-heading clrfix">
+  		<h3 class="panel-title fl">导出人群</h3>
+	</div>
+	<div class="panel-body">
+		<ul class="crowd-details clrfix">
+			<li><span class="lb">人群名称：</span><span class="txt">{{crowd.name}}</span></li>
+			<li><span class="lb">人群类型：</span><span class="txt">{{crowd.touchPointTypeName}}</span></li>
+			<li><span class="lb">人群规模：</span><span class="txt">{{crowd.crowdCount}}</span></li>
+		</ul>
+	</div>
+	
+	<div class="blue-inner-panel clrfix">
+	
+		<div ng-repeat="attrTable in attributesTables" class="inner-panel-box" ng-if="attrTable.attributes.length > 0 && attrTable.objectType == 'MetaAccount'">
+		
+		
+			<div class="inner-panel-title" ng-if="attrTable.objectType == 'MetaAccount'">{{attrTable.label}}</div>
+			<div class="inner-panel-con" ng-if="attrTable.objectType == 'MetaAccount'">
+				<div class="tag-list clrfix" ng-if="attrTable.selectedAttributes.length > 0">
+					<div class="tag ng-scope" ng-repeat="sAttr in attrTable.selectedAttributes" title="{{sAttr.label}}">
+						<span class="tag-name ng-binding">{{sAttr.label}}</span>
+						<i title="移除{{sAttr.label}}" class="remove-tag" ng-click="removeAttributeFromTable(attrTable,sAttr);">x</i>
+					</div>
+				</div>
+				
+				<ul class="clrfix attributes-ul">
+					<li ng-repeat="attr in attrTable.attributes">
+						<label ng-click="selectRemoveAttributesToTable(attrTable,attr);"><input type="checkbox" ng-model="attr.isSelected"/>{{attr.label}}</label>
+					</li>
+				</ul>
+			</div>
+			
+		</div>
+		
+		<div class="ta-c mt-20" ng-if="attributesTables.length == 0 && isLoadedMetaData">暂无数据</div>
+		
+		<ul class="nav nav-tabs" style="margin-top:20px;" ng-if="hasAttributes">
+		  	<li ng-click="showStaticAttributesTables(attrTable);" ng-repeat="attrTable in attributesTables" ng-if="attrTable.attributes.length > 0 && attrTable.objectType != 'MetaAccount'" ng-class="{'active':attrTable.isShow}">
+		  		<a href="javascript:;">{{attrTable.label}}</a>
+		  	</li>
+		</ul>
+		
+		<div class="nav-tab-cons" ng-if="hasAttributes">
+			<div ng-repeat="attrTable in attributesTables" class="inner-panel-box static-inner-panel-box" ng-if="attrTable.attributes.length > 0 && attrTable.objectType != 'MetaAccount'">
+				<!-- <div class="inner-panel-title" ng-if="attrTable.objectType != 'MetaAccount' && attrTable.isShow">{{attrTable.label}}</div> -->
+				<div class="inner-panel-con" ng-if="attrTable.objectType != 'MetaAccount' && attrTable.isShow">
+					<div class="tag-list clrfix" ng-if="attrTable.selectedAttributes.length > 0">
+						<div class="tag" ng-repeat="sAttr in attrTable.selectedAttributes" title="{{sAttr.label}}">
+							<span class="tag-name ng-binding">{{sAttr.label}}</span>
+							<i title="移除{{sAttr.label}}" class="remove-tag" ng-click="removeAttributeFromTable(attrTable,sAttr);">x</i>
+						</div>
+					</div>
+					
+					<ul class="clrfix attributes-ul">
+						<li ng-repeat="attr in attrTable.attributes">
+							<label ng-click="selectRemoveAttributesToTable(attrTable,attr);"><input type="checkbox" ng-model="attr.isSelected"/>{{attr.label}}</label>
+						</li>
+					</ul>
+				</div>
+			</div>
+				
+		</div>
+		
+		<div class="form-error-msg mt-10" ng-if="errorObject.isError">{{errorObject.msg}}</div>
+		<!-- 
+		<div class="inner-panel-title" ng-show="hasAttributes && isLoadedMetaData">导出方式</div>
+		<div class="crowd-export-way clrfix" ng-show="hasAttributes && isLoadedMetaData">
+			<label ng-click="selectExportWay();"><input type="radio" ng-model="exportWay" value="1"/>字段原始值</label>
+			<label ng-click="selectExportWay();"><input type="radio" ng-model="exportWay" value="2"/>字段字典名称</label>
+		</div> -->
+		
+		<div class="form-error-msg mt-10" ng-if="errorExportWay.isError">{{errorExportWay.msg}}</div>
+		
+	</div>
+	
+</div>
+
+
+<div class="form-horizontal-btns clrfix">
+	<button type="button" class="form-btn btn-blue-hg35" ng-click="exportCrowd()">导出</button>
+    <!-- <a data-ui-sref="crowds" class="form-btn btn-white-hg35">取消</a> -->
+    <a href="javascript:;" ng-click="goBackHistory();" class="form-btn btn-white-hg35">取消</a>
+</div>
+

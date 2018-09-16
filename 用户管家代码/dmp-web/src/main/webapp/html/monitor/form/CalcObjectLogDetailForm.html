@@ -1,0 +1,30 @@
+<form class="form-horizontal clrfix">
+    <div class="control-group">
+        <label class="control-label">id：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLogDetail.calcObjectLogId">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">埋点日志：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLogDetail.content">
+        </div>
+	</div>
+    <div class="control-group">
+        <label class="control-label">创建时间：</label>
+        <div class="controls">
+            <input class="form-control" type="text" ng-model="calcObjectLogDetail.logTime">
+        </div>
+	</div>
+     <div class="control-group">
+    	<label class="control-label">&nbsp;</label>
+    	<div class="controls">
+	        <button type="button" class="btn btn-success" ng-click="saveCalcObjectLogDetail(calcObjectLogDetail)">保存</button>
+	        <a data-ui-sref="calcObjectLogDetails" class="btn btn-default">返回列表</a>
+        </div>
+    </div>
+</form>
+
+
+

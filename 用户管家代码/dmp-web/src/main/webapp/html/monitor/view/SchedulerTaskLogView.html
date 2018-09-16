@@ -1,0 +1,167 @@
+<div class="go-back-list">
+	<!-- <a data-ui-sref="schedulerTaskLogs" ><i class="icons icons-arrow-left"></i>返回调度日志列表</a> -->
+	<a href="javascript:;" ng-click="goBackHistory();"><i class="icons icons-arrow-left"></i>返回{{sourcePage}}</a>
+</div>
+
+<div class="panel panel-gray">
+	<div class="panel-heading clrfix">
+  		<h3 class="panel-title fl">调度日志详情</h3>
+	</div>
+	<div class="panel-body">
+		<ul class="property-list clrfix two-cols">
+			<li class="item">
+				<div class="property-label">调度日志ID：</div>
+				<div class="property-value">{{schedulerTaskLog.id}}</div>
+			</li>
+			<li class="item item-right">
+				<div class="property-label">调度任务名称：</div>
+				<div class="property-value">{{schedulerTaskLog.taskName}}</div>
+			</li>
+			<li class="item">
+				<div class="property-label">状态：</div>
+				<div class="property-value">{{schedulerTaskLog.status | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}</div>
+			</li>
+			
+			<li class="item item-right">
+				<div class="property-label">启动时间：</div>
+				<div class="property-value">{{schedulerTaskLog.startTime | DateFormatDefault}}</div>
+			</li>
+			<li class="item item-right">
+				<div class="property-label">耗时：</div>
+				<div class="property-value">{{schedulerTaskLog.times}}</div>
+			</li>
+			<li class="item">
+				<div class="property-label">结束时间：</div>
+				<div class="property-value">{{schedulerTaskLog.endTime | DateFormatDefault}}</div>
+			</li>
+			
+			
+			<li class="item" ng-if="schedulerTaskLog.inputParam" style="width:100%;">
+				<div class="property-label">输入参数：</div>
+				<div class="property-value">{{schedulerTaskLog.inputParam}}</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+<ul class="tab-ul clrfix mt-10">
+	<li ng-click="tabSwitchCondition('calculate');" ng-class="{'cur':schedulerTaskLogTab.condition == 'calculate'}">计算对象信息</li>
+	<li ng-if="schedulerTaskLog.status == -1" ng-click="tabSwitchCondition('exception');" ng-class="{'cur':schedulerTaskLogTab.condition == 'exception'}">异常信息</li>
+</ul>
+
+<ul class="tab-con">
+	<li ng-show="schedulerTaskLogTab.condition == 'calculate'">
+		<div class="ng-table-container">
+			<table class="table ng-table-responsive table-hover table-group-table ng-hide ng-table" ng-show="isGroup">
+				<thead>
+					<tr>
+						<th>计算日志ID</th>
+						<th>计算对象名称</th>
+						<th>计算对象编码</th>
+						<th>计算对象类型</th>
+						<th>状态</th>
+						<th>启动时间</th>
+						<th>结束时间</th>
+						<th>操作</th>
+					</tr> 
+				</thead>
+				<tbody ng-repeat="tc in calcObjectLogsGroupsList">
+					<tr ng-class="{'active-tr':tc.isShowChildren}" ng-if="tc.isShow">
+						<td colspan="8">
+							<div class="id col-exp t-o-e" title="{{tc.id}}" >
+								<i ng-if="tc.calcObjectLogList.length == 0"></i>
+								<i class="i01" ng-if="tc.calcObjectLogList && tc.calcObjectLogList.length > 0 && !tc.isShowChildren" ng-click="toggleShowHideChildren(tc);"></i>
+								<i class="i02" ng-if="tc.calcObjectLogList && tc.calcObjectLogList.length > 0 && tc.isShowChildren" ng-click="toggleShowHideChildren(tc);"></i>
+								<span>{{tc.parentDesc}}</span>
+							</div>
+						</td>
+				    </tr>
+				    <tr ng-repeat="tcc in tc.calcObjectLogList " ng-if="tc.calcObjectLogList && tc.calcObjectLogList.length > 0 && tc.isShowChildren" class="child-tr">
+				    	<td class="first-td">
+							<div class="id t-o-e" title="{{tcc.id}}" style="width:80px;padding-left:20px;">
+								<span>{{tcc.id}}</span>
+							</div>
+						</td>
+						
+						<td><div class="objectName t-o-e" title="{{tcc.objectName}}" style="width:80px;">{{tcc.objectName}}</div></td>
+						<td><div class="objectCode t-o-e" title="{{tcc.objectCode}}" style="width:80px;">{{tcc.objectCode}}</div></td>
+						<td><div class="objectType t-o-e" title="{{tcc.objectType}}" style="width:80px;">{{tcc.objectType}}</div></td>
+						<td><div class="status t-o-e" style="width:65px;" title="{{tcc.status | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}">{{tcc.status | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}</div></td>
+						<td><div class="startTime wd120 t-o-e" title="{{tcc.startTime | DateFormatDefault}}">{{tcc.startTime | DateFormatDefault}}</div></td>
+						<td><div class="endTime wd120 t-o-e" title="{{tcc.endTime | DateFormatDefault}}">{{tcc.endTime | DateFormatDefault}}</div></td>
+						<td>
+							<div class="ng-table-operator" style="min-width:35px !important;">
+					       		<a ui-sref="calcObjectLogs_view({calcObjectLogId:tcc.id,sourcePage:'调度日志详情'})" title="查看">查看</a>
+				       		</div>
+						</td>
+				    </tr>
+				    
+				</tbody>
+			</table>
+			
+			<!-- <table ng-table="tableParams" class="table ng-table-responsive table-hover" ng-show="!isGroup">
+			    <tr ng-repeat="calcObjectLog in $data">
+			       <td data-title="'计算日志ID'"><div>{{calcObjectLog.id}}</div></td>
+			       <td data-title="'计算对象编码'"><div>{{calcObjectLog.objectCode}}</div></td>
+			       <td data-title="'计算对象名称'"><div>{{calcObjectLog.objectName}}</div></td>
+			       <td data-title="'计算对象类型'"><div>{{calcObjectLog.objectType}}</div></td>
+			       <td data-title="'状态'"><div>{{calcObjectLog.status | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}</div></td>
+			       <td data-title="'启动时间'"><div class="max-wd120 t-o-e" title="{{calcObjectLog.startTime | DateFormatDefault}}">{{calcObjectLog.startTime | DateFormatDefault}}</div></td>
+			       <td data-title="'结束时间'"><div class="max-wd120 t-o-e" title="{{calcObjectLog.endTime | DateFormatDefault}}">{{calcObjectLog.endTime | DateFormatDefault}}</div></td>
+			       <td data-title="'操作'">
+			       		<div class="ng-table-operator" style="min-width:35px !important;">
+				       		<a ui-sref="calcObjectLogs_view({calcObjectLogId:calcObjectLog.id})" title="查看">查看</a>
+			       		</div>
+			       </td>
+			    </tr>
+			</table> -->
+			<table class="table ng-table-responsive table-hover table-group-table ng-table" ng-show="!isGroup">
+				<thead>
+					<tr>
+						<th>计算日志ID</th>
+						<th>计算对象名称</th>
+						<th>计算对象编码</th>
+						<th>计算对象类型</th>
+						<th>状态</th>
+						<th>启动时间</th>
+						<th>结束时间</th>
+						<th>操作</th>
+					</tr> 
+				</thead>
+				<tbody>
+					<tr ng-repeat="calcObjectLog in calcObjectLogsGroupsList">
+						<td><div class="t-o-e" title="{{calcObjectLog.id}}" style="width: 75px;">{{calcObjectLog.id}}</div></td>
+						<td><div class="t-o-e" title="{{calcObjectLog.objectName}}" style="width: 80px;">{{calcObjectLog.objectName}}</div></td>
+						<td><div class="t-o-e" title="{{calcObjectLog.objectCode}}" style="width: 80px;">{{calcObjectLog.objectCode}}</div></td>
+						<td><div class="t-o-e" title="{{calcObjectLog.objectType}}" style="width: 80px;">{{calcObjectLog.objectType}}</div></td>
+						<td><div>{{calcObjectLog.status | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}</div></td>
+						<td><div class="wd120 t-o-e" title="{{calcObjectLog.startTime | DateFormatDefault}}">{{calcObjectLog.startTime | DateFormatDefault}}</div></td>
+						<td><div class="wd120 t-o-e" title="{{calcObjectLog.endTime | DateFormatDefault}}">{{calcObjectLog.endTime | DateFormatDefault}}</div></td>
+						<td>
+							<div class="ng-table-operator" style="min-width:35px !important;">
+					       		<a ui-sref="calcObjectLogs_view({calcObjectLogId:calcObjectLog.id,sourcePage:'调度日志详情'})" title="查看">查看</a>
+				       		</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<div class="ng-table-empty" ng-if="calcObjectLogsGroupsList.length == 0">暂无数据</div>
+		</div>
+	</li>
+	
+	<li ng-show="schedulerTaskLogTab.condition == 'exception'">
+		<ul class="property-list clrfix">
+			<li class="item" style="margin:0;">
+				<div class="property-label">错误信息：</div>
+				<div class="property-value">{{schedulerTaskLog.execptionInfo}}</div>
+			</li>
+		</ul>
+	</li>
+</ul>
+
+
+
+
+
+

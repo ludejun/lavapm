@@ -1,0 +1,97 @@
+<div class="modal in" tabindex="-1" role="dialog" style="display: block;">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" ng-drag-dialog="true">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" ng-click="$hide()">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title" ng-if="isAddTagCategory">{{nlsRoot.addCategory}}</h4>
+				<h4 class="modal-title" ng-if="!isAddTagCategory">{{nlsRoot.editCategory}}</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal clrfix" name="formHorizontal">
+					<!-- <div class="control-group">
+				        <label class="control-label"><span class="required">*</span>分类级别：</label>
+				        <div class="controls">
+				            <select ng-disabled="isEditOneLevelTagCate" class="form-control" ng-model="tagCateLevel.id" ng-change="changeCateLevel(tagCategory);">
+								<option ng-repeat="tcl in tagCateLevelList" value="{{tcl.id}}" ng-selected="tcl.id == tagCateLevel.id">{{tcl.name}}</option>
+							</select>
+				        </div>
+				    </div> -->
+				    
+				    <div class="control-group">
+				        <label class="control-label"><span class="required">*</span>{{nlsRoot.categoryParent}}：</label>
+				        <div class="controls">
+				        	<input class="form-control wd-p-100" type="text" readonly ng-click="showTagCategoryMenu();" id="tagCategoryNames">
+				        	<!-- <select  ng-class="{'input-error':!formHorizontal.parentId.$valid && formHorizontal.parentId.$dirty}" class="form-control" ng-model="tagCategory.parentId" name="parentId" required>
+			        			<option value="">请选择上级分类</option>
+								<option ng-if="tagCategory.id != tc.id" ng-repeat="tc in tagCategoryTree" value="{{tc.id}}" ng-selected="tc.id == tagCategory.parentId">{{tc.name}}</option>
+							</select> -->
+							<!-- {{!formHorizontal.parentId.$valid}},{{formHorizontal.parentId.$dirty}} -->
+							<div class="form-error-msg ng-hide">{{nlsRoot.selectCategoryParent}}</div>
+				            <!-- <input class="form-control " type="text" ng-model="tagCategory.parentId"> -->
+				        </div>
+				    </div>
+				
+    				<div class="control-group">
+				        <label class="control-label"><span class="required">*</span>{{nlsRoot.categoryName}}：</label>
+				        <div class="controls">
+				            <input ng-keyup="checkTagCategoryName();" class="form-control " maxLength="12" ng-maxlength="12" ng-class="{'input-error':!formHorizontal.tagCategoryName.$valid && formHorizontal.tagCategoryName.$dirty}" type="text" ng-model="tagCategory.name" name="tagCategoryName" required>
+				            <div class="form-error-msg" ng-show="!formHorizontal.tagCategoryName.$valid && formHorizontal.tagCategoryName.$dirty && !formHorizontal.tagCategoryName.$error.maxlength && !tagCategoryNameIsRepeat">{{nlsRoot.inputCategoryName}}</div>
+				            <div class="form-error-msg" ng-show="formHorizontal.tagCategoryName.$error.maxlength">{{nlsRoot.categoryNameUp12}}</div>
+				           <!--  <div class="form-error-msg" ng-show="!formHorizontal.tagCategoryName.$error.maxlength && tagCategoryNameIsRepeat">同级分类下已存在分类名称"'{{tagCategory.name}}'",请重新输入</div> -->
+				            <div class="form-error-msg" ng-show="!formHorizontal.tagCategoryName.$error.maxlength && tagCategoryNameIsError">{{tagCategoryNameErrorMsg}}</div>
+				            
+				        </div>
+				    </div>
+    				
+    				
+				    <!-- <div class="control-group">
+				        <label class="control-label">描述：</label>
+				        <div class="controls">
+				            <textarea class="form-control " ng-model="tagCategory.description" rows="6"></textarea>
+				        </div>
+				    </div> -->
+    				    <!-- <div class="control-group">
+				        <label class="control-label">创建人账号：</label>
+				        <div class="controls">
+				            <input class="form-control " type="text" ng-model="tagCategory.createBy">
+				        </div>
+				    </div>
+    				    <div class="control-group">
+				        <label class="control-label">创建人：</label>
+				        <div class="controls">
+				            <input class="form-control " type="text" ng-model="tagCategory.creator">
+				        </div>
+				    </div>
+    				    <div class="control-group">
+				        <label class="control-label">修改人账号：</label>
+				        <div class="controls">
+				            <input class="form-control " type="text" ng-model="tagCategory.updateBy">
+				        </div>
+				    </div>
+    				    <div class="control-group">
+				        <label class="control-label">创建时间：</label>
+				        <div class="controls">
+				            <input class="form-control " type="text" ng-model="tagCategory.createTime">
+				        </div>
+				    </div>
+    				<div class="control-group">
+				        <label class="control-label">修改时间：</label>
+				        <div class="controls">
+				            <input class="form-control " type="text" ng-model="tagCategory.updateTime">
+				        </div>
+				    </div> -->
+  				</form>
+			</div>
+			<div class="modal-footer">
+				<div class="button btn-primary" ng-click="saveTagCategory(tagCategory,$hide,formHorizontal)">{{nlsRoot.save}}</div>
+				<div class="button btn-default" ng-click="$hide()">{{nlsRoot.cancel}}</div>
+			</div>
+
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>

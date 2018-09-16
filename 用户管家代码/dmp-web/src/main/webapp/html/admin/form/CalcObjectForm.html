@@ -1,0 +1,125 @@
+<div class="go-back-list">
+	<a data-ui-sref="calcObjects"><i class="icons icons-arrow-left"></i>返回列表</a>
+</div>
+<div class="form-horizontal-panel" name="formHorizontal">
+	<div class="form-horizontal-title">创建</div>
+	<form class="form-horizontal clrfix p-rel">
+		  		  	<div class="control-group">
+	        <label class="control-label">名称：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.name">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">代码：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.code">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">类型：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.type">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">对象参数：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.param">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">扩展属性1：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.attr1">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">扩展属性2：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.attr2">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">扩展属性3：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.attr3">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">扩展属性4：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.attr4">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">扩展属性5：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.attr5">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">创建人账号：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.createBy">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">创建人：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.creator">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">修改人账号：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.updateBy">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">创建时间：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.createTime">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">修改时间：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.updateTime">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">状态: 0：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.status">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">状态: 0：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.calcStatus">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">数据应用id：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.dataAppId">
+	        </div>
+		</div>
+	  		  	<div class="control-group">
+	        <label class="control-label">租户id：</label>
+	        <div class="controls">
+	            <input class="form-control" type="text" ng-model="calcObject.tenantId">
+	        </div>
+		</div>
+	  		   
+	</form>
+</div>
+<div class="form-horizontal-btns clrfix">
+	<div class="form-btn btn-blue-hg35" ng-click="saveCalcObject(calcObject,formHorizontal)" ng-if="!isSaving">保存</div>
+	<div class="form-btn btn-blue-hg35" ng-if="isSaving">保存中</div>
+	<a data-ui-sref="calcObjects" class="bform-btn btn-white-hg35">取消</a>
+</div>
+
+
+

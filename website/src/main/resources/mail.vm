@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>TalkingData</title>
+<style>
+body { background:#ececec; margin:0; padding:0; color:#333; font-family:"Microsoft Yahei", Arial; font-size:14px;}
+.main { width:700px; margin:0 auto 30px; display:block; border-radius:4px; overflow:hidden; zoom:1;}
+.top { height:60px; background:#3e4a8c; width:700px; margin-top:30px; border-top-left-radius:4px; border-top-right-radius:4px; }
+.top img { margin:10px 0 0 10px;}
+.content { clear:both; float:left; width:640px; margin:0 auto; padding:0 30px; background:#fff; display:block}
+h3 { display:block; border-bottom:1px solid #caccd5; padding:25px 0 20px; font-size:18px; font-weight:normal; text-align:center}
+h4 { display:block; font-weight:normal; margin:0; padding:0}
+strong { display:block; padding:20px 0; line-height:24px;}
+a { color:#348fdb; text-decoration:none}
+span { clear:both; display:block; padding:10px 0 50px}
+p { clear:both; display:block; line-height:26px;}
+font { display:block; clear:both; padding:10px 0;}
+.bottom { border-top:1px solid #caccd5; padding:20px 0; margin-top:30px;}
+ul { width:530px; margin:0 auto; padding:0; font-size:12px; background:#f00; display:block;}
+ul li { list-style:none; text-align:center; padding:0 10px; float:left}
+ol { padding-top:10px; zoom:1; font-size:12px; clear:both; margin:0 ; text-align:center; color:#348fdb}
+ol a {padding:0 10px;}
+</style>
+</head>
+
+<body>
+<div class="main">
+    <div class="content">
+        <h3>TalkingData 服务购买请求</h3>
+		<h4>Hi,${email}：</h4>
+		<strong>${superEmail},在TalkingData数据市场（DataMarket）平台提交了开通申请，具体如下：</strong>
+		<p>客户姓名：website</p>
+		<p>客户email：${superEmail}</p>
+		<p>客户公司：${company}</p>
+		<p>客户手机：${tel}</p>
+		<p>客户需求描述：申请开通${service}</p>
+		<br/>
+		<font>TalkingData 服务团队</font>
+    </div>
+</div>
+</body>
+</html>

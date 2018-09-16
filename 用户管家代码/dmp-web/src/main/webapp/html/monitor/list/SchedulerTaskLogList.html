@@ -1,0 +1,123 @@
+<div class="ng-table-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">调度日志列表</div>
+		<div class="search" data-search role="search"></div>
+	</div>
+	<div ng-if="isShowMoreSearch" class="more-search-box">
+		<ul class="clrfix">
+			<!-- <li>
+				<div class="label">Azkaban执行ID</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.azkabanExecutorId">
+				</div>
+			</li> -->
+			<li>
+				<div class="label">调度日志ID</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.id">
+				</div>
+			</li>
+			<li>
+				<div class="label">调度任务名称</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.taskCode">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in schedulerTaskList" value="{{sts.code}}" ng-selected="sts.code == moreSearchCondition.taskCode">{{sts.name}}</option>
+					</select>
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">调度任务信息</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.taskSummary">
+				</div>
+			</li>
+			
+			<!-- <li>
+				<div class="label">调度任务编码</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.taskCode">
+				</div>
+			</li>
+			<li>
+				<div class="label">所属系统</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.systemCode">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in systemApps" value="{{sts.appCode}}" >{{sts.appCode}}</option>
+					</select>
+				</div>
+			</li> -->
+			<li>
+				<div class="label">运行参数</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.inputParam">
+				</div>
+			</li>
+			<li>
+				<div class="label">状态</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.status">
+						<option value="" >请选择</option>
+						<option ng-if="sts.dicItemKey != '-4'" ng-repeat="sts in schedulerTaskLogStatusList" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.status">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			<li>
+				<div class="label">启动时间</div>
+				<div class="control">
+					<div start-date="moreSearchCondition.startTimeStart" end-date="moreSearchCondition.startTimeEnd" td-change="changeStartTime" td-date-condition date-range="dateRange" class="form-control date-condition date-condition-right" type="text"></div>
+				</div>
+			</li>
+			<li>
+				<div class="label">结束时间</div>
+				<div class="control">
+					<div start-date="moreSearchCondition.endTimeStart" end-date="moreSearchCondition.endTimeEnd" td-change="changeEndTime" td-date-condition date-range="dateRange" class="form-control date-condition" type="text"></div>
+				</div>
+			</li>
+			
+		</ul>
+		
+		<div class="btns-box">
+			<div class="btns">
+				<button type="button" class="btn btn-primary btn-sm ml-10" ng-click="search();">搜索</button>
+	        	<button type="button" class="btn btn-default btn-sm" ng-click="resetMoreSearchCondition();">重置</button>
+			</div>
+		</div>
+		
+	</div>
+	<div class="ng-table-body ng-table-body-empty">
+		<table ng-table="tableParams" class="table ng-table-responsive table-hover" freeze="true" id="tableParams">
+		    <tr ng-repeat="schedulerTaskLog in $data">
+		       <td data-title="'调度日志ID'"><div style="min-width:75px;">{{schedulerTaskLog.id}}</div></td>
+		       <td data-title="'调度任务名称'"><div class="wd80 t-o-e" title="{{schedulerTaskLog.taskName}}">{{schedulerTaskLog.taskName}}</div></td>
+		       <td data-title="'调度任务信息'"><div class="wd80 t-o-e" title="{{schedulerTaskLog.taskSummary}}">{{schedulerTaskLog.taskSummary}}</div></td>
+		      <!--  <td data-title="'调度任务编码'"><div class="wd80 t-o-e" title="{{schedulerTaskLog.taskCode}}">{{schedulerTaskLog.taskCode}}</div></td> -->
+		       <td data-title="'运行参数'"><div class="wd80 t-o-e" title="{{schedulerTaskLog.inputParam}}">{{schedulerTaskLog.inputParam}}</div></td>
+		       <td data-title="'状态'">
+		       		<div class="min-wd50 t-o-e" title="{{schedulerTaskLog.status | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}">{{schedulerTaskLog.status | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}</div>
+		       </td>
+		       <td data-title="'重试次数'"><div class="min-wd50 t-o-e" title="{{schedulerTaskLog.retryNum}}">{{schedulerTaskLog.retryNum}}</div></td>
+		       <td data-title="'启动时间'"><div class="max-wd120 t-o-e" title="{{schedulerTaskLog.startTime | DateFormatDefault}}">{{schedulerTaskLog.startTime | DateFormatDefault}}</div></td>
+		       <td data-title="'结束时间'"><div class="max-wd120 t-o-e" title="{{schedulerTaskLog.endTime | DateFormatDefault}}">{{schedulerTaskLog.endTime | DateFormatDefault}}</div></td>
+		       <td data-title="'操作'">
+		       		<div class="ng-table-operator" style="min-width: 100px !important;">
+		       			<!-- 
+		       				进行中（1）点击终止，状态改为被终止（4）
+							异常（-1）点击重试状态改为待重试（-3），已终止（4）点击重试状态改为待重试（-3）
+		       			-->
+			       	   	<a ui-sref="schedulerTaskLogs_view({schedulerTaskLogId:schedulerTaskLog.id,sourcePage:'调度日志列表'})">详情</a>
+			       	   	<a href="javascript:;" ng-if="schedulerTaskLog.status == 1" ng-click="updateSchedulerTaskLogStatus(schedulerTaskLog.id,'stop');">终止</a>
+			       	   	<a href="javascript:;" ng-if="schedulerTaskLog.status == -1 || schedulerTaskLog.status == -2 || schedulerTaskLog.status == 4" ng-click="updateSchedulerTaskLogStatus(schedulerTaskLog.id,'retry');">重试</a>
+		       			<a href="javascript:;" ng-click="openIframe(schedulerTaskLog);">日志</a>
+		       		</div>
+		       </td>
+		    </tr>
+		</table>
+	</div>
+</div>
+
+<button type="button" class="ng-hide" data-backdrop="static" data-template="html/monitor/dialog/SchedulerTaskLogDialog.html?v={{appVersion}}" bs-modal="modal" id="viewSchedulerTaskLogDialog">查看日志</button>
+
+

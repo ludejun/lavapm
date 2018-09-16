@@ -1,0 +1,770 @@
+<div class="crowd-portrait-op-head">
+	<div class="position clrfix">
+		<div class="go-back-list">
+			<a data-ui-sref="lookalikeCrowds">
+				<i class="icons icons-arrow-left"></i>返回相似人群列表
+			</a>
+		</div>
+		<!-- <div class="lf">
+			<span>人群画像</span>
+			<span>></span>
+			<span>{{lookalikeCrowdDetails.name}}</span>
+		</div>
+		<div class="rg">
+			<div class="date">
+				<i class="icon-time"></i>
+				<span>2015-09-20更新</span>
+				<i class="icon-arrow-down"></i>
+			</div>
+		</div> -->
+	</div>
+	<div class="overview clrfix">
+		<dl class="lf">
+			<dt class="img img-app" ng-if="lookalikeCrowdDetails.touchPointType == 'app_tdid'" title="{{lookalikeCrowdDetails.touchPointType | DictFormatter : 'TOUCH_POINT_TYPE'}}"></dt>
+			<dt class="img img-h5" ng-if="lookalikeCrowdDetails.touchPointType == 'h5_tdid'" title="{{lookalikeCrowdDetails.touchPointType | DictFormatter : 'TOUCH_POINT_TYPE'}}"></dt>
+			<dt class="img img-cross-screen" ng-if="lookalikeCrowdDetails.touchPointType == 'account_id'" title="{{lookalikeCrowdDetails.touchPointType | DictFormatter : 'TOUCH_POINT_TYPE'}}"></dt>
+			<dt class="img img-web" ng-if="lookalikeCrowdDetails.touchPointType == 'web_tdid'" title="{{lookalikeCrowdDetails.touchPointType | DictFormatter : 'TOUCH_POINT_TYPE'}}"></dt>
+			<dd class="text">
+				<div class="name t-o-e">{{lookalikeCrowdDetails.name}}</div>
+				<div class="clrfix">
+					<h2>{{lookalikeCrowdDetails.crowdCount}}</h2>
+					<span class="fl" style="margin:7px 0 0 8px;">人</span>
+				</div>
+			</dd>
+		</dl>
+		<div class="rg">
+
+			<div class="operator" ng-if="lookalikeCrowdDetails.crowdCount > 0">
+				<!-- <a class="btn-green-hg40" ui-sref="dspLaunchs_new({crowdType:lookalikeCrowdDetails.type,crowdName:lookalikeCrowdDetails.name})">
+					<i></i>去投放
+				</a>
+				-->
+				<a ui-sref="lookalike_crowds_export({lookalikeCrowdId:lookalikeCrowdDetails.id})" class="btn-blue-hg40">
+    	   			导出
+    	   		</a>
+				<!-- <a class="btn-blue-hg40" href="javascript:;" data-backdrop="false" data-template="html/crowd/dialog/CrowdExportDialog.html" bs-modal="modal" ng-click="showExportCrowdLayer(lookalikeCrowdDetails);">导出</a> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="crowd-portrait-op-con">
+	<div class="crowd-portrait-op-box">
+		<div class="title clrfix">
+			<ul>
+				<!-- <li ng-class="{'active':curTab == 'people'}">人口属性</li> -->
+				<li ng-class="{'active':curTab == 'area'}" ng-click="tabClick('area');">地域分布</li>
+				<li ng-class="{'active':curTab == 'terminal'}" ng-click="tabClick('terminal');">终端特征</li>
+				<!-- <li ng-class="{'active':curTab == 'media'}">媒体触点</li> -->
+			</ul>
+			<!-- <div class="operator">
+				<i title=""></i>
+			</div> -->
+		</div>
+		<div class="cons">
+		
+			<!-- <div class="portrait-item hide" ng-if="curTab == 'people'">
+				<h5>性别比例</h5>
+				<div class="portrait-con">
+					<div class="portrait-sex">
+						<div class="img"></div>
+						<div class="vs"></div>
+						<div class="percent"></div>
+						<div class="square-box">
+							<div class="clrfix">
+								<div class="square square-blue"></div>
+								<div class="square square-blue"></div>
+								<div class="square square-blue"></div>
+								<div class="square square-blue"></div>
+								<div class="square square-blue"></div>
+								<div class="square square-blue"></div>
+								<div class="square square-blue"></div>
+								<div class="square square-blue"></div>
+								<div class="square square-blue"></div>
+								<div class="square square-blue"></div>
+								<div class="square square-blue"></div>
+								<div class="square square-violet"></div>
+								<div class="square square-violet"></div>
+								<div class="square square-violet"></div>
+								<div class="square square-violet"></div>
+								<div class="square square-violet"></div>
+								<div class="square square-violet"></div>
+								<div class="square square-violet"></div>
+								<div class="square square-violet"></div>
+								<div class="square square-violet"></div>
+							</div>
+							
+							
+						</div>
+					</div>
+				</div>
+			</div> -->
+			
+			<div class="portrait-item" ng-if="curTab == 'area'">
+				<div class="portrait-province">
+					<div class="portrait-title">省份分布</div>
+					<div class="portrait-con">
+						<div class="no-portrait" ng-if="lookalikeCrowdDetails.crowdCount == 0">
+			  				<div class="img"></div>
+			  				<div class="text">暂无数据</div>
+			  			</div>
+			  			<div class="clrfix province-box" ng-if="lookalikeCrowdDetails.crowdCount != 0">
+			  				<div class="map-colors">
+			  					<span class="text">覆盖率（高-低）</span>
+			  					<span class="color color1"></span>
+			  					<span class="color color2"></span>
+			  					<span class="color color3"></span>
+			  					<span class="color color4"></span>
+			  					<span class="color color5"></span>
+			  				</div>
+			  				<div class="province-map" data-td-echarts struct="echartChinaMapProvice" id="echartChinaMapProvice"></div>
+			  				
+			  				<dl class="top-ten-box">
+			  					<dt class="clrfix">省份分布Top10</dt>
+			  				</dl>
+			  			</div>
+					</div>
+				</div>
+				
+				
+				<div class="portrait-city">
+					<div class="portrait-title">城市级别</div>
+					<div class="portrait-con">
+						<div class="clrfix city-box">
+							<div class="city-item">
+								<div class="city-con">
+									<div class="city-title all-city-title">
+										<div class="name">全部城市</div>
+									</div>
+									<div class="no-portrait" ng-if="lookalikeCrowdDetails.crowdCount == 0 || allCityNoData">
+						  				<div class="img"></div>
+						  				<div class="text">暂无数据</div>
+						  			</div>
+									<div ng-if="lookalikeCrowdDetails.crowdCount > 0 && !allCityNoData" class="portrait" data-td-highcharts struct="highchartCityAll">
+									</div>
+								</div>
+							</div>
+							<div class="city-item">
+								<div class="city-con">
+									<div class="city-title">
+										<div class="num">{{cityPercent.one}}</div>
+										<div class="name">一级城市</div>
+									</div>
+									<div class="no-portrait" ng-if="lookalikeCrowdDetails.crowdCount == 0 || firstTierCitiesNoData">
+						  				<div class="img"></div>
+						  				<div class="text">暂无数据</div>
+						  			</div>
+									<div ng-if="lookalikeCrowdDetails.crowdCount > 0 && !firstTierCitiesNoData" class="portrait" data-td-highcharts struct="highchartFirstTierCities">
+									</div>
+								</div>
+							</div>
+							<div class="city-item">
+								<div class="city-con">
+									<div class="city-title">
+										<div class="num">{{cityPercent.two}}</div>
+										<div class="name">二级城市</div>
+									</div>
+									<div class="no-portrait" ng-if="lookalikeCrowdDetails.crowdCount == 0 || twoTierCitiesNoData">
+						  				<div class="img"></div>
+						  				<div class="text">暂无数据</div>
+						  			</div>
+									<div ng-if="lookalikeCrowdDetails.crowdCount > 0 && !twoTierCitiesNoData" class="portrait" data-td-highcharts struct="highchartTwoTierCities">
+									</div>
+								</div>
+							</div>
+							<div class="city-item">
+								<div class="city-con">
+									<div class="city-title">
+										<div class="num">{{cityPercent.three}}</div>
+										<div class="name">三级城市</div>
+									</div>
+									<div class="no-portrait" ng-if="lookalikeCrowdDetails.crowdCount == 0 || thirdTierCitiesNoData">
+						  				<div class="img"></div>
+						  				<div class="text">暂无数据</div>
+						  			</div>
+									<div ng-if="lookalikeCrowdDetails.crowdCount > 0 && !thirdTierCitiesNoData" class="portrait" data-td-highcharts struct="highchartThirdTierCities">
+									</div>
+								</div>
+							</div>
+							
+			  				<!-- <div class="city-item">
+			  					<dl class="top-ten-box all-city-top">
+				  					<dt class="clrfix">
+				  						<div class="clrfix">
+				  							<strong>全部城市</strong>
+				  						</div>
+				  						<div class="clrfix">
+				  							<span></span>
+				  						</div>
+				  					</dt>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner1" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner2" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner3" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner4" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner5" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner6" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner7" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner8" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner9" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner10" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  				</dl>
+			  				</div>
+			  				 -->
+			  				<!-- <div class="city-item">
+			  					<dl class="top-ten-box one-level-city-top">
+				  					<dt class="clrfix">
+				  						<div class="clrfix">
+				  							<strong>42%</strong>
+				  						</div>
+				  						<div class="clrfix">
+				  							<span>一级城市</span>
+				  						</div>
+				  					</dt>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner1" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner2" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner3" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner4" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner5" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner6" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner7" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner8" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner9" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner10" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  				</dl>
+			  				</div>
+			  				
+			  				
+			  				<div class="city-item">
+			  					<dl class="top-ten-box two-level-city-top">
+				  					<dt class="clrfix">
+				  						<div class="clrfix">
+				  							<strong>42%</strong>
+				  						</div>
+				  						<div class="clrfix">
+				  							<span>二级城市</span>
+				  						</div>
+				  					</dt>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner1" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner2" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner3" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner4" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner5" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner6" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner7" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner8" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner9" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner10" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  				</dl>
+			  				</div>
+			  				
+			  				<div class="city-item">
+			  					<dl class="top-ten-box three-level-city-top">
+				  					<dt class="clrfix">
+				  						<div class="clrfix">
+				  							<strong>42%</strong>
+				  						</div>
+				  						<div class="clrfix">
+				  							<span>三级城市</span>
+				  						</div>
+				  					</dt>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner1" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner2" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner3" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner4" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner5" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner6" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner7" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner8" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner9" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner10" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  				</dl>
+			  				</div> -->
+			  				
+			  				
+			  			</div>
+					</div>
+				</div>
+				
+				
+				
+				
+			</div>
+			
+			<div class="portrait-item" ng-if="curTab == 'terminal'">
+				<div class="portrait-terminal">
+					<div class="portrait-title">终端特征</div>
+					<div class="portrait-con">
+						<div class="terminal-box clrfix">
+							<div class="terminal-item">
+								<div class="portrait-box">
+									<div class="portrait-name">品牌</div>
+									<div class="no-portrait" ng-if="lookalikeCrowdDetails.crowdCount == 0 || brandNoData">
+						  				<div class="img"></div>
+						  				<div class="text">暂无数据</div>
+						  			</div>
+						  			<div ng-if="lookalikeCrowdDetails.crowdCount > 0 && !brandNoData" class="portrait">
+						  				<div data-td-highcharts struct="highchartBrand" class="hg250" ></div>
+						  			</div>
+								</div>
+							</div>
+							
+							<div class="terminal-item">
+								<div class="portrait-box">
+									<div class="portrait-name">机型分布</div>
+									<div class="no-portrait" ng-if="lookalikeCrowdDetails.crowdCount == 0 || modelNoData">
+						  				<div class="img"></div>
+						  				<div class="text">暂无数据</div>
+						  			</div>
+						  			<div ng-if="lookalikeCrowdDetails.crowdCount > 0 && !modelNoData" class="portrait">
+						  				<div data-td-highcharts struct="highchartModel" class="hg250" ></div>
+						  			</div>
+								</div>
+							</div>
+							
+							<div class="terminal-item">
+								<div class="portrait-box">
+									<div class="portrait-name">分辨率</div>
+									<div class="no-portrait" ng-if="lookalikeCrowdDetails.crowdCount == 0 || pixelNoData">
+						  				<div class="img"></div>
+						  				<div class="text">暂无数据</div>
+						  			</div>
+						  			<div ng-if="lookalikeCrowdDetails.crowdCount > 0 && !pixelNoData" class="portrait">
+						  				<div data-td-highcharts struct="highchartPixel" class="hg250" ></div>
+						  			</div>
+								</div>
+							</div>
+							
+							<div class="terminal-item">
+								<div class="portrait-box">
+									<div class="portrait-name">系统版本</div>
+									<div class="no-portrait" ng-if="lookalikeCrowdDetails.crowdCount == 0 || osVersionNoData">
+						  				<div class="img"></div>
+						  				<div class="text">暂无数据</div>
+						  			</div>
+						  			<div ng-if="lookalikeCrowdDetails.crowdCount > 0 && !osVersionNoData" class="portrait">
+						  				<div data-td-highcharts struct="highchartOsVersion" class="hg250" ></div>
+						  			</div>
+								</div>
+							</div>
+							
+							<div class="terminal-item">
+								<div class="portrait-box">
+									<div class="portrait-name">网络</div>
+									<div class="no-portrait" ng-if="lookalikeCrowdDetails.crowdCount == 0 || networkTypeNoData">
+						  				<div class="img"></div>
+						  				<div class="text">暂无数据</div>
+						  			</div>
+						  			<div ng-if="lookalikeCrowdDetails.crowdCount > 0 && !networkTypeNoData" class="portrait">
+						  				<div data-td-highcharts struct="highchartNetworkType" class="hg250" ></div>
+						  			</div>
+								</div>
+							</div>
+							
+							<div class="terminal-item">
+								<div class="portrait-box">
+									<div class="portrait-name">运营商</div>
+									<div class="no-portrait" ng-if="lookalikeCrowdDetails.crowdCount == 0 || carrierNoData">
+						  				<div class="img"></div>
+						  				<div class="text">暂无数据</div>
+						  			</div>
+						  			<div ng-if="lookalikeCrowdDetails.crowdCount > 0 && !carrierNoData" class="portrait">
+						  				<div data-td-highcharts struct="highchartCarrier" class="hg250" ></div>
+						  			</div>
+								</div>
+							</div>
+							
+							<div class="terminal-item">
+								<div class="portrait-box">
+									<div class="portrait-name">渠道</div>
+									<div class="no-portrait" ng-if="lookalikeCrowdDetails.crowdCount == 0 || partnerNameNoData">
+						  				<div class="img"></div>
+						  				<div class="text">暂无数据</div>
+						  			</div>
+						  			<div ng-if="lookalikeCrowdDetails.crowdCount > 0 && !partnerNameNoData" class="portrait">
+						  				<div data-td-highcharts struct="highchartPartnerName" class="hg250" ></div>
+						  			</div>
+								</div>
+							</div>
+							
+							<!-- <div class="terminal-item"  ng-show="dimensionSelectedCode.indexOf('{{ds.id}}') >=0"  ng-repeat="ds in dimensionSelectedList">
+								<dl class="top-ten-box">
+				  					<dt class="clrfix">品牌</dt>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner1" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner2" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner3" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner4" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner5" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner6" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner7" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner8" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner9" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  					<dd class="clrfix">
+				  						<span class="number">1、</span>
+				  						<span class="text">北京</span>
+				  						<div class="progress-box">
+				  							<div class="progress-inner progress-inner10" style="width:14.17%;"></div>
+				  						</div>
+				  						<span class="percent">14.17%</span>
+				  					</dd>
+				  				</dl>
+				  				
+							</div> -->
+							
+							
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+
+
+
+
+

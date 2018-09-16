@@ -1,0 +1,247 @@
+<form id='serverAddNum' enctype='multipart/form-data' name="fileinfo" method="post" url='172.22.9.1:8089'>
+    <div id="serveAddPage">
+        <div class="serve-container">
+            <div class="serve-cont">
+                <h3>服务信息</h3>
+                <div class="serve-cont-msg-input padding-top">
+                    <span>名称 *</span>
+                    <input type="text" name='name' value=''>
+                </div>
+                <div class="serve-cont-msg-input">
+                    <span>服务编码 *</span>
+                    <input type="text" name='businessNo' value=''>
+                    <div class='scmPrompt'>共7位，第一位为字母I(内部)或E(外部),后六位为数字</span>
+                    </div>
+
+
+                    <div class="serve-cont-msg-input serve-cont-define-input">
+                        <span class="left pad-5px">类型 *</span>
+                        <!--<div class="serve-define-url left">-->
+                        <select name='types' class="types">
+                            <option value="" style="color: #EEF0F2" disabled selected>类型</option>
+                            {{each types as value}}
+                            <option value="{{value.id}}">{{value.type}}</option>
+                            {{/each}}
+                        </select>
+
+                        <!--</div>-->
+                        <div class="clear"></div>
+                    </div>
+                    <div class="serve-cont-msg-input">
+                        <span class="left">供应商 *</span>
+
+                        <select name='owner' class="owner">
+                            <option value="" style="color: #EEF0F2" disabled selected>供应商</option>
+                            {{each providers as value}}
+                            <option value="{{value.providerId}}">{{value.name}}</option>
+                            {{/each}}
+                        </select>
+
+                    </div>
+
+
+                    <div class="serve-cont-msg-input iconDiv">
+                        <span class='left'>图标</span>
+
+                        <!--<div class='file'>-->
+                        <div class="report-file" id="result">
+                            <!--<span>+</span>-->
+                            <!--<input tabindex="3" size="3" name="report" class="file-prew" type="file" onchange="$('#textName').text(this.value)"-->
+                            <!--id='logoUrl'>-->
+                        </div>
+
+                        <span class="iconInfo">服务图片大小:150*150</span>
+                        <p>
+                            <input type="file" id="logoUrl"/>
+                        </p>
+                        <!--<div id="result"></div>-->
+                        <!--<input type="text" id="textName" style="height: 28px;border:none"/>-->
+                        <!--<span id="textName">未选择任何文件</span>-->
+
+
+                        <!--</div>-->
+
+                    </div>
+
+                    <div class="serve-cont-msg-input">
+                        <span>价格 *</span>
+                        <input type="text" name='pricing' value=''>
+                    </div>
+
+                    <div>
+                        <span>推荐</span>
+                        <input name="recommend" type="checkbox" class='icon-select' value="0"
+                               onclick="this.value=(this.value==0)?1:0"/>
+                    </div>
+
+
+                    <div class="serve-cont-msg-input">
+                        <span class="left intro-margin">简介描述 *</span>
+                        <textarea name="summary" value='' class="summary"></textarea>
+                    </div>
+                    <div class="serve-cont-msg-input">
+                        <span class="left intro-margin">详情描述 *</span>
+                        <textarea name="description" value=""></textarea>
+                    </div>
+
+                    <h3 class="serve-icon-define">服务信息映射</h3>
+                    <!--<div class="serve-cont-msg-input serve-cont-define-input padding-top">-->
+
+                    <div>
+                        <span class='message'>北向(消费者侧)信息</span>
+                        <span class='message'>南向(开发者侧)信息</span>
+                    </div>
+
+                    <div class="serve-cont-msg-input urlAddress">
+                        <span class='left'>URL地址 *</span>
+                        <input type="text" name='northUrl' value=''>
+                        <input type="text" name='southUrl' value=''>
+                    </div>
+
+
+                    <div class="addPara serve-cont-msg-input">
+                        <span class="left paras">参数</span>
+
+                        <span class="addParas serve-cont-msg-input">
+
+                            <input type="text" name='northParam' value='' class="intro-margin">
+                            <input type="text" name="southParam" value='' class="intro-margin" id="introParam">
+
+                            <select name='position' value=''>
+                            <option value="" style="color: #EEF0F2" disabled selected>参数位置</option>
+                            <option value="0">query</option>
+                            <option value="1">path</option>
+                        </select>
+                        </span>
+
+
+                        <div class='add add1'>
+                            <span>＋</span>
+                            <span>增加参数</span>
+                        </div>
+
+                    </div>
+
+                    <div class="responseCode serve-cont-msg-input ">
+                        <span class="left stateCode">状态码</span>
+                        <select name='statusPosition' value=''>
+                            <option value="0">body</option>
+                            <option value="1">header</option>
+                        </select>
+
+                        <span class="addParaCode serve-cont-msg-input">
+
+                            <input type="text" name='northStatus' value="" class='intro-margin'>
+                            <input type="text" name='southStatus' value='' class='intro-margin' id="introStatus">
+
+                        </span>
+
+
+                        <div class='addCode addCode1'>
+                            <span>+</span>
+                            <span>增加参数</span>
+                        </div>
+                    </div>
+
+
+                    <!--<div class="stateCode serve-cont-msg-input">-->
+                    <!--<span class="left">位置</span>-->
+                    <!--<label>-->
+                    <!--<input type="radio" name='statusPosition' value=''>body-->
+                    <!--<input type="radio" name='statusPosition' value=''>header-->
+                    <!--</label>-->
+                    <!--</div>-->
+
+                    <!--</div>-->
+
+                    <h3 class="serve-icon-define">服务定义</h3>
+                    <div class="serve-cont-msg-input serve-cont-define-input">
+
+
+                        <div class="serve-cont-msg-input serve-cont-define-input padding-top">
+
+                            <span>请求方式 *</span>
+                            <select name="method" class="method">
+                                <option value="" style="color: #EEF0F2" disabled selected>请选择</option>
+                                <option value="post">POST</option>
+                                <option value="get">GET</option>
+                                <option value="put">PUT</option>
+                                <option value="delete">DELETE</option>
+                            </select>
+
+                            <div class="serve-cont-msg-input">
+
+
+                                <div class="uploadFile">
+                                    <div class="report-file2">
+                                        <span>请求参数</span>
+                                        <input tabindex="3" size="3" name="report" class="file-prew file1" id='select-file-request'
+                                                                type="file" onchange="document.getElementById('textName1').value=this.value;$('.fileDel1').css('display','block')"
+                                                                id='select-file-request'>
+                                    </div>
+                                    <span>支持excel文件格式，表头内容为：名称、类型、描述、是否必填。</span>
+                                    <input type="text" id="textName1" style="height: 28px;border:none"/>
+                                    <span class="fileDel fileDel1"
+                                          onclick="$('.file1').after($('.file1').clone().val('')).remove();$('#textName1').val(' ');$('.fileDel1').css('display','none')">删除</span>
+
+                                </div>
+
+
+                                <div class="uploadFile">
+                                    <div class="report-file2 report-file3">
+                                        <span>响应参数 *</span>
+                                        <input tabindex="3" size="3" name="report" class="file-prew"
+                                               id='select-file-response' type="file"
+                                               onchange="document.getElementById('textName2').value=this.value;$('.fileDel2').css('display','block');">
+                                    </div>
+
+                                    <span>支持excel文件格式，表头内容为：名称、类型、描述。</span>
+                                    <input type="text" id="textName2" style="height: 28px;border:none"/>
+                                    <span class="fileDel fileDel2"
+                                          onclick="$('#select-file-response').after($('#select-file-response').clone().val('')).remove();$('#textName2').val(' ');$('.fileDel2').css('display','none')">删除</span>
+                                </div>
+
+
+                                <div class="uploadFile">
+                                    <div class="report-file2">
+                                        <span>状态码</span>
+                                        <input tabindex="3" size="3" name="report" class="file-prew file3" type="file" id="select-file-status"
+                                               onchange="document.getElementById('textName3').value=this.value;$('.fileDel3').css('display','block')" id='select-file-status'>
+                                    </div>
+
+                                    <span>支持excel文件格式，表头内容为：状态码、含义、消息。</span>
+                                    <input type="text" id="textName3" style="height: 28px;border:none"/>
+                                    <span class="fileDel fileDel3"
+                                          onclick="$('.file3').after($('.file3').clone().val('')).remove();$('#textName3').val(' ');$('.fileDel3').css('display','none')">删除</span>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="serve-cont-msg-input">
+                                <span class='left'>代码示例</span>
+                                <textarea name="example" value='' class="codeExample"></textarea>
+
+                            </div>
+
+                            <div class="serve-cont-msg-input">
+                                <span class='left'>补充说明</span>
+                                <textarea name="comment" value=""></textarea>
+                            </div>
+
+
+                        </div>
+
+                        <div class="serve-manage-footer" id="serve-manage-save">
+                            <!--<button class="btn-blue">预览</button>-->
+                            <button class='btn-save'>保存</button>
+                            <button class='btn-cancel'>取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+</form>
+

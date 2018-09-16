@@ -1,0 +1,33 @@
+.login,.login_con{position:absolute}
+.login_bot,.login_btn,.login_con .logo,.login_tit{text-align:center}
+.login{width:100%;height:100%;background:url(../img/login_bg.jpg) no-repeat fixed;background-size:cover;filter:progid:DXImageTransform.Microsoft.AlphaImageLoader( src='img/login_bg.jpg', sizingMethod='scale')}
+.login_con{width:320px;height:auto;background:rgba(255,255,255,.3)\9;background:#081022;filter:alpha(opacity=30);-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=30)";background:rgba(255,255,255,.1);box-shadow:2px 0 7px rgba(8,16,34,.3);left:50%;top:50%;margin-left:-190px;margin-top:-240px;padding:60px 30px 0}
+.login_con div,.login_user,.login_user p i{position:relative}
+.login_con .logo i{width:1px;height:26px;margin:4px 16px}
+.login_tit{font-size:17px;color:#fff;padding:20px 0}
+.login_user{padding:15px 0}
+.login_user p{margin:10px 0;display:block;float:left;width:100%}
+.login_user p input{height:42px;background:#fff;line-height:42px;padding:0 10px;width:300px;color:#44466c;border:1px solid transparent}
+.login_btn,.login_user p span a{color:#fff}
+.login_user p span{float:right}
+.login_user p span a:hover{text-decoration:underline}
+.login_user p em,.login_user p span{font-size:14px;color:#fff}
+.login_user p i{width:18px;height:17px;display:inline-block;background-position:0 -187px;margin-right:5px;top:3px;cursor:pointer}
+.login_user p i.login_check{background-position:0 -208px}
+.login_btn{background:#3e8dff;height:44px;width:100%;line-height:44px;font-size:16px;float:left;cursor:pointer}
+.error,.login_bot{color:#fff;font-size:14px;position:absolute}
+.login_btn a{display:block;color:#fff}
+.login_btn a:hover{background:#327eeb}
+.error{width:300px;top:-12px;background:#f55848;border-top-left-radius:3px;border-top-right-radius:3px;height:28px;line-height:28px;padding:0 10px;display:none}
+.login_tips .error{display:block;position:absolute}
+.login_tips p input{border:1px solid #f55848}
+.login_bot{width:100%;bottom:-105px;left:0}
+.login .logo{
+	background: url(../img/../img/logo.png) no-repeat;
+	width: 273px;
+	margin: 0 auto;
+    height: 32px;
+}
+
+/*role css*/
+.login_con #roleSelect {width:80px;height:30px;line-height:30px;border:1px solid #eee;padding:0 5px 0 5px}

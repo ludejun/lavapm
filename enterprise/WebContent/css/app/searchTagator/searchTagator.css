@@ -1,0 +1,127 @@
+@charset "utf-8";
+
+.tagator * {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	text-decoration: none;
+}
+
+
+/* dimmer */
+#tagator_dimmer {
+	background-color: rgba(0,0,0,.1);
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 1;
+}
+
+/* Main box */
+.tagator {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	box-sizing: border-box;
+	background-color: #fff;
+	display: inline-block;
+	text-decoration: none;
+}
+.modal-dialog .tagator{min-width:300px;max-width: 100%;}
+.tagator.options-visible {
+	position: relative;
+	z-index: 1;
+}
+
+/* chosen items holder */
+.tagator_tags {
+	display: inline;
+}
+
+/* chosen item */
+.tagator_tag {
+	display: inline-block;
+	background-color: #f8f8f8;
+	border-radius: 2px;
+	color: #333;
+	padding: 2px 15px 2px 4px;
+	font-size: 12px;
+	margin:5px 0 5px 5px;
+	position: relative;
+	vertical-align: top;
+	overflow: hidden;
+  	white-space: nowrap;
+  	text-overflow: ellipsis;
+  	max-width: 98%;
+  	border: 1px solid #eee;
+  	line-height:16px;
+}
+
+/* chosen item remove button */
+.tagator_tag_remove {
+	display: inline-block;
+	font-weight: bold;
+	color: #333;
+	margin: 0;
+	padding: 5px 2px 4px 2px;
+	cursor: pointer;
+	font-size: 12px;
+	line-height: 10px;
+	vertical-align: top;
+	border-radius: 0 2px 2px 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+.tagator_tag_remove:hover {
+	color: #000;
+	background-color: #eee;
+}
+
+/* input box */
+.tagator_input,
+.tagator_textlength {
+	border: 0;
+	display: inline-block;
+	margin: 0;
+	background-color: transparent;
+	font-size: 12px;
+	outline: none;
+	padding: 8px 0 5px 5px;
+	max-width:99%;min-width: 80px;overflow:hidden;
+}
+.tagator_input {
+	/*padding: 0px 0px;*/
+	
+}
+
+/* options holder */
+.tagator_options {
+	margin: 0 0 20px 0;
+	padding: 0;
+	border: 1px solid #ccc;
+	border-radius: 0 0 3px 3px;
+	position: absolute;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	z-index: 101;
+	background-color: #fff;
+	overflow: auto;
+	max-height: 165px;
+	list-style: none;
+	left: -1px;
+	right: -1px;
+}
+.tagator.options-hidden .tagator_options {
+	display: none;
+}
+
+/* result item */
+.tagator_option {
+	padding: 5px;
+	cursor: pointer;
+	color: #000;
+}
+.tagator_option.active {
+	background-color: #f3f4f7;
+  	color: #2186ed;
+}

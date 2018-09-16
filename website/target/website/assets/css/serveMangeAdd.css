@@ -1,0 +1,497 @@
+.left {
+    float: left;
+    line-height: 35px;
+}
+
+.clear {
+    clear: both;
+}
+
+.serve-add {
+    width: 100%;
+    height: 40px;
+    border-bottom: 1px solid #ced3d9;
+    background: #fff;
+    line-height: 40px;
+    box-shadow: 0 0 2px #ccc;
+}
+
+.serve-add-header {
+    margin-left: 50px;
+}
+
+.serve-container {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.serve-cont {
+    width: 980px;
+    padding: 20px 60px 40px;
+    background: #fff;
+    margin: 30px auto 30px;
+    border-radius: 10px;
+}
+
+.serve-cont h3 {
+    text-indent: 25px;
+    border-bottom: 1px dashed #d2d7dc;
+    padding: 20px 0;
+}
+
+.serve-cont > h3:nth-child(1) {
+    background: url(../img/serve-icon-msg.png) no-repeat left center;
+    background-size: 16px 16px;
+}
+
+/*.serve-cont   h3:nth-child(2){*/
+/*background: url(../img/serve-icon-msg.png) no-repeat left center;*/
+/*background-size: 16px 16px;*/
+/*}*/
+.serve-cont .serve-icon-define {
+    background: url(../img/serve-icon-define.png) no-repeat left center;
+    background-size: 16px 16px;
+}
+
+.serve-cont-msg-input, .serverFile {
+    padding: 10px 0;
+}
+
+.serve-cont-msg-input > input {
+    border: 1px solid #dce1e7;
+    width: 350px;
+    height: 30px;
+    margin-right: 30px;
+    border-radius: 5px;
+    text-indent: 10px;
+    /*margin-top:10px;*/
+}
+
+.urlAddress > input, .addParaCode > input, .addParas > input {
+    width: 300px;
+    /*margin-top: 10px;*/
+}
+
+.serve-container .addParas, .serve-container .addParaCode {
+    width: 790px;
+}
+
+.serve-cont-msg-input > select {
+    border: none;
+    outline: none;
+    padding: 0;
+    border: 1px solid #dce1e7;
+    width: 420px;
+    height: 30px;
+    border-radius: 5px;
+    text-indent: 10px;
+}
+
+.addParas > select, .responseCode > select {
+    width: 100px;
+    margin-top: 20px;
+    /*position: absolute;*/
+}
+
+.responseCode {
+    position: relative;
+}
+
+.responseCode > select {
+    /*width: 100px;*/
+    margin-top: 25px;
+    position: absolute;
+    right: 133px;
+}
+
+.addPara > select {
+    margin-top: 25px;
+}
+
+.addPara .paras, .responseCode .stateCode {
+    margin-top: 20px;
+}
+
+.serve-cont-msg-input > span {
+    display: inline-block;
+    width: 80px;
+}
+
+.serve-cont-msg-input > textarea {
+    width: 560px;
+    height: 100%;
+    min-height: 140px;
+    /*border: none;*/
+    border: 1px solid #dce1e7;
+    border-radius: 5px;
+    /*overflow: hidden;*/
+    /*resize: none;*/
+    padding: 10px;
+}
+
+.serve-cont-msg-input .summary {
+    min-height: 100px;
+}
+
+.serve-cont-msg-input .scmPrompt {
+    color: #9EA7B4;
+    margin: 10px 0 20px 85px;
+}
+
+/*.serve-cont-msg-input .owner,.types,.method{*/
+/*background-color: #EEF0F2;*/
+/*}*/
+.serve-cont-msg-input .owner option {
+    background-color: #FFFFFF;
+}
+
+.serve-cont-msg-input .owner option:hover {
+    background-color: #EEF0F2;
+}
+
+.serve-msg-type {
+    border: 1px solid #dce1e7;
+    width: 420px;
+    height: 30px;
+    border-radius: 5px;
+    text-indent: 10px;
+    position: relative;
+}
+
+.serve-msg-type > ul {
+    position: absolute;
+    left: 0;
+    bottom: 30px;
+}
+
+.padding-top {
+    padding-top: 15px;
+}
+
+.intro-margin {
+    margin-top: 15px;
+}
+
+.icon-select {
+    margin-left: 55px;
+}
+
+.serve-define-url {
+    border: 1px solid #dce1e7;
+    width: 420px;
+    height: 30px;
+    border-radius: 5px;
+    text-indent: 10px;
+    position: relative;
+    line-height: 30px;
+    background: url(../img/triangle.png) no-repeat 400px center;
+}
+
+.serve-define-url > ul {
+    width: 420px;
+    position: absolute;
+    left: 0;
+    top: 31px;
+    border-radius: 5px;
+    border: 1px solid #dce1e7;
+    background: #fff;
+    box-shadow: 0 0 5px #ccc;
+    zoom: 1;
+    z-index: 5;
+    display: none;
+}
+
+.serve-define-url > ul li {
+    height: 30px;
+    line-height: 30px;
+}
+
+.serve-define-url > ul li:hover {
+    background: #eef0f2;
+}
+
+.serve-define-url:hover {
+    background: #eef0f2 url(../img/triangle.png) no-repeat 400px center;
+}
+
+.serve-define-url:hover > ul {
+    display: block;
+}
+
+.pad-5px {
+    padding-top: 5px;
+}
+
+.serve-para {
+    width: 560px;
+    height: 260px;
+    border: 1px solid #dedfe5;
+    padding: 20px;
+    background: #f8f8f9;
+    overflow-y: auto;
+}
+
+.serve-para ul {
+    width: 540px;
+    height: 30px;
+    line-height: 30px;
+}
+
+.serve-para > ul li {
+    float: left;
+}
+
+.serve-para > ul li:nth-child(1) {
+    width: 125px;
+}
+
+.serve-para > ul li:nth-child(2) {
+    width: 75px;
+}
+
+.serve-manage-footer {
+    height: 100px;
+    width: 100%;
+    margin-top: 60px;
+    border-top: 1px solid #d2d7dc;
+}
+
+.serve-manage-footer button {
+    width: 100px;
+    height: 38px;
+    margin: 24px 10px 0 100px;
+    background: #f5f6f8;
+    border-radius: 3px;
+    cursor: pointer;
+
+}
+
+.serve-manage-footer .btn-blue {
+    background: gray;
+    color: #636364;
+    pointer-events: none;
+}
+
+#serveAddPage .file {
+    position: relative;
+    display: inline-block;
+    background: #F5F6F8;
+    /*border: 1px solid #99D3F5;*/
+    border-radius: 4px;
+    padding: 10px 12px;
+    overflow: hidden;
+    color: #636364;
+    text-decoration: none;
+    text-indent: 0;
+    line-height: 20px;
+    width: 100px;
+    height: 20px;
+    margin: 10px 55px 0;
+}
+
+#serveAddPage .file input {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+
+#serveAddPage .file:hover {
+    background: #5f93e1;
+    /*border-color: #78C3F3;*/
+    color: #004974;
+    text-decoration: none;
+}
+
+#serveAddPage .add, .addCode {
+    float: right;
+    width: 100px;
+    height: 30px;
+    border-radius: 6px;
+    text-align: center;
+    line-height: 30px;
+    border: 1px solid #dce1e7;
+    font-size: 12px;
+    /*margin-top: 5px ;*/
+    background-color: #f5f6f8;
+    color: #dce1e7;
+    pointer-events: none;
+    margin-top: 24px;
+}
+
+/*#serveAddPage .add1,.addCode1{*/
+/*pointer-events:none;*/
+/*background-color: #5f93e1;*/
+/*color: #ffffff;*/
+/*}*/
+#serveAddPage .add {
+    margin-top: 30px;
+    float: right;
+}
+
+#serveAddPage .add > span:nth-child(1), #serveAddPage .addCode > span:nth-child(1) {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    line-height: 15px;
+    border-radius: 50%;
+    border: 1px solid #dce1e7;
+}
+
+#serveAddPage .message {
+    padding: 10px 0 0 164px;
+    font-size: 16px;
+    line-height: 100px;
+}
+
+/*#serveAddPage .responseCode input:nth-child(1){*/
+/*margin-left:80px;*/
+/*}*/
+
+.iconDiv {
+    height: 140px;
+}
+
+.iconDiv #textName, .iconDiv .iconInfo {
+    display: inline-block;
+    height: 50px;
+    width: 75%;
+    font-size: 14px;
+    color: #657180;
+    line-height: 50px;
+    margin-left: 20px;
+}
+
+.iconDiv .iconInfo {
+    color: #9EA7B4;
+}
+
+.report-file {
+    display: block;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border: 2px dashed #43A3FB;
+    border-radius: 5px;
+    background: none repeat scroll 0 0 #fff;
+    color: #636364;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+    margin: 0 5px 0 80px;
+}
+
+.report-file span {
+    cursor: pointer;
+    display: block;
+    line-height: 120px;
+    font-size: 70px;
+    color: #43A3FB;
+}
+
+.file-prew {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 120px;
+    height: 30px;
+    font-size: 100px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    /*cursor: pointer;*/
+}
+
+.report-file {
+    margin-left: 5px;
+}
+
+.report-file2 {
+    display: block;
+    position: relative;
+    width: 100px;
+    height: 30px;
+    overflow: hidden;
+    border: 1px solid #43A3FB;
+    border-radius: 30px;
+    background: none repeat scroll 0 0 #43A3FB;
+    color: #ffffff;
+    cursor: pointer;
+    text-align: center;
+    float: left;
+    margin: 0 5px 0 80px;
+    line-height: 30px;
+
+}
+
+.uploadFile > input {
+    position: absolute;
+    width: 200px;
+    top: 48px;
+    left: 80px;
+}
+
+.uploadFile {
+    height: 120px;
+    position: relative;
+    border-top: 1px dashed #dce1e7;
+    padding-top: 12px;
+}
+
+.uploadFile > span:nth-child(1) {
+    display: inline-block;
+    margin: 6px 0 0 6px;
+}
+
+.uploadFile > .fileDel {
+    position: absolute;
+    top: 52px;
+    left: 305px;
+    color: #EA5A5A;
+    display: none;
+}
+
+.serve-cont-msg-input .codeExample {
+    min-height: 400px;
+}
+
+#logoUrl {
+    margin-left: 20px;
+}
+.serve-cont-msg-input .fileUpload{
+    position: relative;
+}
+.serve-cont-msg-input .fileUpload > textarea {
+    margin-left: 78px;
+
+}
+
+.serve-cont-msg-input .fileUpload > .deleteBeforeFile {
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    font-size: 38px;
+    color: red;
+    position: absolute;
+    top: 12px;
+    left: 64%;
+    cursor: pointer;
+
+}
+.serve-cont-msg-input .fileUpload > .confirmBeforeFile{
+    display: none;
+    width: 80px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    color:#ffffff;
+    background-color: #000000;
+    position: absolute;
+    top: 46px;
+    left: 63%;
+}
+.fileUpload >.deleteBeforeFile:hover +.confirmBeforeFile{
+    display: block;
+}

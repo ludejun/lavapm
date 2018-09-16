@@ -1,0 +1,68 @@
+<!-- <div class="clrfix operator-panel">
+	<a data-ui-sref="tagCalcRecords_new" class="btn btn-success fl">添加</a>	
+	<button data-backdrop="false" data-template="html/tag/dialog/TagCalcRecordDialog.html" bs-modal="modal" class="btn btn-success fl" ng-click="queryTagList('add');">添加任务</button>
+	<div class="fr">	
+		<div data-search role="search"></div>
+	</div>
+</div> -->
+
+<div class="panel panel-gray">
+	<div class="panel-heading clrfix">
+  		<h3 class="panel-title fl">标签信息</h3>
+	</div>
+	<div class="panel-body">
+		<ul class="tag-cal-record-details clrfix">
+			<li><span class="lb">标签名称：</span><span class="txt">{{tagDetails.name}}</span></li>
+			<li><span class="lb">人群类型：</span><span class="txt">{{tagDetails.touchPointType | DictFormatter : 'TOUCH_POINT_TYPE'}}</span></li>
+			<li><span class="lb">标签状态：</span><span class="txt">{{tagDetails.status | DictFormatter : 'DMP_OBJECT_STATUS'}}</span></li>
+			<li><span class="lb">标签来源：</span><span class="txt">{{tagDetails.source | DictFormatter : 'TAG_SOURCE'}}</span></li>
+			<li><span class="lb">创建人：</span><span class="txt">{{tagDetails.creator}}</span></li>
+			<li><span class="lb">创建时间：</span><span class="txt">{{tagDetails.createTime | DateFormatDefault}}</span></li>
+			<li><span class="lb">人群更新时间：</span><span class="txt">{{tagDetails.tagDataTime | DateFormatDefault}}</span></li>
+		</ul>
+	</div>
+</div>
+
+<div class="ng-table-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">
+			任务日志
+		</div>
+		<!-- <div class="search" data-search role="search"></div> -->
+	</div>
+	<table ng-table="tableParams" class="table ng-table-responsive table-hover">
+	    <tr ng-repeat="tagCalcRecord in $data">
+	       <!-- <td data-title="'序号'">{{$index + 1}}</td> -->
+	       <td data-title="'任务编号'"><div title="{{tagCalcRecord.id}}">{{tagCalcRecord.id}}</div></td>
+	       <td data-title="'标签编码'"><div title="{{tagCalcRecord.tagCode}}">{{tagCalcRecord.tagCode}}</div></td>
+	       <!-- <td data-title="'标签ID'"><div title="{{tagCalcRecord.tagId}}">{{tagCalcRecord.tagId}}</div></td> -->
+	       <td data-title="'标签名称'"><div title="{{tagCalcRecord.tagName}}">{{tagCalcRecord.tagName}}</div></td>
+	       <td data-title="'开始时间'"><div class="wd120 t-o-e" title="{{tagCalcRecord.startTime | DateFormatDefault}}">{{tagCalcRecord.startTime | DateFormatDefault}}</div></td>
+	       <td data-title="'结束时间'"><div class="wd120 t-o-e" title="{{tagCalcRecord.finishTime | DateFormatDefault}}">{{tagCalcRecord.finishTime | DateFormatDefault}}</div></td>
+	       <td data-title="'耗时'"><div>{{tagCalcRecord.times}}</div></td>
+	       <!-- <td data-title="'调度id'"><div class="wd100 t-o-e" title="{{tagCalcRecord.scheduleId}}">{{tagCalcRecord.scheduleId}}</div></td> -->
+	       <!-- <td data-title="'进度百分比'"><div class="wd100 t-o-e" title="{{tagCalcRecord.progress}}">{{tagCalcRecord.progress}}</div></td> -->
+	       <!-- <td data-title="'创建人账号'">{{tagCalcRecord.createBy}}</td> -->
+	       <!-- <td data-title="'创建人'"><div class="wd100 t-o-e" title="{{tagCalcRecord.creator}}">{{tagCalcRecord.creator}}</div></td> -->
+	       <!-- <td data-title="'修改人账号'">{{tagCalcRecord.updateBy}}</td> -->
+	       <!-- <td data-title="'创建时间'"><div class="wd100 t-o-e" title="{{tagCalcRecord.createTime | DateFormatDefault}}">{{tagCalcRecord.createTime | DateFormatDefault}}</div></td> -->
+	       <!-- <td data-title="'修改时间'">{{tagCalcRecord.updateTime}}</td> -->
+	       
+	       <td data-title="'状态 '">
+	           <div class="t-o-e" 
+	                title="{{tagCalcRecord.status | DictFormatter : 'DMP_OBJECT_STATUS'}}">
+	                {{tagCalcRecord.status | DictFormatter : 'DMP_OBJECT_STATUS'}}
+	           </div>
+	      	</td>
+	      	<!-- <td data-title="'操作'">
+	       	   <a ui-sref="tagCalcRecords_edit({tagCalcRecordId:tagCalcRecord.id})" class="btn btn-primary">编辑</a>
+	           <i data-template="html/tag/dialog/TagCalcRecordDialog.html" bs-modal="modal" class="glyphicon glyphicon-edit" title="编辑" ng-click="queryTagList('edit');"></i>
+	           
+	           <a ui-sref="tag_journals({tagCalcRecordId: tagCalcRecord.id})" class="icons icon-view" title="查看日志"></a>
+	           <i class="icons icon-record-details" title="日志详情" ui-sref="tagCalcRecords_journal({tagId:tagCalcRecord.tagId,tagCalcRecordId:tagCalcRecord.id})"></i>
+	           
+	           <i ng-click="removeTagCalcRecord(tagCalcRecord);" class="icons icon-delete" title="删除"></i>
+	       </td> -->
+	    </tr>
+	</table>
+</div>

@@ -1,0 +1,224 @@
+<div class="clrfix operator-panel">
+	<a data-ui-sref="lookalikeCrowds_new" class="btn-add"><i class="icons icons-add"></i>人群放大定义</a>
+</div>
+<div class="ng-table-container">
+	<div class="ng-table-head clrfix">
+		<div class="text">人群放大列表</div>
+		<div class="search" data-search role="search"></div>
+	</div>
+	
+	<div ng-if="isShowMoreSearch" class="more-search-box clrfix">
+		<ul class="clrfix">
+			<li>
+				<div class="label">人群名称</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.name" maxlength="256">
+				</div>
+			</li>
+			
+			
+			
+			<li>
+				<div class="label">种子人群</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.seedCrowdName" maxlength="256">
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">人群类型</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.touchPointType">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in touchPointTypes" value="{{sts.dicItemKey}}"  ng-selected="sts.dicItemKey == moreSearchCondition.touchPointType">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			
+			<!-- <li>
+				<div class="label">范围人群</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.rangeCrowdName" maxlength="256">
+				</div>
+			</li> -->
+			
+			<!-- <li>
+				<div class="label">是否排除种子人群</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.isExcludeSeedCrowd">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in commonYesNo" value="{{sts.dicItemKey}}" >{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li> -->
+			
+			<!-- <li>
+				<div class="label">是否使用优化人群</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.isOptimization">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in commonYesNo" value="{{sts.dicItemKey}}" >{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li> -->
+			
+			<!-- <li>
+				<div class="label">描述</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.description" maxlength="512">
+				</div>
+			</li> -->
+		
+			<li>
+				<div class="label">状态</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.status">
+						<option value="" >请选择</option>
+						<option ng-repeat="sts in lookalikeCrowdStatus" value="{{sts.dicItemKey}}" ng-if="sts.dicItemKey != -1" ng-selected="sts.dicItemKey == moreSearchCondition.status">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">计算状态</div>
+				<div class="control">
+					<select class="form-control" ng-model="moreSearchCondition.calcStatus">
+						<option value="" >请选择</option>
+						<option ng-if="sts.dicItemKey != '-4' && sts.dicItemKey != '5'" ng-repeat="sts in lookalikeCrowdCalStatus" value="{{sts.dicItemKey}}" ng-selected="sts.dicItemKey == moreSearchCondition.calcStatus">{{sts.dicItemValue}}</option>
+					</select>
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">创建人</div>
+				<div class="control">
+					<input type="text" class="form-control" ng-model="moreSearchCondition.creator" maxlength="64">
+				</div>
+			</li>
+			
+			<li>
+				<div class="label">创建时间</div>
+				<div class="control">
+					<div start-date="moreSearchCondition.createTimeStart" end-date="moreSearchCondition.createTimeEnd" td-change="changeCreateTime" td-date-condition date-range="dateRange" class="form-control date-condition" type="text"></div>
+					<!-- <input data-max-date="today" readonly class="form-control fl form-date" type="text" ng-model="moreSearchCondition.createTimeStart" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker>
+		            <span class="fl ml-10">至</span>
+		            <input data-max-date="today" readonly class="form-control fl form-date ml-10" type="text" ng-model="moreSearchCondition.createTimeEnd" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker> -->
+				</div>
+			</li>
+			<li>
+				<div class="label">人群更新时间</div>
+				<div class="control">
+					<div start-date="moreSearchCondition.updateDataTimeStart" end-date="moreSearchCondition.updateDataTimeEnd" td-change="changeTagDataTime" td-date-condition date-range="dateRange" class="form-control date-condition" type="text"></div>
+					<!-- <input data-max-date="today" readonly class="form-control fl form-date" type="text" ng-model="moreSearchCondition.updateDataTimeStart" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker>
+		            <span class="fl ml-10">至</span>
+		            <input data-max-date="today" readonly class="form-control fl form-date ml-10" type="text" ng-model="moreSearchCondition.updateDataTimeEnd" data-date-format="yyyy-MM-dd" data-date-type="number" data-autoclose="1" bs-datepicker> -->
+				</div>
+			</li>
+			
+		</ul>
+		
+		<div class="btns-box">
+			<div class="btns">
+				<button type="button" class="btn btn-primary btn-sm ml-10" ng-click="search();">搜索</button>
+	        	<button type="button" class="btn btn-default btn-sm" ng-click="resetMoreSearchCondition();">重置</button>
+			</div>
+		</div>
+		
+	</div>
+	
+	<div class="ng-table-body ng-table-body-empty">
+		<table ng-table="tableParams" class="table ng-table-responsive table-hover" freeze="true" id="tableParams">
+		    <tr ng-repeat="lookalikeCrowd in $data">
+		       <!-- <td data-title="'序号'">{{$index + 1}}</td>
+		       <td data-title="'人群ID'">{{lookalikeCrowd.id}}</td> -->
+		       <!-- <td width="30" style="text-align: left" header="'ng-table/headers/checkbox.html'">
+	                <input type="checkbox" ng-model="checkboxes.items[lookalikeCrowd.id]" />
+	            </td> -->
+	           <!-- <td data-title="'人群编号'"><div class="max-wd110 t-o-e" title="{{lookalikeCrowd.code}}">{{lookalikeCrowd.code}}</div></td> -->
+		       <td data-title="'人群名称'"><div title="{{lookalikeCrowd.name}}">{{lookalikeCrowd.name}}</div></td>
+		       <!-- <td data-title="'种子人群ID'">{{lookalikeCrowd.seedCrowdId}}</td> -->
+		       <td data-title="'种子人群'"><div title="{{lookalikeCrowd.seedCrowdName}}">{{lookalikeCrowd.seedCrowdName}}</div></td>
+		       
+		       <!-- <td data-title="'人群范围'">{{lookalikeCrowd.rangeCrowdId}}</td> -->
+		       <!-- <td data-title="'是否最优'"><div class="wd50 t-o-e" title="{{lookalikeCrowd.isOptimization | DictFormatter : 'COMMON_YES_NO'}}">{{lookalikeCrowd.isOptimization | DictFormatter : 'COMMON_YES_NO'}}</div></td> -->
+		       <!-- <td data-title="'范围人群'"><div title="{{lookalikeCrowd.rangeCrowdName}}">{{lookalikeCrowd.rangeCrowdName}}</div></td> -->
+		       <!-- <td data-title="'排除种子人群'"><div class="wd50 t-o-e" title="{{lookalikeCrowd.isExcludeSeedCrowd | DictFormatter : 'COMMON_YES_NO'}}">{{lookalikeCrowd.isExcludeSeedCrowd | DictFormatter : 'COMMON_YES_NO'}}</div></td> -->
+		       
+		       <!-- <td data-title="'算法id'">{{lookalikeCrowd.algorithmId}}</td> -->
+		      <!--  <td data-title="'预测规模'"><div class="min-wd50 t-o-e" title="{{lookalikeCrowd.predictNum}}">{{lookalikeCrowd.predictNum}}</div></td> -->
+		       <td data-title="'人群类型'">
+		       		<div class="min-wd50">
+		       			<i ng-if="lookalikeCrowd.crowdIcon != null"  class="{{lookalikeCrowd.crowdIcon}}" title="{{lookalikeCrowd.touchPointTypeName}}"></i>
+		       			<i ng-if="lookalikeCrowd.crowdIcon == null" class="icons-id icon-id-touchpointtype-other" title="{{lookalikeCrowd.touchPointTypeName}}"></i>
+		       			
+		       			<!--  
+		      			<i ng-if="lookalikeCrowd.touchPointType == 'app_tdid'" class="icons" ng-class="{'icon-touchpointtype1':lookalikeCrowd.touchPointType == 'app_tdid'}" title="{{lookalikeCrowd.touchPointTypeName}}"></i>
+				       	<i ng-if="lookalikeCrowd.touchPointType == 'web_tdid'" class="icons" ng-class="{'icon-touchpointtype2':lookalikeCrowd.touchPointType == 'web_tdid'}" title="{{lookalikeCrowd.touchPointTypeName}}"></i>
+				       	<i ng-if="lookalikeCrowd.touchPointType == 'h5_tdid'" class="icons" ng-class="{'icon-touchpointtype3':lookalikeCrowd.touchPointType == 'h5_tdid'}" title="{{lookalikeCrowd.touchPointTypeName}}"></i>
+				       	<i ng-if="lookalikeCrowd.touchPointType == 'account_id'" class="icons" ng-class="{'icon-touchpointtype99':lookalikeCrowd.touchPointType == 'account_id'}" title="{{lookalikeCrowd.touchPointTypeName}}"></i>
+				       	<i ng-if="lookalikeCrowd.touchPointType == 'mac_tdid'" class="icons" ng-class="{'icon-touchpointtype-mac':lookalikeCrowd.touchPointType == 'mac_tdid'}" title="{{lookalikeCrowd.touchPointTypeName}}"></i>
+		      			<i ng-if="lookalikeCrowd.touchPointType != 'app_tdid' && 
+				       		lookalikeCrowd.touchPointType != 'web_tdid' && 
+				       		lookalikeCrowd.touchPointType != 'h5_tdid' && 
+				       		lookalikeCrowd.touchPointType != 'account_id' && 
+				       		lookalikeCrowd.touchPointType != 'mac_tdid'" class="icons icon-touchpointtype-other" title="{{lookalikeCrowd.touchPointTypeName}}"></i>-->
+		      		</div>
+		       	</td>
+		       <!-- <td data-title="'描述'"><div title="{{lookalikeCrowd.description}}">{{lookalikeCrowd.description}}</div></td> -->
+		       <!-- <td data-title="'算法名称'"><div class="max-wd140 t-o-e" title="{{lookalikeCrowd.algorithmName}}">{{lookalikeCrowd.algorithmName}}</div></td> -->
+		       <!-- <td data-title="'创建人账号'">{{lookalikeCrowd.createBy}}</td>
+		       <td data-title="'修改人账号'">{{lookalikeCrowd.updateBy}}</td>
+		       <td data-title="'修改时间'">{{lookalikeCrowd.updateTime}}</td> -->
+		       <td data-title="'状态'">
+		       		<div class="t-o-e" title="{{lookalikeCrowd.status | DictFormatter : 'DMP_OBJECT_STATUS'}}">
+		                {{lookalikeCrowd.status | DictFormatter : 'DMP_OBJECT_STATUS'}}
+		           </div>
+		       </td>
+		       <td data-title="'计算状态'">
+		       		<div class="t-o-e" title="{{lookalikeCrowd.calcStatus | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}">
+		                {{lookalikeCrowd.calcStatus | DictFormatter : 'DMP_BASE_CALC_RECORD_STATUS'}}
+		           </div>
+		       </td>
+		       
+		       <td data-title="'创建人'"><div title="{{lookalikeCrowd.creator}}" class="max-wd80 t-o-e">{{lookalikeCrowd.creator}}</div></td>
+		       <td data-title="'创建时间'"><div class="wd120 t-o-e" title="{{lookalikeCrowd.createTime | DateFormatDefault}}">{{lookalikeCrowd.createTime | DateFormatDefault}}</div></td>
+		       <td data-title="'人群更新时间'"><div class="wd120 t-o-e" title="{{lookalikeCrowd.updateDataTime | DateFormatDefault}}">{{lookalikeCrowd.updateDataTime | DateFormatDefault}}</div></td>
+		       <td data-title="'操作'">
+		       	   <!-- <div class="min-wd140 ng-table-operator" ng-if="loginUser.loginName == lookalikeCrowd.createBy">
+			       	   	<a ui-sref="lookalikeCrowds_edit({lookalikeCrowdId:lookalikeCrowd.id})" ng-if="lookalikeCrowd.calcStatus != 1">编辑</a>
+			       	   	<a href="javascript:;" ng-click="removeLookalikeCrowd(lookalikeCrowd);" ng-if="lookalikeCrowd.calcStatus == 2 || lookalikeCrowd.calcStatus == -1">删除</a>
+	       	   			<a ng-click="goCalcObjectLog(lookalikeCrowd.id);" ng-if="!(lookalikeCrowd.status == 1 && lookalikeCrowd.calcStatus == 0) && (lookalikeCrowd.calcStatus == 1 || !(lookalikeCrowd.status == 1 && (lookalikeCrowd.calcStatus == -1 || lookalikeCrowd.calcStatus == -2 || lookalikeCrowd.calcStatus == -3)))" href="javascript:;">日志</a>
+	
+			       	   	<a ng-if="lookalikeCrowd.status == 1 && (lookalikeCrowd.calcStatus == -1 || lookalikeCrowd.calcStatus == -2 || lookalikeCrowd.calcStatus == -3)" class="more" ng-class="{'active':lookalikeCrowd.isShowMoreOperator}" style="text-indent:20px;cursor: pointer;" ng-click="showMoreOperator(lookalikeCrowd);">更多<i class="icons icons-more"></i></a>
+			       	   	
+			       	   	<ul class="more-ul" ng-if="lookalikeCrowd.isShowMoreOperator">
+			       	   		<li ng-if="lookalikeCrowd.status == 1 && (lookalikeCrowd.calcStatus == -1 || lookalikeCrowd.calcStatus == -2 || lookalikeCrowd.calcStatus == -3)">
+			       	   			<a href="javascript:;" ng-click="reCalCulateLookalikeCrowd(lookalikeCrowd);">
+			       	   				<i class="icons icons-more-refresh"></i>重新计算
+			       	   			</a>
+			       	   		</li>
+			       	   		<li ng-if="lookalikeCrowd.calcStatus != 1">
+			       	   			<a ng-click="goCalcObjectLog(lookalikeCrowd.id);" href="javascript:;"><i class="icons icons-more-records"></i>日志</a>
+			       	   		</li>
+			       	   	</ul> 
+		           </div> -->
+		           
+		           <div class="min-wd140 ng-table-operator" ng-if="loginUser.loginName == lookalikeCrowd.createBy">
+			       	   	<a ui-sref="lookalikeCrowds_edit({lookalikeCrowdId:lookalikeCrowd.id})" ng-if="lookalikeCrowd.calcStatus != 1">编辑</a>
+			       	   	<a href="javascript:;" ng-click="removeLookalikeCrowd(lookalikeCrowd);" ng-if="lookalikeCrowd.calcStatus == 2 || lookalikeCrowd.calcStatus == -1">删除</a>
+	       	   			<a ng-click="goCalcObjectLog(lookalikeCrowd.id);" href="javascript:;">日志</a>
+		           </div>
+		           
+		           <div class="ng-table-operator" style="min-width:75px !important;" ng-if="loginUser.loginName != lookalikeCrowd.createBy">
+			       	   	<a ui-sref="lookalikeCrowds_edit({lookalikeCrowdId:lookalikeCrowd.id})" ng-if="lookalikeCrowd.calcStatus != 1">查看</a>
+			       	</div>
+		           
+		       </td>
+		       
+		    </tr>
+		</table>
+	</div>
+	<!-- <script type="text/ng-template" id="ng-table/headers/checkbox.html">
+        <input type="checkbox" ng-model="checkboxes.checked" id="select_all" />
+    </script> -->
+</div>

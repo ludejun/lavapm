@@ -1,0 +1,107 @@
+#adminAddUserContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    height: 440px;
+    background-color: #ffffff;
+    font-size: 14px;
+    border-radius: 10px;
+    margin: -250px 0px 0px -200px;
+}
+
+#adminAddUserContainer label {
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    /*padding-left:50px;*/
+}
+
+#adminAddUserContainer li {
+    height: 50px;
+    color: #464c5b;
+    line-height: 40px;
+
+}
+
+#adminAddUserContainer li:nth-child(2) {
+    padding-top: 10px;
+}
+
+#adminAddUserContainer li:first-child {
+    /*display: block;*/
+    height: 60px;
+    font-size: 16px;
+    border-bottom: 1px solid #d3d9e1;
+    padding-left: 40px;
+    line-height: 60px;;
+    background-color: #F5F6F8;
+}
+
+#adminAddUserContainer #addUserConfirm {
+    float: left;
+    width: 80px;
+}
+
+#adminAddUserContainer input {
+    /*float: left;*/
+    width: 210px;
+    height: 28px;
+    border: 1px solid #dce1e7;
+    border-radius: 5px;
+    padding-left:10px;
+    /*margin-right:80px;*/
+}
+
+#adminAddUserContainer #addUserConfirm {
+    width: 90px;
+    height: 32px;
+    border: 1px solid gray;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 30px;
+    margin-left: 28%;
+    margin-top: 20px;
+    padding-left: 0;
+    cursor: pointer;
+}
+
+#adminAddUserContainer .adminAddChoose {
+    height: 70px;
+    border-radius: 0 0 10px 10px;
+    background-color: #5F92E1;
+}
+
+#adminAddUserContainer #addUserCancel {
+    float: right;
+    padding-right: 35%;
+    line-height: 54px;
+    cursor: pointer;
+}
+
+#adminAddUserContainer .right {
+    color: green;
+}
+
+#adminAddUserContainer .wrong {
+    color: red;
+}
+
+#adminAddUserContainer span {
+    float: right;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+#mask {
+    background: #000;
+    position: fixed;
+    /*width: 100%;*/
+    z-index: 0;
+    left: 0;top: 0;
+    /*height: 100%;*/
+    filter:alpha(opacity=50);       /* IE */
+    -moz-opacity:0.5;              /* 老版Mozilla */
+    -khtml-opacity:0.5;              /* 老版Safari */
+    opacity: 0.5;           /* 支持opacity的浏览器*/
+}

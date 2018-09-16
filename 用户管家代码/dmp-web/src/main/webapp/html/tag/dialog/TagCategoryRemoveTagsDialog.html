@@ -1,0 +1,30 @@
+<div class="modal in" tabindex="-1" role="dialog" style="display: block;">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header" ng-drag-dialog="true">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" ng-click="$hide()">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h4 class="modal-title">移除标签</h4>
+			</div>
+			<div class="modal-body">
+				<div class="fz14">如下子类别同时包含标签“{{removeTag.name}}”，请确认是否需要移除？</div>
+				<div class="mt-10 fz14 mb-5">子分类如下：</div>
+				<div class="clrfix checkbox-panel">
+					<label class="checkbox-label" ng-repeat="cate in childTagCategoryList">
+		            	<input type="checkbox" class="fl" ng-model="cate.isChecked">&nbsp;{{cate.name}}
+		          	</label>
+				</div>
+				
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" ng-click="$hide()">取消</button>
+				<button type="button" class="btn btn-primary" ng-click="removeTagsFromChildrenTagCaterogrys($hide);">确认移除</button>
+			</div>
+
+		</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
