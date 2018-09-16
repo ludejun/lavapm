@@ -762,7 +762,10 @@ $(window).resize(function(){
 				var authAppListLength = 0;
 				var appCode = "";
 				var imgMap = {
-					"DataMarket":""
+					"DataMarket":"market",
+					"DMP":"DMP",
+					"BWS":"BWS",
+					"DSP":"DSP"
 				}
 				if(authAppList && authAppList.length > 0){
 					authAppListLength = authAppList.length;
@@ -772,7 +775,7 @@ $(window).resize(function(){
 						if("tenant"!=authAppList[i].appCode){
 							appConfig.authAppMap[authAppList[i].appCode] = authAppList[i];
 							html += '<dl class="dl-product-v2" appCode="'+authAppList[i].appCode+'">';
-							html += '<dt class="dt-product-v2 icon-product-'+authAppList[i].appCode+'"><i/></dt>';
+							html += '<dt class="dt-product-v2 icon-product-'+authAppList[i].appCode+'"><i class="'+imgMap[authAppList[i].appCode]+'"/></dt>';
 							html += '<dd class="dd-product-v2">'+authAppList[i].extAttr1+'</dd>';	
 							html += '<div class="product-explain-v2 product-explain">';    
 							html += '<p>'+authAppList[i].appDesc+'</p>';   
