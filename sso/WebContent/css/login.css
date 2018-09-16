@@ -1,5 +1,5 @@
 .report_login,.dmp_login {
-	background: #eef0f3 url(images/login.jpg) no-repeat top center;
+	background-image: url(images/login.jpg);
     background-size: cover;
 }
 
@@ -12,6 +12,7 @@
     margin-top: -230px;
 }
 .login-form {
+    border-radius:30px;
     margin: 0 auto;
     width: 380px;
     height: 420px;
@@ -21,10 +22,13 @@
 .login-text{width: 310px;padding: 0 35px;}
 .copy-right{width: 380px;}
 .lavapm_png {
-    height:35px;
-    margin-left: 42px;
+    height:95%;
+    position:absolute;
+    left:50%;
+    top:70%;
+    transform:translate(-50%,-50%);
 }
-.top_img_td{height: 80px;}
+.top_img_td{height: 80px;position:relative;}
 .errorInfo{
     padding-left: 30px;
 }
@@ -37,58 +41,80 @@
     line-height: 20px;
     height: 20px;
     border: solid 1px #ffa79e;
-    border-radius: 2px;
+    border-radius:20px;
     text-align: center;
     float: left;
     margin-bottom: 8px;
 }
 .form-user,.form-pass{
+    border-radius:50px;
 	height: 42px;
     width: 300px;
 	margin-left: 30px;
 	padding-left: 18px;
 	overflow: hidden;
 	font-size: 16px;
-	border: none;
+    border: 1px solid rgb(238,238,238);
 	border-left: solid 2px;
 	border-color:#FFF;
-	background: #f9f9f9;
+	background: rgb(238,238,238);
     color: #5c636c;
     font-family: "Microsoft YaHei", tahoma, arial, sans-serif !important;
 }
 .form-pass {margin-top: 20px;}
-.mid_username{height: 44px;}
+.mid_username{height: 44px;position:relative;}
 .mid_password{height: 44px;}
 .radiochecked.active {
     cursor: pointer;
     text-align: center;
-    background-image: url(images/choose.png);
+    /* background-image: url(images/choose.png); */
     background-repeat: no-repeat;
     background-position: 0px 0px !important;
     height: 16px;
     background-size: 28%;
-    margin-left: 30px;
+    margin-left: 55px;
     font-size: 14px;
     color: #5b636c;
     float: left;
+    width:100%;
 }
 .radiochecked {
     cursor: pointer;
     text-align: center;
-    background-image: url(images/choose.png);
+    /* background-image: url(images/choose.png); */
     background-repeat: no-repeat;
     background-position: 0px -18px !important;
     height: 16px;
     background-size: 28%;
-    margin-left: 30px;
+    margin-left: 55px;
     font-size: 14px;
     color: #5b636c;
     float: left;
+    width:100%;
+}
+.radiocheck-circle{
+    display:inline-block;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:rgb(238,238,238);
+    float:left;
+    position:relative;
+}
+.radiocheck-inner-circle{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:10px;
+    height:10px;
+    border-radius:50%;
 }
 .remeberme{height: 64px;}
 .remeberme font{margin-top: -2px;float: left;}
 .login-form a{margin-right: 30px;font-size: 12px;}
 .submit {
+    border-radius:50px;
 	height: 44px;
     width: 320px;
 	font-size: 17px;
@@ -107,10 +133,11 @@
     background-position: 0px 0px;
     background-size: 15px 15px;
     position: absolute;
-    top: 39%;
+    top: 50%;
     right: 10%;
+    transform:translateY(-50%);
 }
-.nick_error{top: 39%;}	
+.nick_error{top: 50%;}	
 .top_td{height: 42px;}
 .error{height: 44px;}
 }
@@ -123,6 +150,7 @@
     margin-top: -257px;
 }
 .login-form {
+    border-radius:30px;
     margin: 0 auto;
     width: 418px;
     height: 462px;
@@ -132,10 +160,13 @@
 .copy-right{width: 418px;}
 .login-text{width: 352px;padding: 0 33px;}
 .lavapm_png {
-    height:38px;
-    margin-left: 48px;
+    height:95%;
+    position:absolute;
+    left:50%;
+    top:70%;
+    transform:translate(-50%,-50%);
 }
-.top_img_td{height: 88px;}
+.top_img_td{height: 88px;position:relative;}
 .errorInfo{
     padding-left: 33px;
 }
@@ -148,56 +179,78 @@
     line-height: 20px;
     height: 20px;
     border: solid 1px #ffa79e;
-    border-radius: 2px;
+    border-radius:20px;
     text-align: center;
     float: left;
     margin-bottom: 8px;
 }
 .form-user,.form-pass{
+    border-radius:30px;
 	height: 46px;
     width: 332px;
 	margin-left: 33px;
 	padding-left: 18px;
 	overflow: hidden;
 	font-size: 16px;
-	border: none;
+	border: 1px solid rgb(238,238,238);
 	border-left: solid 2px;
 	border-color:#FFF;
-	background: #f9f9f9;
+	background: rgb(238,238,238);
     color: #5c636c;
     font-family: "Microsoft YaHei", tahoma, arial, sans-serif !important;
 }
 .form-pass {margin-top: 22px;}
-.mid_username{height: 48px;}
+.mid_username{height: 48px;position:relative;}
 .mid_password{height: 48px;}
 .radiochecked.active {
     cursor: pointer;
     text-align: center;
-    background-image: url(images/choose.png);
+    /* background-image: url(images/choose.png); */
     background-repeat: no-repeat;
     background-position: 0px 0px !important;
     height: 16px;
     background-size: 28%;
-    margin-left: 33px;
+    margin-left: 55px;
     color: #5b636c;
     float: left;
+    width:100%;
 }
 .radiochecked {
     cursor: pointer;
     text-align: center;
-    background-image: url(images/choose.png);
+    /* background-image: url(images/choose.png); */
     background-repeat: no-repeat;
     background-position: 0px -18px !important;
     height: 16px;
     background-size: 28%;
-    margin-left: 33px;
+    margin-left: 55px;
     color: #5b636c;
     float: left;
+    width:100%;
+}
+.radiocheck-circle{
+    display:inline-block;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:rgb(238,238,238);
+    float:left;
+    position:relative;
+}
+.radiocheck-inner-circle{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:10px;
+    height:10px;
+    border-radius:50%;
 }
 .remeberme{height: 71px;}
 .remeberme font{margin-top: -2px;float: left;font-size: 14px;}
 .login-form a{margin-right: 33px;font-size: 13px;}
 .submit {
+    border-radius:50px;
 	height: 44px;
     width: 352px;
 	font-size: 17px;
@@ -216,10 +269,11 @@
     background-position: 0px 0px;
     background-size: 15px 15px;
     position: absolute;
-    top: 39%;
+    top: 50%;
     right: 10%;
+    transform:translateY(-50%);
 }
-.nick_error{top: 39%;}	
+.nick_error{top: 50%;}	
 .top_td{height: 46px;}
 .error{height: 48px;}
 }
@@ -233,6 +287,7 @@
     margin-top: -278px;
 }
 .login-form {
+    border-radius:30px;
     margin: 0 auto;
     width: 456px;
     height: 504px;
@@ -242,10 +297,13 @@
 .copy-right{width: 456px;}
 .login-text{width: 384px;padding: 0 36px;}
 .lavapm_png {
-    height:42px;
-    margin-left: 50px;
+    height:95%;
+    position:absolute;
+    left:50%;
+    top:70%;
+    transform:translate(-50%,-50%);
 }
-.top_img_td{height: 96px;}
+.top_img_td{height: 96px;position:relative;}
 .errorInfo{
     padding-left: 36px;
 }
@@ -258,57 +316,79 @@
     line-height: 20px;
     height: 20px;
     border: solid 1px #ffa79e;
-    border-radius: 2px;
+    border-radius:20px;
     text-align: center;
     float: left;
     margin-bottom: 8px;
     font-size: 14px;
 }
 .form-user,.form-pass{
+    border-radius:30px;
 	height: 50px;
     width: 364px;
 	margin-left: 36px;
 	padding-left: 18px;
 	overflow: hidden;
 	font-size: 18px;
-	border: none;
+	border: 1px solid rgb(238,238,238);
 	border-left: solid 2px;
 	border-color:#FFF;
-	background: #f9f9f9;
+	background: rgb(238,238,238);
     color: #5c636c;
     font-family: "Microsoft YaHei", tahoma, arial, sans-serif !important;
 }
 .form-pass {margin-top: 24px;}
-.mid_username{height: 53px;}
+.mid_username{height: 53px;position:relative;}
 .mid_password{height: 53px;}
 .radiochecked.active {
     cursor: pointer;
     text-align: center;
-    background-image: url(images/choose.png);
+    /* background-image: url(images/choose.png); */
     background-repeat: no-repeat;
     background-position: 0px 1px !important;
     height: 18px;
     background-size: 29%;
-    margin-left: 36px;
+    margin-left: 55px;
     color: #5b636c;
     float: left;
+    width:100%;
 }
 .radiochecked {
     cursor: pointer;
     text-align: center;
-    background-image: url(images/choose.png);
+    /* background-image: url(images/choose.png); */
     background-repeat: no-repeat;
     background-position: 0px -20px !important;
     height: 18px;
     background-size: 29%;
-    margin-left: 36px;
+    margin-left: 55px;
     color: #5b636c;
     float: left;
+    width:100%;
+}
+.radiocheck-circle{
+    display:inline-block;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:rgb(238,238,238);
+    float:left;
+    position:relative;
+}
+.radiocheck-inner-circle{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    width:10px;
+    height:10px;
+    border-radius:50%;
 }
 .remeberme{height: 76px;}
 .remeberme font{margin-top: -2px;float: left;font-size: 16px;}
 .login-form a{margin-right: 36px;font-size: 14px;}
 .submit {
+    border-radius:50px;
 	height: 44px;
     width: 384px;
 	font-size: 17px;
@@ -327,10 +407,11 @@
     background-position: 0px 0px;
     background-size: 15px 15px;
     position: absolute;
-    top: 39%;
+    top: 50%;
     right: 10%;
+    transform:translateY(-50%);
 }
-.nick_error{top: 39%;}	
+.nick_error{top: 50%;}	
 .top_td{height: 50px;}
 .error{height: 53px;font-size: 18px;}
 }
@@ -351,7 +432,8 @@ input.submit:hover,input.submit:focus{
 }
 
 .form-pass:focus,.form-user:focus{
-	border-color:#13b4ff;
+    box-shadow: 0 0 10px #13b4ff;
+    border:none;
 }
 
 .radioclass {
