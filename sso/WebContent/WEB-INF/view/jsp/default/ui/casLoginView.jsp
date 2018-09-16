@@ -46,8 +46,8 @@
 	   css = "dmp_login" ;
    	}
 	String logo = "css/images/LavaPm.png";
-	String text = "BigData & AI 广告营销";
-	String copyright = "LavaPM@2017-2018";
+	String text = "";
+	String copyright = "© 2017 Lava Performance Marketing 津ICP备18003962号";
 	String background = "";
    	List<Map<String, Object>> themes = (List<Map<String, Object>>)session.getAttribute("themes");
    	for (int i = 0; i < themes.size(); i++) {
@@ -114,11 +114,6 @@ body {
 						<img src="<%=logo%>" class="lavapm_png">
 					</td>
 				</tr>
-				<tr>
-					<td align="center" valign="bottom" class="fz16 top_td">
-						<div class="login-text" title="<%=text%>"><%=text%></div>
-					</td>
-				</tr>
 				<c:if test="${isError}">
 				<tr>
 					<td align="left" valign="bottom" class="error">
@@ -179,8 +174,11 @@ body {
 				</c:if>
 				<tr>
 					<td class="remeberme">
-						<span class="radiochecked active" onclick="changeRememberStatus();">
-							<input type="checkbox" name="rememberStatus" value="1" class="radioclass" />
+						<span class="radiochecked active">
+							<div class="radiocheck-circle" onclick="changeRememberStatus();">
+								<span  class="radiocheck-inner-circle"/>
+								<input type="checkbox" name="rememberStatus" value="1" class="radioclass" />
+							</div>
 							<font>记住我</font>
 						</span>
 						<%-- <%
@@ -246,8 +244,15 @@ body {
 	<script type="text/javascript">
 		//radio 切换
 		function changeRememberStatus(){
-			$(".radiochecked").hasClass("active")? $(".radiochecked").removeClass("active"):$(".radiochecked").addClass("active");
+			//$(".radiochecked").hasClass("active")? $(".radiochecked").removeClass("active"):$(".radiochecked").addClass("active");
 			$(".radioclass").val() == 0?$(".radioclass").val(1):$(".radioclass").val(0);
+			if($(".radiochecked").hasClass("active")){
+				$(".radiochecked").removeClass("active");
+				$(".radiocheck-inner-circle").css("background","transparent");
+			}else{
+				$(".radiochecked").addClass("active");
+				$(".radiocheck-inner-circle").css("background","#13b4ff");
+			}
 		}
 		// 修改密码
 		function changePassWord(){
@@ -312,9 +317,13 @@ body {
 		function formSubmit(){
 			if(!checkUsernameAndPassword()){
 				$(".errorInfo").show();
+				$(".form-user").css("box-shadow","none");
+				$(".form-pass").css("box-shadow","none");
 				return false;
 			}else{
 				$(".errorInfo").hide();
+				$(".form-user").css("box-shadow","0 0 3px #13b4ff;");
+				$(".form-pass").css("box-shadow","0 0 3px #13b4ff;");
 			}
 			$("#button").val("正在登录...");
 			$("#button").addClass("logining");
@@ -434,6 +443,8 @@ body {
 		}
 		if(errormsg!=''){
 			$(".errorInfo").show();
+			$(".form-user").css("box-shadow","none");
+			$(".form-pass").css("box-shadow","none");
 		}
 	</script>
 <%-- 	<c:if test="${isError}">
