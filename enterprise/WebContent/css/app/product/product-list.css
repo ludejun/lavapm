@@ -62,7 +62,7 @@ position: relative;}
 .list-content dl dd { font-size:16px;}
  
 .list-content dl.dl-product-v2 {
-    color: #454545;
+    color: #fff;
     position: relative;
     overflow: hidden;
     display: inline-block;
@@ -117,7 +117,7 @@ position: relative;}
 }
 .list-content dt i.BWS{
     position:absolute;
-    width:67%;
+    width:68%;
     height:100%;
     top:50%;
     left:50%;
@@ -129,6 +129,7 @@ position: relative;}
     height:20%;
 }
 .list-content div.product-explain-v2{
+    color: #454545;
     font-size: 14px;
     display: block;
     position: absolute;
