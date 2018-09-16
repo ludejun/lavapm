@@ -101,6 +101,9 @@
 			</div>
 			<div class="app-tip"></div>
 		</div>
+		<div class="con-top">
+			<div class="top-container"></div>
+		</div>
 		<div class="con-right">
 			<iframe src="" width="100%" frameborder="no" scrolling="no" border="0" name="main-frame" id="main-frame"></iframe>
 		</div>

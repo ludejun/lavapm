@@ -554,8 +554,10 @@ iframe{vertical-align:top;}
 
 /*icons-nav*/
 .icons-nav{background:url(/enterprise/images/app/common/nav/icons-nav.png) no-repeat;background-size:330px 330px; display:inline-block;width:32px;height:32px;}
-.icon-nav-DMP{background-position:-1px -1px;}
-.icon-nav-BWS{background-position:-39px -114px;}
+.icon-nav-DataMarket{background:url(/enterprise/images/app/common/nav/market.png) no-repeat;background-size:32px 32px;}
+.icon-nav-DMP{background:url(/enterprise/images/app/common/nav/persona.png) no-repeat;background-size:32px 32px;}
+.icon-nav-BWS{background:url(/enterprise/images/app/common/nav/bws.png) no-repeat;background-size:32px 32px;}
+.icon-nav-DSP{background:url(/enterprise/images/app/common/nav/dsp.png) no-repeat;background-size:32px 32px;}
 .icon-nav-dmp-admin{width:31px;height:31px;background-position:-37px -38px;}
 .icon-nav-report{background-position:-2px -227px;}
 .icon-nav-push{background-position:-39px -114px;}
@@ -624,8 +626,8 @@ iframe{vertical-align:top;}
 
 /*contents*/
 .contents{width:100%;height:100%;position: relative;}
-.contents .con-left{position:fixed;left:0;top:0;height:100%;background: #242d55;width:80px;z-index:2;}
-.contents .con-left .logo{background: #242d56 url(/enterprise/images/app/common/logo.png) no-repeat center;background-size: auto 50%;position: relative;z-index: 1;float: left;width: 80px;text-align: center;height:80px;text-decoration: none;}
+.contents .con-left{position:fixed;left:0;top:0;height:100%;background: #1086e8;width:74px;z-index:2;}
+.contents .con-left .logo{background: #1086e8 url(/enterprise/images/app/common/logo.png) no-repeat center !important;background-size: auto 50%;position: relative;z-index: 1;float: left;width: 264px;text-align: center;height:64px;text-decoration: none;bax-shadow:-2px 1px 6px #444;-webkit-box-shadow:-2px 1px 6px #444;-moz-box-shadow:-2px 1px 6px #444;}
 .contents .con-left.has-scroll .logo{-moz-box-shadow: 0px 3px 3px #1c213e;-webkit-box-shadow: 0px 3px 3px #1c213e;box-shadow: 0px 3px 3px #1c213e;}
 .has-not-scroll .content_mid{margin:0 !important;}
 .contents .con-left .logout{background: #242d56;position: relative;z-index: 2;position:absolute;width:80px;left:0;bottom:0;padding: 26px 0;}
@@ -693,7 +695,7 @@ iframe{vertical-align:top;}
 .contents .con-left .nav-left .li.active a,.contents .con-left .nav-left li.active a:hover{color:#fff;text-decoration:none;}
 .contents .con-left .nav-left .li a .nav-img{position:relative;}
 .contents .con-left .nav-left .li a .nav-img .i-a{display:none;position:absolute;background: url(/enterprise/images/app/common/nav/i-a.png) no-repeat;background-size: 12px 12px;width:12px;height:12px;z-index:1;right: 14px;bottom: -3px;}
-
+.contents .con-top {position:fixed; top: 0;left:264px;height:64px;width:100%;background-image:linear-gradient(to right, #02b4ee, #1086e8);bax-shadow:-2px 1px 6px #444;-webkit-box-shadow:-2px 1px 6px #444;-moz-box-shadow:-2px 1px 6px #444;}
 
 .menu-left{float:left;width:180px;color:#adb6c1;overflow: hidden;max-height: 100%;position:relative;}
 .menu-left-root .search{width:100%;text-align:center;margin:20px 0 0 0;background: url(/enterprise/images/app/common/menu/icon-search2.png) no-repeat;background-size: 14px 14px;background-position: 15px center;position:relative;height:40px;padding: 0 10px 0 36px;border:0;}

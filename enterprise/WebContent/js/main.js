@@ -110,6 +110,8 @@ function resetTitleByAppCode(){
 	/*if(appConfig && appConfig.appCode){
 		if(appConfig.appCode == 'dmp-admin'){
 			$title.html("LavaPM 控制台");
+		}else if(appConfig.appCode == 'wreport'){
+			$title.html("LavaPM 客缘系统");
 		}
 	}*/
 }
@@ -463,6 +465,18 @@ $(window).resize(function(){
 						var p=authAppList[i].appCode
 						console.dir("-------"+p);
 						if(p != "DMP"){
+							// 异步清除dsp缓存
+							if(p == "DSP"){
+								$.ajax({
+								    url: './dsp/#/logout',
+								    type: 'get',
+							        data:'',
+								    async:true,
+									success: function(data) {
+										console.dir("dsp退出成功");
+									}
+								});
+							}
 							document.cookie="JSESSIONID=00;expires="+(new Date().toGMTString())+";path=/"+p;
 						}else{
 							document.cookie="JSESSIONID=00;expires="+(new Date().toGMTString())+";path=/dmp-web";
@@ -663,7 +677,10 @@ $(window).resize(function(){
 						}
 					}
 				}
-				
+				//dsp
+				if(url.indexOf("dsp") != -1){
+					url = url+appConfig.user.umid;
+				}
 				$("#main-frame").attr("src", url);
 				
 				$.layerLoading.show();
@@ -761,7 +778,7 @@ $(window).resize(function(){
 							html += '<a href="#'+authAppList[i].appCode+'" class="fr" appCode="'+authAppList[i].appCode+'">进入产品<i></i></a>';        
 							html += '</div>';    
 							html += '</div>';
-							html += '<a href="#'+authAppList[i].appCode+'" class="product-link" appCode="'+authAppList[i].appCode+'"></a>';    
+							html += '<a href="#'+authAppList[i].appCode+'" class="product-link" appCode="'+authAppList[i].appCode+'"></a>';   
 							html += '</dl>';
 							appCode = authAppList[i].appCode;
 						}else{
@@ -871,6 +888,7 @@ $(window).resize(function(){
 				var hashTenant = false;
 				appConfig.authAppMap = {};
 				var authAppList = appConfig.authAppList;
+				console.log(111111, appConfig, authAppList);
 				var html = '<div class="content_mid">';
 				for (var i = 0; i < authAppList.length; i++) {
 					if("tenant" != authAppList[i].appCode){
