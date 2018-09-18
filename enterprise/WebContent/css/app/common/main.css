@@ -828,14 +828,14 @@ textarea{resize: none;}
   outline: 0;
 }
 
-.modal-title{margin: 0;font-size:14px;font-weight:normal;background:#f5f6f8;height: 39px;line-height: 39px;
-  color: #63666d;padding:0 10px;text-align:left;}
-.modal-header{background:#f8f8f8;border-top-left-radius: 6px;border-top-right-radius: 6px;padding:0;overflow: hidden;border-bottom: 1px solid #e5e5e5;
+.modal-title{margin: 0;font-size:14px;font-weight:bold;background:#fff;height: 39px;line-height: 39px;
+  color: rgb(33,169,225);padding:0 10px;position:absolute;left:50%;transform:translate(-50%)}
+.modal-header{background:#fff;border-top-left-radius: 6px;border-top-right-radius: 6px;padding:0;overflow: hidden;border-bottom: 1px solid #e5e5e5;
   height: 40px;position:relative;}
-.modal-header .close {border: none;cursor: pointer;position:absolute;right:10px;top:10px;opacity: 1;background:url(/enterprise/images/app/common/icon-close.png) no-repeat;background-size: 18px 18px;width:18px;height:18px;display:inline-block;}
+.modal-header .close {display:none; border: none;cursor: pointer;position:absolute;right:10px;top:10px;opacity: 1;background:url(/enterprise/images/app/common/icon-close.png) no-repeat;background-size: 18px 18px;width:18px;height:18px;display:none;}
 .modal-header .close span{display:none;}
 .modal-body-max{max-height:450px;overflow:auto;}
-.modal-footer{background:#5f92e1;border-bottom-right-radius: 6px;border-bottom-left-radius: 6px;padding: 0 10px;text-align:center;height: 45px;line-height: 45px;}
+.modal-footer{position:relative;background:#5f92e1;border-bottom-right-radius: 6px;border-bottom-left-radius: 6px;padding: 0 10px;text-align:center;height: 45px;line-height: 45px;}
 .modal-footer button,.modal-footer .button{font-family: "Microsoft YaHei",tahoma,arial,sans-serif;margin:0 10px 0 0;text-align:center;display:inline-block;cursor:pointer;height:25px;line-height:18px;vertical-align: middle;}
 .modal-footer .btn-primary,
 .modal-footer .btn-primary:hover{  padding: 3px 0px;
@@ -851,6 +851,39 @@ textarea{resize: none;}
 .modal-footer .btn-default:active,
 .modal-footer .btn-default:focus{background:none;border:none;color:#d2e2fb;padding: 3px 5px;}
 .modal-dialog .form-horizontal .controls{width:62%;}
+
+
+
+.modal-footer button.btn-primary,.modal-footer button.btn-primary:hover{  
+    display:inline-block;
+    width: 50%;
+    background: rgb(0,184,236);
+    text-align: center;
+    height:100%;
+    border-radius: 0;
+    border: none;
+    position:absolute;
+    left:0;
+    padding:0;
+    margin:0;
+    font-size: 17px;
+    font-weight: normal;
+}
+.modal-footer button.btn.btn-default{
+    display:inline-block;
+    width: 50%;
+    background: rgba(0,184,236,0.5);
+    height:100%;
+    text-align: center;
+    position:absolute;
+    right:0;
+    padding:0;
+    margin:0;
+    font-size: 17px;
+    font-weight: normal;
+}
+
+
 
 
 /*table*/
