@@ -16,11 +16,11 @@
         </div> -->
         <ul class="header-option">
         <li>
-        <span class="green"></span>
+        <!-- <span class="green"></span> -->
         <a href="#/manage" class='headerOptionAccount'>账户管理</a>
         </li>
         <li class="header-selected">
-        <span class="green green-selected"></span>
+        <!-- <span class="green green-selected"></span> -->
         <a href="#/index" class='headerOptionManger'>服务管理</a>
         </li>
         </ul>
@@ -69,7 +69,7 @@
         <div class="data-serve">
         <div class="data-serve-tile">
         <!--<h2>数据服务列表</h2>-->
-        <a href="#/add/new" class="add-server">+添加服务</a>
+        <div class="add-server"><a href="#/add/new">+ 添加服务</a></div>
 
 
         <div class='server-search'>
@@ -108,7 +108,7 @@
 
 
         <div class="data-server-table">
-        <div class="data-server-table">
+        <!-- <div class="data-server-table"> -->
         <ul class="data-server-header">
         <li>序号</li>
         <li>数据服务名称</li>
@@ -125,7 +125,7 @@
 
         </div>
 
-        </div>
+        <!-- </div> -->
 
         <div class="data-server-page">
         <div class="td-ui-page" id="AdminListViewPage">
@@ -313,14 +313,14 @@
         <!--</div>-->
         <!--</div>-->
         <div class="account-list">
-        <div class="account-list-search left">
+        <div class="account-list-search right">
         <!--<form action="">-->
         <input class="acc-search-ipt" type="text" placeholder="请输入关键词（企业名称/邮箱/人名）"><input class="acc-sub-ipt"
         type="button" value="搜索">
         <!--</form>-->
         </div>
-        <div class="account-add-id right">
-        <span>添加账号</span>
+        <div class="account-add-id left">
+        <span>+ 添加账号</span>
         </div>
         </div>
         <div class="account-list-ul">

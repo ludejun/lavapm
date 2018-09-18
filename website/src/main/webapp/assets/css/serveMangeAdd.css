@@ -9,15 +9,17 @@
 
 .serve-add {
     width: 100%;
-    height: 40px;
-    border-bottom: 1px solid #ced3d9;
+    height: 56px;
+    border-bottom: 1px solid #a0a0a0;
     background: #fff;
-    line-height: 40px;
-    box-shadow: 0 0 2px #ccc;
+    line-height: 56px;
+/*     box-shadow: 0 0 2px #ccc; */
 }
 
 .serve-add-header {
-    margin-left: 50px;
+    margin-left: 36px;
+    font-size: 14px;
+    color: #555;
 }
 
 .serve-container {

@@ -15,7 +15,7 @@
 
 .account-list-search {
     position: relative;
-    margin-left: 50px;
+    margin-right: 60px;
 }
 
 .account-list-search .searchClose {
@@ -34,7 +34,7 @@
     width: 300px;
     float: left;
     height: 36px;
-    border: 1px solid #ced3d9;
+   /*  border: 1px solid #ced3d9; */
     padding: 0 10px;
     border-radius: 3px;
     margin-right: 5px;
@@ -45,7 +45,7 @@
     float: left;
     height: 38px;
     background: #fff;
-    border: 1px solid #ced3d9;
+    /* border: 1px solid #ced3d9; */
     padding: 0 20px;
     display: inline-block;
     border-radius: 3px;
@@ -54,19 +54,22 @@
 }
 
 .account-add-id {
-    margin-right: 60px;
-    width: 100px;
-    height: 38px;
-    background: #5697f1;
-    line-height: 38px;
+    margin-left: 30px;
+    width: 120px;
+    height: 34px;
+    background: #00a0e9;
+    line-height: 34px;
     color: #fff;
     text-align: center;
-    border-radius: 3px;
+    border-radius: 17px;
     cursor: pointer;
 }
 
 .account-list-ul {
-    width: 100%;
+   /*  width: 100%; */
+   margin: 0 17px;
+   overflow: hidden;
+    /* border-radius: 5px 5px 5px 5px; */
 }
 
 .account-list-ul ul {
@@ -120,7 +123,7 @@
 }
 
 .account-list-ul ul:nth-child(2n) li {
-    background: #f4f7fb;
+    background: #dff5ff;
 }
 
 .account-list-ul ul li:nth-child(1), .account-list-ul ul li:nth-child(7) {
@@ -152,6 +155,7 @@
     display: inline-block;
     /*padding: 0 15px;*/
     margin-right: 68%;
+    color: #00a0e9;
 }
 
 /*账户管理详情*/
