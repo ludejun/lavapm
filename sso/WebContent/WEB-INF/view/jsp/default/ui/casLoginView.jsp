@@ -208,7 +208,7 @@ body {
 									type="hidden" name="_eventId" value="submit" /> <a
 									href="<%=updatePwdSite%>" />修改密码</td> --%>
 								<td align="left" valign="bottom" class="base_submit">
-									<input name="button" type="button" class="submit" id="button" value="登录" onclick="formSubmit();"/>
+									<input style="transform:translateY(-18px)" name="button" type="button" class="submit" id="button" value="登录" onclick="formSubmit();"/>
 								</td>
 							</tr>
 						</table>
