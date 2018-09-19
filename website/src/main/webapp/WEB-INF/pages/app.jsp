@@ -16,11 +16,11 @@
 			<ul class="header-option">
 				<li class=" tab">
 					<a class="tab-a first-a" href="#/index">数据产品</a>
-					<span class="green first-span"></span>
+					<!-- <span class="green first-span"></span> -->
 				</li>
 				<li class="tab">
 					<a class="tab-a second-a" href="#/mydata">我的数据</a>
-					<span class="green second-span"></span>
+					<!-- <span class="green second-span"></span> -->
 				</li>
 			</ul>
 	<!--<div class="header-me">-->

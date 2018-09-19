@@ -149,7 +149,7 @@ button {
 }
 
 .header {
-    width: 189px;
+    width: 170px;
     height: 100vh;
     background: #fff;
     color: #607d8b;
@@ -195,7 +195,7 @@ button {
 
 /*}*/
 #adminNav, #app {
-	margin-left: 193px;
+	margin-left: 174px;
 }
 .adminNav-headerOptionManger{
     margin-left:28px;
@@ -207,7 +207,7 @@ button {
     text-align: center;
     border-radius: 5px;
     line-height: 42px;
-    margin: 18px 22px;
+    margin: 18px 12px;
 }
 .adminNav-header-option li{
     width: 33%;
@@ -297,6 +297,10 @@ button {
 
 }
 
+.product-list-container {
+	overflow: hidden;
+	padding: 20px 30px;
+}
 .header-list {
     width: 260px;
     height: 100%;
@@ -305,12 +309,16 @@ button {
 }
 
 .header-list-li {
-    width: 25%;
-    height: 100%;
+    width: 100px;
+    height: 30px;
     float: left;
     color: #657282;
     text-align: center;
     cursor: pointer;
+    background: #fff;
+    margin: 10px 30px;
+    border-radius: 5px;
+    line-height: 30px;
 }
 
 .header-list-li i {
@@ -329,7 +337,7 @@ button {
 }
 
 .header-list-selected {
-    border-bottom: 2px #5695f2 solid;
+    /* border-bottom: 2px #5695f2 solid; */
     color: #494c55;
     font-weight: 700;
 }
