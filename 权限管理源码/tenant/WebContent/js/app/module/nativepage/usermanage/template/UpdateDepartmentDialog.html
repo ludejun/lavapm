@@ -1,0 +1,110 @@
+<div class="modal in" tabindex="99999" role="dialog"
+	aria-labelledby="myModalLabel" style="display: block;">
+	<div class="modal-dialog" role="document" style="width: 600px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" ng-click="$hide()">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h1 class="xytitle">编辑用户</h1>
+			</div>
+			<div class="modal-body"
+				style="color: #333; padding: 0px; padding-bottom: 10px; height: 300px;">
+				<form class="form-horizontal clrfix ">
+					<div class="control-group" style="margin: 10px 0 0 10px;">
+						<div class="dilogedit">
+							<!--  	<ul class="dowebok">
+								<li ng-repeat="user in initdatas" style="line-height: 26px;padding-left: 10px;">
+								    <input type="checkbox" ng-model="user.checked" name="checkbox" class="labelauty" id="{{user.umid}}" >
+									   <label for="{{user.umid}}" style="padding-left: 10px;padding-right: 10px;">
+									     <span class="labelauty-checked"><span>用户名：</span>{{user.userName}}</span><br>
+									     <span class="labelauty-checked"><span>部门：</span>{{user.deptName}}</span>
+									</label>
+								</li>
+							</ul> -->
+							<div loading-container="tableParams.settings().$loading">
+								<!-- <span  style="position: absolute;margin-left: 12px;margin-top: 8px;" >
+						 				<input type="checkbox" style="float:left;" ng-change="checkallrole(user.checked)" ng-model="user.checked">
+									</span> -->
+								<table ng-table="inittableParams"
+									class="table ng-table-responsive table-hover">
+									<tbody ng-repeat="user in $data"
+										style="border-top: 1px solid #ddd;">
+										<tr ng-click="checkEditUser(user)" align="center"
+											class="wd-p-25">
+											<td data-title="''"
+												style='word-wrap: break-word; word-break: break-all; width: 10%; padding-left: 12px;'
+												align="center"><span><input
+													ng-click="checkEditUser(user)" type="checkbox"
+													style="margin-top: -3px;" ng-model="user.checked"></span>
+											</td>
+											<td data-title="'用户'"
+												style='word-wrap: break-word; word-break: break-all; width: 35px;'
+												align="center">{{user.userName}}</td>
+											<td data-title="'部门'" align="center"
+												style='word-wrap: break-word; word-break: break-all; width: 35px;'>
+												{{user.deptName}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div style="float: left; margin-top: 100px;">
+							<input type="button" ng-click="addUserList();" name="11"
+								value=">>添加>>" /><br> <input type="button"
+								ng-click="romoveUserList();" style="margin-top: 10px;" name="11"
+								value="<<取消<<" />
+						</div>
+						<div class="dilogedit">
+							<!-- <ul class="dowebok">
+								<li ng-repeat="user in  datasdept" style="line-height: 26px;padding-left: 10px;">
+								    <input type="checkbox" ng-model="user.checked" name="checkbox" class="labelauty" id="{{user.umid}}" >
+									   <label for="{{user.umid}}" style="padding-left: 10px;padding-right: 10px;">
+									   <span class="labelauty-checked"><span>用户名：</span>{{user.userName}}</span><br>
+									   <span class="labelauty-checked"><span>部门：</span>{{user.deptName}}</span>
+									</label>
+								</li>
+							</ul> -->
+							<div loading-container="tableParams.settings().$loading">
+								<!-- <span  style="position: absolute;margin-left: 12px;margin-top: 8px;" >
+						 				<input type="checkbox" style="float:left;" ng-change="checkallrole(user.checked)" ng-model="user.checked">
+									</span> -->
+								<table ng-table="datasdepttableParams"
+									class="table ng-table-responsive table-hover">
+									<tbody ng-repeat="user in $data"
+										style="border-top: 1px solid #ddd;">
+										<tr ng-click="checkEditUser(user)" align="center"
+											class="wd-p-25">
+											<td data-title="''"
+												style='word-wrap: break-word; word-break: break-all; width: 10%; padding-left: 12px;'
+												align="center"><span><input
+													ng-click="checkEditUser(user)" type="checkbox"
+													style="margin-top: -3px;" ng-model="user.checked"></span>
+											</td>
+											<td data-title="'用户'"
+												style='word-wrap: break-word; word-break: break-all; width: 45%;'
+												align="center">{{user.userName}}</td>
+											<td data-title="'部门'" align="center"
+												style='word-wrap: break-word; word-break: break-all; width: 45%;'>
+												{{user.deptName}}</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-primary"
+					ng-click="submitEditUser($hide);;">确定</button>
+				<button type="button" class="btn btn-default" ng-click="$hide();">取消</button>
+
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+</div>
+

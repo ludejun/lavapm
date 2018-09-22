@@ -1,0 +1,24 @@
+<div class="bread-crumb clrfix">
+		<!-- <a ng-click="go('productlist')" ng-if="viewConfig!='none'" class="bread-crumb-item">产品中心 </a>
+		<div ng-if="viewConfig=='fragment'"  class="bread-crumb-item">></div>
+		<div ng-show="viewConfig=='normal'"  class="bread-crumb-item">></div>
+		<div ng-if="viewConfig=='fragment'" class="bread-crumb-item">
+			
+			{{dispalyProudctName}}
+		</div> -->
+		<div ng-show="viewConfig=='normal'" class="bread-crumb-item">
+			
+			<div class="custom-select fl">
+				<button type="button" class="inner-select" ng-model="currentProduct" data-html="1" bs-options="product.productname for product in productList" placement="bottom-left" bs-select>
+				</button> 
+			</div>	
+			<div class="custom-select fl">
+				<button type="button" class="inner-select" ng-model="currentCategory" data-html="2" bs-options="category.platcategoryname for category in categoryList" placement="bottom-left" bs-select>
+				</button> 
+			</div>
+			<div ng-show="iscurrentPlatForm" class="custom-select fl">
+				<button type="button" class="inner-select" ng-model="currentPlatForm" data-html="3" bs-options="platform.platformname for platform in platformlist" placement="bottom-left" bs-select>
+				</button>
+			</div>
+  		</div>
+</div>

@@ -1,0 +1,3 @@
+将lavapm文件夹中的tenant放入本地mac的lavapm中
+将\tenant\src\main\resource\applicationContext.xml 两处配置指向本地的....tenant/sysConfig.properties
+tomcat同时加载enterprise 和 tenant两个项目

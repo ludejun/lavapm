@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+	
+
+     <resultMap id="empletmanage" class="com.lavapm.tenant.entity.Templetmanage" >
+	    <result column="tid" property="tid"  />
+	    <result column="rid" property="rid"  />
+	    <result column="t_name" property="t_name"  />
+	     <result column="t_desc" property="t_desc"  />
+	    <result column="tenantId" property="tenantId"  />
+	    <result column="create_time" property="create_time" />
+	    <result column="update_time" property="update_time" />
+	    <result column="op_umid" property="op_umid" />
+  	</resultMap>
+  	
+    <resultMap id="empletmanageusername" class="com.lavapm.tenant.entity.Templetmanage" >
+	    <result column="tid" property="tid"  />
+	    <result column="rid" property="rid"  />
+	    <result column="t_name" property="t_name"  />
+	     <result column="t_desc" property="t_desc"  />
+	    <result column="tenantId" property="tenantId"  />
+	    <result column="create_time" property="create_time" />
+	    <result column="update_time" property="update_time" />
+	    <result column="op_umid" property="op_umid" />
+	    <result column="user_name" property="userName" />
+	    <result column="type" property="type" />
+  	</resultMap>
+  	
+  
+  <insert id="insertTempletmanage" parameterClass="com.lavapm.tenant.entity.Templetmanage" >
+    insert into UM_TEMPLETMANAGE(rid,t_name,tenantId,update_time,t_desc,op_umid,create_time)
+ 	values(#rid#,#t_name#,#tenantId#,now(),#t_desc#,#op_umid#,now())
+     <selectKey resultClass="java.lang.Integer"  keyProperty="tid">
+	  SELECT LAST_INSERT_ID()
+    </selectKey>
+  </insert>
+  	<select id="gettempletmanageallbydepartmentId" resultMap="empletmanageusername"  parameterClass="com.lavapm.tenant.entity.Templetmanage">
+	 select UT.*,uu.user_name as user_name  from UM_TEMPLETMANAGE UT 
+	  LEFT JOIN  UM_ROLE UR ON UT.rid = UR.rid 
+	  LEFT JOIN UM_USER uu on uu.umid=UT.op_umid 
+	 where UT.tenantId=#tenantId# and UR.op_umid=#op_umid#  AND UR.status=0
+	  order by create_time desc
+	</select>
+	
+	<select id="getroleallbydepartmentIdAll" resultMap="empletmanageusername"  parameterClass="com.lavapm.tenant.entity.Templetmanage">
+	 select UT.*,uu.user_name as user_name from UM_TEMPLETMANAGE UT 
+	     LEFT JOIN  UM_ROLE UR ON UT.rid = UR.rid  
+	      LEFT JOIN UM_USER uu on uu.umid=UT.op_umid
+	     where UT.tenantId=#tenantId#   AND UR.status=0
+	     order by create_time desc
+	</select>
+	
+	
+	<select id="getTempletmanageBydepartmentIdUid" resultMap="empletmanage"  parameterClass="com.lavapm.tenant.entity.Resource">
+	 select *  from UM_TEMPLETMANAGE  where tenantId=#tenantId# and op_umid=#op_umid# and  t_name=#t_name#
+	</select>
+	
+	<select id="getTempletmanageByTids" resultMap="empletmanage"  parameterClass="com.lavapm.tenant.entity.Resource">
+	 select *  from UM_TEMPLETMANAGE  where tenantId=#tenantId# and tid in ($tids$)
+	</select>
+  
+  <delete id="deleteTempletmanageByTids"   parameterClass="java.lang.String">
+	  delete from  UM_TEMPLETMANAGE 
+	  where tid in ($tids$)
+   </delete>
+   
+   <select id="isTempletNameExist" resultClass="java.lang.Integer"  parameterClass="java.util.HashMap">
+	select count(1) from UM_TEMPLETMANAGE where 
+  	   t_name=#roleName#
+  	  and tenantId=#tenantId# 
+  	  <isNotEmpty prepend="AND" property ="tids">
+		   tid not in($tids$)
+	  </isNotEmpty>
+	  and type!=1 and type !=2
+  	  
+  </select>
+  
+  <update id="updateTempletmanageByTids" parameterClass="com.lavapm.tenant.entity.Templetmanage">
+	update
+	UM_TEMPLETMANAGE set
+	t_name=#t_name#,t_desc=#t_desc#,update_time=now()
+	where tid in ($tids$)
+   </update>
+   
+   	<select id="getTempletmanageByRoleId" resultMap="empletmanage"  parameterClass="java.util.HashMap">
+	 select *  from UM_TEMPLETMANAGE  where tenantId=#tenantId# and tid in ($tids$) and rid=#roleId#
+	</select>
+ 
+</sqlMap>

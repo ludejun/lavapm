@@ -1,0 +1,118 @@
+<div class="timetxt ml-5" style="margin-top: -8px;width: 450px;right: -5px; display: block;" ng-click="clearQuickData()">
+    <div class="filter_left">
+        <div class="timetxt_content">
+            <div class="filter-box">
+            	<div style="background: #f3f4f9;padding-bottom: 1px;">
+                <div class="boxContent" ng-show="!sortCondition.partnerHidden">
+                    <div class="brdediv"  ng-class="{borderOn:isPartnerOpen,borderOff:!isPartnerOpen}">
+                        <font class="l">渠道</font><span ng-class="{filterOn:isPartnerOpen,filterOff:!isPartnerOpen}" ng-click="isPartnerOpen = !isPartnerOpen;onOff('partner');">on-off</span>
+                        <a href="" ng-class="{'set-select-open':gear && isPartnerOpen,'set-select-close':!gear && isPartnerOpen,r:true}" ng-click="gear = !gear"></a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="content-filter-box" ng-show="isPartnerOpen">
+                        <div class="condition" ng-show="gear && isPartnerOpen" ng-model="partnerCondition" bs-radio-group>
+                            <span class="radiochecked"><input  type="radio" value="1" class="input-radio radioclass" ng-click="sortByType('partner','1');">按首字母排序</span>
+                            <!-- <span><input  type="radio" value="2" class="input-radio" ng-click="sortByType('partner','2');">按新增用户量排序</span> -->
+                            <span class="radiochecked" ><input  type="radio" value="3" class="input-radio radioclass" ng-click="sortByType('partner','3')">按时间排序</span>
+                        </div>
+						<div style="display: block;">
+	                        <div class="search-operate">
+	                             <span class="ml-20">
+	                             	<input type="text" ng-model="quickPartnerSearchVal" class="input-search" ng-keyup="quickSearch(quickPartnerSearchVal,'partner');"><img src="images/icon-search.png">
+									<ul ng-show="partnerSearching">
+										<li ng-repeat="partner in partnerQuick" title="{{partner.value}}" ng-click="seletedItem(partners,'key',partner.key);">{{partner.value}}</li>
+									</ul>
+								</span>
+	                             <a href="" ng-click="clearAll('partner');" class="r">不筛选</a> 
+	                             <a href="" ng-click="selectAll('partner');" class="r">全选</a> 
+								 <div style="clear:both;"></div>
+	                         </div>
+	                        <div class="Sievexx">
+	                        		<a href=""  ng-repeat="partner in partners" ng-click="seletedItem(partners,'key',partner.key)" ng-class="{border:partner.selected}" title="{{partner.value}}">
+	                        		<img ng-src="images/{{partner.logoName}}.png" style="vertical-align:middle;height: 20px;line-height: 22px;margin-top: -2px;"></img>
+	                        		{{partner.value}}</a>		
+	   						</div>
+						</div>
+                    </div>
+                </div>
+            	<div class="boxContent" ng-show="!sortCondition.versionHidden">
+                    <div class="brdediv" ng-class="{borderOn:isVersionOpen,borderOff:!isVersionOpen}">
+                        <font class="l">版本</font><span ng-class="{filterOn:isVersionOpen,filterOff:!isVersionOpen}" ng-click="isVersionOpen = !isVersionOpen;onOff('version');">on-off</span>
+                        <a href="" ng-class="{'set-select-open':vgear && isVersionOpen,'set-select-close':!vgear && isVersionOpen,r:true}" ng-click="vgear = !vgear"></a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="content-filter-box" ng-show="isVersionOpen">
+                        <div class="condition" ng-show="vgear && isVersionOpen" ng-model="versionCondition" bs-radio-group>
+                            <span class="radiochecked"><input type="radio" value="1" class="input-radio radioclass"  ng-click="sortByType('version','1')">按首字母排序</span>
+                           <!--  <span><input type="radio" value="2" class="input-radio"  ng-click="sortByType('version','2')">按新增用户量排序</span> -->
+                            <span class="radiochecked"><input type="radio" value="3" class="input-radio radioclass"  ng-click="sortByType('version','3')">按时间排序</span>
+                        </div>
+						<div style="display: block;">
+	                         <div class="search-operate">
+	                             <span class="ml-20">
+	                             	<input type="text" ng-model="quickVersionSearchVal" class="input-search" ng-keyup="quickSearch(quickVersionSearchVal,'version');"><img src="images/icon-search.png">
+									<ul ng-show="versionSearching">
+										<li ng-repeat="version in versionQuick" title="{{version.value}}" ng-click="seletedItem(versions,'key',version.key);">{{version.value}}</li>
+									</ul>
+								</span>
+	                             <a href="" ng-click="clearAll('version');" class="r">不筛选</a> 
+	                             <a href="" ng-click="selectAll('version');" class="r">全选</a> 
+								<div style="clear:both;"></div>
+	                         </div>
+	                        <div class="Sievexx">
+	                        		<a href=""  ng-repeat="version in versions" ng-click="seletedItem(versions,'key',version.key)" ng-class="{border:version.selected}" title="{{version.value}}">
+	                        		<img ng-src="images/{{version.logoName}}.png" style="vertical-align:middle;height: 20px;line-height: 22px;margin-top: -2px;"></img>
+	                        		{{version.value}}</a>		
+	  						</div>
+						</div>
+                    </div>
+                </div>
+                <div class="boxContent" ng-show="!sortCondition.userSegHidden">
+                    <div class="brdediv" ng-class="{borderOn:isUserSegOpen,borderOff:!isUserSegOpen}">
+                        <font class="l">用户分群</font><span ng-class="{filterOn:isUserSegOpen,filterOff:!isUserSegOpen}" ng-click="isUserSegOpen = !isUserSegOpen;onOff('userSeg');">on-off</span>
+                        <a href="" ng-class="{'set-select-open':ugear && isUserSegOpen,'set-select-close':!ugear && isUserSegOpen,r:true}" ng-click="ugear = !ugear"></a>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="content-filter-box" ng-show="isUserSegOpen">
+                        <div class="condition" ng-show="ugear && isUserSegOpen" ng-model="userSegCondition" bs-radio-group>
+                            <span class="radiochecked"><input type="radio" value="1" class="input-radio radioclass" ng-click="sortByType('userSeg','1');">按首字母排序</span>
+                            <!-- <span><input type="radio" value="" class="input-radio" ng-click="sortByType('userSeg','2');">按新增用户量排序</span> -->
+                            <span class="radiochecked"><input type="radio" value="3" class="input-radio radioclass"  ng-click="sortByType('userSeg','3')">按时间排序</span>
+                        </div>
+						<div style="display: block;">
+	                         <div class="search-operate">
+	                         	<span class="ml-20">
+	                             	<input type="text" ng-model="quickUserSegSearchVal" class="input-search" ng-keyup="quickSearch(quickUserSegSearchVal,'userSeg');"><img src="images/icon-search.png">
+									<ul ng-show="userSegSearching">
+										<li ng-repeat="userSeg in userSegQuick" title="{{userSeg.value}}" ng-click="seletedItem(userSegs,'key',userSeg.key);">{{userSeg.value}}</li>
+									</ul>
+								</span>
+	                             <a href="" ng-click="clearAll('userSeg');" class="r">不筛选</a> 
+	                             <a href="" ng-click="selectAll('userSeg');" class="r">全选</a> 
+								<div style="clear:both;"></div>
+	                         </div>
+	                        <div class="Sievexx">
+	                        		<a href=""  ng-repeat="userSeg in userSegs" ng-click="seletedItem(userSegs,'key',userSeg.key)" ng-class="{border:userSeg.selected}" title="{{userSeg.value}}">
+	                        			<img ng-src="images/{{userSeg.logoName}}.png" style="vertical-align:middle;height: 20px;line-height: 22px;margin-top: -2px;"></img>
+	                        			{{userSeg.value}}
+	                        		</a>		
+	   						</div>
+						</div>
+                    </div>
+                </div>
+            	</div>
+            </div>
+        </div>
+    </div>
+    <div class="filter_bottom">
+        <div class="content_filter_bottom">
+            <div class="line_grey"></div>
+            <span>
+                <font>
+                    <a href="" ng-click="cancel();$hide();" class="cancelFilter Sievecolse r">取消</a> 
+                    <a href="" ng-click="saveFilterBox();$hide();" class="confirm Sievecolse r">确定</a>
+                </font>
+            </span>
+        </div>
+    </div>
+</div>

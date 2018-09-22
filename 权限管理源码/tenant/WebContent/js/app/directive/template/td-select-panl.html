@@ -1,0 +1,8 @@
+<span class="td-select1">
+   	<input type="text" readonly="readonly" ng-model="val" class="tdSelect input-search" ng-blur="onBlur();" ng-click="showSearching();" ng-change="onChange(val);">
+   	<img ng-click="showSearching();" src="images/pull-down.png">
+	<div style="display:none;background: #fff;width: 209px;height:40px;z-index: 999;border: 1px solid #dedede;padding-bottom: 5px;" align="center" class="p-abs"><input type="text" ng-model="sercheventname" placeholder="输入事件名" style="height: 24px;border-radius: 20px;padding:0 8px; background-color: white !important;margin-top: 5px;" ng-change="onChange(sercheventname);"><i class="glyphicon glyphicon-search p-abs" style="right: 24px;top: 12px" ng-click="onChange(sercheventname);"></i></div>
+	<ul style="display:none;"class="searchPane mt-i40">
+		<li ng-repeat="opt in options" title="{{opt.value}}" ng-click="seletedItem(opt.key,opt.value,opt);">{{opt.value|DateStrSubstringmin15}}</li>
+	</ul>
+</span>

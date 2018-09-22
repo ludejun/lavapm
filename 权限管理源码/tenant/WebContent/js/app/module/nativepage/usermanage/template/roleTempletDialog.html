@@ -1,0 +1,45 @@
+<div class="modal in" tabindex="99999" role="dialog"
+	aria-labelledby="myModalLabel" style="display: block;">
+	<div class="modal-dialog" role="document" style="width: 600px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" ng-click="$hide()">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h1  class="xytitle">选择权限模板</h1>
+				
+			</div>
+			<div class="modal-body" style="color: #333;padding: 0px;padding-bottom: 10px;">
+				<form class="form-horizontal clrfix" style="">
+				<div loading-container="tableParams.settings().$loading">
+					<span  style="position: absolute;margin-left: 23px;margin-top: 8px;" >
+		 				<input type="checkbox" style="float:left;" ng-change="checkallrole(user.checked)" ng-model="user.checked">
+					</span>
+					<table ng-table="tableDatas" class="table ng-table-responsive table-hover">
+						<tr ng-repeat="data in $data" align="center"  class="wd-p-25">
+							<td ng-if=" data.isShow!=1" data-title="''"  style='word-wrap: break-word;word-break: break-all;width:2%;'  align="center">
+								<span><input type="checkbox" style="margin-top: -3px;" ng-change="checkselectUninfousr(rule)" ng-model="data.checked"></span>
+							</td>
+							<td ng-if=" data.isShow!=1" data-title="'权限模板名称'"  style='word-wrap: break-word;word-break: break-all;width:20%;'  align="center">
+								{{data.t_name}} 
+							</td>
+				            <td ng-if=" data.isShow!=1" data-title="'权限描述'" align="center" style='word-wrap: break-word;word-break: break-all;width: 20%;'> 
+				            	{{data.t_desc}}
+							</td>
+				       	</tr>
+				    </table>
+				</div>
+				   </form>
+				</div>
+			<div class="modal-footer">
+			<button type="button"  class="btn btn-primary" ng-click="submitRoleUser($hide);;">确定</button>
+				<button type="button" class="btn btn-default" ng-click="$hide();">取消</button>
+				
+			</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+</div>
+

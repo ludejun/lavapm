@@ -1,0 +1,35 @@
+<div class="panel panel-primary" ng-if="(selectPartners.length>0 && !sortCondition.partnerHidden) || (selectVersions.length>0 && !sortCondition.versionHidden) || (selectUserSegs.length>0 && !sortCondition.userSegHidden)">
+	<div class="panel-heading" style="border-left: solid 5px #628DE1;">
+	    <h3 class="panel-title">已筛选
+		    <i class="glyphicon glyphicon-remove-circle fr glyphicon-font" ng-click="clear();" style="color: #C2CBDB;"></i>
+	    </h3>
+	</div>
+	<div class="panel-body" style="padding:10px;background: #FFF;">
+		<ul>
+	    	<li class="clrfix" ng-if="selectPartners.length>0 && !sortCondition.partnerHidden" style="margin: 10px;">
+	        	<div class="lb fl">
+	        		<font class="fl">渠道：</font>
+		            <div class="val" style="word-wrap: break-word;max-width: 95%;float: right;">
+						<font class="ml-10" ng-repeat="partner in selectPartners" ng-if="partner.selected"><img ng-src="images/{{partner.logoName}}.png" style="vertical-align:middle;margin-top: -4px;"></img>&nbsp;{{partner.value}}</font>
+					</div>
+	        	</div>
+	        </li>
+	        <li class="clrfix" ng-if="selectVersions.length>0 && !sortCondition.versionHidden" style="margin: 10px;">
+	        	<div class="lb fl">
+	        		<font class="fl">版本：</font>
+	        		<div class="val" style="word-wrap: break-word;max-width: 95%;float: right;">
+						<font class="ml-10" ng-repeat="version in selectVersions" ng-if="version.selected"><img ng-src="images/{{version.logoName}}.png" style="vertical-align:middle;margin-top: -4px;"></img>&nbsp;{{version.value}}</font>
+					</div>
+	        	</div>
+	        </li>
+	        <li class="clrfix" ng-if="selectUserSegs.length>0 && !sortCondition.userSegHidden" style="margin: 10px;">
+	        	<div class="lb fl">
+					<font class="fl">用户分群：</font>
+					<div class="val" style="word-wrap: break-word;max-width: 95%;float: right;">
+						<font class="ml-10" ng-repeat="userSeg in selectUserSegs" ng-if="userSeg.selected"><img ng-src="images/{{userSeg.logoName}}.png" style="vertical-align:middle;margin-top: -4px;"></img>&nbsp;{{userSeg.value}}</font>
+					</div>
+				</div>
+	        </li>
+    	</ul>
+	</div>
+</div>

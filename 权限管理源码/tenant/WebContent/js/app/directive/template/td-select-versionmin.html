@@ -1,0 +1,12 @@
+<span class="td-select" style="border: solid 1px #ccc;padding: 2px 2px 2px 2px;border-radius: 4px;">
+   	<img ng-src="images/{{img |platformFilter}}.png" style="vertical-align:left;left: 5px;margin-top: -2px;" ></img>
+   	<input type="text" style="width: 170px;height:18px; padding:0;padding-left: 22px;border: 0;" readonly="readonly" ng-model="val" class="tdSelect input-search" ng-click="showSearching();" ng-change="onChange(val);">
+   	<i ng-click="showSearching();" class="glyphicon glyphicon-chevron-down" style="margin:0;margin-right: 5px;margin-top:-3px;"></i>
+	<div style="display:none;background: #fff;width: 197px;height:37px;z-index: 999;border: 1px solid #dedede;padding-bottom: 5px;" align="center" class="p-abs">
+		<input type="text" ng-model="sercheventname" placeholder="输入事件名" style="height: 24px;border-radius: 20px;padding:0 8px; background-color: white !important;margin-top: 5px;width: 170px;border:solid 1px #ccc;" ng-change="onChange(sercheventname);">
+		<i class="glyphicon glyphicon-search p-abs" style="right: 28px;top: 12px;background: #FFF;" ng-click="onChange(sercheventname);"></i>
+	</div>
+	<ul class="searchPane mt-i30" style="display:none;">
+		<li ng-repeat="opt in options" title="{{opt.value}}" ng-click="seletedItem(opt.key,opt.value,opt);"><img title="{{opt.img |platformFilter}}" ng-src="images/{{opt.img |platformFilter}}.png" style="vertical-align:middle;"></img> {{opt.value}}</li>
+	</ul>
+</span>

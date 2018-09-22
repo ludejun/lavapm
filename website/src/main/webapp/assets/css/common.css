@@ -144,7 +144,7 @@ button {
 }
 
 .content {
-    width: 1100px;
+    /* width: 1100px; */
     margin: 0 auto;
 }
 
@@ -153,7 +153,10 @@ button {
     height: 100vh;
     background: #fff;
     color: #607d8b;
-    float: left;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+  /*   overflow: hidden; */
     box-shadow: 1px 0 1px #ccc;
 }
 
@@ -196,6 +199,7 @@ button {
 /*}*/
 #adminNav, #app {
 	margin-left: 174px;
+	width: calc(100% - 174px);
 }
 .adminNav-headerOptionManger{
     margin-left:28px;
@@ -281,13 +285,16 @@ button {
     background: #ffffff;
     color: #4b4c61;
     border-bottom: 1px #d5dade solid;
+    height: 55px;
+    width: 100%;
 }
 
 .header-nav .header-nav-h2, .header-nav h2 {
-    font-size: 20px;
+    font-size: 16px;
     float: left;
     position: relative;
     padding-left: 30px;
+    margin-top: 12px;
 }
 
 .header-nav-h2 .header-down {
@@ -298,14 +305,14 @@ button {
 }
 
 .product-list-container {
-	overflow: hidden;
-	padding: 20px 30px;
+/* 	overflow: hidden; */
+	margin: 20px 30px -30px 30px;
 }
 .header-list {
-    width: 260px;
     height: 100%;
-    display: block;
+    /* display: block; */
     margin: 0 auto;
+    /* float: left; */
 }
 
 .header-list-li {
@@ -316,9 +323,9 @@ button {
     text-align: center;
     cursor: pointer;
     background: #fff;
-    margin: 10px 30px;
-    border-radius: 5px;
+    margin: 10px 20px 10px 0;
     line-height: 30px;
+    border-radius: 5px;
 }
 
 .header-list-li i {
@@ -343,11 +350,11 @@ button {
 }
 
 .header-down {
-    width: 200px;
+    /* width: 200px; */
     position: relative;
     background: #fff;
     display: none;
-    margin: -14px 0px 0px -14px;
+    margin: 0px 0px 0px -2px;
     z-index: 100;
 
     -webkit-box-shadow: 1px 1px 5px #aaaaaa;
@@ -356,15 +363,15 @@ button {
     -o-box-shadow: 1px 1px 5px #aaaaaa;
     box-shadow: 1px 1px 5px #aaaaaa;
 
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
-    border-radius: 8px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    border-radius: 5px;
 }
 
 .header-down-li {
-    width: 170px;
+        /* width: 170px; */
     line-height: 32px;
     color: #7e828c;
     white-space: nowrap;
@@ -387,24 +394,31 @@ button {
     display: block;
 }
 
+#header-search-box {
+	overflow: hidden;
+    margin-top: 9px;
+    position: relative;
+}
 .header-search {
-    float: right;
-    width: 240px;
-    height: 32px;
-    margin: -47px 70px 0px 0px;
-    background: #f5f6f8;
-    padding-left: 35px;
+	float: left;
+/*     width: 240px; */
+    height: 30px;
+    /* margin: -48px 70px 0px 0px; */
+    /* margin-top: -50px; */
+    background: #fff;
+    padding-left: 30px;
     color: #9ea7b4;
     outline: medium;
-    border-radius: 8px;
+    border-radius: 5px;
 }
 
 .header-search-pic {
     width: 15px;
     height: 15px;
     z-index: 100;
-    margin: -38px 320px 0px 0px;
-    float: right;
+    position: absolute;
+    top: 9px;
+    left: 8px;
     background: url(../img/search.png);
 }
 
@@ -729,7 +743,7 @@ button {
 
 #HeaderDetailDropDown {
     position: absolute;
-    top: 60px;
+    top: 20px;
     left: 100px;
 }
 

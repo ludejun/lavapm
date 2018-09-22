@@ -1,0 +1,44 @@
+<div class="modal in" tabindex="99999" role="dialog"
+	aria-labelledby="myModalLabel" style="display: block;">
+	<div class="modal-dialog" role="document" style="width: 400px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" ng-click="$hide()">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h1 ng-if="isiuDepartment=='新增'"  class="xytitle">新增部门</h1>
+				<h1 ng-if="isiuDepartment=='修改'"  class="xytitle">修改部门</h1>
+			</div>
+			<div class="modal-body" style="color: #333;padding: 0px;padding-bottom: 10px;">
+				<form class="form-horizontal clrfix">
+				     <div ng-if="_Department.parenDeptName!=null" class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 15px;margin: -5px;"><span class="required">*</span>上级部门:</label>
+				        <div class="controls" style="    width: 250px;">
+							<input class="form-control" type="text"  ng-model="_Department.parenDeptName"  style="width:250px;" readonly/>				    	</div>
+				    </div>
+				    <div class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 15px;margin: -5px;"><span class="required">*</span>部门名称:</label>
+				        <div class="controls" style="    width: 250px;">
+							<input class="form-control" type="text"  ng-model="_Department.deptName"  style="width:250px;" maxlength="30" />				    	</div>
+				    </div>
+				    <div class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 15px;margin: -5px;"><span class="required">&nbsp;</span>部门备注:</label>
+				        <div class="controls" style="width: 250px;">
+				        <textarea  ng-model="_Department.deptDesc"  style="width:250px;" class="form-control" rows="3" cols="20" maxlength="200">
+						</textarea>
+				    	</div>
+				    </div>
+				   </form>
+				</div>
+			<div class="modal-footer">
+			<button type="button"  class="btn btn-primary" ng-click="submitDepartment($hide);;">保存</button>
+				<button type="button" class="btn btn-default" ng-click="$hide();">取消</button>
+				
+			</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+</div>
+

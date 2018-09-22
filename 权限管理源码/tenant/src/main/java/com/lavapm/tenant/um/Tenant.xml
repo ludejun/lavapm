@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+	  
+	<resultMap id="tenantMap" class="com.lavapm.tenant.entity.Tenant" >
+	    <result column="rid" property="rid"  />
+	    <result column="ca_code" property="ca_code"  />
+	    <result column="ca_name" property="ca_name"  />
+	     <result column="ca_short_name" property="ca_short_name"  />
+	    <result column="phone" property="phone"  />
+	    <result column="fax" property="fax" />
+	    <result column="admin_name" property="admin_name" />
+	    <result column="status" property="status" />
+	    <result column="contract_start_date" property="contract_start_date" />
+	    <result column="contract_end_date" property="contract_end_date" />
+	    <result column="create_time" property="create_time" />
+	    <result column="update_time" property="update_time" />
+	    <result column="op_umid" property="op_umid" />
+    </resultMap>
+    
+   <select id="getTenant"  resultMap="tenantMap" parameterClass="java.util.HashMap">
+	   select *  from UM_TENANT where rid=#tenantId#
+  </select>
+    
+   
+</sqlMap>

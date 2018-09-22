@@ -1,0 +1,113 @@
+package com.lavapm.tenant.tool;
+
+public class ConstString {
+  public static String KEYLIST = "keylist";
+  public static String EXCEL = "excel";
+  public static int MAX = 6;
+  public static String SAME = "same";
+  public static String SUMUSER = "sumuser";
+  public static String TIMEFRAME = "yyyy-MM-dd HH:mm:ss";
+  public static String DATEFRAME = "yyyy-MM-dd";
+  public static String DATESECFRAME = "yyyy-M-dd";
+  public static String RDATEFRAME = "M月dd日";
+  public static String INTTIME = "yyMMddHH";
+  public static String TIMENUM = "HHmmss";
+  public static String INTDAY = "yyMMdd";
+  public static String MONTHTIME = "yyyy年MM月";
+  public static String STATHOURFRAME = "dd日HH时";
+  public static String HOURFRAME = "HH";
+  public static String STATDAYFRAME = "yyyy-MM-dd";
+  public static String LOGINOK = "登录成功";
+  public static String RESENDMAILTIME = "resendmailTIME";
+  public static String LOGINPRODUCTZOER = "登录成功,无产品";
+  public static String LOGINERROR = "账户名或密码错误，请重试";
+  public static String PRODUCTOPTION = "productoption";
+  public static String HOURDAYCADY = "cday";
+  public static String CUSTOMEVENTINFO = "customeventinfo";
+  public static String GRIDINFO = "gridinfo";
+  public static String GISGRIDINFO = "gisgridinfo";
+  public static String GISALLSUMNEWUSER = "gisallSumnewuser";
+  public static String MOBILEGRIDINFO = "mobilegridinfo";
+  public static String MOBILEALLSUMNEWUSER = "mobileallSumnewuser";
+  public static String OSGRIDINFO = "osridinfo";
+  public static String OSALLSUMNEWUSER = "osallSumnewuser";
+  public static String PIXELGRIDINFO = "pixelridinfo";
+  public static String PIXELALLSUMNEWUSER = "pixelallSumnewuser";
+  public static String ISPINGRIDINFO = "ispinridinfo";
+  public static String ISPINALLSUMNEWUSER = "ispinallSumnewuser";
+  public static String CHANNELINFO = "channelinfo";
+  public static String CHANNELALLSUMNEWUSER = "channelallSumnewuser";
+  public static String STARTUPINFO = "startupinfo";
+  public static String STARTUPAVGINFO = "startupavginfo";
+  public static String ALLSTARINFO = "allStartinfor";
+  public static String USERTIMEINFO = "usertimeinfo";
+  public static String ALLUSERTIME = "allUsertime";
+  public static String PRODUCTLIST = "productlist";
+  public static String PRODUCTSIZE = "productsize";
+  public static String EMAIL = "email";
+  public static String CATEGORY = "category";
+  public static String DEVELOPER = "Developer";
+  public static String DEVELOPERID = "developerid";
+  public static String DEVELOPERCONTACT = "developercontact";
+  public static String DEVELOPEREMAIL = "developeremail";
+  public static String CHILDACCOUNTS = "childaccounts";
+  public static String CHILDACCOUNT = "childaccount";
+  public static String CHILDACCOUNTDevIDS = "childaccountdevids";
+  public static String PRODUCTOBJ = "productobj";
+  public static String PAGEINFO = "pageinfo";
+  public static String ALLPAGEINFO = "allpageinfo";
+  public static String PAGEJUMP = "pagejump";
+  public static String ALLPAGEJUMP = "allpagejump";
+  public static String SEQUENCENUMBER = "sequencenumber";
+  public static String EXCEPTIONLIST = "exceptionlist";
+  public static String PRODUCTKEY = "productKey";
+  public static String PRODUCTID = "productid";
+  public static String PLATFORMID = "platformid";
+  public static String PRODUCTTYPE = "producttype";
+  public static String PLATFORM = "platform";
+  public static String KEEPUSERINFO = "KEEPUSERINFO";
+  public static String KEEPUSERMONTH = "KEEPUSERMONTH";
+  public static String ERRORMESSAGEFLAG = "#$#";
+  public static String SPLITFLAG = "~";
+  public static String TITLEINFO = "新增用户流失漏斗";
+  public static int GISFRAMETYPE = 1;
+  public static int MOBILEFRAMETYPE = 2;
+  public static int OSTYPE = 3;
+  public static int PIXELTYPE = 4;
+  public static int ISPINTYPE = 5;
+  public static int CINT = 110;
+  public static int ACCOUNTTYPE_USER = 0;
+  public static int ACCOUNTTYPE_ADMIN = 1;
+  public static final String SINGLE_QUOTES = ":%#!~";
+  public static final String DOUBLE_QUOTES = ":%:#!~";
+  public static String TMPFILEROOTPATH = "tmpfile";
+  public static String DECIMALFLAG = "##.00";
+  public static String DECIMALFLAGTWO = "##.0";
+  public static String ISOFILTER = "ISO-8859-1";
+  public static String UTFFILTER = "UTF-8";
+  public static String FIRST_PAGE = "firstpage";
+  public static String FIRST_NATIVE_PAGE = "firstNativePage";
+  public static String FIRST_Web_PAGE = "firstWebPage";
+  
+  public static String DATEFLAG = "dateFlag";
+  public static String DATESTARTTIME = "dateStartTime";
+  public static String DATEENDTIME = "dateEndTime";
+  
+  public static String DATAVERSIONS = "dataVersions";
+  public static String DATAPARTNERS = "dataPartners";
+  public static String DATAPARTNERNAMES = "dataPartnerNames";
+  public static String DATAUSERGROUPS = "dataUserGroups";
+  public static String DATAUSERGROUPNAMES = "dataUserGroupNames";
+  public static String DATAVERSIONKEYS = "dataVersionKeys";
+  
+  public static final int COUNTRYMAPFLAG = 0;
+  
+  public static final int ISPMAPFLAG = 1;
+  public static final int DEVICETYPEMAPFLAG = 2;
+  public static final int TRANSDEVICETYPEMAPFLAG = 3;
+  public static String STRENTER = "<br/>";
+  
+  public static String RSDATABEAN = "rsdatabean";
+  
+  public ConstString() {}
+}

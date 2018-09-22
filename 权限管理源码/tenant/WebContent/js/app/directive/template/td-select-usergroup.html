@@ -1,0 +1,9 @@
+<div class="td-select" style="margin-top: -8px;height: 39px;" >
+   	<img ng-src="images/{{img |eventImgFilter}}.png" style="vertical-align:left;left: 0px;margin-top: 5px;" ng-if="img &&img!=''&& img==1"><input type="text" readonly="readonly" ng-class="{'pl-25':img==1}" style="margin-top: 4px;height: 26px;" ng-model="val" class="tdSelect input-search bs1" ng-click="showSearching();" placeholder="请选择事件"><img ng-click="showSearching();" style="margin-right: 3px;margin-top: 8px;" src="images/ic.png">
+	<div align="center" style="display:none;background: #fff;border: 1px solid #dedede;padding-bottom: 10px;" class="p-rel">
+	<input class="bs1" type="text" ng-model="sercheventname" placeholder="输入事件名" style="height: 28px;border-radius: 20px;padding:0 8px; background-color: white !important;margin-top: 5px;" ng-change="onChange(sercheventname);">
+	<i class="glyphicon glyphicon-search p-abs" style="right: 28px;top: 13px;background: #FFF;" ng-click="onChange(sercheventname);"></i></div>
+	<ul class="searchPane mt-imp-40" style="display:none;top:30 important;">
+		<li ng-repeat="opt in options" title="{{opt.value}}" ng-click="seletedItem(opt.key,opt.value,opt);"><img title="{{opt.img |eventTitleFilter}}" ng-src="images/{{opt.img |eventImgFilter}}.png" style="vertical-align:middle;left:-4px;top: 2px;" ng-if="opt.img==1"></img> {{opt.value|DateStrSubstringmin10}}</li>
+	</ul>
+</div>

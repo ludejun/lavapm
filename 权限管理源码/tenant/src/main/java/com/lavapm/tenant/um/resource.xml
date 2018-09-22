@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+	<resultMap id="BaseResultMap" class="com.lavapm.tenant.entity.Resource">
+		<result column="rid" property="rid" />
+		<result column="app_rid" property="appRid" />
+		<result column="resource_type_rid" property="resourceTypeRid" />
+		<result column="parent_resource_rid" property="parentResourceRid" />
+		<result column="resource_code" property="resourceCode" />
+		<result column="resource_name" property="resourceName" />
+		<result column="resource_desc" property="resourceDesc" />
+		<result column="resource_order" property="resourceOrder" />
+		<result column="resource_uri" property="resourceUri" />
+		<result column="is_action" property="isAction" />
+		<result column="action" property="action" />
+		<result column="ext_attr1" property="extAttr1" />
+		<result column="ext_attr2" property="extAttr2" />
+		<result column="ext_attr3" property="extAttr3" />
+		<result column="ext_attr4" property="extAttr4" />
+		<result column="ext_attr5" property="extAttr5" />
+		<result column="ext_attr6" property="extAttr6" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="op_umid" property="opUmid" />
+		<!-- <result column="parentResourceName" property="parentResourceName"/> -->
+		<!-- <result column="appName" property="appName"/> -->
+		<!-- <result column="resourceTypeName" property="resourceTypeName"/> -->
+		<!-- <result column="parentId" property="parentId"/> -->
+		<!-- <result column="appCode" property="appCode"/> <result column="parentResourceCode" 
+			property="parentResourceCode"/> <result column="resourceTypeCode" property="resourceTypeCode"/> -->
+	</resultMap>
+
+	<resultMap id="BaseResultUserNameMap" class="com.lavapm.tenant.entity.Resource">
+		<result column="rid" property="rid" />
+		<result column="app_rid" property="appRid" />
+		<result column="resource_type_rid" property="resourceTypeRid" />
+		<result column="parent_resource_rid" property="parentResourceRid" />
+		<result column="resource_code" property="resourceCode" />
+		<result column="resource_name" property="resourceName" />
+		<result column="resource_desc" property="resourceDesc" />
+		<result column="resource_order" property="resourceOrder" />
+		<result column="resource_uri" property="resourceUri" />
+		<result column="is_action" property="isAction" />
+		<result column="action" property="action" />
+		<result column="ext_attr1" property="extAttr1" />
+		<result column="ext_attr2" property="extAttr2" />
+		<result column="ext_attr3" property="extAttr3" />
+		<result column="ext_attr4" property="extAttr4" />
+		<result column="ext_attr5" property="extAttr5" />
+		<result column="ext_attr6" property="extAttr6" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="op_umid" property="opUmid" />
+		<result column="user_name" property="userName" />
+		<result column="resourceTypeName" property="resourceTypeName" />
+	</resultMap>
+
+	<resultMap id="BaseResultTypeNameMap" class="com.lavapm.tenant.entity.Resource">
+		<result column="rid" property="rid" />
+		<result column="app_rid" property="appRid" />
+		<result column="resource_type_rid" property="resourceTypeRid" />
+		<result column="parent_resource_rid" property="parentResourceRid" />
+		<result column="resource_code" property="resourceCode" />
+		<result column="resource_name" property="resourceName" />
+		<result column="resource_desc" property="resourceDesc" />
+		<result column="resource_order" property="resourceOrder" />
+		<result column="resource_uri" property="resourceUri" />
+		<result column="is_action" property="isAction" />
+		<result column="action" property="action" />
+		<result column="ext_attr1" property="extAttr1" />
+		<result column="ext_attr2" property="extAttr2" />
+		<result column="ext_attr3" property="extAttr3" />
+		<result column="ext_attr4" property="extAttr4" />
+		<result column="ext_attr5" property="extAttr5" />
+		<result column="ext_attr6" property="extAttr6" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="op_umid" property="opUmid" />
+		<result column="resourceTypeName" property="resourceTypeName" />
+		<result column="resourceTypeCode" property="resourceTypeCode" />
+	</resultMap>
+
+
+	<resultMap id="resourceTypeResultMap" class="com.lavapm.tenant.entity.ResourceType">
+		<result column="rid" property="rid" />
+		<result column="resource_type_code" property="resourceTypeCode" />
+		<result column="resource_type_name" property="resourceTypeName" />
+		<result column="resource_type_desc" property="resourceTypeDesc" />
+		<result column="status" property="status" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="op_umid" property="opUmid" />
+		<result column="app_rid" property="appRid" />
+		<!-- <result column="appName" property="appName"/> -->
+	</resultMap>
+
+
+	<select id="findByAppRidResourceTypeIdResourceCode" resultMap="BaseResultMap"
+		parameterClass="java.util.HashMap">
+
+		SELECT * FROM UM_RESOURCE
+		where
+		app_rid=#appRid#
+		and
+		resource_type_rid=#resourceTypeRid#
+		and
+		resource_code=#resourceCode#
+	</select>
+
+	<!-- 插入记录 -->
+	<insert id="insertResource" parameterClass="com.lavapm.tenant.entity.Resource">
+
+		insert into
+		UM_RESOURCE(rid,app_rid,resource_type_rid,parent_resource_rid,resource_code,resource_name,resource_desc,resource_order,resource_uri,is_action,action,ext_attr1,ext_attr2,ext_attr3,ext_attr4,ext_attr5,ext_attr6,create_time,update_time,op_umid)
+		values(#rid#,#appRid#,#resourceTypeRid#,#parentResourceRid#,#resourceCode#,#resourceName#,#resourceDesc#,#resourceOrder#,#resourceUri#,#isAction#,#action#,#extAttr1#,#extAttr2#,#extAttr3#,#extAttr4#,#extAttr5#,#extAttr6#,now(),now(),#opUmid#)
+		<selectKey resultClass="java.lang.Integer" keyProperty="rid">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterClass="java.lang.Integer">
+		SELECT re.*,(SELECT resource_name FROM UM_RESOURCE
+		WHERE
+		rid=re.parent_resource_rid) AS
+		parentResourceName,ty.resource_type_code AS resourceTypeName FROM
+		UM_RESOURCE AS re
+		LEFT JOIN UM_RESOURCE_TYPE ty ON
+		ty.rid=re.resource_type_rid
+		where re.rid = #rid#
+	</select>
+
+
+	<select id="findList" resultMap="BaseResultTypeNameMap"
+		parameterClass="java.util.HashMap">
+		select * from (
+		SELECT re.*,(app.app_name) AS
+		appName,ret.resource_type_name AS
+		resourceTypeName,ree.resource_name AS
+		parentResourceName
+		,ree.resource_code as
+		parentId,ret.resource_type_code as
+		resourceTypeCode FROM UM_RESOURCE AS
+		re
+		LEFT JOIN UM_APP app ON app.rid=re.app_rid
+		LEFT JOIN UM_RESOURCE_TYPE
+		ret
+		ON re.resource_type_rid=ret.rid
+		LEFT JOIN UM_RESOURCE ree ON
+		ree.rid=re.parent_resource_rid
+		WHERE
+		re.rid IN
+		(SELECT DISTINCT
+		resource_rid FROM UM_ROLE_RESOURCE AS tempc
+		LEFT JOIN UM_RESOURCE tempr
+		ON tempr.rid=tempc.resource_rid
+		WHERE tempc.role_rid IN (
+		SELECT
+		_uuu.role_rid FROM UM_ROLE_USER _uuu INNER JOIN UM_ROLE _ur ON
+		_uuu.role_rid=_ur.rid WHERE _uuu.user_rid=#umid# and _ur.status=0
+		) AND
+		tempr.app_rid IN
+		(SELECT rid FROM UM_APP WHERE rid=#appRid#) AND
+		tempr.resource_type_rid IN
+		(SELECT rid FROM UM_RESOURCE_TYPE WHERE rid
+		=#resourceTypeRid#)
+
+		)
+		UNION
+		SELECT re.*,(app.app_name) AS
+		appName,ret.resource_type_name AS
+		resourceTypeName,ree.resource_name AS
+		parentResourceName
+		,ree.resource_code as
+		parentId,ret.resource_type_code as
+		resourceTypeCode FROM V_COMMON_MENU
+		AS re
+		LEFT JOIN UM_APP app ON app.rid=re.app_rid
+		LEFT JOIN
+		UM_RESOURCE_TYPE ret ON re.resource_type_rid=ret.rid
+		LEFT JOIN
+		UM_RESOURCE ree ON ree.rid=re.parent_resource_rid where
+		re.resource_type_rid IN
+		(SELECT rid FROM UM_RESOURCE_TYPE WHERE rid
+		=#resourceTypeRid#)
+		and re.app_rid IN
+		(SELECT rid FROM UM_APP WHERE
+		rid=#appRid#)
+		<!-- and re.ext_attr5=#tenantId# -->
+
+
+		) AS result
+		ORDER BY result.parent_resource_rid
+	</select>
+
+
+	<select id="findUserList" resultMap="BaseResultTypeNameMap"
+		parameterClass="java.util.HashMap">
+		select * from (
+		SELECT re.*,(app.app_name) AS
+		appName,ret.resource_type_name AS
+		resourceTypeName,ree.resource_name AS
+		parentResourceName
+		,ree.resource_code as
+		parentId,ret.resource_type_code as
+		resourceTypeCode FROM UM_RESOURCE AS
+		re
+		LEFT JOIN UM_APP app ON app.rid=re.app_rid
+		LEFT JOIN UM_RESOURCE_TYPE
+		ret
+		ON re.resource_type_rid=ret.rid
+		LEFT JOIN UM_RESOURCE ree ON
+		ree.rid=re.parent_resource_rid
+		WHERE
+		re.rid IN
+		(SELECT DISTINCT
+		resource_rid FROM UM_ROLE_RESOURCE AS tempc
+		LEFT JOIN UM_RESOURCE tempr
+		ON tempr.rid=tempc.resource_rid
+		WHERE
+		tempr.app_rid IN
+		(SELECT rid FROM
+		UM_APP WHERE rid=#appRid#) AND
+		tempr.resource_type_rid IN
+		(SELECT rid
+		FROM UM_RESOURCE_TYPE WHERE rid =#resourceTypeRid#)
+
+		)
+		UNION
+		SELECT
+		re.*,(app.app_name) AS appName,ret.resource_type_name AS
+		resourceTypeName,ree.resource_name AS parentResourceName
+		,ree.resource_code as parentId,ret.resource_type_code as
+		resourceTypeCode FROM V_COMMON_MENU AS re
+		LEFT JOIN UM_APP app ON
+		app.rid=re.app_rid
+		LEFT JOIN UM_RESOURCE_TYPE ret ON
+		re.resource_type_rid=ret.rid
+		LEFT JOIN UM_RESOURCE ree ON
+		ree.rid=re.parent_resource_rid where
+		re.resource_type_rid IN
+		(SELECT rid
+		FROM UM_RESOURCE_TYPE WHERE rid =#resourceTypeRid#)
+		and re.app_rid IN
+		(SELECT rid FROM UM_APP WHERE rid=#appRid#)
+		<!-- and re.ext_attr5=#tenantId# -->
+
+
+		) AS result
+		ORDER BY result.parent_resource_rid
+	</select>
+
+	<!-- 查询列表 -->
+	<select id="findResourceTypeList" resultMap="resourceTypeResultMap"
+		parameterClass="com.lavapm.tenant.entity.ResourceTypePage">
+
+		<isNotEmpty property="opUmid">
+			SELECT * FROM UM_RESOURCE_TYPE WHERE
+			rid IN (1,2) UNION
+		</isNotEmpty>
+		select
+		*
+		from UM_RESOURCE_TYPE where 1=1
+		<isNotEmpty prepend="AND" property="resourceTypeCode">
+			resource_type_code =
+			#resourceTypeCode#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="resourceTypeName">
+			resource_type_name
+			=#resourceTypeName#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="status">
+			status=#status#
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="appList">
+			app_rid in
+			<iterate property="appList" open="(" close=")" conjunction="，">
+				#appList[]#
+			</iterate>
+		</isNotEmpty>
+		<isNotEmpty prepend="AND" property="appRid">
+			app_rid = #appRid#
+		</isNotEmpty>
+	</select>
+
+
+	<update id="updateByPrimaryKeySelectiveresource" parameterClass="com.lavapm.tenant.entity.Resource">
+		update UM_RESOURCE set
+		<isNotEmpty property="appRid">
+			app_rid=#appRid#,
+		</isNotEmpty>
+		<isNotEmpty property="resourceTypeRid">
+			resource_type_rid=#resourceTypeRid#,
+		</isNotEmpty>
+		<isNotEmpty property="parentResourceRid">
+			parent_resource_rid=#parentResourceRid#,
+		</isNotEmpty>
+		<isNotEmpty property="resourceCode">
+			resource_code=#resourceCode#,
+		</isNotEmpty>
+		<isNotEmpty property="resourceName">
+			resource_name=#resourceName#,
+		</isNotEmpty>
+		<isNotEmpty property="resourceDesc">
+			resource_desc=#resourceDesc#,
+		</isNotEmpty>
+		<isNotEmpty property="resourceOrder">
+			resource_order=#resourceOrder#,
+		</isNotEmpty>
+		<isNotEmpty property="resourceUri">
+			resource_uri=#resourceUri#,
+		</isNotEmpty>
+		<isNotEmpty property="isAction">
+			is_action=#isAction#,
+		</isNotEmpty>
+		<isNotEmpty property="action">
+			action=#action#,
+		</isNotEmpty>
+		<isNotEmpty property="extAttr1">
+			ext_attr1=#extAttr1#,
+		</isNotEmpty>
+		<isNotEmpty property="extAttr2">
+			ext_attr2=#extAttr2#,
+		</isNotEmpty>
+		<isNotEmpty property="extAttr3">
+			ext_attr3=#extAttr3#,
+		</isNotEmpty>
+		<isNotEmpty property="extAttr4">
+			ext_attr4=#extAttr4#,
+		</isNotEmpty>
+		<isNotEmpty property="extAttr5">
+			ext_attr5=#extAttr5#,
+		</isNotEmpty>
+		<isNotEmpty property="extAttr6">
+			ext_attr6=#extAttr6#,
+		</isNotEmpty>
+		<isNotEmpty property="createTime">
+			create_time=#createTime#,
+		</isNotEmpty>
+		<isNotEmpty property="updateTime">
+			update_time=#updateTime#,
+		</isNotEmpty>
+		<isNotEmpty property="opUmid">
+			op_umid=#opUmid#,
+		</isNotEmpty>
+		rid=#rid#
+		where rid=#rid#
+	</update>
+
+
+
+	<delete id="deleteByPrimaryKey" parameterClass="java.lang.Integer">
+		delete from
+		UM_RESOURCE where rid = #rid#
+	</delete>
+
+
+	<!-- 查询列表 -->
+	<select id="getProductManageAllByumid" parameterClass="java.util.HashMap"
+		resultMap="BaseResultUserNameMap">
+		select * from (
+		SELECT re.*,(app.app_name) AS
+		appName,ret.resource_type_name AS
+		resourceTypeName,ree.resource_name AS
+		parentResourceName
+		,ree.resource_code as parentId,UU.user_name as
+		user_name FROM
+		UM_RESOURCE AS re
+		LEFT JOIN UM_APP app ON
+		app.rid=re.app_rid
+		LEFT JOIN UM_RESOURCE_TYPE ret
+		ON
+		re.resource_type_rid=ret.rid
+		LEFT JOIN UM_RESOURCE ree ON
+		ree.rid=re.parent_resource_rid
+		LEFT JOIN UM_USER UU on UU.umid=
+		re.op_umid
+		WHERE
+		re.rid IN
+		(SELECT DISTINCT resource_rid FROM
+		UM_ROLE_RESOURCE AS tempc
+		LEFT JOIN UM_RESOURCE tempr ON
+		tempr.rid=tempc.resource_rid
+		WHERE tempc.role_rid IN (
+		SELECT
+		uru.role_rid FROM UM_ROLE_USER uru INNER JOIN UM_ROLE ur on
+		uru.role_rid=ur.rid WHERE uru.user_rid=#umid# and ur.status=0) AND
+		tempr.resource_type_rid IN
+		(SELECT rid FROM UM_RESOURCE_TYPE WHERE
+		resource_type_code ='product_list')
+
+		)
+		UNION
+		SELECT re.*,(app.app_name) AS
+		appName,ret.resource_type_name AS
+		resourceTypeName,ree.resource_name AS
+		parentResourceName
+		,ree.resource_code as parentId ,UU.user_name as
+		user_name FROM
+		V_COMMON_MENU AS re
+		LEFT JOIN UM_APP app ON
+		app.rid=re.app_rid
+		LEFT JOIN UM_RESOURCE_TYPE ret ON
+		re.resource_type_rid=ret.rid
+		LEFT JOIN UM_RESOURCE ree ON
+		ree.rid=re.parent_resource_rid
+		LEFT JOIN UM_USER UU on UU.umid=
+		re.op_umid
+		where
+		re.app_rid IN
+		(SELECT rid FROM UM_APP WHERE
+		resource_type_code='product_list')
+
+		) AS result
+		where
+		result.ext_attr3!='' ORDER BY result.parent_resource_rid
+
+	</select>
+
+	<select id="getProductManageAll" parameterClass="java.util.HashMap"
+		resultMap="BaseResultUserNameMap">
+		SELECT re.*,(app.app_name) AS appName,aa.ca_name as
+		companyname,ret.resource_type_name AS
+		resourceTypeName,ree.resource_name AS parentResourceName,UU.user_name
+		as user_name
+		FROM UM_RESOURCE AS re
+		LEFT JOIN UM_APP app ON
+		app.rid=re.app_rid
+		LEFT JOIN
+		UM_RESOURCE_TYPE ret ON
+		re.resource_type_rid=ret.rid
+		LEFT JOIN
+		UM_RESOURCE ree ON
+		ree.rid=re.parent_resource_rid
+		LEFT JOIN UM_TENANT
+		as aa ON
+		re.ext_attr5=aa.rid
+		LEFT JOIN UM_USER UU on UU.umid= re.op_umid
+		where
+		re.parent_resource_rid >
+		0 and re.ext_attr3 is not null and
+		re.ext_attr3 != '' and re.ext_attr3
+		!= 'hideNavMenu' and re.ext_attr4
+		is not null and re.ext_attr4 != ''
+		and re.ext_attr5 = #tenantId#
+		order
+		by re.parent_resource_rid
+
+	</select>
+
+	<select id="getProductManageAllTree" parameterClass="java.util.HashMap"
+		resultMap="BaseResultMap">
+		SELECT re.*,(app.app_name) AS appName,aa.companyname as
+		companyname,ret.resource_type_name AS
+		resourceTypeName,ree.resource_name AS parentResourceName
+		FROM
+		UM_RESOURCE AS re
+		LEFT JOIN UM_APP app ON app.rid=re.app_rid
+		LEFT JOIN
+		UM_RESOURCE_TYPE ret ON re.resource_type_rid=ret.rid
+		LEFT JOIN
+		UM_RESOURCE ree ON ree.rid=re.parent_resource_rid
+		LEFT JOIN
+		enterprise.developer as aa ON re.ext_attr5=aa.developerid
+		where
+		re.parent_resource_rid > 0 and re.ext_attr3 is not null and
+		re.ext_attr3 != '' and re.ext_attr3 != 'hideNavMenu' and re.ext_attr4
+		is not null and re.ext_attr4 != ''
+		and re.ext_attr5 = #tenantId# or
+		(re.parent_resource_rid=0 and
+		re.resource_code='productlist')
+		order by
+		re.parent_resource_rid
+
+	</select>
+
+	<select id="getResourceType" parameterClass="java.util.HashMap"
+		resultClass="String">
+		SELECT rid from UM_RESOURCE_TYPE where
+		resource_type_code!='product_list'
+	</select>
+
+	<select id="getProductResourceType" parameterClass="java.util.HashMap"
+		resultClass="String">
+		SELECT rid from UM_RESOURCE_TYPE where
+		resource_type_code='product_list'
+	</select>
+
+	<select id="getUserResourceType" parameterClass="java.util.HashMap"
+		resultClass="String">
+		SELECT rid from UM_RESOURCE_TYPE where
+		resource_type_code='MENU' and and resource_type_code='BUTTON'
+	</select>
+
+
+
+</sqlMap>

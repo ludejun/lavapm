@@ -1,0 +1,75 @@
+<div class="toolbarH">
+	<div class="btn-group fl btn-sref " ng-model="redrectSummaryRadio" bs-radio-group>
+		<label class="btn btn-sref btn-sref-none"> <input type="radio" class="btn btn-default" value="1">
+			<a href="javascript:;">产品管理</a>
+		</label>
+	</div>
+</div>
+
+
+<div data-td-panel panel-title="产品列表">
+
+	<div>
+		<div class="panel-title-button">
+			<label >
+			    <input type="text"  style="border-radius: 11px;border: solid 1px #ccc;padding-left: 13px;padding-top: 1px;height: 25px;width: 180px;margin-top: -3px;margin-right: 10px" ng-model="titleFilter" ng-change="windowiFrameHeight()" placeholder="请输入关键字" onfocus="placeholder=''" onblur="placeholder='请输入关键字'"   class="input">
+			</label>
+		</div>
+	</div>
+ 	<div class="toolbar pb-10 pt-10">
+	 	<div class="btn-group btn-group-sm" ng-model="todaySummaryRadio.radio" bs-radio-group>
+			<!-- <label class="btn btn-default "><input type="radio" class="btn btn-default" value="1" ng-click="changeTopTable('1')"> 新增</label> -->
+		    <div type="button"  style="color: #FFF;background: #5CC571;padding: 5px 10px;border-radius: 28px;"	data-template="js/app/module/nativepage/productmanage/template/productmanageDialog.html"
+				bs-modal="modal" data-backdrop="false" class="btn btn-default btn-use" ng-click="askSve()" style="color: #FFF;padding: 10px 20px;border-radius: 28px;">
+					新&nbsp&nbsp增
+				</div>
+		</div>
+	</div>
+	<div class="empty-box-table-panel" ng-show="tableLoading">
+		<div class="empty-box-table-bg"></div>
+		<div class="empty-box-table"></div>
+	</div> 
+	<div loading-container="tableParams.settings().$loading">
+		
+		<table ng-table="tableDatas" class="table ng-table-responsive table-hover">
+			<tr ng-repeat="rule in $data|filter:titleFilter" align="center"  class="wd-p-25">
+				<td data-title="'产品名称'"  style='word-wrap: break-word;word-break: break-all;width:18%;'  align="center">
+					{{rule.resourceName}}
+				</td>
+	            <td data-title="'APPKEY'" align="center" style='word-wrap: break-word;word-break: break-all;width: 26%;'> 
+	            	{{rule.extAttr3}}
+				</td>
+				<td data-title="'操作人'" align="center" style='word-wrap: break-word;word-break: break-all;width:10%;'> 
+	            	{{rule.userName}}
+				</td>
+				<td data-title="'创建时间'"
+					style='word-wrap: break-word; word-break: break-all;width:9%;'>
+					{{rule.createTime}}</td>
+				<td data-title="'数据补偿策略'"
+					style='word-wrap: break-word; word-break: break-all;width:13%;'>
+					  <span ng-if="rule.extAttr4=='0'">
+							补偿至数据发生时间
+		              </span>
+				      <span ng-if="rule.extAttr4=='1'">
+							补偿至数据收集时间
+		              </span>
+			    </td>
+				<td data-title="'产品描述'"
+					style='word-wrap: break-word; word-break: break-all;width:16%;'>
+					{{rule.resourceDesc}}
+					</td>
+	            <td data-title="'操作'"  align="center" class="wd-p-10" style='width:8%;'>
+	               <a
+					ng-click="askUserGroupInfo(rule)"
+					data-template="js/app/module/nativepage/productmanage/template/productmanageDialog.html"
+					bs-modal="modal" data-backdrop="false">修改</a> <span><a
+						ng-click="stopEvent(rule)">删除</a></span>
+		        </td>
+	       	</tr>
+	    </table>
+	</div>
+</div>
+
+
+	    
+

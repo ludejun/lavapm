@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+            http://www.springframework.org/schema/context  
+            http://www.springframework.org/schema/context/spring-context-3.0.xsd  
+            http://www.springframework.org/schema/tx  
+            http://www.springframework.org/schema/tx/spring-tx-3.0.xsd  
+            http://www.springframework.org/schema/jdbc  
+            http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+            http://www.springframework.org/schema/task 
+            http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+	<bean id="sysConfig" class="com.enterprise.properties.ExtendPropertiesFactoryBean">
+		<property name="appCode" value="tenant" />
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:sysConfig.properties</value>
+				<value>file:///C:\Users\wangj\Documents\tenant\sysConfig.properties
+				</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="propertyConfigurer"
+		class="com.enterprise.properties.ExtendedPropertyPlaceholderConfigurer">
+		<property name="appCode" value="tenant" />
+		<property name="ignoreResourceNotFound" value="true" />
+		<property name="locations">
+			<list>
+				<value>classpath:sysConfig.properties</value>
+				<value>file:///C:\Users\wangj\Documents\tenant\sysConfig.properties
+				</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean class="com.lavapm.tenant.tool.SpringContextUtil" />
+	<bean id="enterpriseDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="${td.olap.enterprise.jdbc.enterprise.driverClassName}" />
+		<property name="url" value="${td.olap.enterprise.jdbc.enterprise.url}" />
+		<property name="username"
+			value="${td.olap.enterprise.jdbc.enterprise.username}" />
+		<property name="password"
+			value="${td.olap.enterprise.jdbc.enterprise.password}" />
+		<property name="initialSize"
+			value="${td.olap.enterprise.jdbc.enterprise.initialSize}"></property>
+		<property name="maxActive"
+			value="${td.olap.enterprise.jdbc.enterprise.maxActive}"></property>
+		<property name="maxIdle"
+			value="${td.olap.enterprise.jdbc.enterprise.maxIdle}"></property>
+		<property name="minIdle"
+			value="${td.olap.enterprise.jdbc.enterprise.minIdle}"></property>
+		<property name="testOnBorrow"
+			value="${td.olap.enterprise.jdbc.enterprise.testOnBorrow}"></property>
+		<property name="validationQuery"
+			value="${td.olap.enterprise.jdbc.enterprise.validationQuery}"></property>
+	</bean>
+
+	<bean id="tenantDataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName"
+			value="${td.olap.tenant.jdbc.enterprise.driverClassName}" />
+		<property name="url" value="${td.olap.tenant.jdbc.enterprise.url}" />
+		<property name="username" value="${td.olap.tenant.jdbc.enterprise.username}" />
+		<property name="password" value="${td.olap.tenant.jdbc.enterprise.password}" />
+		<property name="initialSize"
+			value="${td.olap.tenant.jdbc.enterprise.initialSize}"></property>
+		<property name="maxActive" value="${td.olap.tenant.jdbc.enterprise.maxActive}"></property>
+		<property name="maxIdle" value="${td.olap.tenant.jdbc.enterprise.maxIdle}"></property>
+		<property name="minIdle" value="${td.olap.tenant.jdbc.enterprise.minIdle}"></property>
+		<property name="testOnBorrow"
+			value="${td.olap.tenant.jdbc.enterprise.testOnBorrow}"></property>
+		<property name="validationQuery"
+			value="${td.olap.tenant.jdbc.enterprise.validationQuery}"></property>
+	</bean>
+
+	<bean id="sqlEnterpriseMapClient " class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="enterpriseDataSource" />
+		<property name="configLocation"
+			value="classpath:com/lavapm/tenant/datamap/SQLMappconfig.xml" />
+	</bean>
+
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="tenantDataSource" />
+		<property name="configLocation"
+			value="classpath:com/lavapm/tenant/um/SQLMappconfig.xml" />
+	</bean>
+
+
+	<!-- <bean class="com.talkingdatainfo.db.DataSource"> <property name="sqlEnterpriseMapClient" 
+		ref="sqlEnterpriseMapClient"></property> </bean> -->
+	<!-- 使用annotation注解方式配置事务 -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<!-- Spring 自动扫描包 -->
+	<!-- <context:component-scan base-package="com.td.query.report" />
+	<context:component-scan base-package="com.td.query.service" />
+	<context:component-scan base-package="com.td.query.dao" /> -->
+
+	<context:component-scan base-package="com.lavapm.tenant.control" />
+	<context:component-scan base-package="com.lavapm.tenant.dao" />
+	<context:component-scan base-package="com.lavapm.tenant.servlet" />
+	<context:annotation-config />
+
+
+
+
+</beans>

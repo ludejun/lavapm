@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+   <resultMap id="appResultMap" class="com.lavapm.tenant.entity.App" >
+	<result column="rid" property="rid"/>
+	<result column="app_code" property="appCode"/>
+	<result column="app_name" property="appName"/>
+	<result column="app_desc" property="appDesc"/>
+	<result column="app_token" property="appToken"/>
+	<result column="app_role_prefix" property="appRolePrefix"/>
+	<result column="ext_attr1" property="extAttr1"/>
+	<result column="ext_attr2" property="extAttr2"/>
+	<result column="ext_attr3" property="extAttr3"/>
+	<result column="status" property="status"/>
+	<result column="create_time" property="createTime"/>
+	<result column="update_time" property="updateTime"/>
+	<result column="op_umid" property="opUmid"/>
+  </resultMap>
+
+	
+	  <select id="getApp" resultMap="appResultMap"  parameterClass="Object">
+		  SELECT *  FROM UM_APP  
+		      <isNotEmpty prepend="AND" property ="rid">
+        		 rid =  #rid#
+			  </isNotEmpty>
+			   <isNotEmpty prepend="AND" property ="appCode">
+		         app_code like concat('%',#appCode#,'%') 
+				</isNotEmpty>
+			    <isNotEmpty prepend="AND" property ="appName">
+		       	 app_name like concat('%',#appName#,'%') 
+			  	</isNotEmpty>
+			     <isNotEmpty prepend="AND" property ="appDesc">
+		         	app_desc =  #appDesc#
+			  	 </isNotEmpty>
+			  	<isNotEmpty prepend="AND" property ="appToken">
+		          app_token =  #appToken#
+		        </isNotEmpty>
+				<isNotEmpty prepend="AND" property ="opUmid">
+		        and op_umid =  #opUmid#
+			    </isNotEmpty>
+			   <isNotEmpty prepend="AND" property ="umid">
+		        rid IN
+				(SELECT app_rid FROM UM_ROLE WHERE rid IN (SELECT role_rid FROM UM_ROLE_USER WHERE user_rid=#umid#))
+			  </isNotEmpty>
+	</select>
+	 <select id="getAppAdminByUmid" resultMap="appResultMap"  parameterClass="java.util.HashMap">
+		select a.* from UM_APP a where a.app_code= 'report' and a.status=0;
+  	</select>
+  	
+ 
+ 
+</sqlMap>

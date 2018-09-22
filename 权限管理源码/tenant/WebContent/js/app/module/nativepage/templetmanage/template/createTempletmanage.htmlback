@@ -1,0 +1,134 @@
+<!-- 	日期+筛选 -->
+<div class="toolbarH">
+	<div class="btn-group fl btn-sref" ng-model="redrectSummaryRadio" bs-radio-group>
+		<label class="btn btn-sref btn-sref-none"> <input type="radio" class="btn btn-default" value="1">
+			<a href="javascript:;">权限模板管理</a>
+		</label>
+	</div>
+</div>
+<div ng-if="templet.returnAddress!='true'"class="go-back-margin">
+<a title="返回上一页"  data-ui-sref="nativepage/templetmanage" href="javascript:;" class="ng-scope"><img ng-src="images/go-back.png" class="fl ml-10" style="height:23px;margin-top:-1px;" src="images/go-back.png"><font class="fz14 ml-5">返回列表</font></a>
+</div>
+<div ng-if="templet.returnAddress=='true'"class="go-back-margin">
+<a title="返回 权限配置"  data-ui-sref="nativepage/usermanage" href="javascript:;" class="ng-scope"><img ng-src="images/go-back.png" class="fl ml-10" style="height:23px;margin-top:-1px;" src="images/go-back.png"><font class="fz14 ml-5">返回权限配置</font></a>
+</div>
+
+<div  data-td-panel panel-title="{{title}}">
+      		<div class="content_creat" style="border-bottom:0">
+                  	 权限模板名称：<input ng-if="templet.type=='0'||title=='创建权限模板'" type="text" class="form-control" ng-model="templet.t_name" style="height: 30px;width: 300px ;display: inline;"  id="proname" name="proname" maxlength="50"/>
+                  	 		  <input ng-if="templet.type!='0'&&title!='创建权限模板'" type="text" class="form-control" ng-model="templet.t_name" style="height: 30px;width: 300px ;display: inline;"  id="proname" name="proname" maxlength="50" readonly/>
+            </div>
+            <div class="content_creat" style="border-bottom:0">
+                  	 权限模板描述：<textarea   class="form-control" ng-model="templet.t_desc"  style="width: 300px ;display: inline;" class="form-control" rows="3" cols="20" maxlength="50">
+						</textarea>
+            </div>
+            <div class="content_creat" style="height:120px;border-bottom: 1px solid #e5e5e5;" >
+                <span>应用列表:</span>
+               <ul class="nav-ul" id="nav-bar">
+               <div ng-repeat="appdata in authAppList">
+                <li  id="{{appdata.appCode}}" ng-click="switchApp(appdata);"   style="background: #464C5C;height: 66px;width: 66px;float: left;margin-left: 17px;">
+                 <a ng-click="switchPage(appdata.rid)">
+                 <div class="nav-img">
+                 <i class="icons-nav icon-nav-{{appdata.appCode}}" style="margin-top: 12px;height: 31px;"></i>
+                 </div>
+                 <div class="nav-name" style="color: #FFF;margin-top: 2px;">{{appdata.extAttr1}}</div>
+                 </a>
+                 </li>
+                 <img id="{{appdata.appCode}}_img" src="images/common/templetu69.png" style="    width: 28px;height: 12px;float: left;margin-top: 71px;margin-left: -47px;display:none;">
+                 </div>
+                </ul>
+                 
+                <!-- <div class="con-left">
+					<ul class="nav-left" id="nav-bar"><li class="active"><a href="#report"><div class="nav-img"><i class="icons-nav icon-nav-report"></i></div><div class="nav-name">数据分析</div></a></li><li><a href="#DMP"><div class="nav-img"><i class="icons-nav icon-nav-DMP"></i></div><div class="nav-name">数据管理</div></a></li><li><a href="#lesseeum"><div class="nav-img"><i class="icons-nav icon-nav-lesseeum"></i></div><div class="nav-name">控制台</div></a></li></ul>
+				</div> -->
+            </div> 
+             <div ng-show="pageShow&&produceList.children.length>0" class="xytext Conditiontxt2 " style="padding:0px; background:#fff;font-size:12px;border-bottom: 1px solid #e5e5e5; font-weight:normal;">
+			             <div style="margin-top:10px;">
+			             <ul >
+			               <li > 
+			                   <input type="checkbox" style="margin-top: -3px;" ng-change="checkselectUninfoproductroot(produceList,0)" ng-model="produceList.checked"><label style="margin-left: 2px;">产品权限</label>
+			               </li>
+			            </ul>
+					  </div>
+			             <span ng-repeat="data in produceList.children" class="product-span">
+			               <span  style="width: 200px;display: inline-block;"> 
+			                   <input type="checkbox" style="margin-top: -3px;" ng-change="checkselectUninfoproduct(data,0)" ng-model="data.checked"><label style="margin-left: 2px;">{{data.resourceName}}</label>
+			               </span>
+			            </span>
+			   </div>
+				
+				<div  class="xytext Conditiontxt2" style="padding:0px; background:#fff;font-size:12px; font-weight:normal;">
+					     <div style="margin-top:5px;margin-left: 30px;">
+				             <ul>
+				             <span  ng-repeat="children in resourcesList">
+				               <li><input type="checkbox" style="margin-top: -3px;margin-left: -29px;" ng-change="checkselectUninfo(pageShow,children,0)" ng-model="children.checked"><label style="margin-left: 2px;">{{children.resourceTypeName}}</label></li>
+				                <span ng-repeat="data in children.children" ng-show="children.resourceTypeCode!='MENU'&&children.resourceTypeCode!='Project'">
+				                <li  ng-show="$index+1!=children.children.length" style="width: 140px;margin-right: 20px;float: left;"> 
+				                    <div style="height: 10px;margin-top: 17px;">
+				                    <div style="margin-left: 2px;float: left; margin-top: -9px;">
+				                    <input type="checkbox" style="margin-top: -3px;" ng-change="checkselectUninfo(pageShow,children,data,0)" ng-model="data.checked">
+					                 <label style="margin-left: 2px;">{{data.resourceName}}</label>
+					                 <label style="    margin-left: 35px;"></label>
+				                    </div>
+				                    </div>
+				                    
+				               </li>
+				                <li  ng-show="$index+1==children.children.length" style=""> 
+				                    <div style="height: 10px;margin-top: 17px;">
+				                    <div style="margin-left: 2px;float: left; margin-top: -9px;">
+				                    <input type="checkbox" style="margin-top: -3px;" ng-change="checkselectUninfo(pageShow,children,data,0)" ng-model="data.checked">
+					                 <label style="margin-left: 2px;">{{data.resourceName}}</label>
+					                 <label style="    margin-left: 35px;"></label>
+				                    </div>
+				                    </div>
+				                    
+				               </li>
+				               </span>
+				               <li ng-repeat="data in children.children" ng-show="children.resourceTypeCode=='MENU'||children.resourceTypeCode=='Project'"> 
+				                    <div style="height: 10px;margin-top: 17px;">
+				                    <div style="margin-left: 2px;float: left; margin-top: -9px;">
+				                    <input type="checkbox" style="margin-top: -3px;" ng-change="checkselectUninfo(pageShow,children,data,0)" ng-model="data.checked">
+				                 <label style="margin-left: 2px;">{{data.resourceName}}</label>
+				                 <label style="    margin-left: 35px;"></label>
+				                    </div>
+				                     <div style="margin-left: 2px;" ng-show="children.resourceTypeCode=='MENU'||children.resourceTypeCode=='Project'">
+				                     <span><HR style="border:6 groove #ff0033;margin-top: 0px;margin-bottom: 0px;"  SIZE=6></hr></span></div>
+				                     </div>
+				                    <div style="margin-top:5px;margin-left: 30px;margin-bottom: 5px;">
+							             <ul>
+							              <span ng-repeat="data1 in data.children">
+							                <span   ng-show="!pageShow"  style="width: 140px;display: inline-block;"> 
+							                   <input type="checkbox" style="margin-top: -3px;" ng-change="checkselectUninfo(pageShow,children,data,data1,0)" ng-model="data1.checked"><label style="margin-left: 2px;">{{data1.resourceName}}</label>
+							               </span>
+							               <li  ng-show="pageShow"> 
+							                   <input type="checkbox" style="margin-top: -3px;" ng-change="checkselectUninfo(pageShow,children,data,data1,0)" ng-model="data1.checked"><label style="margin-left: 2px;">{{data1.resourceName}}</label>
+							                    
+							                     <div style="margin-top:5px;margin-left: 30px;margin-bottom: 5px;">
+									               <span ng-repeat="data2 in data1.children" style="width: 140px;display: inline-block;" > 
+									                   <input type="checkbox" style="margin-top: -3px;" ng-change="checkselectUninfo(pageShow,children,data,data1,data2,0)" ng-model="data2.checked"><label style="margin-left: 2px;">{{data2.resourceName}}</label></input>
+									               </span>
+					     						</div>
+							               </li>
+							               </span>
+							            </ul>
+							               
+					     			</div>
+				               </li>
+				               </span>
+				            </ul>
+					     </div>
+			            
+					  </div>
+					 <!--  <div ng-show="productpageflg||pageflg" class="xytext Conditiontxt2" style="padding:0px; background:#fff;font-size:12px; font-weight:normal;height:50px">
+					    <span>您目前没有配置任何权限</span>
+					     <a ng-click="showconfigure();" href="javascript:void(0);" class="">
+                   				开始配置
+               			 </a>
+					   
+					  </div> -->
+           <div ng-if="!onupdate"  class="operate_confirm" style="clear: none;">
+               <a ng-click="saveUserSegmentation();" href="javascript:void(0);" class="btn  btn-use">
+                   <font>保&nbsp;&nbsp;&nbsp;存</font>
+               </a>
+           </div>
+            </div>

@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+
+	<resultMap id="roleMapExtend" class="com.lavapm.tenant.entity.Role">
+		<result column="rid" property="rid" />
+		<result column="app_rid" property="appRid" />
+		<result column="role_code" property="roleCode" />
+		<result column="role_name" property="roleName" />
+		<result column="role_desc" property="roleDesc" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="op_umid" property="opUmid" />
+		<!-- <result column="is_grantable" property="isGrantable"/> -->
+		<!-- <result column="granted_by" property="userRid"/> -->
+		<!-- <result column="app_code" property="appCode"/> <result column="app_name" 
+			property="appName"/> -->
+	</resultMap>
+
+	<resultMap id="BaseResultMapExtend" class="com.lavapm.tenant.entity.RoleResource">
+		<result column="rid" property="rid" />
+		<result column="role_rid" property="roleRid" />
+		<result column="resource_rid" property="resourceRid" />
+		<result column="create_time" property="createTime" />
+		<result column="op_umid" property="opUmid" />
+		<!-- <result column="parent_resource_rid" property="parentResourceRid"/> 
+			<result column="resource_name" property="resourceName"/> -->
+	</resultMap>
+
+	<resultMap id="RoleUserResultMap" class="com.lavapm.tenant.entity.RoleUser">
+		<result column="rid" property="rid" />
+		<result column="role_rid" property="roleRid" />
+		<result column="user_rid" property="userRid" />
+		<result column="is_grantable" property="isGrantable" />
+		<result column="granted_by" property="grantedBy" />
+		<result column="create_time" property="createTime" />
+	</resultMap>
+
+
+	<select id="getroleallbydepartmentId" resultMap="roleMapExtend"
+		parameterClass="com.lavapm.tenant.entity.Role">
+		select * from UM_ROLE where tenantId=#tenantId#
+	</select>
+	<insert id="insertRole" parameterClass="com.lavapm.tenant.entity.Role">
+		insert into
+		UM_ROLE(app_rid,role_code,role_name,role_desc,create_time,update_time,op_umid,tenantId)
+		values(#appRid#,#roleCode#,#roleName#,#roleDesc#,now(),now(),#opUmid#,#tenantId#)
+		<selectKey resultClass="java.lang.Integer" keyProperty="rid">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<update id="updateByRolePrimaryKey" parameterClass="com.lavapm.tenant.entity.Role">
+		update
+		UM_ROLE set
+		app_rid=#appRid#,role_code=#roleCode#,role_name=#roleName#,role_desc=#roleDesc#,create_time=now(),update_time=now(),op_umid=#opUmid#
+		where rid=#rid#
+	</update>
+
+	<select id="hasAppRid" resultClass="java.lang.Integer"
+		parameterClass="java.util.HashMap">
+		select count(*) from (
+		select role.app_rid from UM_ROLE
+		role where role.rid in (
+		SELECT roleUser.role_rid from UM_ROLE_USER
+		roleUser where
+		roleUser.user_rid=#umid#
+		)
+		) tmp where tmp.app_rid =
+		#appRid#
+	</select>
+
+	<select id="queryNotRidRoleCodeCount" parameterClass="com.lavapm.tenant.entity.Role"
+		resultClass="java.lang.Integer">
+		select count(1) from UM_ROLE
+		where rid != #rid#
+		and
+		role_code=#roleCode#
+		and app_rid=#appRid#
+	</select>
+	<!-- 角色 列表总数 -->
+	<select id="queryRoleByCount" resultClass="java.lang.Integer"
+		parameterClass="com.lavapm.tenant.entity.Role">
+		select count(1) from UM_ROLE where
+		role_code=#roleCode#
+		and app_rid=#appRid#
+	</select>
+
+	<delete id="deleteBySelective" parameterClass="java.util.HashMap">
+		delete from UM_ROLE_RESOURCE where role_rid = #roleRid#
+		and
+		resource_rid in (select r.rid from UM_RESOURCE r where 1=1
+		<isNotEmpty prepend="AND" property="appRid">
+			app_rid = #appRid#
+		</isNotEmpty>
+		<!-- <isNotEmpty prepend="AND" property ="resourceTypeRid"> resource_type_rid 
+			= #resourceTypeRid# </isNotEmpty> -->
+		)
+	</delete>
+
+	<insert id="insertresourceRole" parameterClass="com.lavapm.tenant.entity.RoleResource">
+		insert into
+		UM_ROLE_RESOURCE(rid,role_rid,resource_rid,create_time,op_umid)
+		values(#rid#,#roleRid#,#resourceRid#,now(),#opUmid#)
+		<selectKey resultClass="java.lang.Integer" keyProperty="rid">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<!-- 获取某个角色下的资源 按应用系统，资源类别查询 -->
+	<select id="getRoleResourceTree" resultMap="BaseResultMapExtend"
+		parameterClass="java.util.HashMap">
+		select
+		rr.*,
+		r.parent_resource_rid,
+		r.resource_name
+		from UM_ROLE_RESOURCE
+		rr
+		inner join UM_RESOURCE r on rr.resource_rid = r.rid
+		INNER JOIN
+		UM_ROLE ur ON rr.role_rid=ur.rid
+		where role_rid in ($rids$)
+		<isNotEmpty prepend="AND" property="appRid">
+			ur.app_rid = #appRid#
+		</isNotEmpty>
+		<!-- <isNotEmpty prepend="AND" property ="resourceTypeRid"> r.resource_type_rid 
+			= #resourceTypeRid# </isNotEmpty> -->
+
+	</select>
+
+	<delete id="deleteRoleResourceTree" parameterClass="com.lavapm.tenant.entity.Resource">
+		delete from
+		UM_ROLE_RESOURCE
+		where role_rid in ($rids$)
+	</delete>
+
+	<delete id="deleteRoleUserByRids" parameterClass="com.lavapm.tenant.entity.Resource">
+		delete from
+		UM_ROLE_USER
+		where role_rid in ($rids$)
+	</delete>
+
+	<delete id="deleteRoleByPrimaryKey" parameterClass="java.lang.Integer">
+		delete from
+		UM_ROLE
+		where rid = #rid#
+	</delete>
+
+
+	<!-- 根据id查询 角色 -->
+	<select id="selectByPrimaryKey1" resultMap="roleMapExtend"
+		parameterClass="java.lang.Integer">
+		select *
+		from UM_ROLE where rid = #rid#
+	</select>
+
+	<select id="getRoleUser" resultMap="RoleUserResultMap"
+		parameterClass="java.util.HashMap">
+		select * from UM_ROLE_USER where role_rid in($rids$)
+		GROUP BY user_rid
+	</select>
+
+	<select id="getRolebyUmid" resultMap="roleMapExtend"
+		parameterClass="java.util.HashMap">
+		SELECT * FROM UM_ROLE WHERE rid IN (SELECT role_rid
+		FROM UM_ROLE_USER
+		WHERE user_rid=#umid#) and app_rid=#appRid#
+	</select>
+
+	<select id="getRolebyUmidAdmin" resultMap="roleMapExtend"
+		parameterClass="java.util.HashMap">
+		SELECT * FROM UM_ROLE WHERE app_rid=#appRid# and
+		tenantId=#tenantId# and (type=2 or type=3 or rid IN (SELECT role_rid
+		FROM UM_ROLE_USER
+		WHERE user_rid=#umid#) )
+	</select>
+
+	<select id="isAdmin" resultMap="RoleUserResultMap"
+		parameterClass="java.util.HashMap">
+		select DISTINCT uru.* from UM_ROLE_USER uru
+		INNER JOIN
+		UM_ROLE ur on uru.role_rid=ur.rid
+		where uru.user_rid=#opUmid# and
+		ur.type=2
+	</select>
+
+	<select id="getRolebyAppRidRoleRids" resultMap="roleMapExtend"
+		parameterClass="java.util.HashMap">
+		SELECT DISTINCT * FROM UM_ROLE WHERE app_rid=#appRid#
+		and rid in ($rids$)
+	</select>
+
+
+	<delete id="deleteRoleByAppid" parameterClass="java.util.HashMap">
+		delete from
+		UM_ROLE
+		where app_rid = #appRid# and type=0 and rid in ($rids$)
+	</delete>
+
+	<delete id="deleteRoleUserByAppid" parameterClass="java.util.HashMap">
+		delete from
+		UM_ROLE_USER role_rid in(select rid from UM_ROLE
+		where app_rid =
+		#appRid# and type=0 and rid in ($rids$) )
+	</delete>
+
+	<delete id="deleteTempletmanageByAppid" parameterClass="java.lang.Integer">
+		delete
+		from UM_TEMPLETMANAGE where rid in (select rid from UM_ROLE
+		where
+		type=0 and rid=#rid# )
+	</delete>
+
+
+
+
+</sqlMap>

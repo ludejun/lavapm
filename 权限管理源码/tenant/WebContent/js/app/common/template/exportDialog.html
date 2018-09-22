@@ -1,0 +1,24 @@
+<div class="modal in" tabindex="-1" role="dialog"
+	aria-labelledby="myModalLabel" style="display: block;">
+	<div class="modal-dialog " role="document">
+		<div class="modal-content wd500">
+
+			<div class="modal-header ">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" ng-click="$hide()">
+					<span aria-hidden="true">×</span>
+				</button>
+				<div class="dialogHead">消息</div>
+			</div>
+			<div class="modal-body" style="min-height: 130px;padding: 0;">
+				<div class="pop-text alerts-text fl" style="width:25%;"></div>
+				<div class="text" >
+					导出任务创建成功，请稍后到<a id="dialog"
+						data-ui-sref="{{platformUrl}}/excelExport" ng-click="$hide();">分析工具-数据下载</a>页面下载您需要的execl附件。
+				</div>
+				<div class="btn-box"><a href="javascript:void(0)" ng-click="$hide();" class="btn btn-info btn-sm">确认</a></div>
+			</div>
+		</div>
+	</div>
+</div>
+

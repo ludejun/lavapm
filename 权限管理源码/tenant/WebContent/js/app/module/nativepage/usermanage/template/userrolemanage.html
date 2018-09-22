@@ -1,0 +1,66 @@
+<div class="toolbarH">
+	<div class="btn-group fl btn-sref " ng-model="redrectSummaryRadio" bs-radio-group>
+		<label class="btn btn-sref btn-sref-none"> <input type="radio" class="btn btn-default" value="1">
+			<a href="javascript:;">{{usermanage}}</a>
+		</label>
+	</div>
+</div>
+
+
+<div class="go-back-margin">
+<a title="返回用户列表"  data-ui-sref="nativepage/usermanage" href="javascript:;" class="ng-scope"><img ng-src="images/go-back.png" class="fl ml-10" style="height:23px;margin-top:-1px;" src="images/go-back.png"><font class="fz14 ml-5">返回列表</font></a>
+</div>
+
+<div  data-td-panel panel-title="">
+      		<div class="content_creat" >
+                  	 *姓名：<input type="text" class="form-control" ng-model="roluser.userName" style="height: 30px;width: 300px ;display: inline;"  id="proname" name="proname" readonly/>
+            </div>
+            <div class="content_creat" >
+                  	 *登录账号：<input type="text" class="form-control" ng-model="roluser.umid" style="height: 30px;width: 300px ;display: inline;"  id="proname" name="proname" readonly/>
+            </div>
+            <div class="content_creat" >
+                  	 *电子邮箱：<input type="text" class="form-control" ng-model="roluser.email" style="height: 30px;width: 300px ;display: inline;"  id="proname" name="proname" readonly/>
+            </div>
+            <div class="content_creat" >
+                  	 *职位：<input type="text" class="form-control" ng-model="roluser.title" style="height: 30px;width: 300px ;display: inline;"  id="proname" name="proname" readonly/>
+            </div>
+       <div style="height: 28px;"> 
+       <div style="margin-left: 10px;margin-top: 9px;">
+	       <a ng-click="askSve()" data-template="js/app/module/nativepage/usermanage/template/roleTempletDialog.html" bs-modal="modal" data-backdrop="false">
+			   +选择权限模板
+		    </a>
+	       <input type="text"  style="border-radius: 11px;border: solid 1px #ccc;padding-left: 13px;padding-top: 1px;height: 25px;width: 180px;float: right;margin-top: -3px;margin-right: 10px" ng-model="titleFilter" ng-change="windowiFrameHeight()" placeholder="请输入用户名" onfocus="placeholder=''" onblur="placeholder='请输入用户名'"   class="input">
+       </div>
+          
+       </div>
+     <div data-td-panel panel-title="">
+      
+	<div class="empty-box-table-panel" ng-show="tableRoleUserLoading">
+		<div class="empty-box-table-bg"></div>
+		<div class="empty-box-table"></div>
+	</div> 
+	<div loading-container="tableParams.settings().$loading">
+		<table ng-table="tableDatasRoleUser" class="table ng-table-responsive table-hover">
+			<tr ng-repeat="rule in $data" align="center"  class="wd-p-25">
+				<td data-title="'权限模板名称'"  style='word-wrap: break-word;word-break: break-all;width:20%;'  align="center">
+					{{rule.t_name}}
+				</td>
+	            <td data-title="'权限描述'" align="center" style='word-wrap: break-word;word-break: break-all;width: 20%;'> 
+	            	{{rule.t_desc}}
+				</td>
+	            <td data-title="'操作'"  align="center" class="wd-p-10" style='width:30%;'>
+					<a data-ui-sref="nativepage/createTempletmanage({tids:rule.tids,rids:rule.rids,tname:rule.t_name,tdesc:rule.t_desc,onupdate:true,returnAddress:true,umid:roluser.umid,userName:roluser.userName,email:roluser.email,title:roluser.title})" href="javascript:;">查看权限配置明细</a>
+					<a ng-click="stopRoleUser(rule)">禁用</a></span>
+		        </td>
+	       	</tr>
+	    </table>
+	</div>
+</div>
+					 
+           <!--  </div> -->
+            <div ng-if="!onupdate" class="operate_confirm" style="clear: none;"><a ng-click="saveUserSegmentation();" href="javascript:void(0);" class="btn  btn-use"><font>保&nbsp;&nbsp;&nbsp;存</font></a></div>
+  </div>
+
+
+
+

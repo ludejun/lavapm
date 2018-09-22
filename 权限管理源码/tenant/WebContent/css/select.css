@@ -1,0 +1,197 @@
+@charset "utf-8";
+
+input.userkeepinfo{
+	height: 22px  !important;
+    border: 1px solid #ccc !important;
+    border-radius: 20px !important;
+    padding: 0 8px !important;
+    margin-top: 5px !important;
+    font-size: 12px !important;
+    line-height: 22px !important;
+}
+.td-select{
+	position: relative;
+}
+.td-select img {
+  position: absolute;
+  right: 9px;
+  top: 5px;
+}
+.td-select li img {
+    position: relative;
+    left: 5px;
+    margin-right: 10px;
+    top: 0;
+}
+.td-select ul {
+	background: #fff;
+	border: 1px solid #dedede;
+	left: 0;
+	top: 26px;
+	max-height: 298px;
+	overflow: auto;
+	z-index: 100;
+    text-align: left;
+    padding-left: 5px;
+    overflow-x: hidden;
+    font-size: 12px;
+    position: absolute;
+    width: 100%
+}
+.td-select ul li{
+	line-height:32px;
+	border-bottom: solid 1px #eee;
+}
+.td-select ul li:hover {
+	cursor: pointer;
+	background: #f7f7fb;
+}
+.td-select input{
+	padding: 5px 10px 4px 5px;
+  	color: #666;
+	background: #f8f8f8;
+	background-color: #FFF !important;
+	height: 45px;
+	font-size: 12px;
+	border:0;
+	border-left: 1px solid #ccc;
+}
+.bottunDiv .td-select input {
+    border-radius: 5px;
+    padding-left:5px;
+	height: 32px;
+	line-height: 32px;
+	border: 0;
+	max-width: 150px;
+}
+
+.bottunDiv .td-select img{top:10px;}
+.td-select input:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+
+ .bottunDiv .td-select ul {
+    background: #fff;
+    border: 1px solid #dedede;
+    left: 0;
+    top: 38px;
+    max-height: 298px;
+    overflow: auto;
+    z-index: 99999;
+    text-align: left;
+    padding-left: 5px;
+    overflow-x: hidden;
+    font-size: 12px;
+    position: absolute;
+    width: 100%;
+}
+/** td-select-simple */
+div.td-select-simple{
+	position: relative;
+    background-color: #F7F9FB;
+    border: solid 1px #ccc;
+    margin-top: -4px;
+    height: 27px;
+    border-radius: 5px;
+}
+.td-select-simple input{
+    padding-left: 10px;
+    height: 25px;
+    font-size: 12px;
+    margin-top: 0px;
+    border: 0;
+    border-radius: 5px;
+    background-color: #F7F9FB;
+    max-width: 110px;
+    cursor: pointer;
+}
+.td-select-simple ul {
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	left: 0;
+	top: 27px;
+	max-height: 250px;
+	overflow: auto;
+	z-index: 100;
+    text-align: left;
+    overflow-x: hidden;
+    font-size: 12px;
+    position: absolute;
+    width: 100%;
+    margin-top: -1px;
+    
+}
+.td-select-simple ul li{
+	line-height:28px;
+    border-bottom: solid 1px #ddd;
+    padding-left: 5px;
+}
+.td-select-simple ul li:hover {
+	cursor: pointer;
+	color: #679fef;
+}
+.td-select-selected{
+	color: #679fef;
+}
+
+
+
+
+
+
+.td-select1{
+	position: relative;
+}
+.td-select1 img {
+  position: absolute;
+  right: 9px;
+  top: 5px;
+}
+.td-select1 li img {
+    position: relative;
+    left: 5px;
+    margin-right: 10px;
+    top: 0;
+}
+.td-select1 ul {
+	background: #fff;
+	border: 1px solid #dedede;
+	left: 0;
+	top: 26px;
+	max-height: 250px;
+	overflow: auto;
+	z-index: 100;
+    text-align: left;
+    padding-left: 5px;
+    overflow-x: hidden;
+    font-size: 12px;
+    position: absolute;
+    width: 100%
+}
+.td-select1 ul li{
+	line-height:28px;
+}
+.td-select1 ul li:hover {
+	cursor: pointer;
+	background: #f7f7fb;
+}
+.td-select1 input{
+	padding: 5px 32px 4px 5px;
+  	color: #666;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	background: #f8f8f8;
+	background-color: #f8f8f8 !important;
+	height: 37px;
+	font-size: 14px;
+}
+.bottunDiv .td-select1 input{height:22px;line-height:22px;padding:0px 32px 0px 5px;  margin-top: 8px;}
+.bottunDiv .td-select1 img{top:10px;}
+.td-select1 input:hover {
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}

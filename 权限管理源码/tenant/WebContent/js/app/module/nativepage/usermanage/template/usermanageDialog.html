@@ -1,0 +1,75 @@
+<div class="modal in" tabindex="99999" role="dialog"
+	aria-labelledby="myModalLabel" style="display: block;">
+	<div class="modal-dialog" role="document" style="width: 400px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" ng-click="$hide()">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h1 ng-if="isiu=='新增'"  class="xytitle">新增用户</h1>
+				<h1 ng-if="isiu=='修改'"  class="xytitle">修改用户</h1>
+			</div>
+			<div class="modal-body" style="color: #333;padding: 0px;padding-bottom: 10px;">
+				<form class="form-horizontal clrfix">
+				     <div class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 15px;margin: -5px;"><span class="required">*</span>姓名:</label>
+				        <div class="controls" style="    width: 250px;">
+							<input class="form-control" type="text"  ng-model="_user.userName"  style="width:250px;" maxlength="50"/>				    	</div>
+				    </div>
+				    <div class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 15px;margin: -5px;"><span class="required">*</span>登录账号:</label>
+				        <div class="controls" style="    width: 250px;">
+				        	<input ng-if="isiu=='新增'" class="form-control" type="text"  ng-model="_user.umid"  style="width:250px;" maxlength="50" />	
+							<input ng-if="isiu!='新增'" class="form-control" type="text"  ng-model="_user.umid"  style="width:250px;" maxlength="50" readonly/>				    	
+						</div>
+				    </div>
+				   <!--  <div class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 15px;margin: -5px;"><span class="required">*</span>电子邮箱:</label>
+				        <div class="controls" style="    width: 250px;">
+							<input class="form-control" type="text"  ng-model="_user.email"  style="width:250px;" maxlength="50"/>				    	</div>
+				    </div> -->
+				    <div class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 15px;margin: -5px;"><span class="required">*</span>职位:</label>
+				        <div class="controls" style="    width: 250px;">
+							<input class="form-control" type="text"  ng-model="_user.title"  style="width:250px;" maxlength="50"/>				    	</div>
+				    </div>
+				    <div class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 15px;margin: -5px;"><span class="required">*</span>手机:</label>
+				        <div class="controls" style="    width: 250px;">
+							<input class="form-control" type="text"  ng-model="_user.mobile"  style="width:250px;" maxlength="11"/>				    	</div>
+				    </div>
+				     <div class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 15px;margin: -5px;"><span class="required">*</span>性别:</label>
+				        <div class="controls" style="    width: 250px;">
+							<select ng-model="_user.gender" class="form-control" ng-options="genders.name for genders in genderList" style="height:32px;">
+							</select>					    	
+						</div>
+				    </div>
+				    <div class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 15px;margin: -5px;"><span class="required">*</span>状态:</label>
+				        <div class="controls" style="    width: 250px;">
+							<select ng-model="_user.status" class="form-control" ng-options="asc.name for asc in statusList" style="height:32px;">
+							</select>			    	
+						</div>
+				    </div>
+				    <div class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 15px;margin: -5px;"><span class="required">&nbsp;</span>备注:</label>
+				        <div class="controls" style="width: 250px;">
+				        <textarea  ng-model="_user.userDesc"  style="width:250px;" class="form-control" rows="3" cols="20" maxlength="200">
+						</textarea>
+				    	</div>
+				    </div>
+				   </form>
+				</div>
+			<div class="modal-footer">
+			<button type="button"  class="btn btn-primary" ng-click="submitCondition($hide);;">保存</button>
+				<button type="button" class="btn btn-default" ng-click="$hide();">取消</button>
+				
+			</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+</div>
+

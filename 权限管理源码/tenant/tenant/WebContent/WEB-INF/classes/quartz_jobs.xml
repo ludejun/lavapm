@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job-scheduling-data
+	xmlns="http://www.quartz-scheduler.org/xml/JobSchedulingData"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.quartz-scheduler.org/xml/JobSchedulingData http://www.quartz-scheduler.org/xml/job_scheduling_data_1_8.xsd"
+	version="1.8">
+
+	<pre-processing-commands>
+		<delete-triggers-in-group>*</delete-triggers-in-group>
+	</pre-processing-commands>
+
+	<processing-directives>
+		<overwrite-existing-data>true</overwrite-existing-data>
+		<ignore-duplicates>false</ignore-duplicates>
+	</processing-directives>
+
+	<schedule>
+		<job>
+			<name>MilepostJob</name>
+			<group>MilepostBatch</group>
+			<description>里程碑Job</description>
+			<job-class>com.lavapm.tenant.job.MilepostJob</job-class>
+			<volatility>false</volatility>
+			<durability>true</durability>
+			<recover>false</recover>
+		</job>
+		<trigger>
+			<cron>
+				<name>MilepostTrigger</name>
+				<group>MilepostBatch</group>
+				<job-name>MilepostJob</job-name>
+				<job-group>MilepostBatch</job-group>
+				<misfire-instruction>MISFIRE_INSTRUCTION_FIRE_ONCE_NOW</misfire-instruction>
+				<cron-expression>0 0 9 * * ?</cron-expression>
+			</cron>
+		</trigger>
+		<job>
+			<name>NoProductRemindJob</name>
+			<group>NoProductRemindBatch</group>
+			<description>注册一周后没有创建产品的邮件提醒</description>
+			<job-class>com.lavapm.tenant.job.NoProductRemindJob</job-class>
+			<volatility>false</volatility>
+			<durability>true</durability>
+			<recover>false</recover>
+		</job>
+		<trigger>
+			<cron>
+				<name>NoProductRemindTrigger</name>
+				<group>NoProductRemindBatch</group>
+				<job-name>NoProductRemindJob</job-name>
+				<job-group>NoProductRemindBatch</job-group>
+				<misfire-instruction>MISFIRE_INSTRUCTION_FIRE_ONCE_NOW</misfire-instruction>
+				<cron-expression>0 25 8 * * ?</cron-expression>
+			</cron>
+		</trigger>
+		
+		<job>
+			<name>NoDataRemindJob</name>
+			<group>NoDataRemindBatch</group>
+			<description>创建应用两周后没有数据的邮件提醒</description>
+			<job-class>com.lavapm.tenant.job.NoDataRemindJob</job-class>
+			<volatility>false</volatility>
+			<durability>true</durability>
+			<recover>false</recover>
+		</job>
+		<trigger>
+			<cron>
+				<name>NoDataRemindTrigger</name>
+				<group>NoDataRemindBatch</group>
+				<job-name>NoDataRemindJob</job-name>
+				<job-group>NoDataRemindBatch</job-group>
+				<misfire-instruction>MISFIRE_INSTRUCTION_FIRE_ONCE_NOW</misfire-instruction>
+				<cron-expression>0 35 8 * * ?</cron-expression>
+			</cron>
+		</trigger>
+		
+	</schedule>
+</job-scheduling-data>

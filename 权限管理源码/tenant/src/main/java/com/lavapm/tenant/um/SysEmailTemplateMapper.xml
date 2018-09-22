@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+	
+		<resultMap id="BaseResultMap" class="com.lavapm.enterprise.admin.entity.SysEmailTemplate" >
+		    <result column="id" property="id"  />
+		    <result column="code" property="code"  />
+		    <result column="systemcode" property="systemcode"  />
+		    <result column="title" property="title"  />
+		   <!--  <result column="systemName" property="systemName"  /> -->
+		    <result column="content" property="content"  />
+		    <result column="MTime" property="mtime"  />
+		    <result column="CTime" property="ctime" />
+	  </resultMap>
+	  <select id="getMailTemplateByCode" resultMap="BaseResultMap" parameterClass="java.lang.String" >
+	    select 
+	     *
+	    from SYS_EMAIL_TEMPLATE
+	    where code = #code#
+	  </select>
+	  
+	   <insert id="insertSysEmailSendJobInput"
+	parameterClass="com.lavapm.enterprise.admin.entity.SysEmailSendJobInput">
+	insert into SYS_EMAIL_SEND_JOB_INPUT (emailServerCode,
+	`to`,
+	title, content, cc,
+	status, bcc, retry,
+	maxRetry, createTime)
+	values
+	(#emailservercode#,#to#,
+	#title#, #content#, #cc#,
+	#status#, #bcc#,
+	#retry#,
+	#maxretry#, #createtime#)
+		 </insert>
+		 
+	
+</sqlMap>

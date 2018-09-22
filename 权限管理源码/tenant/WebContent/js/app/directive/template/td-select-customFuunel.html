@@ -1,0 +1,9 @@
+<span class="td-select">
+   	<input type="text" style="width: 209px;" readonly="readonly" ng-model="val" class="tdSelect input-search" ng-click="showSearching();" ng-change="onChange(val);">
+   	<i ng-click="showSearching();" class="glyphicon glyphicon-chevron-down" style="margin:0;margin-right: 20px;"></i>
+	<div style="display:none;background: #fff;width: 246px;height:40px;z-index: 1;border: 1px solid #dedede;padding-bottom: 5px;z-index: 100;" align="center" class="p-abs">
+		<input type="text" ng-model="sercheventname" placeholder="请输入漏斗名称" style="height: 24px;border-radius: 20px;padding:0 10px; background-color: white !important;margin-top: 5px;border: solid 1px #ccc;padding-right: 26px;" ng-change="onChange(sercheventname);"><i class="glyphicon glyphicon-search p-abs" style="right: 39px;top: 11px" ng-click="onChange(sercheventname);"></i></div>
+	<ul class="searchPane mt-i40" style="display:none;">
+		<li ng-repeat="opt in options" title="{{opt.value}}" ng-click="seletedItem(opt.key,opt.value,opt);">{{opt.value|DateStrSubstringmin10}}</li>
+	</ul>
+</span>

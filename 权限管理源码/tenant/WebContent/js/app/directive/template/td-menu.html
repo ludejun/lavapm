@@ -1,0 +1,12 @@
+<div class="td-menu menu">
+    <ul>
+        <li ng-repeat="m in menu">
+        	
+        	<a ng-if="m.resourceUri!=''" href="{{m.resourceUri|interceptURL}}" id="{{m.extAttr2}}" ng-click="toggle(menu,m,'show',true);" ng-class="{selected:m.show}" class="more_icon User"><span><font>{{m.resourceLabel}}</font></span></a>
+           	<a ng-if="m.resourceUri==''" id="{{m.extAttr2}}" ng-click="toggle(menu,m,'show');" class="more_icon User"><span><font>{{m.resourceLabel}}</font></span></a>
+            <ol ng-show="m.show" style="display:block">
+            	<li ng-repeat="mc in m.childrens"><a href="{{mc.resourceUri}}" ng-class="{selected:mc.selected}"><em>-</em>{{mc.resourceLabel}}</a></li>
+            </ol>
+        </li>
+   </ul>
+</div>

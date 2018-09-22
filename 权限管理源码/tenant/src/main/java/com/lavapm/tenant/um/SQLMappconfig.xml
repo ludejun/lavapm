@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+	<settings 
+		cacheModelsEnabled="true"
+		enhancementEnabled="true"
+		lazyLoadingEnabled="true"
+		maxRequests="32"
+		maxSessions="10"
+		maxTransactions="5"
+		useStatementNamespaces="false"
+	/>
+	
+	<sqlMap resource="com/lavapm/tenant/um/department.xml" />
+	<sqlMap resource="com/lavapm/tenant/um/user.xml" />
+	<sqlMap resource="com/lavapm/tenant/um/templetTemplet.xml" />
+	<sqlMap resource="com/lavapm/tenant/um/role.xml" />
+	<sqlMap resource="com/lavapm/tenant/um/app.xml" />
+    <sqlMap resource="com/lavapm/tenant/um/resource.xml" />
+     <sqlMap resource="com/lavapm/tenant/um/Tenant.xml" />
+     <sqlMap resource="com/lavapm/tenant/um/SysEmailTemplateMapper.xml" />
+	
+</sqlMapConfig>

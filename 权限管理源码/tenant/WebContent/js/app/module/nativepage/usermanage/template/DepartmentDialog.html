@@ -1,0 +1,111 @@
+<div class="modal in" tabindex="99999" role="dialog"
+	aria-labelledby="myModalLabel" style="display: block;">
+	<div class="modal-dialog" role="document" style="width: 599px;">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-label="Close" ng-click="$hide()">
+					<span aria-hidden="true">×</span>
+				</button>
+				<h1 ng-if="isiuDepartment=='新增'"  class="xytitle">新增部门</h1>
+				<h1 ng-if="isiuDepartment=='修改'"  class="xytitle">修改部门</h1>
+			</div>
+			<div class="modal-body" style="color: #333;padding: 0px;padding-bottom: 10px;">
+				<form class="form-horizontal clrfix">
+				    <div ng-if="_Department.parenDeptName!=null" class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 46px;">上级部门:</label>
+				        <div class="controls" style="    width: 200px;">
+							<span      style="width:200px;height: 25px;position: absolute;margin-left: -45px;" >{{_Department.parenDeptName}}</span>				    	
+					    </div>
+					    <label class="control-label" style="font-weight: normal;margin-left: 95px;"><span class="required">*</span>部门名称:</label>
+				        <div class="controls" style="    width: 200px;">
+							<input class="form-control" type="text"  ng-model="_Department.deptName"  style="width:220px;height: 25px;" maxlength="30" />				    	
+						</div>
+				    </div>
+				    <div class="control-group" style="margin: 10px 0 0 0px;">
+				        <label class="control-label" style="font-weight: normal;padding-right: 46px;"><span class="required">&nbsp;</span>部门备注:</label>
+				        <div class="controls" style="width: 460px;">
+						<input class="form-control" type="text"  ng-model="_Department.deptDesc"  style="width:490px;height: 25px;    margin-left: -45px;" maxlength="200" />				    	
+				    	</div>
+				    </div>
+				    <div style="    padding-top: 67px;">
+				         <hr style="margin-bottom: 0px; width:85%;border-top: 1px dashed #eee;" />
+				    </div>
+				      <div class="control-group" style="margin: 10px 0 0 10px;">
+				        <div class="dilogedit" data-td-panel panel-title="可选用户" >
+				        	<div>
+								<div class="panel-title-button" style="margin-top: -23px;margin-bottom: 0px;">
+									<label >
+									    <input type="text"  style="border-radius: 11px;border: solid 1px #ccc;padding-left: 13px;padding-top: 1px;height: 20px;width: 188px;margin-top: -3px;" ng-model="titleFilter" ng-change="windowiFrameHeight()" placeholder="请输入关键字" onfocus="placeholder=''" onblur="placeholder='请输入关键字'"   class="input">
+									</label>
+								</div>
+							 </div>
+								<div loading-container="tableParams.settings().$loading">
+									<!-- <span  style="position: absolute;margin-left: 12px;margin-top: 8px;" >
+						 				<input type="checkbox" style="float:left;" ng-change="checkallrole(user.checked)" ng-model="user.checked">
+									</span> -->
+									<table ng-table="inittableParams" class="table ng-table-responsive table-hover">
+										<tbody ng-repeat="user in $data|filter:titleFilter" style="border-top: 1px solid #ddd;" >
+										<tr ng-click="checkEditUser(user)" align="center"  class="wd-p-25">
+											<td  data-title="''"  style='word-wrap: break-word;word-break: break-all;width:10%;padding-left: 12px;'  align="center">
+												<span><input ng-click="checkEditUser(user)" type="checkbox" style="margin-top: -3px;"  ng-model="user.checked"></span>
+											</td>
+											<td  data-title="'用户'"  style='word-wrap: break-word;word-break: break-all;width:35px;'  align="center">
+												{{user.userName}}
+											</td>
+								            <td  data-title="'部门'" align="center" style='word-wrap: break-word;word-break: break-all;width:35px;'> 
+								            	{{user.deptName}}
+											</td>
+								       	</tr>
+								       </tbody>
+								    </table>
+								</div>
+				        </div> 
+				        <div style="float: left;margin-top: 100px;">
+				         <input type="button" ng-click="addUserList();" name="11" value=">>添加>>"/><br>
+				         <input type="button" ng-click="romoveUserList();"  style="margin-top: 10px;" name="11" value="<<取消<<"/>
+				        </div>
+				        <div class="dilogedit"  data-td-panel panel-title="已选用户">
+				          	<div>
+								<div class="panel-title-button" style="margin-top: -23px;margin-bottom: 0px;">
+									<label >
+									    <input type="text"  style="border-radius: 11px;border: solid 1px #ccc;padding-left: 13px;padding-top: 1px;height: 20px;width: 188px;margin-top: -3px;" ng-model="titleFilter1" ng-change="windowiFrameHeight()" placeholder="请输入关键字" onfocus="placeholder=''" onblur="placeholder='请输入关键字'"   class="input">
+									</label>
+								</div>
+							 </div>
+							<div loading-container="tableParams.settings().$loading">
+									<!-- <span  style="position: absolute;margin-left: 12px;margin-top: 8px;" >
+						 				<input type="checkbox" style="float:left;" ng-change="checkallrole(user.checked)" ng-model="user.checked">
+									</span> -->
+									<table ng-table="datasdepttableParams" class="table ng-table-responsive table-hover">
+										<tbody ng-repeat="user in $data|filter:titleFilter1" style="border-top: 1px solid #ddd;" >
+										<tr ng-click="checkEditUser(user)" align="center"  class="wd-p-25">
+											<td  data-title="''"  style='word-wrap: break-word;word-break: break-all;width:10%;padding-left: 12px;'  align="center">
+												<span><input ng-click="checkEditUser(user)" type="checkbox" style="margin-top: -3px;"  ng-model="user.checked"></span>
+											</td>
+											<td  data-title="'用户'"  style='word-wrap: break-word;word-break: break-all;width:45%;'  align="center">
+												{{user.userName}}
+											</td>
+								            <td  data-title="'部门'" align="center" style='word-wrap: break-word;word-break: break-all;width: 45%;'> 
+								            	{{user.deptName}}
+											</td>
+								       	</tr>
+								       	</tbody>
+								    </table>
+								</div>
+				        </div>
+				    </div>
+				   
+				   </form>
+				</div>
+			<div class="modal-footer">
+			<button type="button"  class="btn btn-primary" ng-click="submitDepartment($hide);;">保存</button>
+				<button type="button" class="btn btn-default" ng-click="$hide();">取消</button>
+				
+			</div>
+		<!-- /.modal-content -->
+	</div>
+	<!-- /.modal-dialog -->
+</div>
+</div>
+

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMap
+	PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+	"http://www.ibatis.com/dtd/sql-map-2.dtd">
+<sqlMap>
+
+	<resultMap id="DepartmentMap" class="com.lavapm.tenant.entity.Department">
+		<result column="rid" property="rid" />
+		<result column="dept_code" property="deptCode" />
+		<result column="dept_name" property="deptName" />
+		<result column="dept_desc" property="deptDesc" />
+		<result column="tenantId" property="tenantId" />
+		<result column="parent_rid" property="parentRid" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="op_umid" property="opUmid" />
+	</resultMap>
+	<resultMap id="DepartmentparentMap" class="com.lavapm.tenant.entity.Department">
+		<result column="rid" property="rid" />
+		<result column="dept_code" property="deptCode" />
+		<result column="dept_name" property="deptName" />
+		<result column="dept_desc" property="deptDesc" />
+		<result column="tenantId" property="tenantId" />
+		<result column="parent_rid" property="parentRid" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="op_umid" property="opUmid" />
+		<result column="parentName" property="parentName" />
+	</resultMap>
+
+
+	<select id="findDepartmentDaoList" resultMap="DepartmentparentMap"
+		parameterClass="java.util.HashMap">
+		select a.*,b.dept_name as parentName from UM_DEPARTMENT a LEFT JOIN
+		UM_DEPARTMENT b on a.parent_rid=b.rid
+		where a.tenantId=#tenantId#
+		<isNotEmpty prepend="AND" property="parentRid">
+			a.parent_rid in
+			($parentRid$)
+		</isNotEmpty>
+	</select>
+
+	<select id="getDepartmentByParentRid" resultMap="DepartmentparentMap"
+		parameterClass="java.util.HashMap">
+		select a.*,b.dept_name as parentName from UM_DEPARTMENT
+		a LEFT JOIN
+		UM_DEPARTMENT b on a.parent_rid=b.rid
+		where
+		a.tenantId=#tenantId# and a.parent_rid =#parentRid#
+	</select>
+
+
+
+
+
+
+	<insert id="insertDepartment" parameterClass="java.util.HashMap">
+		insert into
+		UM_DEPARTMENT(dept_code,dept_name,dept_desc,tenantId,parent_rid,create_time,update_time,op_umid)
+		values(#deptCode#,#deptName#,#deptDesc#,#tenantId#,#parentRid#,now(),now(),#opUmid#)
+		<selectKey resultClass="java.lang.Integer" keyProperty="rid">
+			SELECT LAST_INSERT_ID()
+		</selectKey>
+	</insert>
+
+	<update id="updateDepartmentByPrimaryKey" parameterClass="java.util.HashMap">
+		update UM_DEPARTMENT set
+		<isNotEmpty property="deptCode">
+			dept_code=#deptCode#,
+		</isNotEmpty>
+		dept_name=#deptName#,
+		dept_desc=#deptDesc#,
+		<isNotEmpty property="tenantId">
+			tenantId=#tenantId#,
+		</isNotEmpty>
+		<isNotEmpty property="parentRid">
+			parent_rid=#parentRid#,
+		</isNotEmpty>
+		<isNotEmpty property="updateTime">
+			updateTime=now(),
+		</isNotEmpty>
+		<isNotEmpty property="opUmid">
+			op_umid=#opUmid#,
+		</isNotEmpty>
+		rid=#rid#
+		where rid=#rid#
+	</update>
+
+
+
+	<delete id="deleteDepartment" parameterClass="java.util.HashMap">
+		delete from
+		UM_DEPARTMENT
+		where rid=#rid#
+	</delete>
+
+	<delete id="deleteDeptuser" parameterClass="java.util.HashMap">
+		update UM_DEPT_USER
+		set dept_rid=#roorid#
+		where dept_rid=#rid#
+	</delete>
+
+	<resultMap id="DeptuserMap" class="com.lavapm.tenant.entity.Deptuser">
+		<result column="rid" property="rid" />
+		<result column="dept_rid" property="deptRid" />
+		<result column="user_rid" property="userRid" />
+		<result column="user_order" property="userOrder" />
+		<result column="create_time" property="createTime" />
+		<result column="update_time" property="updateTime" />
+		<result column="op_umid" property="opUmid" />
+	</resultMap>
+
+	<select id="findDeptuserByDeptrid" resultMap="DeptuserMap"
+		parameterClass="java.util.HashMap">
+		select * from UM_DEPT_USER WHERE dept_rid=#deptRid#
+	</select>
+</sqlMap>

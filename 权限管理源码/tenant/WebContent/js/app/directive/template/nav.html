@@ -1,0 +1,23 @@
+<div class="navbar-header">
+    <a class="navbar-brand" href="javascript:;" title="TalkingData">TalkingData</a>
+</div>
+
+<div class="welcome">
+	<i class="icon-peo"></i>
+	<span class="account">{{user.name}}</span>
+	<span class="line"></span>
+	<a href="javascript:;" data-backdrop="false" data-template="js/app/directive/template/changeUserPasswordDialog.html" bs-modal="modal">修改密码</a>
+	<span class="line"></span>
+	<a href="javascript:;" class="icon-out" title="退出" ng-click="logout();"></a>
+</div>
+<!-- <div class="collapse navbar-collapse" ng-if="urlMap.dmpUrl">
+	<ul class="nav navbar-nav">
+		<li class="active"><a href="{{urlMap.analyticsUrl}}">数据分析</a></li>
+		<li ><a href="{{urlMap.dmpUrl}}">数据营销</a></li>
+    </ul>
+	<ul class="nav navbar-nav">
+		<li ng-class="menu.active" ng-repeat="menu in menuList"><a href="{{menu.resourceUri}}">{{menu.resourceLabel}}</a></li>
+    </ul>
+</div> -->
+
+

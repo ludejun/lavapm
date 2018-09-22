@@ -1,0 +1,62 @@
+
+<div class="toolbarH clrfix" style="overflow: visible;">
+	<div class="btn-group fl btn-sref" ng-model="redrectSummaryRadio" bs-radio-group>
+		<label class="btn btn-sref"  ng-show="menuusermanage"> <input  ng-show="menuusermanage" type="radio" class="btn btn-default" value="2"><a data-ui-sref="nativepage/usermanage" href="javascript:;">用户管理</a></label>
+		<label class="btn btn-sref"  ng-show="menutempletmanage"> <input ng-show="menutempletmanage" type="radio" class="btn btn-default" value="1" ><a data-ui-sref="nativepage/templetmanage" href="javascript:;">权限模板管理</a></label>
+	</div>
+
+</div>
+
+<div class="submitto mt-15 mb-15" style="margin-left: 21px;" ng-if="!create">
+	<a ng-if="!create"  ng-click="askTempletmanageGroup()">
+	<div class="btn  btn-use" style="border-radius: 20px;" ng-if="!create">
+		<img ng-src="images/add-green.png" ng-if="!create">
+		添加权限模板
+	</div>
+	</a>
+</div>
+<a ng-show="false"  id="createTempletmanage"  data-ui-sref="nativepage/createTempletmanage">
+			添加权限模板
+</a>
+
+<div data-td-panel panel-title="权限模板列表" style="">
+	<div>
+		<div class="panel-title-button">
+			<label >
+			    <input type="text"  style="border-radius: 11px;border: solid 1px #ccc;padding-left: 13px;padding-top: 1px;height: 25px;width: 180px;margin-top: -3px;margin-right: 10px" ng-model="titleFilter" ng-change="windowiFrameHeight()" placeholder="请输入关键字" onfocus="placeholder=''" onblur="placeholder='请输入关键字'"   class="input">
+			</label>
+		</div>
+	</div>
+	<div class="empty-box-table-panel" ng-show="tableLoading">
+		<div class="empty-box-table-bg"></div>
+		<div class="empty-box-table"></div>
+	</div> 
+	<div loading-container="tableParams.settings().$loading">
+		<table ng-table="tableDatas" class="table ng-table-responsive table-hover">
+			<tr ng-repeat="rule in $data|filter:titleFilter" align="center"  class="wd-p-25">
+				<td data-title="'权限模板名称'"  style='word-wrap: break-word;word-break: break-all;width:20%;'  align="center">
+					{{rule.t_name}}
+				</td>
+	            <td data-title="'权限描述'" align="center" style='word-wrap: break-word;word-break: break-all;width: 30%;'> 
+	            	{{rule.t_desc}}
+				</td>
+				<td  data-title="'操作人'" align="center" style='word-wrap: break-word;word-break: break-all;width:15%;'> 
+	            	<span ng-if="rule.userName!=null&&rule.userName!=''">{{rule.userName}}</span>
+	            	<span ng-if="rule.userName==null||rule.userName==''">系统创建</span>
+				</td>
+				<td data-title="'修改时间'"
+					style='word-wrap: break-word; word-break: break-all;width:20%;'>
+					{{rule.update_time}}</td>
+	            <td data-title="'操作'"  align="center" class="wd-p-10" style='width:15%;'>
+					<a ng-click="askTempletmanageView(rule)" data-ui-sref="nativepage/viewTempletmanage({tids:rule.tids,rids:rule.rids,tname:rule.t_name,tdesc:rule.t_desc,onupdate:true})" href="javascript:;">查看</a>
+					<a ng-click="askTempletmanageGroup(rule)" data-ui-sref="nativepage/createTempletmanage" href="javascript:;">修改</a>
+					<a ng-if="rule.type=='0'" ng-click="stopEvent(rule)">删除</a>
+		        </td>
+	       	</tr>
+	    </table>
+	</div>
+</div>
+
+
+	    
+

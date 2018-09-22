@@ -1,0 +1,253 @@
+<div class="toolbarH clrfix" style="overflow: visible;">
+	<div class="btn-group fl btn-sref" ng-model="redrectSummaryRadio"
+		bs-radio-group>
+		<label class="btn btn-sref" ng-show="menuusermanage"> <input
+			ng-show="menuusermanage" type="radio" class="btn btn-default"
+			value="2"><a data-ui-sref="nativepage/usermanage"
+			href="javascript:;">用户管理</a></label> <label class="btn btn-sref"
+			ng-show="menutempletmanage"> <input
+			ng-show="menutempletmanage" type="radio" class="btn btn-default"
+			value="1"><a data-ui-sref="nativepage/templetmanage"
+			href="javascript:;">权限模板管理</a></label>
+	</div>
+
+</div>
+<div class="div-tree-panl">
+	<div class="left-title">
+		<!-- <span style="float: left;margin-left: 9px;margin-top: 10px;">
+	     <a ng-click="askSveDepartment()" data-template="js/app/module/nativepage/usermanage/template/DepartmentDialog.html" bs-modal="modal" data-backdrop="false"><img src="images/ztree/ztree-add.png" style="width: 12px;
+	    height: 12px;
+	    /* top: -10px; */
+	    margin-top: -2px;">添加部门</a></span> -->
+		<input type="text"
+			style="border-radius: 11px; border: solid 1px #ccc; padding-left: 13px; padding-top: 1px; height: 25px; width: 215px; margin-top: 6px; margin-left: 10px;"
+			ng-change="findNodes();" ng-model="tagCategortSearch.name"
+			placeholder="请输入关键字" onfocus="placeholder=''"
+			onblur="placeholder='请输入关键字'" class="input">
+		<!--  <div class="search">
+				<i class="i-search"></i>
+				<input type="text" ng-keyup="findNodes();" ng-model="tagCategortSearch.name" placeholder="输入关键字" class="ng-pristine ng-untouched ng-valid">
+				<i class="icon-clear ng-hide" ng-click="clearTagCategortSearch();" ng-show="tagCategortSearch.name"></i>
+			</div> -->
+	</div>
+	<ul id="tagCategoryTree" class="ztree"
+		style="border-top: 1px solid #dce1e7;"></ul>
+</div>
+<a ng-show="false" id="update"
+	data-template="js/app/module/nativepage/usermanage/template/usermanageDialog.html"
+	bs-modal="modal" data-backdrop="false"> 修改用户 </a>
+<a ng-show="false" id="updateDepartment"
+	data-template="js/app/module/nativepage/usermanage/template/DepartmentDialog.html"
+	bs-modal="modal" data-backdrop="false"> 修改部门 </a>
+<a ng-show="false" id="editDepartment"
+	data-template="js/app/module/nativepage/usermanage/template/UpdateDepartmentDialog.html"
+	bs-modal="modal" data-backdrop="false"> 修改部门 </a>
+<a ng-show="false" id="editDepartment"
+	data-template="js/app/module/nativepage/usermanage/template/UpdateDepartmentDialog.html"
+	bs-modal="modal" data-backdrop="false"> 修改部门 </a>
+<a ng-show="false" id="updateDepartmentroot"
+	data-template="js/app/module/nativepage/usermanage/template/rootDepartmentDialog.html"
+	bs-modal="modal" data-backdrop="false"> 修改部门 </a>
+
+
+<div data-td-panel panel-title="1" ng-show="!showPage"
+	style="margin: 16px 16px 0 282px;">
+	<div>
+		<div class="panel-title-button-user"
+			style="padding-left: 10px; position: absolute; width: 280px;">
+			<span title="{{depttTitle}}"
+				style="float: left; margin-left: 10px; background: #FFF; cursor: default; margin-top: 7px;">
+				{{depttTitle|DateStrSubstringmin10}} </span>
+			<div type="button" style="margin-top: 3px;"
+				data-template="js/app/module/nativepage/usermanage/template/usermanageDialog.html"
+				bs-modal="modal" data-backdrop="false"
+				class="btn btn-default btn-use add-user-style ng-scope"
+				ng-click="askSve()">+ 添加用户</div>
+		</div>
+	</div>
+	<div>
+		<div class="panel-title-button-user">
+			<label> <input type="text"
+				style="border-radius: 11px; border: solid 1px #ccc; padding-left: 13px; padding-top: 1px; height: 25px; width: 224px; margin-top: -25px; margin-right: 10px"
+				ng-model="titleFilter" ng-change="windowiFrameHeight()"
+				placeholder="请输入关键字" onfocus="placeholder=''"
+				onblur="placeholder='请输入关键字'" class="input">
+			</label>
+		</div>
+	</div>
+	<!-- 	<div class="toolbar pb-10 pt-10">
+	 	<div class="btn-group btn-group-sm" ng-model="todaySummaryRadio.radio" bs-radio-group>
+			<label class="btn btn-default "><input type="radio" class="btn btn-default" value="1" ng-click="changeTopTable('1')"> 新增</label>
+		    <div type="button"  style="color: #FFF;background: #5CC571;padding: 5px 10px;border-radius: 28px;"	data-template="js/app/module/nativepage/usermanage/template/usermanageDialog.html"
+				bs-modal="modal" data-backdrop="false" class="btn btn-default btn-use" ng-click="askSve()" style="color: #FFF;padding: 10px 20px;border-radius: 28px;">
+					新&nbsp&nbsp增
+				</div>
+		</div>
+	</div> -->
+	<div class="empty-box-table-panel" ng-show="tableLoading">
+		<div class="empty-box-table-bg"></div>
+		<div class="empty-box-table"></div>
+	</div>
+	<div loading-container="tableParams.settings().$loading">
+		<!-- <span  style="position: absolute;margin-left: 23px;margin-top: 8px;" >
+		 <input type="checkbox" style="float:left;"  ng-model="user.checked">
+		</span> -->
+		<table ng-table="tableParams"
+			class="table ng-table-responsive table-hover">
+			<tbody ng-repeat="user in $data|filter:titleFilter"
+				style="border-top: 1px solid #ddd;">
+				<tr ng-click="checkselectUninfousr(user,1)" align="center"
+					class="wd-p-25">
+					<td data-title="'姓名'"
+						style='word-wrap: break-word; word-break: break-all; width: 12%;'
+						align="center">{{user.userName}}</td>
+					<td data-title="'账号'" align="center"
+						style='word-wrap: break-word; word-break: break-all; width: 17%;'>
+						{{user.umid}}</td>
+					<td data-title="'部门'" align="center"
+						style='word-wrap: break-word; word-break: break-all; width: 10%;'>
+						{{user.deptName}}</td>
+					<td data-title="'职位'"
+						style='word-wrap: break-word; word-break: break-all; width: 10%;'>
+						{{user.title}}</td>
+					<td data-title="'手机'"
+						style='word-wrap: break-word; word-break: break-all; width: 13%;'>
+						{{user.mobile}}</td>
+					<td data-title="'性别'" align="center"
+						style='word-wrap: break-word; word-break: break-all; width: 6%;'>
+						{{user.gender}}</td>
+					<td data-title="'操作人'"
+						style='word-wrap: break-word; word-break: break-all; width: 10%;'>
+						{{user.puserName}}</td>
+					<td data-title="'操作'" align="center" style='width: 15%;'><span
+						ng-if="user.status=='1'" style="margin-top: 2px"><a
+							ng-click="stopUser(user)"> <img src="images/switch-2.png"
+								style="height: 22px; width: 54px;">
+						</a></span> <span ng-if="user.status=='0'" style="margin-top: 2px"><a
+							ng-click="stopUser(user)"> <img src="images/switch-1.png"
+								style="height: 22px; width: 54px;">
+						</a></span> <!-- <a href="" ng-click="isShowOperation(user)" ><img src="images/u12.png" style="width: 46px;height: 20px;"></a> -->
+
+						<span
+						ng-show="$index+1!=$data.length&&$index+2!=$data.length||$index<=5"
+						data-content="1"
+						data-template="js/app/module/nativepage/usermanage/template/dataTemplate.html"
+						placement="bottom-right" data-animation="am-flip-x"
+						data-auto-close="1" bs-popover="" ng-click="isShowOperation(user)">
+							<img src="images/u12.png" style="width: 46px; height: 20px;">
+					</span> <span
+						ng-show="($index+1==$data.length||$index+2==$data.length)&&$index>5"
+						data-content="1"
+						data-template="js/app/module/nativepage/usermanage/template/dataTemplate.html"
+						placement="auto bottom" data-animation="am-flip-x"
+						data-auto-close="1" bs-popover="" ng-click="isShowOperation(user)">
+							<img src="images/u12.png" style="width: 46px; height: 20px;">
+					</span></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div ng-show="showPage" style="margin-left: 253px;">
+	<!-- <div class="go-back-margin">
+<a title="返回用户列表"  data-ui-sref="nativepage/usermanage" href="javascript:;" class="ng-scope"><img ng-src="images/go-back.png" class="fl ml-10" style="height:23px;margin-top:-1px;" src="images/go-back.png"><font class="fz14 ml-5">返回列表</font></a>
+</div>
+ -->
+	<div data-td-panel panel-title="    1">
+		<div>
+			<div class="panel-title-button-user" style="margin-bottom: 20px;">
+				<span
+					style="float: left; margin-left: 6px; background: #FFF; margin-top: -32px;">
+					<span> <a ng-click="goRole(false)"> <img
+							ng-src="images/go-back.png" class="fl ml-10"
+							style="height: 23px; margin-top: -1px;" src="images/go-back.png"><font
+							class="fz14 ml-5">返回列表</font>
+					</a>
+				</span>
+			</div>
+		</div>
+		<div class="content_creat"
+			style="border-bottom: 0; padding: 5px 24px;">
+			<label class="control-label"
+				style="font-weight: normal; padding-right: 15px; margin: -5px;"><span
+				class="required">*</span>姓名:</label> <input type="text" class="form-control"
+				ng-model="roluser.userName"
+				style="height: 30px; width: 300px; margin-left: 25px; display: inline;"
+				id="proname" name="proname" readonly />
+		</div>
+		<div class="content_creat"
+			style="border-bottom: 0; padding: 5px 24px;">
+			<label class="control-label"
+				style="font-weight: normal; padding-right: 15px; margin: -5px;"><span
+				class="required">*</span>登录账号:</label> <input type="text"
+				class="form-control" ng-model="roluser.umid"
+				style="height: 30px; width: 300px; display: inline;" id="proname"
+				name="proname" readonly />
+		</div>
+		<!--    <div class="content_creat" style="border-bottom:0;padding: 5px 24px;">
+                  	 <label class="control-label" style="font-weight: normal;padding-right: 15px;margin: -5px;"><span class="required">*</span>电子邮箱:</label>
+                  	 <input type="text" class="form-control" ng-model="roluser.email" style="height: 30px;width: 300px ;display: inline;"  id="proname" name="proname" readonly/>
+            </div> -->
+		<div class="content_creat"
+			style="border-bottom: 0; padding: 5px 24px 40px;">
+			<label class="control-label"
+				style="font-weight: normal; padding-right: 15px; margin: -5px;"><span
+				class="required">*</span>职位:</label> <input type="text" class="form-control"
+				ng-model="roluser.title"
+				style="height: 30px; width: 300px; margin-left: 25px; display: inline;"
+				id="proname" name="proname" readonly />
+		</div>
+		<div style="height: 28px; background: #FFF;">
+			<div style="margin-left: 10px;">
+				<a ng-click="askSveRole()"
+					data-template="js/app/module/nativepage/usermanage/template/roleTempletDialog.html"
+					bs-modal="modal" data-backdrop="false"> +选择权限模板 </a> <input
+					type="text"
+					style="border-radius: 11px; border: solid 1px #ccc; padding-left: 13px; padding-top: 1px; height: 25px; width: 180px; float: right; margin-top: -3px; margin-right: 10px"
+					ng-model="_titleFilter" ng-change="windowiFrameHeight()"
+					placeholder="请输入关键字" onfocus="placeholder=''"
+					onblur="placeholder='请输入关键字'" class="input">
+			</div>
+
+		</div>
+		<div data-td-panel panel-title="">
+
+			<div class="empty-box-table-panel" ng-show="tableRoleUserLoading">
+				<div class="empty-box-table-bg"></div>
+				<div class="empty-box-table"></div>
+			</div>
+			<div loading-container="tableParams.settings().$loading">
+				<table ng-table="tableDatasRoleUser"
+					class="table ng-table-responsive table-hover">
+					<tr ng-repeat="rule in $data|filter:_titleFilter" align="center"
+						class="wd-p-25">
+						<td data-title="'权限模板名称'"
+							style='word-wrap: break-word; word-break: break-all; width: 20%;'
+							align="center">{{rule.t_name}}</td>
+						<td data-title="'权限描述'" align="center"
+							style='word-wrap: break-word; word-break: break-all; width: 20%;'>
+							{{rule.t_desc}}</td>
+						<td data-title="'操作人'" align="center"
+							style='word-wrap: break-word; word-break: break-all; width: 15%;'>
+							{{rule.userName}}</td>
+						<td data-title="'操作'" align="center" class="wd-p-10"
+							style='width: 35%;'><a ng-click="askTempletmanageView(rule)"
+							data-ui-sref="nativepage/userViewTempletmanage({tids:rule.tids,rids:rule.rids,tname:rule.t_name,tdesc:rule.t_desc,onupdate:true,returnAddress:true,umid:roluser.umid,userName:roluser.userName,email:roluser.email,title:roluser.title})"
+							href="javascript:;">查看明细</a> <span ng-if="rule.isupdate==1"
+							class="ml-20"><a ng-click="stopRoleUser(rule)">删除</a></span></span></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+
+	</div>
+
+
+</div>
+
+
+
+
+

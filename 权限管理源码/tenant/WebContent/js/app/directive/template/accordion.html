@@ -1,0 +1,27 @@
+<div class="menu-left" id="menu-left" ng-if="showAccordMenu">
+	<div class="content_mid">
+		<div class="search"><input type="text" placeholder="{{title}}" ng-blur="bluFocus()"  ng-focus="getCurrFocus()"   ng-model="searchMenuKeyword" ng-keyup="searchMenuList();"/></div>
+		<div class="menu">
+			<dl ng-repeat="dl in menu" ng-class="{'only-dt': dl.childrens.length == 0}">
+			<dt ng-if="dl.childrens.length == 0" ng-class="{'active': curMenuUri.indexOf(dl.resourceUri) != -1}">
+			<i class="icons-menu icon-menu-{{dl.extAttr2}}"></i>
+			<a href="{{dl.resourceUri}}">{{dl.resourceLabel}}</a></dt>
+				<dt ng-if="dl.childrens.length != 0"><i class="icons-menu icon-menu-{{dl.extAttr2}}"></i><span>{{dl.resourceLabel}}</span></dt>
+				<dd ng-repeat="dd in dl.childrens" ng-class="{'active': curMenuUri.indexOf(dd.resourceUri.split('?')[0].trim()) != -1,'hide':dd.resourceLabel.indexOf(searchMenuKeyword) == -1}"><a href="{{dd.resourceUri}}">{{dd.resourceLabel}}</a></dd>
+			</dl>
+		</div>
+	</div>
+</div>
+
+
+<!-- <div class="menu-left" id="menu-left">
+	<div class="content_mid">
+		<div class="menu">
+			<dl ng-repeat="dl in menu" ng-class="{'only-dt': dl.childrens.length == 0}">
+			<dt ng-if="dl.childrens.length == 0" ng-class="{'active': curMenuUri.indexOf(dl.resourceUri) != -1}"><i class="icons-menu icon-menu-{{dl.extAttr2}}"></i><a href="{{dl.resourceUri}}">{{dl.resourceLabel}}</a></dt>
+				<dt ng-if="dl.childrens.length != 0"><i class="icons-menu icon-menu-{{dl.extAttr2}}"></i><span>{{dl.resourceLabel}}</span></dt>
+				<dd ng-repeat="dd in dl.childrens" ng-class="{'active': curMenuUri.indexOf(dd.resourceUri.split('?')[0].trim()) != -1,'hide':dd.resourceLabel.indexOf(searchMenuKeyword) == -1}"><a href="{{dd.resourceUri}}">{{dd.resourceLabel}}</a></dd>
+			</dl>
+		</div>
+	</div>
+</div> -->
