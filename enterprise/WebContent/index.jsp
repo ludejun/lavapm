@@ -34,7 +34,7 @@
 	    	<ul class="clrfix">
 	        	<li id="productListTenant" style="display: none;">
 	        		<a href="javascript:;" onclick="$.product.goToRuleSystem();">
-	        			<span class="icon-permissions"></span>权限管理
+	        			<span class="icon-permissions"></span>Authority
 	        		</a>
 	        	</li>
 	            <li>
@@ -88,13 +88,13 @@
 					</li>
 					<li class="li02 clrfix">
 						<a href="javascript:;" class="account" onclick="$.showDialog('change-user-password-dialog');">
-							<i></i>账户管理
+							<i></i>Account
 						</a>
 						<!-- <a href="javascript:;" class="logo" onclick="$.showDialog('change-logo-dialog');">
 							<i></i>更换LOGO
 						</a> -->
 						<a href="javascript:;" class="rule" onclick="$.product.goToRuleSystem();" style="display: none;">
-							<i></i>权限管理
+							<i></i>Authority
 						</a>
 					</li>
 				</ul>
@@ -123,30 +123,30 @@
 			<div class="modal-body" style="color: #333;">
 				<form class="form-horizontal clrfix mb-15">
 					<div class="control-group">
-				        <label class="control-label">email:</label>
+				        <label style="min-width:113px;" class="control-label">email:</label>
 				        <div class="controls">
 				        	<div id="account-email"></div>
 				        </div>
 				    </div>
     				<div class="control-group" style="margin-top:10px;">
-				        <label class="control-label"><span class="required">*</span>original password:</label>
+				        <label class="control-label"><span style="margin-left:10px;" class="required">*</span>Current Password:</label>
 				        <div class="controls">
 				        	<input style="display:none">
-				        	<input onkeyup="$.checkPassword(this);" placeholder="输入原始密码(6~32位)" type="password" id="oldPassword" autocomplete="off" class="input-text-h30">
+				        	<input onkeyup="$.checkPassword(this);" placeholder="current password(6~32)" type="password" id="oldPassword" autocomplete="off" class="input-text-h30">
 				        	<div class="form-error-msg"></div>
 				        </div>
 				    </div>
 				    <div class="control-group">
-				        <label class="control-label" ><span class="required">*</span>new&nbsp;password:</label>
+				        <label class="control-label" ><span style="margin-left:10px;" class="required">*</span>New&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Password:</label>
 				        <div class="controls">
-				        	<input onkeyup="$.checkPassword(this);" placeholder="输入新密码(6~32位)" maxlength="32" id="newPassword"  type="password" autocomplete="off" class="input-text-h30">
+				        	<input onkeyup="$.checkPassword(this);" placeholder="new password(6~32)" maxlength="32" id="newPassword"  type="password" autocomplete="off" class="input-text-h30">
 				        	<div class="form-error-msg"></div>
 				        </div>
 				    </div>
 				    <div class="control-group">
-				        <label class="control-label"><span class="required">*</span>confirm password:</label>
+				        <label class="control-label"><span style="margin-left:10px;" class="required">*</span>Confirm Password:</label>
 				        <div class="controls">
-				        	<input onkeyup="$.checkPassword(this);" placeholder="确认新密码(6~32位)" maxlength="32" id="repassword"  type="password" autocomplete="off" class="input-text-h30">
+				        	<input onkeyup="$.checkPassword(this);" placeholder="confirm password(6~32)" maxlength="32" id="repassword"  type="password" autocomplete="off" class="input-text-h30">
 				        	<div class="form-error-msg"></div>
 				        </div>
 				    </div>

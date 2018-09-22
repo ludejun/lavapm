@@ -777,7 +777,7 @@ iframe{vertical-align:top;}
 .form-horizontal .controls{float:left;line-height:30px;position:relative; width:42%;max-width: 88%;}
 .form-horizontal .controls .checkbox-label{line-height:normal;margin:10px 20px 0 0;cursor: pointer;float:left;}
 .input-upload{position: absolute;top: 0;left: 0;cursor: pointer;opacity: 0;}
-.required{color:#f00;}
+.required{color:#f00;vertical-align: middle;}
 textarea{resize: none;}
 .radio label .input-radio{margin-top:8px;}
 .form-control[readonly]{background:#fff;}

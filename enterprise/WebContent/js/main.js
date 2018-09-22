@@ -68,7 +68,7 @@ function initProductLogo(pageSetKey){
 	$("#product-page .logo").css({
 		'background-image': 'url("'+productLogo+'")',
 		"background-size":"cover",
-		"width":"16vmin",
+		"width":"15vmin",
 		"height":"13vmin"
 	});
 }
