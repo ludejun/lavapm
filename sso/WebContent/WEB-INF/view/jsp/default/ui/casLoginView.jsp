@@ -133,15 +133,15 @@ body {
 							<strong>${sessionScope.openIdLocalId}</strong>
 							<input type="hidden" id="username" name="username" value="${sessionScope.openIdLocalId}" />
 						</c:if> 
-						<input class="form-user" id="username" name="username" placeholder="用户名" type="text" accesskey="${userNameAccessKey}"  htmlEscape="true" autocomplete="false" onkeyup="setStyle();GetPwdAndChk();" onfocus="setStyle();GetPwdAndChk();" style="border: solid 1px;border-color:#f55848;"/>
+						<input class="form-user" id="username" name="username" placeholder="username" type="text" accesskey="${userNameAccessKey}"  htmlEscape="true" autocomplete="false" onkeyup="setStyle();GetPwdAndChk();" onfocus="setStyle();GetPwdAndChk();" style="border: solid 1px;border-color:#f55848;"/>
 						<span class="nickx nick_error" onclick="clearUserPwd();"></span>
 					</td>
 				</tr>
 				<tr>
 					<td align="left" valign="bottom" class="mid_password">
-						<%-- <form:password cssClass="form-pass err_input" id="password" placeholder="密码" path="password" accesskey="${passwordAccessKey}" htmlEscape="true" autocomplete="off"  style="border: solid 1px;border-color:#f55848;"/> --%>
-						<input class="form-pass" id="password_show" placeholder="密码" type="text" autocomplete="off" accesskey="${userNameAccessKey}" onkeyup="changePassWord();" style="border: solid 1px;border-color:#f55848;"/>
-						<input class="form-pass" id="password" name="password" placeholder="密码" type="text" autocomplete="off" style="display:none;"/>
+						<%-- <form:password cssClass="form-pass err_input" id="password" placeholder="password" path="password" accesskey="${passwordAccessKey}" htmlEscape="true" autocomplete="off"  style="border: solid 1px;border-color:#f55848;"/> --%>
+						<input class="form-pass" id="password_show" placeholder="password" type="text" autocomplete="off" accesskey="${userNameAccessKey}" onkeyup="changePassWord();" style="border: solid 1px;border-color:#f55848;"/>
+						<input class="form-pass" id="password" name="password" placeholder="password" type="text" autocomplete="off" style="display:none;"/>
 					</td>
 				</tr>
 				</c:if>
@@ -159,16 +159,16 @@ body {
 							<strong>${sessionScope.openIdLocalId}</strong>
 							<input type="hidden" id="username" name="username" value="${sessionScope.openIdLocalId}" />
 						</c:if> 
-						<%-- <form:input cssClass="form-user" id="username" placeholder="用户名" accesskey="${userNameAccessKey}" path="username" autocomplete="false" htmlEscape="true"  onkeyup="setStyle();" onfocus="setStyle();"/> --%>
-						<input class="form-user" id="username" name="username" placeholder="用户名" type="text" accesskey="${userNameAccessKey}"  htmlEscape="true" autocomplete="false" onkeyup="setStyle();GetPwdAndChk();" onfocus="setStyle();GetPwdAndChk();"/>
+						<%-- <form:input cssClass="form-user" id="username" placeholder="username" accesskey="${userNameAccessKey}" path="username" autocomplete="false" htmlEscape="true"  onkeyup="setStyle();" onfocus="setStyle();"/> --%>
+						<input class="form-user" id="username" name="username" placeholder="username" type="text" accesskey="${userNameAccessKey}"  htmlEscape="true" autocomplete="false" onkeyup="setStyle();GetPwdAndChk();" onfocus="setStyle();GetPwdAndChk();"/>
 						<span class="nickx" onclick="clearUserPwd();"></span>
 					</td>
 				</tr>
 				<tr>
 					<td align="left" valign="bottom" class="mid_password">
-						<input class="form-pass" id="password_show" placeholder="密码" type="text" autocomplete="off" accesskey="${userNameAccessKey}" onkeyup="changePassWord();"/>
-						<input class="form-pass" id="password" name="password" placeholder="密码" type="text" autocomplete="off" style="display:none;"/>
-						<%-- <form:password cssClass="form-pass" id="password" placeholder="密码" path="password" accesskey="${passwordAccessKey}" htmlEscape="true" autocomplete="off" style="display:none;"/> --%>
+						<input class="form-pass" id="password_show" placeholder="password" type="text" autocomplete="off" accesskey="${userNameAccessKey}" onkeyup="changePassWord();"/>
+						<input class="form-pass" id="password" name="password" placeholder="password" type="text" autocomplete="off" style="display:none;"/>
+						<%-- <form:password cssClass="form-pass" id="password" placeholder="password" path="password" accesskey="${passwordAccessKey}" htmlEscape="true" autocomplete="off" style="display:none;"/> --%>
 					</td>
 				</tr>
 				</c:if>
@@ -179,7 +179,7 @@ body {
 								<span  class="radiocheck-inner-circle"/>
 								<input type="checkbox" name="rememberStatus" value="1" class="radioclass" />
 							</div>
-							<font>记住我</font>
+							<font style="margin-left:10px;">Remember Me</font>
 						</span>
 						<%-- <%
 							Properties casConfig = CasConfig.get();
@@ -208,7 +208,7 @@ body {
 									type="hidden" name="_eventId" value="submit" /> <a
 									href="<%=updatePwdSite%>" />修改密码</td> --%>
 								<td align="left" valign="bottom" class="base_submit">
-									<input style="transform:translateY(-18px)" name="button" type="button" class="submit" id="button" value="登录" onclick="formSubmit();"/>
+									<input style="transform:translateY(-18px)" name="button" type="button" class="submit" id="button" value="LogIn" onclick="formSubmit();"/>
 								</td>
 							</tr>
 						</table>
@@ -298,7 +298,7 @@ body {
 			var username = $("#username").val();
 			if('' == username.trim()){
 				$("#username").val('');
-				$(".info").html("用户名为空，请输入用户名");
+				$(".info").html("Please input username!");
 				return false;
 			}
 			$("#username").val(username.trim());
@@ -306,7 +306,7 @@ body {
 			if('' == password.trim()){
 				$("#password").val('');
 				$("#password_show").val('');
-				$(".info").html("密码为空，请输入密码");
+				$(".info").html("Please input password!");
 				return false;
 			}
 			$("#password").val(password.trim());
@@ -325,7 +325,7 @@ body {
 				$(".form-user").css("box-shadow","0 0 3px #13b4ff;");
 				$(".form-pass").css("box-shadow","0 0 3px #13b4ff;");
 			}
-			$("#button").val("正在登录...");
+			$("#button").val("Logging...");
 			$("#button").addClass("logining");
 			SetPwdAndChk();
 			$(".login-form").submit();
