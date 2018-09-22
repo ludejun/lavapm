@@ -68,8 +68,8 @@ function initProductLogo(pageSetKey){
 	$("#product-page .logo").css({
 		'background-image': 'url("'+productLogo+'")',
 		"background-size":"cover",
-		"width":"15vmin",
-		"height":"10vmin"
+		"width":"16vmin",
+		"height":"13vmin"
 	});
 }
 
@@ -765,7 +765,9 @@ $(window).resize(function(){
 					"DataMarket":"market",
 					"DMP":"DMP",
 					"BWS":"BWS",
-					"DSP":"DSP"
+					"DSP":"DSP",
+					"REPORT":"REPORT",
+					"SocialListening":"SocialListening"
 				}
 				if(authAppList && authAppList.length > 0){
 					authAppListLength = authAppList.length;
@@ -785,7 +787,7 @@ $(window).resize(function(){
 								html += '<span class="icon-period"></span>';        	
 								html += '<span>'+contractEndDate+'</span>';
 							}*/
-							html += '<a href="#'+authAppList[i].appCode+'" class="fr" appCode="'+authAppList[i].appCode+'">进入产品<i></i></a>';        
+							html += '<a href="#'+authAppList[i].appCode+'" class="fr" appCode="'+authAppList[i].appCode+'">Enter<i></i></a>';        
 							html += '</div>';    
 							html += '</div>';
 							html += '<a href="#'+authAppList[i].appCode+'" class="product-link" appCode="'+authAppList[i].appCode+'"></a>';   

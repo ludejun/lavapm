@@ -14,9 +14,6 @@
   	<script src="js/libs/jquery-scroll/jquery-scroll.js?v=<%=appVersion%>" type="text/javascript"></script>
   	<script type="text/javascript">
 		  var appConfig = ${appConfig};
-		  console.log('6666666666666666')
-		  console.dir(appConfig);
-		  console.log('6666666666666666')
   		buildAppVersion();
   		window.load = function(){   
 			document.getElementById('密码域ID').value='';   
@@ -42,7 +39,7 @@
 	        	</li>
 	            <li>
 	            	<a href="javascript:;" onclick="$.nav.showHideDropdown(this);">
-	            		<span class="icon-account"></span>我的账户
+	            		<span class="icon-account"></span>My Account
 	            	</a>
 	            	<ul class="dropdown-ul hide" id="dropdown-ul2">
 						<li class="li01 clrfix">
@@ -121,18 +118,18 @@
 				<button type="button" class="close" onclick="$.hideDialog('change-user-password-dialog');">
 					<span>×</span>
 				</button>
-				<h4 class="modal-title">账户管理</h4>
+				<h4 class="modal-title">Account Management</h4>
 			</div>
 			<div class="modal-body" style="color: #333;">
 				<form class="form-horizontal clrfix mb-15">
 					<div class="control-group">
-				        <label class="control-label">登录邮箱:</label>
+				        <label class="control-label">email:</label>
 				        <div class="controls">
 				        	<div id="account-email"></div>
 				        </div>
 				    </div>
     				<div class="control-group" style="margin-top:10px;">
-				        <label class="control-label"><span class="required">*</span>原始密码:</label>
+				        <label class="control-label"><span class="required">*</span>original password:</label>
 				        <div class="controls">
 				        	<input style="display:none">
 				        	<input onkeyup="$.checkPassword(this);" placeholder="输入原始密码(6~32位)" type="password" id="oldPassword" autocomplete="off" class="input-text-h30">
@@ -140,14 +137,14 @@
 				        </div>
 				    </div>
 				    <div class="control-group">
-				        <label class="control-label" ><span class="required">*</span>新&nbsp;密&nbsp;码:</label>
+				        <label class="control-label" ><span class="required">*</span>new&nbsp;password:</label>
 				        <div class="controls">
 				        	<input onkeyup="$.checkPassword(this);" placeholder="输入新密码(6~32位)" maxlength="32" id="newPassword"  type="password" autocomplete="off" class="input-text-h30">
 				        	<div class="form-error-msg"></div>
 				        </div>
 				    </div>
 				    <div class="control-group">
-				        <label class="control-label"><span class="required">*</span>确认密码:</label>
+				        <label class="control-label"><span class="required">*</span>confirm password:</label>
 				        <div class="controls">
 				        	<input onkeyup="$.checkPassword(this);" placeholder="确认新密码(6~32位)" maxlength="32" id="repassword"  type="password" autocomplete="off" class="input-text-h30">
 				        	<div class="form-error-msg"></div>
@@ -156,8 +153,8 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" onclick="$.updatePassword(this);">保存</button>
-				<button type="button" class="btn btn-default" onclick="$.hideDialog('change-user-password-dialog');">取消</button>
+				<button type="button" class="btn btn-primary" onclick="$.updatePassword(this);">Save</button>
+				<button type="button" class="btn btn-default" onclick="$.hideDialog('change-user-password-dialog');">Cancel</button>
 			</div>
 		</div>
 	</div>
@@ -171,12 +168,12 @@
 				<button type="button" class="close" onclick="$.hideDialog('change-logo-dialog');">
 					<span>×</span>
 				</button>
-				<h4 class="modal-title">更换LOGO</h4>
+				<h4 class="modal-title">change logo</h4>
 			</div>
 			<div class="modal-body" style="color: #333;">
 				<form class="form-horizontal clrfix mb-15" id="uploadLogoForm">
     				<div class="control-group">
-				        <label class="control-label"><span class="required">*</span>上传LOGO：</label>
+				        <label class="control-label"><span class="required">*</span>upload logo</label>
 				        <div class="controls">
 				        	<input class="form-control" type="text" placeholder="请选择png格式的图片" readonly/>
 				        	<input class="form-control input-upload" type="file" id="select-logo" accept="image/png" name="logo" onchange="$.selectImage(this);"/>
@@ -186,8 +183,8 @@
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary" onclick="$.uploadLogo(this);">确认上传</button>
-				<button type="button" class="btn btn-default" onclick="$.hideDialog('change-logo-dialog');">取消</button>
+				<button type="button" class="btn btn-primary" onclick="$.uploadLogo(this);">confirm uoload</button>
+				<button type="button" class="btn btn-default" onclick="$.hideDialog('change-logo-dialog');">cancel</button>
 			</div>
 		</div>
 	</div>
