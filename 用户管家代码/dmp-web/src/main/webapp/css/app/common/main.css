@@ -37,15 +37,16 @@ select::-ms-expand { display: none; }
 
 /*operator-panel*/
 .operator-panel{  margin-bottom: 25px;margin-top: 8px;}
-.operator-panel .btn-add{float:left;border:none;margin-right:20px;background:#679fef;color:#fff;height: 38px;line-height: 38px;padding: 0 20px;display: inline-block;border-radius: 20px;font-size: 14px;  text-decoration: none;}
-.operator-panel .btn-add:hover{background:#5c8fd7;}
+.operator-panel .btn-add{float:left;border:none;margin-right:20px;background:#00a0e9;color:#fff;height: 38px;line-height: 38px;padding: 0 20px;display: inline-block;border-radius: 20px;font-size: 14px;  text-decoration: none;}
+.operator-panel .btn-add:hover{background:#00a0e9;}
 .operator-panel .btn-add .icons-add{float:left;margin:12px 10px 0 0;}
 
 /*button*/
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:active,
-.btn-primary:focus{text-align: center;background:#5f92e1;border:1px solid #5f92e1;}
+.btn-primary:focus{text-align: center;background:#1086e8;border:1px solid #1086e8;}
+#btn-search {text-align: center;background:#1086e8;border:1px solid #1086e8;}
 
 .btn-blue-hg30,
 .btn-blue-hg30:hover,
@@ -56,7 +57,7 @@ select::-ms-expand { display: none; }
 .btn-blue-hg35,
 .btn-blue-hg35:hover,
 .btn-blue-hg35:active,
-.btn-blue-hg35:focus{text-align: center;cursor:pointer;background:#5f92e1;border:1px solid #5f92e1;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;display:inline-block;padding:0 20px;height:35px;line-height:35px;color:#fff;text-decoration:none;font-size: 14px;}
+.btn-blue-hg35:focus{text-align: center;cursor:pointer;background:#1086e8;border:1px solid #1086e8;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;display:inline-block;padding:0 20px;height:35px;line-height:35px;color:#fff;text-decoration:none;font-size: 14px;}
 
 .btn-blue-hg40,
 .btn-blue-hg40:hover,
