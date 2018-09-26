@@ -1,54 +1,54 @@
 require.config({
-  //baseUrl: 'http://dmp.lavapm.cn:8088http://dmp.lavapm.cn:8088/enterprise/js/',  
+  //baseUrl: 'https://dmp.lavapm.comhttps://dmp.lavapm.com/enterprise/js/',  
   waitSeconds: 0,
   // alias libraries paths.  Must set 'angular'
   paths: {
-	'i18n' : 'http://dmp.lavapm.cn:8088/enterprise/js/libs/i18n',
-	'common-libs' : 'http://dmp.lavapm.cn:8088/enterprise/js/libs/common-libs',
-	'jquery': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/jquery/jquery-1.12.3.min',
-	'jquery-scroll': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/jquery-scroll/jquery-scroll',
-	'table-freeze': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/table-freeze/table-freeze',
-	'util':'http://dmp.lavapm.cn:8088/enterprise/js/libs/calender/util',
-	'week':'http://dmp.lavapm.cn:8088/enterprise/js/libs/calender/week',
-    'month':'http://dmp.lavapm.cn:8088/enterprise/js/libs/calender/month',
-    'calendar_base':'http://dmp.lavapm.cn:8088/enterprise/js/libs/calender/calendar_base',
-    'calendar':"http://dmp.lavapm.cn:8088/enterprise/js/libs/calender/calendar.min",
-    'day_week_month':"http://dmp.lavapm.cn:8088/enterprise/js/libs/calender/day_week_month",
-    'TdCalendar':'http://dmp.lavapm.cn:8088/enterprise/js/libs/calender/TdCalendar/TdCalendar',
-    'tdDateCondition':'http://dmp.lavapm.cn:8088/enterprise/js/libs/calender/TdCalendar/TdDateCondition',
-    'tdWeekMonthPicke':'http://dmp.lavapm.cn:8088/enterprise/js/libs/calender/TdCalendar/TdWeekMonthPicke',
+	'i18n' : 'https://dmp.lavapm.com/enterprise/js/libs/i18n',
+	'common-libs' : 'https://dmp.lavapm.com/enterprise/js/libs/common-libs',
+	'jquery': 'https://dmp.lavapm.com/enterprise/js/libs/jquery/jquery-1.12.3.min',
+	'jquery-scroll': 'https://dmp.lavapm.com/enterprise/js/libs/jquery-scroll/jquery-scroll',
+	'table-freeze': 'https://dmp.lavapm.com/enterprise/js/libs/table-freeze/table-freeze',
+	'util':'https://dmp.lavapm.com/enterprise/js/libs/calender/util',
+	'week':'https://dmp.lavapm.com/enterprise/js/libs/calender/week',
+    'month':'https://dmp.lavapm.com/enterprise/js/libs/calender/month',
+    'calendar_base':'https://dmp.lavapm.com/enterprise/js/libs/calender/calendar_base',
+    'calendar':"https://dmp.lavapm.com/enterprise/js/libs/calender/calendar.min",
+    'day_week_month':"https://dmp.lavapm.com/enterprise/js/libs/calender/day_week_month",
+    'TdCalendar':'https://dmp.lavapm.com/enterprise/js/libs/calender/TdCalendar/TdCalendar',
+    'tdDateCondition':'https://dmp.lavapm.com/enterprise/js/libs/calender/TdCalendar/TdDateCondition',
+    'tdWeekMonthPicke':'https://dmp.lavapm.com/enterprise/js/libs/calender/TdCalendar/TdWeekMonthPicke',
     
-	//'bootstrap-datepicker' : 'http://dmp.lavapm.cn:8088/enterprise/js/libs/bootstrap-datepicker/bootstrap-datepicker',
-    'angular': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/angular/angular.min',
-    'angular-route': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/angular-route/angular-route',    
-    'angularAMD': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/angularAMD/angularAMD',
-    //'angular-locale_zh' : 'http://dmp.lavapm.cn:8088/enterprise/js/libs/angular-locale/angular-locale_zh',
-    'ngload': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/angularAMD/ngload',
-    'angular-ui-bootstrap': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/angular-ui/angular-bootstrap/ui-bootstrap-tpls.min',
-    //'angular-ui-router': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/angular-ui/angular-ui-router/angular-ui-router.min',
-   // 'angular-strap': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/angular-strap/angular-strap.min',
-   // 'angular-strap-tpl': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/angular-strap/angular-strap.tpl.min',
-    //'angular-animate': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/angular-animate/angular-animate.min',
-    'ngDraggable': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/ngDraggable/ngDraggable',
-    'ngDraggableDialog': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/ngDraggable/ngDraggableDialogDirective',
-    'restangular': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/restangular/restangular',
-    'underscore': "http://dmp.lavapm.cn:8088/enterprise/js/libs/restangular/underscore",
-    'lodash': "http://dmp.lavapm.cn:8088/enterprise/js/libs/restangular/lodash.min",
-    'ng-table': "http://dmp.lavapm.cn:8088/enterprise/js/libs/ng-table/ng-table",
-    'highcharts': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/highcharts/highcharts.v4.2.5',
-    'highcharts-more': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/highcharts/highcharts-more',
-    'funnel': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/highcharts/funnel',
-    'jquery.ztree.core-3.5': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/zTreeJS/jquery.ztree.core-3.5',
-    'jquery.ztree.excheck-3.5': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/zTreeJS/jquery.ztree.excheck-3.5',
-    'jquery.ztree.exedit-3.5': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/zTreeJS/jquery.ztree.exedit-3.5',
-    'echarts': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/echarts/echarts-all',
-    'mint': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/echarts/theme/mint',
-    'customUtilJS': 'http://dmp.lavapm.cn:8088/enterprise/js/customUtilJS'
+	//'bootstrap-datepicker' : 'https://dmp.lavapm.com/enterprise/js/libs/bootstrap-datepicker/bootstrap-datepicker',
+    'angular': 'https://dmp.lavapm.com/enterprise/js/libs/angular/angular.min',
+    'angular-route': 'https://dmp.lavapm.com/enterprise/js/libs/angular-route/angular-route',    
+    'angularAMD': 'https://dmp.lavapm.com/enterprise/js/libs/angularAMD/angularAMD',
+    //'angular-locale_zh' : 'https://dmp.lavapm.com/enterprise/js/libs/angular-locale/angular-locale_zh',
+    'ngload': 'https://dmp.lavapm.com/enterprise/js/libs/angularAMD/ngload',
+    'angular-ui-bootstrap': 'https://dmp.lavapm.com/enterprise/js/libs/angular-ui/angular-bootstrap/ui-bootstrap-tpls.min',
+    //'angular-ui-router': 'https://dmp.lavapm.com/enterprise/js/libs/angular-ui/angular-ui-router/angular-ui-router.min',
+   // 'angular-strap': 'https://dmp.lavapm.com/enterprise/js/libs/angular-strap/angular-strap.min',
+   // 'angular-strap-tpl': 'https://dmp.lavapm.com/enterprise/js/libs/angular-strap/angular-strap.tpl.min',
+    //'angular-animate': 'https://dmp.lavapm.com/enterprise/js/libs/angular-animate/angular-animate.min',
+    'ngDraggable': 'https://dmp.lavapm.com/enterprise/js/libs/ngDraggable/ngDraggable',
+    'ngDraggableDialog': 'https://dmp.lavapm.com/enterprise/js/libs/ngDraggable/ngDraggableDialogDirective',
+    'restangular': 'https://dmp.lavapm.com/enterprise/js/libs/restangular/restangular',
+    'underscore': "https://dmp.lavapm.com/enterprise/js/libs/restangular/underscore",
+    'lodash': "https://dmp.lavapm.com/enterprise/js/libs/restangular/lodash.min",
+    'ng-table': "https://dmp.lavapm.com/enterprise/js/libs/ng-table/ng-table",
+    'highcharts': 'https://dmp.lavapm.com/enterprise/js/libs/highcharts/highcharts.v4.2.5',
+    'highcharts-more': 'https://dmp.lavapm.com/enterprise/js/libs/highcharts/highcharts-more',
+    'funnel': 'https://dmp.lavapm.com/enterprise/js/libs/highcharts/funnel',
+    'jquery.ztree.core-3.5': 'https://dmp.lavapm.com/enterprise/js/libs/zTreeJS/jquery.ztree.core-3.5',
+    'jquery.ztree.excheck-3.5': 'https://dmp.lavapm.com/enterprise/js/libs/zTreeJS/jquery.ztree.excheck-3.5',
+    'jquery.ztree.exedit-3.5': 'https://dmp.lavapm.com/enterprise/js/libs/zTreeJS/jquery.ztree.exedit-3.5',
+    'echarts': 'https://dmp.lavapm.com/enterprise/js/libs/echarts/echarts-all',
+    'mint': 'https://dmp.lavapm.com/enterprise/js/libs/echarts/theme/mint',
+    'customUtilJS': 'https://dmp.lavapm.com/enterprise/js/customUtilJS'
   },
   
   map: {
       '*': {
-          'css': 'http://dmp.lavapm.cn:8088/enterprise/js/libs/require-css/css.min.js'
+          'css': 'https://dmp.lavapm.com/enterprise/js/libs/require-css/css.min.js'
       }
   },
 
@@ -56,11 +56,11 @@ require.config({
   shim: {
 	'angular' : {
 		deps: [
-		    //'css!http://dmp.lavapm.cn:8088/enterprise/css/libs/bootstrap/bootstrap.min',
-		    //'css!http://dmp.lavapm.cn:8088/enterprise/css/libs/angular-motion/angular-motion.min',
-		    //'css!http://dmp.lavapm.cn:8088/enterprise/css/libs/ui-tree/angular-ui-tree',
-		    'css!http://dmp.lavapm.cn:8088/enterprise/css/libs/angular-strap/angular-strap.min',
-		    'css!http://dmp.lavapm.cn:8088/enterprise/css/app/common/main.css',
+		    //'css!https://dmp.lavapm.com/enterprise/css/libs/bootstrap/bootstrap.min',
+		    //'css!https://dmp.lavapm.com/enterprise/css/libs/angular-motion/angular-motion.min',
+		    //'css!https://dmp.lavapm.com/enterprise/css/libs/ui-tree/angular-ui-tree',
+		    'css!https://dmp.lavapm.com/enterprise/css/libs/angular-strap/angular-strap.min',
+		    'css!https://dmp.lavapm.com/enterprise/css/app/common/main.css',
 		    'css!../css/app/common/main'
 		],
 		exports: 'angular'
@@ -72,7 +72,7 @@ require.config({
 	'util':{
 		deps: [
             'jquery',
-		    'css!http://dmp.lavapm.cn:8088/enterprise/css/app/calender/calender'
+		    'css!https://dmp.lavapm.com/enterprise/css/app/calender/calender'
 		]
 	},
     'week':['jquery','util'],
@@ -99,8 +99,8 @@ require.config({
     	deps: [
     	    'angular',
     	    'table-freeze',
-   		    'css!http://dmp.lavapm.cn:8088/enterprise/css/libs/ng-table/ng-table',
-   		    'css!http://dmp.lavapm.cn:8088/enterprise/css/app/ng-table/ng-table'
+   		    'css!https://dmp.lavapm.com/enterprise/css/libs/ng-table/ng-table',
+   		    'css!https://dmp.lavapm.com/enterprise/css/app/ng-table/ng-table'
    		]
     },
     'highcharts': [ 'jquery' ],

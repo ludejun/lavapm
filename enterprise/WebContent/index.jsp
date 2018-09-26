@@ -78,7 +78,7 @@
 				<div class="nav-left" id="nav-bar"></div>
 			</div>
 			<div class="logout">
-				<div class="dropdown" onclick="$.nav.showHideDropdown(this);">
+				<div class="dropdown" onclick="$.nav.showHideDropdown(this);" onmouseleave="$.nav.mouseleaveDropdown(this);">
 					<a href="javascript:;" class="img"></a>
 				</div>
 				<ul class="dropdown-ul hide" id="dropdown-ul">
@@ -129,7 +129,7 @@
 				        </div>
 				    </div>
     				<div class="control-group" style="margin-top:10px;">
-				        <label class="control-label"><span style="margin-left:10px;" class="required">*</span>Current Password:</label>
+				        <label class="control-label"><span style="margin-left:10px;" class="required">*</span>Current Password:&nbsp;</label>
 				        <div class="controls">
 				        	<input style="display:none">
 				        	<input onkeyup="$.checkPassword(this);" placeholder="current password(6~32)" type="password" id="oldPassword" autocomplete="off" class="input-text-h30">

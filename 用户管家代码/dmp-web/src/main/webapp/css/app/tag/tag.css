@@ -103,7 +103,7 @@
 .form-horizontal-tag .ralation-logic{  position: absolute;left: 50%;top: -58px;font-size:14px;}
 .form-horizontal-tag .ralation-logic:before{border-left:1px dashed #dedfe1;content: ' ';height: 28px;right: 0;position: absolute;width: 48px;top: -28px;}
 .form-horizontal-tag .ralation-logic:after{border-left:1px dashed #dedfe1;content: ' ';height: 28px;right: 0;position: absolute;width: 48px;bottom: -28px;}
-.form-horizontal-tag .ralation-logic .logic{margin-left: -45px;background:#5f93e1 url(../../../images/tag/arrow-white.png) no-repeat;  background-position: 60px center;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;font-size: 14px;color: #fff;text-align: center;width: 88px;cursor: pointer;height: 30px;line-height: 30px;padding-right: 15px;}
+.form-horizontal-tag .ralation-logic .logic{margin-left: -45px;background:#1086e8 url(../../../images/tag/arrow-white.png) no-repeat;  background-position: 60px center;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;font-size: 14px;color: #fff;text-align: center;width: 88px;cursor: pointer;height: 30px;line-height: 30px;padding-right: 15px;}
 .form-horizontal-tag .relation-item:first-child .ralation-logic{display:none;}
 
 .form-horizontal-tag .relation-item .ralation-box{position: relative;}
@@ -112,7 +112,7 @@
 .form-horizontal-tag .relation-item .ralation-box .welcome-box{text-align:center;padding:30px 20px;}
 .form-horizontal-tag .relation-item .ralation-box .welcome-text{margin-bottom:20px;}
 .form-horizontal-tag .relation-item .ralation-box .welcome-text p{font-size:14px;margin-bottom:10px;}
-.form-horizontal-tag .relation-item .ralation-box .welcome-btn span{display:inline-block;cursor:pointer;text-align:center;background: #5f93e1;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;font-size: 14px;
+.form-horizontal-tag .relation-item .ralation-box .welcome-btn span{display:inline-block;cursor:pointer;text-align:center;background: #1086e8;-webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;font-size: 14px;
   color: #fff;text-align: center;padding:0 20px;cursor: pointer;height: 35px;line-height: 35px;}
 
 .form-horizontal-tag .group-combo .group-box{border-bottom: 1px dashed #dedfe1;background: #fff;padding:20px 0 0 0;position:relative;margin:0 20px 0 130px;}

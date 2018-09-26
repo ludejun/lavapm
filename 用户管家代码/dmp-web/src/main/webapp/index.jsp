@@ -7,7 +7,7 @@
   <title>用户管家</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width">
-  <link rel="shortcut icon" type="image/x-icon" href="/enterprise/images/app/common/corner-maik.png" media="screen" />
+  <link rel="shortcut icon" type="image/x-icon" href="https://dmp.lavapm.com/enterprise/images/app/common/corner-maik.png" media="screen" />
   <style type="text/css">
   	.ng-hide{display:none;}
   </style>
@@ -27,7 +27,7 @@
 		appConfig.appVersion = enterpriseAppVersion + '_' + (appConfig.appVersion + <%=appVersion%>);
 	}
   </script>
-  <script data-main="js/main.js" src="http://dmp.lavapm.cn:8088/enterprise/js/libs/require.js"></script>
+  <script data-main="js/main.js" src="https://dmp.lavapm.com/enterprise/js/libs/require.js"></script>
 </head>
 <body>
 <div class="contents">
