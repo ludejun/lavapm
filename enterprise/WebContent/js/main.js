@@ -232,7 +232,7 @@ $(window).resize(function(){
 			$enterprise_contents.css({"min-height":conHg + "px"});
 			var docHg = $("#main-frame").attr("height");
 			//var navHg = docHg - 130;
-			var navHg = winHg - 170;
+			var navHg = winHg - 44;
 			$("#nav-bar").css({"max-height":navHg + "px"});
 			$("#nav-scroll").css({"height":navHg + "px"});
 			$.calculateContentHeight();
@@ -656,48 +656,54 @@ $(window).resize(function(){
 			$("#main-frame").attr("src", "");
 			url = url || "";
 			if (appConfig.appCode) {
-				if(!url){
-					var locationHash = window.location.hash;
-					if(locationHash && locationHash.indexOf(appConfig.appCode) != -1){
-						var appHash = locationHash.replace("#" + appConfig.appCode, "");
-						if(appConfig.authAppMap[appConfig.appCode] && appConfig.authAppMap[appConfig.appCode].extAttr2){
-							if(appHash){
-								if(appHash.indexOf("#") != -1){
-									url = appConfig.authAppMap[appConfig.appCode].extAttr2 + '/'+appHash;
+				console.log(333333, url, appConfig.appCode);
+				if (appConfig.appCode === 'SocialListening') {
+					document.getElementsByClassName('coming-soon')[0].style.display = 'block';
+				} else {
+					document.getElementsByClassName('coming-soon')[0].style.display = 'none';
+					if(!url){
+						var locationHash = window.location.hash;
+						if(locationHash && locationHash.indexOf(appConfig.appCode) != -1){
+							var appHash = locationHash.replace("#" + appConfig.appCode, "");
+							if(appConfig.authAppMap[appConfig.appCode] && appConfig.authAppMap[appConfig.appCode].extAttr2){
+								if(appHash){
+									if(appHash.indexOf("#") != -1){
+										url = appConfig.authAppMap[appConfig.appCode].extAttr2 + '/'+appHash;
+									}else{
+										url = appConfig.authAppMap[appConfig.appCode].extAttr2 + "/#"+ appHash;
+									}
 								}else{
-									url = appConfig.authAppMap[appConfig.appCode].extAttr2 + "/#"+ appHash;
+									url = appConfig.authAppMap[appConfig.appCode].extAttr2;
 								}
 							}else{
-								url = appConfig.authAppMap[appConfig.appCode].extAttr2;
+								url = '/'+appConfig.appCode;
 							}
 						}else{
-							url = '/'+appConfig.appCode;
-						}
-					}else{
-						if(appConfig.authAppMap[appConfig.appCode] && appConfig.authAppMap[appConfig.appCode].extAttr2){
-							url = appConfig.authAppMap[appConfig.appCode].extAttr2;
-						}else{
-							url = '/'+appConfig.appCode;
+							if(appConfig.authAppMap[appConfig.appCode] && appConfig.authAppMap[appConfig.appCode].extAttr2){
+								url = appConfig.authAppMap[appConfig.appCode].extAttr2;
+							}else{
+								url = '/'+appConfig.appCode;
+							}
 						}
 					}
-				}
-				//dsp
-				if(url.indexOf("dsp") != -1){
-					url = url+appConfig.user.umid;
-				}
-				$("#main-frame").attr("src", url);
-				
-				$.layerLoading.show();
-				$("#main-frame").load(function() { 
-					$.layerLoading.hide();
-					iFrameHeight();
-					$.calculateConentsHeight();
-				});
-				
-				if(appConfig.appCode == 'tenant'){
-					$("#index-page .logout").addClass("active");
-				}else{
-					$("#index-page .logout").removeClass("active");
+					//dsp
+					if(url.indexOf("dsp") != -1){
+						url = url+appConfig.user.umid;
+					}
+					$("#main-frame").attr("src", url);
+					
+					$.layerLoading.show();
+					$("#main-frame").load(function() { 
+						$.layerLoading.hide();
+						iFrameHeight();
+						$.calculateConentsHeight();
+					});
+					
+					if(appConfig.appCode == 'tenant'){
+						$("#index-page .logout").addClass("active");
+					}else{
+						$("#index-page .logout").removeClass("active");
+					}
 				}
 			}else{
 				$body_fixed_width.addClass("bg-list");
@@ -900,7 +906,6 @@ $(window).resize(function(){
 				var hashTenant = false;
 				appConfig.authAppMap = {};
 				var authAppList = appConfig.authAppList;
-				console.log(111111, appConfig, authAppList);
 				var html = '<div class="content_mid">';
 				for (var i = 0; i < authAppList.length; i++) {
 					if("tenant" != authAppList[i].appCode){
@@ -954,7 +959,12 @@ $(window).resize(function(){
 					var appCode = $li.attr("appCode");
 					appConfig.appCode = appCode;
 					var appUrl = $li.attr("appUrl");
-					$.loadPage(appUrl);
+					if (appCode === 'SocialListening') {
+						document.getElementsByClassName('coming-soon')[0].style.display = 'block';
+					} else {
+						document.getElementsByClassName('coming-soon')[0].style.display = 'none';
+						$.loadPage(appUrl);
+					}
 				}).bind('mouseenter', function() {
 					var $li = $(this);
 					var $nav_name = $li.find(".nav-name");

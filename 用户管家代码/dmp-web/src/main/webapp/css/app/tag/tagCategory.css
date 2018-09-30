@@ -81,8 +81,8 @@
 .tag-category-panel .tag-cate-details dt{font-weight: normal;line-height:20px;height:20px;}
 .tag-category-panel .tag-cate-details dt i{margin: 0 5px 0 0;background:url(../../../images/tag/i06.png) no-repeat;background-size: 20px 20px;display:inline-block;vertical-align:top;width:20px;height:20px;}
 .tag-category-panel .tag-cate-details dl dd{position:relative;border-bottom: 1px dashed #dce1e7;padding-bottom: 10px;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;margin-top:10px;}
-.tag-category-panel .tag-cate-details dl dd .lb{width: 25%;float:left;}
-.tag-category-panel .tag-cate-details dl dd .txt{float:left;width:75%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.tag-category-panel .tag-cate-details dl dd .lb{width: 55%;float:left;}
+.tag-category-panel .tag-cate-details dl dd .txt{float:left;width:45%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
 .tag-category-panel .tag-cate-details dl dd .rename-input{border:1px solid #ddd;-moz-border-radius:3px;-webkit-border-radius:3px;border-radius:3px;padding:0 5px;width:50%;}
 .tag-category-panel .tag-cate-details dl dd .operator{position: absolute; right: 0;top: 0;}
 .tag-category-panel .tag-cate-details dl dd .operator a{color:#5f93e1;text-decoration: none;}

@@ -27,7 +27,7 @@
 				<dt><i></i>{{nlsRoot.basicInfo}}</dt>
 				<dd ng-show="tagCategoryDetails.name">
 					<span class="lb">{{nlsRoot.categoryName}}</span>
-					<span class="txt" style="width:50%;" ng-show="!isEditTagCategory">{{tagCategoryDetails.name}}</span>
+					<span class="txt" ng-show="!isEditTagCategory">{{tagCategoryDetails.name}}</span>
 					<input id="rename-input" maxlength="12" class="rename-input" ng-show="isEditTagCategory" ng-model="currentTagCategoryName" name="currentTagCategoryName" ng-blur="editTagCategory(tagCategoryDetails);" required/>
 					<div class="operator ng-hide" ng-show="!isEditTagCategory && isShowOperator && tenantAdmin">
 						<a href="javascript:;" class="edit" ng-click="showHideEditTagCategory();">{{nlsRoot.edit}}</a>

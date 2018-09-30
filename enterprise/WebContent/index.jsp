@@ -106,6 +106,7 @@
 		</div>
 		<div class="con-right">
 			<iframe src="" width="100%" frameborder="no" scrolling="no" border="0" name="main-frame" id="main-frame"></iframe>
+			<div class="coming-soon"></div>
 		</div>
 	</div>
 
