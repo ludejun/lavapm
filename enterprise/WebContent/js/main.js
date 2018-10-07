@@ -656,8 +656,8 @@ $(window).resize(function(){
 			$("#main-frame").attr("src", "");
 			url = url || "";
 			if (appConfig.appCode) {
-				console.log(333333, url, appConfig.appCode);
-				if (appConfig.appCode === 'SocialListening') {
+//				console.log(333333, url, appConfig.appCode);
+				if (appConfig.appCode === 'SocialListening' || appConfig.appCode === 'BWS') {
 					document.getElementsByClassName('coming-soon')[0].style.display = 'block';
 				} else {
 					document.getElementsByClassName('coming-soon')[0].style.display = 'none';
@@ -959,7 +959,7 @@ $(window).resize(function(){
 					var appCode = $li.attr("appCode");
 					appConfig.appCode = appCode;
 					var appUrl = $li.attr("appUrl");
-					if (appCode === 'SocialListening') {
+					if (appCode === 'SocialListening' || appCode === 'BWS') {
 						document.getElementsByClassName('coming-soon')[0].style.display = 'block';
 					} else {
 						document.getElementsByClassName('coming-soon')[0].style.display = 'none';
